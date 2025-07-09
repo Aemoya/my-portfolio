@@ -1,0 +1,161 @@
+<!--
+Create a complete responsive HTML5 page named responsive.html
+with three side-by-side content sections when viewed on a desktop
+screen. On smaller screens such as tablets and phones, these three
+sections should automatically stack vertically. Use either CSS Flexbox
+or Grid for layout, and control the responsiveness using media queries.
+Link to an external CSS file at css/responsive.css to
+handle all styling and layout behavior. Assign each section a different
+background color and include some text content about an art-related
+topic in each one. Write neurotically detailed comments in all files;
+explain every tag, class, style rule, and color value as if you're
+walking a complete beginner through the reasoning behind each choice. Be
+sure to include named comments describing your color scheme and
+interaction behavior. Include this full prompt as a comment at the top
+of the HTML file. Use placeholder content about an art topic of your
+choice to complete the page.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--
+    The <head> element contains meta-information about the HTML document,
+    such as its title, links to stylesheets, and other metadata.
+    This information is not displayed on the web page itself but is
+    used by browsers and search engines.
+    -->
+    <meta charset="UTF-8">
+    <!--
+    The <meta charset="UTF-8"> tag specifies the character encoding for the document.
+    UTF-8 is a universal character encoding that supports almost all characters
+    and symbols in the world, ensuring that text is displayed correctly across
+    different languages and platforms.
+    -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--
+    The <meta name="viewport"> tag is crucial for responsive web design.
+    - "width=device-width": This sets the width of the viewport to the width of the device's screen.
+      This means the page will scale to fit the screen, rather than displaying a fixed-width desktop version.
+    - "initial-scale=1.0": This sets the initial zoom level when the page is first loaded by the browser.
+      A value of 1.0 means no zoom, displaying the page at its actual size relative to the device's resolution.
+      This combination ensures the page looks good on various devices, from phones to desktops.
+    -->
+    <title>Responsive Art Gallery</title>
+    <!--
+    The <title> tag defines the title of the HTML document.
+    This title appears in the browser's title bar or tab. It's important for SEO
+    (Search Engine Optimization) and user experience, as it gives a quick overview
+    of the page's content.
+    -->
+    <link rel="stylesheet" href="css/responsive.css">
+    <!--
+    The <link> tag is used to link an external resource to the HTML document.
+    - "rel="stylesheet"": This attribute specifies the relationship between the current document
+      and the linked document. "stylesheet" indicates that the linked file is a stylesheet.
+    - "href="css/responsive.css"": This attribute specifies the URL (path) of the external stylesheet file.
+      In this case, it's located in a folder named 'css' and the file is 'responsive.css'.
+      This separation of HTML structure and CSS styling is a best practice for maintainability.
+    -->
+</head>
+<body>
+    <!--
+    The <body> element contains all the visible content of the HTML document,
+    such as text, images, links, videos, and other interactive elements.
+    -->
+
+    <header class="page-header">
+        <!--
+        The <header> element represents introductory content, typically containing
+        a group of navigational aids or introductory headings.
+        - "class="page-header"": This class is used to apply specific styling
+          to the header via CSS, such as background color, padding, and text alignment.
+        -->
+        <h1>The Evolving Canvas: A Journey Through Art</h1>
+        <!--
+        The <h1> tag defines the most important heading on the page.
+        There should typically be only one <h1> per page for semantic clarity and SEO.
+        -->
+    </header>
+
+    <main class="content-container">
+        <!--
+        The <main> element represents the dominant content of the <body>.
+        It should contain content that is unique to the document and not
+        repeated across a set of documents (like sidebars, navigation links, copyright information).
+        - "class="content-container"": This class is applied to the main content area.
+          In CSS, this class will be used to set up the Flexbox layout, allowing its
+          child elements (the three sections) to arrange themselves side-by-side on
+          larger screens and stack vertically on smaller screens.
+        -->
+
+        <section id="section1" class="content-section">
+            <!--
+            The <section> element is used to group related content.
+            It's a thematic grouping of content, typically with a heading.
+            - "id="section1"": A unique identifier for this specific section.
+              Used for targeting with CSS or JavaScript if needed.
+            - "class="content-section"": A common class applied to all three sections.
+              This allows for consistent styling (e.g., padding, margin) across all sections,
+              while individual IDs can be used for unique properties like background colors.
+            -->
+            <h2>Impressionism: Capturing Fleeting Moments</h2>
+            <!--
+            The <h2> tag defines a secondary heading, less important than <h1>.
+            -->
+            <p>
+                Impressionism, a 19th-century art movement, emerged in response to the rigid
+                conventions of academic painting. Artists like Claude Monet, Pierre-Auguste Renoir,
+                and Edgar Degas sought to capture the "impression" of a scene, focusing on light,
+                color, and movement rather than precise detail. They often painted outdoors (en plein air)
+                to observe the changing effects of natural light, using visible brushstrokes and
+                a vibrant palette. This revolutionary approach paved the way for modern art,
+                emphasizing subjective perception over objective reality.
+            </p>
+            <!--
+            The <p> tag defines a paragraph of text.
+            -->
+        </section>
+
+        <section id="section2" class="content-section">
+            <h2>Cubism: Deconstructing Reality</h2>
+            <p>
+                Cubism, pioneered by Pablo Picasso and Georges Braque in the early 20th century,
+                revolutionized painting and sculpture by presenting multiple viewpoints of an object
+                simultaneously. Instead of depicting objects from a single angle, Cubist artists
+                broke them down into geometric shapes and reassembled them in an abstract form.
+                This intellectual approach challenged traditional notions of perspective and representation,
+                forcing viewers to engage with the artwork on a deeper, more analytical level.
+                It marked a significant departure from centuries of Western art.
+            </p>
+        </section>
+
+        <section id="section3" class="content-section">
+            <h2>Surrealism: Exploring the Subconscious</h2>
+            <p>
+                Surrealism, an artistic and literary movement that began in the 1920s,
+                was heavily influenced by Sigmund Freud's theories of the unconscious mind.
+                Led by André Breton, Surrealist artists like Salvador Dalí, René Magritte,
+                and Joan Miró aimed to unlock the power of the imagination by juxtaposing
+                unrelated objects in dreamlike and often bizarre scenarios. Their works
+                explored themes of dreams, desires, and the irrational, creating a visual
+                language that defied logic and embraced the fantastical.
+            </p>
+        </section>
+
+    </main>
+
+    <footer class="page-footer">
+        <!--
+        The <footer> element represents a footer for its nearest sectioning content or sectioning root element.
+        A footer typically contains information about its section, such as who wrote it, links to related documents,
+        copyright data, and the like.
+        - "class="page-footer"": This class is used for styling the footer, similar to the header.
+        -->
+        <p>&copy; 2025 Art History Insights. All rights reserved.</p>
+        <!--
+        The &copy; HTML entity displays the copyright symbol.
+        -->
+    </footer>
+
+</body>
+</html>

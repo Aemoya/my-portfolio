@@ -1,0 +1,428 @@
+/*
+This CSS file (responsive.css) handles all the styling and layout behavior
+for the responsive.html page. It uses CSS Flexbox for the main content
+layout and media queries to control responsiveness, ensuring the page
+adapts gracefully to different screen sizes.
+
+Neurotically detailed comments explain every style rule, class, color value,
+and the reasoning behind each choice, as if guiding a complete beginner.
+*/
+
+/* --- Color Scheme Definitions --- */
+/*
+This section defines the color palette used throughout the page.
+Using named comments helps in understanding the purpose of each color
+and makes it easier to maintain and modify the theme.
+*/
+
+/* Primary Palette */
+:root {
+    /* --color-dark-blue: A deep, rich blue for main headings and footer text. */
+    --color-dark-blue: #2c3e50; /* A strong, professional dark blue. */
+
+    /* --color-light-gray: A soft, neutral gray for background elements. */
+    --color-light-gray: #f4f4f4; /* A very light gray, almost white, for subtle contrast. */
+
+    /* --color-text-dark: A standard dark color for general body text. */
+    --color-text-dark: #333; /* A dark charcoal gray, providing good readability. */
+
+    /* --color-text-light: A light color for text on dark backgrounds (e.g., header, footer). */
+    --color-text-light: #ecf0f1; /* A light, almost white, bluish-gray for contrast. */
+
+    /* Section Backgrounds - Chosen to be distinct but harmonious */
+    /* --color-section1-bg: A calming, muted teal for the first content section. */
+    --color-section1-bg: #a2d9ce; /* A soft, inviting teal. */
+
+    /* --color-section2-bg: A warm, earthy orange for the second content section. */
+    --color-section2-bg: #f9e79f; /* A light, sunny yellow-orange. */
+
+    /* --color-section3-bg: A gentle, cool lavender for the third content section. */
+    --color-section3-bg: #d7bde2; /* A soft, pastel purple. */
+}
+
+/* --- General Body Styling --- */
+/*
+These styles apply to the entire <body> of the HTML document.
+They set the foundational look and feel, including font, background, and default text color.
+*/
+body {
+    font-family: 'Inter', sans-serif;
+    /*
+    font-family: Specifies the font to be used for text.
+    'Inter' is a modern, highly readable sans-serif font.
+    'sans-serif' is a generic family fallback, meaning if 'Inter' isn't available,
+    the browser will use any generic sans-serif font installed on the user's system.
+    */
+    line-height: 1.6;
+    /*
+    line-height: Sets the height of each line of text.
+    A value of 1.6 means the line height is 1.6 times the font size.
+    This adds more space between lines, improving readability, especially for paragraphs.
+    */
+    margin: 0;
+    /*
+    margin: Sets the margin (space outside the border) for all four sides of an element.
+    Setting it to 0 removes the default margin that browsers often apply to the <body>,
+    allowing for precise control over spacing.
+    */
+    padding: 0;
+    /*
+    padding: Sets the padding (space inside the border, between the content and the border).
+    Setting it to 0 removes default padding, similar to margin, for consistent layout.
+    */
+    background-color: var(--color-light-gray);
+    /*
+    background-color: Sets the background color of the element.
+    Using a CSS variable (--color-light-gray) ensures consistency with the defined color scheme.
+    This light gray provides a soft, neutral backdrop for the entire page.
+    */
+    color: var(--color-text-dark);
+    /*
+    color: Sets the text color.
+    Using --color-text-dark ensures that all default text on the page is a dark charcoal gray,
+    providing good contrast against the light background.
+    */
+}
+
+/* --- Header Styling --- */
+/*
+Styles for the page's header section.
+*/
+.page-header {
+    background-color: var(--color-dark-blue);
+    /*
+    background-color: Sets the background of the header to a deep, rich blue.
+    This creates a strong visual anchor at the top of the page.
+    */
+    color: var(--color-text-light);
+    /*
+    color: Sets the text color within the header to a light, almost white, bluish-gray.
+    This provides excellent contrast against the dark blue background.
+    */
+    padding: 1.5rem 1rem;
+    /*
+    padding: Adds space inside the header element.
+    - 1.5rem: Top and bottom padding (1.5 times the root font size, typically 16px, so 24px).
+    - 1rem: Left and right padding (1 times the root font size, so 16px).
+    This creates breathing room around the header content.
+    */
+    text-align: center;
+    /*
+    text-align: Horizontally aligns the text content within the header to the center.
+    */
+    border-bottom-left-radius: 15px;
+    /*
+    border-bottom-left-radius: Rounds the bottom-left corner of the header.
+    A value of 15px creates a subtle, modern curve.
+    */
+    border-bottom-right-radius: 15px;
+    /*
+    border-bottom-right-radius: Rounds the bottom-right corner of the header.
+    Similar to the left, this creates a symmetrical rounded bottom edge.
+    */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /*
+    box-shadow: Adds a shadow effect to the header, giving it a lifted, 3D appearance.
+    - 0: Horizontal offset (no horizontal shift).
+    - 4px: Vertical offset (shadow extends 4px downwards).
+    - 8px: Blur radius (the shadow spreads out by 8px).
+    - rgba(0, 0, 0, 0.2): Color of the shadow (black with 20% opacity), making it subtle.
+    */
+}
+
+.page-header h1 {
+    margin: 0;
+    /*
+    margin: Removes the default top and bottom margin that browsers apply to <h1> tags.
+    This ensures the heading sits snugly within the header's padding.
+    */
+    font-size: 2.5rem;
+    /*
+    font-size: Sets the size of the <h1> text.
+    2.5rem makes the main heading large and prominent.
+    */
+}
+
+/* --- Main Content Container Styling (Flexbox Parent) --- */
+/*
+This is the core of the responsive layout. The .content-container uses Flexbox
+to arrange its child sections.
+*/
+.content-container {
+    display: flex;
+    /*
+    display: flex; Turns the .content-container into a flex container.
+    This means its direct children (the <section> elements) become flex items
+    and can be laid out using Flexbox properties.
+    */
+    flex-wrap: wrap;
+    /*
+    flex-wrap: wrap; Allows flex items to wrap onto multiple lines if there isn't
+    enough space in a single line. This is crucial for responsiveness: when the
+    screen is too narrow, the sections will wrap and stack vertically.
+    */
+    justify-content: space-around;
+    /*
+    justify-content: space-around; Distributes space around flex items along the
+    main axis (horizontally, by default). This ensures the sections are evenly
+    spaced with some room on either side, creating a balanced look.
+    */
+    padding: 2rem;
+    /*
+    padding: Adds internal spacing around the entire content area.
+    2rem (32px) provides generous breathing room between the header/footer
+    and the content sections, and between the sections and the page edges.
+    */
+    gap: 2rem;
+    /*
+    gap: 2rem; A shorthand property for row-gap and column-gap.
+    It creates a consistent 2rem (32px) space between flex items (the sections)
+    both horizontally and vertically. This is a modern and efficient way to add spacing.
+    */
+}
+
+/* --- Individual Content Section Styling (Flexbox Children) --- */
+/*
+These styles apply to each of the three content sections.
+*/
+.content-section {
+    flex: 1;
+    /*
+    flex: 1; This is a shorthand for flex-grow: 1, flex-shrink: 1, and flex-basis: 0%.
+    - flex-grow: 1: Allows the section to grow and take up available space.
+      If there's extra space, all sections will grow equally.
+    - flex-shrink: 1: Allows the section to shrink if necessary to fit the container.
+    - flex-basis: 0%: Sets the initial size of the flex item before any growing/shrinking.
+      Setting it to 0% means the items will try to be as small as possible initially,
+      then grow to fill space. This is a common pattern for making items equally sized
+      and responsive within a flex container.
+    */
+    min-width: 300px;
+    /*
+    min-width: 300px; Sets a minimum width for each section.
+    This prevents sections from becoming too narrow and unreadable on smaller screens
+    before they stack. If a section tries to go below 300px, it will wrap to the next line.
+    */
+    padding: 2rem;
+    /*
+    padding: Adds internal spacing within each section, around its text content.
+    2rem (32px) provides good readability and visual separation from the section's edges.
+    */
+    border-radius: 10px;
+    /*
+    border-radius: 10px; Rounds the corners of each content section.
+    A value of 10px creates a soft, modern aesthetic.
+    */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /*
+    box-shadow: Adds a subtle shadow to each section, similar to the header but lighter.
+    - 0: Horizontal offset.
+    - 4px: Vertical offset.
+    - 8px: Blur radius.
+    - rgba(0, 0, 0, 0.1): Black with 10% opacity, making it very subtle.
+    This gives the sections a slight lifted appearance.
+    */
+    transition: transform 0.3s ease-in-out;
+    /*
+    transition: Defines a transition effect for CSS properties.
+    - transform: The property to transition (used for scaling on hover).
+    - 0.3s: The duration of the transition (0.3 seconds).
+    - ease-in-out: The timing function (starts slow, speeds up, ends slow),
+      creating a smooth and natural animation.
+    */
+}
+
+/* --- Section Specific Background Colors --- */
+/*
+Each section gets a unique background color from the defined color scheme.
+*/
+#section1 {
+    background-color: var(--color-section1-bg); /* Muted teal */
+}
+
+#section2 {
+    background-color: var(--color-section2-bg); /* Warm yellow-orange */
+}
+
+#section3 {
+    background-color: var(--color-section3-bg); /* Gentle lavender */
+}
+
+/* --- Hover Effect for Sections --- */
+/*
+This provides a subtle interactive feedback when the user hovers over a section.
+*/
+.content-section:hover {
+    transform: translateY(-5px) scale(1.01);
+    /*
+    transform: translateY(-5px) scale(1.01); Applies a 2D transformation on hover.
+    - translateY(-5px): Moves the section 5 pixels upwards, creating a "lift" effect.
+    - scale(1.01): Slightly increases the size of the section by 1%, making it appear
+      to pop out slightly.
+    Combined with the transition property above, this creates a smooth, engaging animation.
+    */
+}
+
+/* --- Footer Styling --- */
+/*
+Styles for the page's footer section.
+*/
+.page-footer {
+    background-color: var(--color-dark-blue);
+    /*
+    background-color: Matches the header's dark blue background, creating visual consistency.
+    */
+    color: var(--color-text-light);
+    /*
+    color: Matches the header's light text color for readability on the dark background.
+    */
+    padding: 1rem;
+    /*
+    padding: Adds internal spacing within the footer.
+    1rem (16px) provides sufficient room around the copyright text.
+    */
+    text-align: center;
+    /*
+    text-align: Horizontally aligns the text content within the footer to the center.
+    */
+    margin-top: 2rem;
+    /*
+    margin-top: Adds space above the footer, separating it from the content sections.
+    2rem (32px) ensures there's clear visual distinction.
+    */
+    border-top-left-radius: 15px;
+    /*
+    border-top-left-radius: Rounds the top-left corner of the footer.
+    Matches the header's rounded corners for a cohesive design.
+    */
+    border-top-right-radius: 15px;
+    /*
+    border-top-right-radius: Rounds the top-right corner of the footer.
+    Symmetrical rounding for a polished look.
+    */
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2);
+    /*
+    box-shadow: Adds a shadow to the top of the footer, similar to the header's shadow
+    but extending upwards (negative vertical offset). This reinforces the lifted effect.
+    */
+}
+
+.page-footer p {
+    margin: 0;
+    /*
+    margin: Removes default margins from the paragraph within the footer,
+    ensuring it fits perfectly within the footer's padding.
+    */
+    font-size: 0.9rem;
+    /*
+    font-size: Makes the copyright text slightly smaller for a less prominent appearance.
+    */
+}
+
+/* --- Media Queries for Responsiveness --- */
+/*
+Media queries allow us to apply different styles based on device characteristics,
+such as screen width. This is where the stacking behavior is controlled.
+*/
+
+/*
+Interaction Behavior:
+On screens smaller than 768px (typical for tablets in portrait mode and phones),
+the flex direction will change from 'row' to 'column', causing the sections to stack.
+The sections will also take up the full width available.
+*/
+@media (max-width: 768px) {
+    /*
+    @media (max-width: 768px): This rule applies styles only when the viewport width
+    is 768 pixels or less. This breakpoint is commonly used to target tablets and mobile devices.
+    */
+    .content-container {
+        flex-direction: column;
+        /*
+        flex-direction: column; Changes the main axis of the flex container to vertical.
+        Instead of arranging items in a row, they will now stack vertically, one below the other.
+        This is the key rule for making the layout responsive and stacking on small screens.
+        */
+        align-items: center;
+        /*
+        align-items: center; Aligns flex items along the cross-axis (horizontally, in this case,
+        because flex-direction is column). Setting it to 'center' will center the stacked
+        sections horizontally within the content container.
+        */
+        padding: 1rem;
+        /*
+        padding: Reduces the overall padding of the content container on smaller screens.
+        1rem (16px) provides less wasted space and keeps content more compact on small devices.
+        */
+    }
+
+    .content-section {
+        width: 100%;
+        /*
+        width: 100%; Makes each section take up the full available width of its parent container
+        when stacked vertically. This ensures efficient use of screen real estate on mobile devices.
+        */
+        max-width: 500px; /* Optional: Sets a maximum width for sections even when stacked */
+        /*
+        max-width: 500px; (Optional) This prevents the sections from becoming excessively wide
+        on very large tablets or when viewed in a narrow browser window on a desktop,
+        while still maintaining the column layout. It ensures readability by keeping line lengths reasonable.
+        */
+        margin-bottom: 1.5rem;
+        /*
+        margin-bottom: 1.5rem; Adds space below each stacked section.
+        This creates visual separation between the vertically arranged content blocks.
+        */
+    }
+
+    .content-section:last-child {
+        margin-bottom: 0;
+        /*
+        margin-bottom: 0; Removes the bottom margin from the very last section.
+        This prevents unnecessary extra space at the bottom of the content container
+        when all sections are stacked.
+        */
+    }
+
+    .page-header h1 {
+        font-size: 1.8rem;
+        /*
+        font-size: Reduces the font size of the main heading on smaller screens.
+        1.8rem ensures the heading remains prominent but doesn't take up too much vertical space.
+        */
+    }
+}
+
+/*
+Additional Media Query for very small screens (e.g., older phones)
+to further optimize spacing and font sizes.
+*/
+@media (max-width: 480px) {
+    /*
+    @media (max-width: 480px): This rule applies styles when the viewport width is 480 pixels or less,
+    targeting very small mobile devices.
+    */
+    .page-header {
+        padding: 1rem 0.5rem;
+        /*
+        padding: Further reduces header padding for very small screens,
+        making sure content fits without horizontal scrolling.
+        */
+    }
+
+    .page-header h1 {
+        font-size: 1.5rem;
+        /*
+        font-size: Reduces the main heading size even more for tiny screens,
+        preventing it from overflowing or looking too large.
+        */
+    }
+
+    .content-section {
+        padding: 1.5rem;
+        /*
+        padding: Slightly reduces padding within sections for very small screens,
+        optimizing space usage.
+        */
+    }
+}
