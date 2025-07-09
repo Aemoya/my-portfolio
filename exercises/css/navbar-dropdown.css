@@ -1,0 +1,287 @@
+/*
+Color Scheme:
+- --navbar-bg-color: #4f4432 (Deep earthy brown - a sturdy, grounding color for the navigation bar)
+- --link-color: #dcd785 (Muted golden yellow - offers a gentle contrast against the dark background,
+                        suggesting warmth and classic elegance for the navigation links)
+- --link-hover-color: #f7f2b1 (Lighter golden yellow - a subtle brightening effect on hover,
+                              indicating interactivity without being jarring)
+- --text-color: #333 (Dark charcoal grey - standard readable text color for body content)
+- --heading-color: #4f4432 (Matches navbar background for thematic consistency in headings)
+- --body-bg-color: #f5f5f5 (Light grey - a soft, neutral background for the main content area)
+
+Interaction Behavior:
+- Dropdown menu visibility is toggled by clicking the "More" button.
+- The dropdown menu appears directly below the "More" button using absolute positioning
+  relative to its parent <li>, ensuring it's not clipped and remains visible.
+- Links change color on hover for visual feedback.
+*/
+
+/* Universal box-sizing reset: */
+/* The * selector applies styles to all elements on the page. */
+/* box-sizing: border-box; changes how the total width and height of an element are calculated.
+   By default (content-box), padding and border are added to the specified width/height.
+   With border-box, padding and border are included *within* the specified width/height.
+   This makes layout calculations much more intuitive and prevents elements from
+   unexpectedly overflowing their containers. */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+/* Basic body styling: */
+/* Styles applied to the <body> tag. */
+body {
+    font-family: Arial, sans-serif; /* Sets a clean, common font family. */
+    margin: 0; /* Removes default margin around the body, ensuring content starts at the very edge. */
+    padding: 0; /* Removes default padding. */
+    background-color: var(--body-bg-color); /* Sets a light grey background for the entire page. */
+    color: var(--text-color); /* Sets a dark charcoal grey as the default text color. */
+    line-height: 1.6; /* Sets the line height for better readability of text. */
+}
+
+/* --- Navigation Bar Styling --- */
+
+/* Semantic <header> tag styling */
+header {
+    background-color: var(--navbar-bg-color); /* Uses the deep earthy brown for the header background. */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Adds a subtle shadow for depth, making the navbar stand out. */
+}
+
+/* Main navigation container styling with Flexbox */
+.main-nav {
+    display: flex; /* Enables Flexbox for the navigation bar. This makes its children (branding and nav-links) flex items. */
+    justify-content: space-between; /* Distributes space between items: branding on the left, nav-links on the right. */
+    align-items: center; /* Vertically aligns items in the center of the nav bar. */
+    max-width: 1200px; /* Sets a maximum width for the navbar content, keeping it centered on large screens. */
+    margin: 0 auto; /* Centers the navbar horizontally within its parent (the header). */
+    padding: 15px 25px; /* Adds internal spacing: 15px top/bottom, 25px left/right. */
+}
+
+/* Branding element (site name/logo) styling */
+.branding .site-name {
+    color: var(--link-color); /* Sets the muted golden yellow for the site name text. */
+    font-size: 1.8em; /* Makes the site name larger and more prominent. */
+    font-weight: bold; /* Bolds the text for emphasis. */
+    text-decoration: none; /* Removes the default underline from the link. */
+    transition: color 0.3s ease; /* Smooth transition for color changes on hover. */
+}
+
+.branding .site-name:hover {
+    color: var(--link-hover-color); /* Lighter golden yellow on hover, indicating interactivity. */
+}
+
+/* Main navigation links list styling */
+.nav-links {
+    list-style: none; /* Removes default bullet points from the unordered list. */
+    margin: 0; /* Removes default margin from the list. */
+    padding: 0; /* Removes default padding from the list. */
+    display: flex; /* Makes the list items themselves flex items, arranging them horizontally. */
+    align-items: center; /* Vertically aligns the list items. */
+}
+
+/* Individual navigation list item styling */
+.nav-links li {
+    position: relative; /* Crucial for positioning dropdown menus.
+                           This makes the <li> element the positioning context for its absolutely positioned children.
+                           So, the dropdown menu (which will be `position: absolute`) will be positioned
+                           relative to this <li>, not the entire page. */
+    margin-left: 30px; /* Adds space between navigation links. */
+}
+
+/* Styling for all anchor tags directly inside nav-links list items */
+.nav-links li a {
+    color: var(--link-color); /* Sets the muted golden yellow for the navigation links. */
+    text-decoration: none; /* Removes the default underline from links. */
+    padding: 10px 0; /* Adds vertical padding to make the clickable area larger. */
+    display: block; /* Makes the entire padding area clickable. */
+    transition: color 0.3s ease; /* Smooth transition for color changes on hover. */
+}
+
+/* Hover effect for main navigation links */
+.nav-links li a:hover {
+    color: var(--link-hover-color); /* Lighter golden yellow on hover. */
+}
+
+/* Dropdown specific styling */
+.dropdown-toggle {
+    background: none; /* Removes default button background. */
+    border: none; /* Removes default button border. */
+    color: var(--link-color); /* Sets the muted golden yellow for the button text. */
+    font-size: 1em; /* Matches font size of other links. */
+    font-family: inherit; /* Inherits font family from body. */
+    cursor: pointer; /* Changes cursor to a pointer, indicating it's clickable. */
+    padding: 10px 0; /* Adds vertical padding. */
+    transition: color 0.3s ease; /* Smooth transition for color changes on hover. */
+    display: block; /* Ensures it behaves like a block element for padding. */
+}
+
+.dropdown-toggle:hover {
+    color: var(--link-hover-color); /* Lighter golden yellow on hover. */
+}
+
+/* Dropdown menu container styling */
+.dropdown-menu {
+    list-style: none; /* Removes bullet points. */
+    margin: 0; /* Removes default margin. */
+    padding: 10px 0; /* Adds internal padding. */
+    background-color: var(--navbar-bg-color); /* Uses the same background color as the navbar. */
+    position: absolute; /* Takes the dropdown out of the normal document flow.
+                            This is essential to prevent clipping and allow it to overlap other content. */
+    top: 100%; /* Positions the top of the dropdown right below the parent <li> (which is the "More" link).
+                  Since the parent <li> has `position: relative`, `top: 100%` means 100% of the parent's height. */
+    left: 50%; /* Starts the dropdown menu's left edge at the horizontal center of its parent <li>. */
+    transform: translateX(-50%); /* Shifts the dropdown menu left by 50% of its own width.
+                                     This effectively centers the dropdown menu directly below the "More" button. */
+    min-width: 160px; /* Ensures the dropdown has a minimum width for content readability. */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Adds a stronger shadow to make the dropdown pop out. */
+    z-index: 1000; /* Ensures the dropdown appears on top of other content. Higher z-index means higher stacking order. */
+    border-radius: 5px; /* Slightly rounded corners for a softer look. */
+
+    /* Initial state: hidden (will be toggled by JS) */
+    display: none; /* Hides the dropdown menu by default. JavaScript will change this to 'block' when toggled. */
+    opacity: 0; /* Starts completely transparent. */
+    visibility: hidden; /* Ensures it's not interactive when hidden. */
+    transform: translateY(10px) translateX(-50%); /* Moves it slightly down initially for a subtle animation. */
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease; /* Smooth transition for visibility. */
+}
+
+/* Styling for dropdown menu items */
+.dropdown-menu li {
+    margin: 0; /* Removes any default margin from dropdown list items. */
+}
+
+/* Styling for links within the dropdown menu */
+.dropdown-menu li a {
+    color: var(--link-color); /* Sets the link color for dropdown items. */
+    padding: 10px 20px; /* Adds internal padding to dropdown links. */
+    white-space: nowrap; /* Prevents text from wrapping within the link, keeping it on one line. */
+    display: block; /* Makes the entire padding area clickable for each link. */
+}
+
+/* Hover effect for dropdown menu links */
+.dropdown-menu li a:hover {
+    background-color: #5d5241; /* Slightly lighter shade of the navbar background on hover. */
+    color: var(--link-hover-color); /* Lighter golden yellow on hover. */
+}
+
+/* Class added by JavaScript to show the dropdown */
+.dropdown-menu.show {
+    display: block; /* Changes display to block to make it visible. */
+    opacity: 1; /* Makes it fully opaque. */
+    visibility: visible; /* Makes it interactive. */
+    transform: translateY(0) translateX(-50%); /* Animates it to its final position. */
+}
+
+/* --- Main Content Styling --- */
+
+/* Hero section styling */
+.hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://via.placeholder.com/1500x500/8c7e6c/ffffff?text=Artistic+Expression') no-repeat center center/cover;
+    /* Sets a background image with a semi-transparent overlay.
+       The linear-gradient creates a dark overlay for text readability.
+       url(...) specifies a placeholder image.
+       no-repeat prevents tiling.
+       center center positions the image.
+       cover ensures the image covers the entire container. */
+    color: #fff; /* White text for contrast against the dark background. */
+    text-align: center; /* Centers the text within the hero section. */
+    padding: 100px 20px; /* Adds top/bottom padding for spacing. */
+    margin-bottom: 30px; /* Adds space below the hero section. */
+}
+
+.hero h1 {
+    font-size: 3em; /* Larger font size for the main heading. */
+    margin-bottom: 15px; /* Adds space below the heading. */
+}
+
+.hero p {
+    font-size: 1.2em; /* Slightly larger font size for the paragraph. */
+    max-width: 800px; /* Limits paragraph width for readability. */
+    margin: 0 auto; /* Centers the paragraph. */
+}
+
+/* General content section styling */
+.content-section {
+    max-width: 960px; /* Sets a maximum width for content sections. */
+    margin: 30px auto; /* Centers sections horizontally with vertical spacing. */
+    padding: 20px; /* Adds internal padding. */
+    background-color: #fff; /* White background for content. */
+    border-radius: 8px; /* Slightly rounded corners. */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth. */
+}
+
+.content-section h2,
+.content-section h3 {
+    color: var(--heading-color); /* Uses the deep earthy brown for headings, matching the navbar. */
+    margin-bottom: 15px; /* Adds space below headings. */
+    border-bottom: 1px solid #eee; /* Light line below headings for visual separation. */
+    padding-bottom: 10px; /* Padding above the line. */
+}
+
+.content-section p {
+    margin-bottom: 1em; /* Adds space below paragraphs. */
+}
+
+/* Footer styling */
+footer {
+    text-align: center; /* Centers the text in the footer. */
+    padding: 20px; /* Adds padding. */
+    margin-top: 50px; /* Adds space above the footer. */
+    background-color: var(--navbar-bg-color); /* Uses the deep earthy brown for the footer background. */
+    color: var(--link-color); /* Muted golden yellow for footer text, matching links. */
+    font-size: 0.9em; /* Slightly smaller font size for footer text. */
+}
+
+/* --- Responsive Adjustments (Media Queries) --- */
+
+/* Adjustments for smaller screens (e.g., mobile phones) */
+@media (max-width: 768px) {
+    /* Styles applied when the screen width is 768px or less. */
+
+    .main-nav {
+        flex-direction: column; /* Stacks branding and nav-links vertically instead of horizontally. */
+        padding: 15px; /* Adjusts padding for smaller screens. */
+    }
+
+    .branding {
+        margin-bottom: 15px; /* Adds space below the branding when stacked. */
+    }
+
+    .nav-links {
+        flex-direction: column; /* Stacks individual navigation links vertically. */
+        width: 100%; /* Makes the navigation links take full width. */
+        align-items: flex-start; /* Aligns links to the left. */
+    }
+
+    .nav-links li {
+        margin: 0; /* Removes horizontal margin. */
+        width: 100%; /* Makes each list item take full width. */
+        text-align: center; /* Centers the text within each list item. */
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Adds a subtle separator. */
+    }
+
+    .nav-links li:last-child {
+        border-bottom: none; /* Removes the border from the last item. */
+    }
+
+    .nav-links li a,
+    .dropdown-toggle {
+        padding: 12px 0; /* Increases vertical padding for easier tapping. */
+        width: 100%; /* Ensures links fill the width. */
+    }
+
+    .dropdown-menu {
+        position: static; /* Changes dropdown to static positioning. It will now flow with the document content.
+                             This is often better for mobile, as absolute positioning can cause issues with scroll. */
+        width: 100%; /* Makes dropdown take full width. */
+        transform: none; /* Removes the centering transform. */
+        box-shadow: none; /* Removes shadow as it's not floating anymore. */
+        border-radius: 0; /* Removes rounded corners. */
+        background-color: rgba(0, 0, 0, 0.2); /* Slightly transparent background for nested dropdown. */
+        padding: 0; /* Remove padding to reduce nested spacing */
+    }
+
+    .dropdown-menu li a {
+        padding: 10px 30px; /* Indent dropdown links on mobile for clear hierarchy. */
+        background-color: rgba(0, 0, 0, 0.1); /* A slightly different background for dropdown items on mobile. */
+    }
+}
