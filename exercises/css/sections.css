@@ -1,0 +1,357 @@
+/*
+Prompt:
+Create a complete HTML5 page named sections.html with three stacked <section> blocks titled About, Work, and Contact. Link to an external CSS file (css/sections.css) that assigns each section a unique background color, adds padding, and centers the text. Write neurotically detailed comments in all files; explain every tag, class, style rule, and color value as if you're walking a complete beginner through the reasoning behind each choice. Be sure to include named comments describing your color scheme and interaction behavior. Include this full prompt as a comment at the top of the HTML file. Use placeholder content about an art topic of your choice to complete the page.
+*/
+
+/*
+CSS (Cascading Style Sheets) is a stylesheet language used to describe the presentation
+of an HTML (or XML) document, including colors, layout, and fonts.
+*/
+
+/* --- Color Scheme Description ---
+This color scheme aims for a sophisticated yet inviting feel, inspired by classic art palettes with a modern twist.
+
+- Primary Backgrounds:
+  - #FDFBF8 (Almost White/Off-White): Provides a clean, bright, and airy canvas, reminiscent of a fresh paper or primed canvas. It's very gentle on the eyes.
+  - #E8E5E0 (Light Gray/Greige): A subtle, warm gray for contrast, evoking the natural tones found in stone or aged parchment. It provides a soft visual break.
+  - #D2CDC3 (Medium Gray/Stone): A deeper, richer gray that offers more visual weight and distinction for the third section, akin to a subtle shadow or a deeper neutral tone in a painting.
+
+- Text Color:
+  - #333333 (Dark Charcoal Gray): A soft black that ensures readability without being as harsh as pure black. It provides good contrast against the light backgrounds.
+
+- Accent/Link Color (Not explicitly used as a section background, but good to define for future use):
+  - #785A75 (Muted Plum/Mauve): A sophisticated, slightly desaturated purple that can be used for links or subtle highlights, offering a touch of artistic flair without being overwhelming.
+
+--- Interaction Behavior ---
+For this specific exercise, the interaction behavior is minimal as per the prompt (no hover effects requested).
+The primary interaction is simply presenting distinct visual sections with clear headings and readable content.
+The background colors serve to visually separate the content blocks, guiding the user's eye through the page.
+If hover effects were added, a slight darkening of the background or a subtle border change would be fitting
+with this subdued palette.
+*/
+
+body {
+    /*
+    The 'body' selector targets the entire content area of the HTML document.
+    Styles applied here will affect the whole page unless overridden by more specific selectors.
+    */
+    font-family: 'Georgia', serif;
+    /*
+    'font-family' specifies the typeface for the text.
+    - 'Georgia' is a classic, readable serif font, often used for body text due to its elegance
+      and readability, reminiscent of print media.
+    - 'serif' is a generic font family. If 'Georgia' is not available on the user's system,
+      the browser will fall back to any available serif font, ensuring the text still has
+      a traditional look with serifs (small decorative lines at the ends of strokes).
+    */
+    line-height: 1.6;
+    /*
+    'line-height' sets the height of each line of text.
+    - '1.6' means the line height will be 1.6 times the font size. This adds extra space
+      between lines, significantly improving readability, especially for paragraphs of text.
+    */
+    margin: 0;
+    /*
+    'margin' controls the space outside an element's border.
+    - '0' removes the default margin that browsers often apply to the <body> element.
+      This ensures your content starts right at the edge of the browser window.
+    */
+    padding: 0;
+    /*
+    'padding' controls the space between an element's content and its border.
+    - '0' removes the default padding that browsers might apply, giving you full control
+      over the layout.
+    */
+    background-color: #FDFBF8; /* Overall page background - Light Off-White */
+    /*
+    'background-color' sets the background color of the element.
+    - '#FDFBF8' is a very light, almost white color with a slight warmth,
+      chosen to provide a soft and clean overall backdrop for the page.
+    */
+    color: #333333; /* Default text color - Dark Charcoal Gray */
+    /*
+    'color' sets the color of the text within the element.
+    - '#333333' is a dark charcoal gray, chosen for readability and a softer contrast
+      compared to pure black, making it less harsh on the eyes.
+    */
+}
+
+header {
+    /*
+    The 'header' selector targets the <header> element in the HTML.
+    */
+    background-color: #D2CDC3; /* Header background - Medium Gray/Stone */
+    /*
+    Sets the background color of the header section.
+    - '#D2CDC3' is a medium, earthy gray, providing a distinct but harmonious visual
+      separation for the page's main heading.
+    */
+    color: #333333; /* Header text color - Dark Charcoal Gray */
+    /*
+    Ensures the text in the header is the same dark charcoal gray for consistency.
+    */
+    text-align: center;
+    /*
+    'text-align' aligns the inline content (like text and images) within a block-level element.
+    - 'center' centers the text horizontally within the header.
+    */
+    padding: 20px 0;
+    /*
+    'padding' sets the space between the content and the border of the element.
+    - '20px 0' means 20 pixels of padding on the top and bottom, and 0 padding on the left and right.
+      This gives the header some vertical breathing room.
+    */
+    margin-bottom: 30px;
+    /*
+    'margin-bottom' sets the space below the element.
+    - '30px' creates a clear visual separation between the header and the first section.
+    */
+}
+
+h1 {
+    /*
+    The 'h1' selector targets the main heading of the page.
+    */
+    margin: 0; /* Remove default margin from h1 */
+    /*
+    Removes the browser's default top and bottom margins for the <h1> tag,
+    allowing the padding of the header to control its spacing.
+    */
+    font-size: 2.8em;
+    /*
+    'font-size' sets the size of the text.
+    - '2.8em' means the font size will be 2.8 times the default font size of the parent element (body).
+      This makes the main heading large and prominent.
+    */
+}
+
+main {
+    /*
+    The 'main' selector targets the <main> element, which contains the primary content sections.
+    */
+    max-width: 960px;
+    /*
+    'max-width' sets the maximum width an element can have.
+    - '960px' means the main content area will not exceed 960 pixels in width.
+      This helps control line length for readability on wide screens and prevents content
+      from stretching too far horizontally.
+    */
+    margin: 0 auto;
+    /*
+    'margin: 0 auto' is a common technique to center a block-level element horizontally
+    within its parent container.
+    - '0' sets top and bottom margins to 0.
+    - 'auto' tells the browser to automatically calculate equal left and right margins,
+      effectively centering the element.
+    */
+    padding: 0 20px;
+    /*
+    'padding: 0 20px' adds horizontal padding to the main content area.
+    - '0' sets top and bottom padding to 0.
+    - '20px' adds 20 pixels of padding on the left and right sides. This prevents the
+      content from touching the edges of the browser window on smaller screens.
+    */
+}
+
+section {
+    /*
+    The 'section' selector targets all <section> elements on the page.
+    These are general styles that apply to all sections.
+    */
+    padding: 40px;
+    /*
+    'padding' adds space inside each section.
+    - '40px' creates 40 pixels of space between the content of each section and its border.
+      This provides ample breathing room around the text, making the sections feel less cramped.
+    */
+    margin-bottom: 30px;
+    /*
+    'margin-bottom' adds space below each section.
+    - '30px' creates a consistent vertical gap between the stacked sections, making them
+      visually distinct and easy to scan.
+    */
+    border-radius: 8px;
+    /*
+    'border-radius' rounds the corners of the element's box.
+    - '8px' creates slightly rounded corners, which gives the sections a softer,
+      more modern aesthetic compared to sharp, square corners.
+    */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /*
+    'box-shadow' adds a shadow effect to the element.
+    - '0' (horizontal offset): no horizontal shadow.
+    - '4px' (vertical offset): shadow extends 4 pixels downwards.
+    - '8px' (blur radius): the shadow is blurred over 8 pixels, making it soft.
+    - 'rgba(0, 0, 0, 0.1)' (color): a black color with an opacity of 0.1 (10% opaque).
+      This creates a subtle, light shadow that gives the sections a slight "lift" effect,
+      adding depth without being overly dominant.
+    */
+    text-align: center; /* Center text in all sections as requested */
+    /*
+    'text-align: center' centers all inline content (like text and images) within each section.
+    This fulfills the prompt's requirement to center the text within each section.
+    */
+}
+
+/* --- Unique Background Colors for Each Section --- */
+
+#about {
+    /*
+    The '#about' selector targets the <section> element with the id "about".
+    ID selectors are highly specific and target only one element on a page.
+    */
+    background-color: #FDFBF8; /* About section background - Light Off-White */
+    /*
+    Assigns a very light, almost white background color to the "About" section.
+    This is the same as the body background, providing a seamless start but the
+    shadow and padding still distinguish it.
+    */
+}
+
+#work {
+    /*
+    The '#work' selector targets the <section> element with the id "work".
+    */
+    background-color: #E8E5E0; /* Work section background - Light Gray/Greige */
+    /*
+    Assigns a light, warm gray background to the "Work" section. This provides
+    a subtle visual distinction from the "About" section.
+    */
+}
+
+#contact {
+    /*
+    The '#contact' selector targets the <section> element with the id "contact".
+    */
+    background-color: #D2CDC3; /* Contact section background - Medium Gray/Stone */
+    /*
+    Assigns a deeper, medium gray background to the "Contact" section. This creates
+    a more pronounced visual separation and grounding for the final section.
+    */
+}
+
+h2 {
+    /*
+    The 'h2' selector targets all <h2> elements within the document.
+    These are the subheadings for each section.
+    */
+    color: #333333; /* Section heading color - Dark Charcoal Gray */
+    /*
+    Sets the color of the <h2> headings to the dark charcoal gray for consistency
+    and readability against the section backgrounds.
+    */
+    font-size: 2em;
+    /*
+    Makes the <h2> headings larger than body text but smaller than <h1>,
+    clearly indicating major subsections.
+    - '2em' means 2 times the font size of its parent element (which is the section,
+      but ultimately inherits from body's font-size).
+    */
+    margin-top: 0;
+    /*
+    Removes the default top margin from <h2>, allowing the section's padding to
+    control the space above the heading.
+    */
+    margin-bottom: 20px;
+    /*
+    Adds 20 pixels of space below each <h2> heading, separating it from the
+    paragraph text that follows.
+    */
+}
+
+p {
+    /*
+    The 'p' selector targets all <p> (paragraph) elements.
+    */
+    font-size: 1.1em;
+    /*
+    Increases the font size of paragraphs slightly.
+    - '1.1em' makes the body text 1.1 times the base font size, improving readability.
+    */
+    margin-bottom: 1em;
+    /*
+    Adds a bottom margin equal to the current font size (1em) to each paragraph.
+    This creates consistent vertical spacing between paragraphs.
+    */
+    max-width: 700px;
+    /*
+    Limits the maximum width of paragraph text.
+    - '700px' ensures that lines of text are not too long, which significantly
+      improves readability, especially when the main container is wider.
+    */
+    margin-left: auto;
+    margin-right: auto;
+    /*
+    'margin-left: auto' and 'margin-right: auto' combined with a 'max-width'
+    will center the paragraph content itself within its parent element
+    (the section), even though the section's text-align is already 'center'.
+    This is important for block-level elements like paragraphs to prevent them
+    from spanning the full width of the parent if they are centered.
+    */
+}
+
+a {
+    /*
+    The 'a' selector targets all <a> (anchor/link) elements.
+    */
+    color: #785A75; /* Link color - Muted Plum/Mauve */
+    /*
+    Sets the color of hyperlinks to a muted plum color, making them identifiable
+    as links and adding a touch of the defined accent color.
+    */
+    text-decoration: none;
+    /*
+    'text-decoration' controls decorative lines on text.
+    - 'none' removes the default underline from hyperlinks, offering a cleaner look.
+      Underlines are often added back on hover for user feedback.
+    */
+    font-weight: bold;
+    /*
+    Makes the link text bold for extra emphasis.
+    */
+}
+
+a:hover {
+    /*
+    The 'a:hover' pseudo-class targets an <a> element when the user's mouse cursor
+    is hovering over it. This is a common interaction behavior.
+    */
+    text-decoration: underline;
+    /*
+    Adds an underline back to the link text when hovered, providing visual feedback
+    to the user that the text is clickable.
+    */
+}
+
+footer {
+    /*
+    The 'footer' selector targets the <footer> element at the bottom of the page.
+    */
+    background-color: #333333; /* Footer background - Dark Charcoal Gray */
+    /*
+    Sets the background of the footer to the dark charcoal gray, creating a strong
+    visual end to the page and a good contrast for the light text.
+    */
+    color: #FDFBF8; /* Footer text color - Light Off-White */
+    /*
+    Sets the text color in the footer to the light off-white, ensuring good
+    readability against the dark background.
+    */
+    text-align: center;
+    /*
+    Centers the text content within the footer.
+    */
+    padding: 20px 0;
+    /*
+    Adds vertical padding to the footer, giving its content some breathing room.
+    */
+    margin-top: 30px;
+    /*
+    Adds space above the footer, separating it from the last content section.
+    */
+    font-size: 0.9em;
+    /*
+    Makes the footer text slightly smaller than the main body text, indicating
+    it's supplementary information.
+    */
+}
