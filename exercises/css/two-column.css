@@ -1,0 +1,587 @@
+/*
+    COLOR SCHEME:
+    - Primary Background: #F4F4F4 (Light Gray) - A soft, neutral background that's easy on the eyes.
+    - Secondary Background/Accent: #FFFFFF (White) - Used for content areas to provide contrast and cleanliness.
+    - Primary Text: #333333 (Dark Gray) - Highly readable against light backgrounds.
+    - Accent Text/Headings: #0056B3 (Medium Blue) - A professional and calming blue for headings and emphasis.
+    - Border/Separator: #DDDDDD (Very Light Gray) - Subtle lines for visual separation without being harsh.
+    - Image Border/Shadow: #CCCCCC (Light Gray) - A soft border and shadow for images to make them stand out slightly.
+
+    INTERACTION BEHAVIOR:
+    - The layout transitions smoothly from two columns to one column on smaller screens.
+    - Padding and margins adjust to ensure content remains readable and well-spaced across various device sizes.
+    - Images are fluid and scale down to fit their containers, preventing overflow.
+*/
+
+/* Universal Box-Sizing */
+*, *::before, *::after {
+    /*
+        The universal selector (*) applies styles to all elements.
+        - 'box-sizing: border-box;' changes how the total width and height of an element are calculated.
+          Normally, padding and border are added *to* the specified width/height, which can make layouts tricky.
+          With 'border-box', padding and border are *included* within the specified width/height.
+          This makes layout calculations much more intuitive and predictable, especially in responsive design.
+    */
+    box-sizing: border-box;
+}
+
+/* Body Styles - Basic Page Layout and Typography */
+body {
+    /*
+        Styles for the <body> element, affecting the entire page.
+    */
+    font-family: 'Inter', sans-serif;
+    /*
+        'font-family: 'Inter', sans-serif;' sets the primary font for the page.
+        'Inter' is a modern, highly readable sans-serif font.
+        'sans-serif' is a generic family fallback, ensuring the browser uses a
+        default sans-serif font if 'Inter' isn't available.
+    */
+    margin: 0;
+    /*
+        'margin: 0;' removes the default margin that browsers often apply to the <body>,
+        ensuring the content starts exactly at the edge of the viewport.
+    */
+    padding: 20px;
+    /*
+        'padding: 20px;' adds 20 pixels of space between the content of the body
+        and the edge of the browser window. This creates a breathing room around the main content.
+    */
+    background-color: #F4F4F4; /* Primary Background: Light Gray */
+    /*
+        'background-color: #F4F4F4;' sets the background color of the entire page
+        to a light gray, providing a soft and neutral backdrop.
+    */
+    color: #333333; /* Primary Text: Dark Gray */
+    /*
+        'color: #333333;' sets the default text color for the entire page to a dark gray,
+        which offers good contrast and readability against the light background.
+    */
+    line-height: 1.6;
+    /*
+        'line-height: 1.6;' sets the spacing between lines of text. A value of 1.6
+        (meaning 1.6 times the font-size) improves readability, making the text less dense.
+    */
+}
+
+/* Header Styles */
+header {
+    /*
+        Styles for the <header> element.
+    */
+    text-align: center;
+    /*
+        'text-align: center;' centers the text content within the header.
+    */
+    padding: 40px 20px;
+    /*
+        'padding: 40px 20px;' adds 40px padding to the top and bottom, and 20px
+        padding to the left and right of the header content.
+    */
+    background-color: #FFFFFF; /* Secondary Background: White */
+    /*
+        'background-color: #FFFFFF;' sets the header's background to white,
+        creating a clean visual block at the top of the page.
+    */
+    margin-bottom: 20px;
+    /*
+        'margin-bottom: 20px;' adds space below the header, separating it from the main content.
+    */
+    border-radius: 10px;
+    /*
+        'border-radius: 10px;' rounds the corners of the header element, giving it a softer look.
+    */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /*
+        'box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);' adds a subtle shadow beneath the header.
+        - '0 4px' means no horizontal offset, 4px vertical offset.
+        - '8px' is the blur radius.
+        - 'rgba(0, 0, 0, 0.1)' defines a black color with 10% opacity, making the shadow soft.
+    */
+}
+
+header h1 {
+    /*
+        Styles for the <h1> inside the <header>.
+    */
+    color: #0056B3; /* Accent Text/Headings: Medium Blue */
+    /*
+        'color: #0056B3;' sets the main heading color to a distinct medium blue.
+    */
+    margin: 0;
+    /*
+        'margin: 0;' removes default top/bottom margins from the <h1>, allowing
+        the header's padding to control its vertical spacing.
+    */
+    font-size: 2.5em; /* Larger font size for main title */
+    /*
+        'font-size: 2.5em;' makes the <h1> text 2.5 times the default font size,
+        making it prominent. 'em' is a relative unit, scaling with the parent's font size.
+    */
+}
+
+/* Main Content Container - Flexbox Layout */
+.container {
+    /*
+        Styles for the <main> element with class 'container'. This is where the Flexbox magic happens.
+    */
+    display: flex;
+    /*
+        'display: flex;' turns the container into a flex container, making its direct children
+        (the .column sections) flex items. This enables powerful alignment and distribution capabilities.
+    */
+    flex-wrap: wrap;
+    /*
+        'flex-wrap: wrap;' allows flex items to wrap onto the next line if there isn't enough
+        space in the current line. This is crucial for responsiveness: on small screens,
+        columns will wrap and stack vertically.
+    */
+    gap: 20px;
+    /*
+        'gap: 20px;' defines the space between flex items (columns). This is a modern
+        and efficient way to add spacing without relying on margins that can collapse or be tricky.
+    */
+    max-width: 1200px;
+    /*
+        'max-width: 1200px;' limits the maximum width of the content container. This prevents
+        the layout from becoming too wide on very large screens, improving readability.
+    */
+    margin: 0 auto 20px auto;
+    /*
+        'margin: 0 auto 20px auto;' centers the container horizontally on the page.
+        - '0' for top margin.
+        - 'auto' for left and right margins (distributes available space equally).
+        - '20px' for bottom margin, separating it from the footer.
+    */
+    background-color: #FFFFFF; /* Secondary Background: White */
+    /*
+        Sets the background of the main content area to white.
+    */
+    padding: 20px;
+    /*
+        Adds internal spacing within the container.
+    */
+    border-radius: 10px;
+    /*
+        Rounds the corners of the main content area.
+    */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /*
+        Adds a subtle shadow to the main content area.
+    */
+}
+
+/* Column Styles - Flex Items */
+.column {
+    /*
+        Styles applied to both the text and image columns.
+    */
+    flex: 1;
+    /*
+        'flex: 1;' is a shorthand for 'flex-grow: 1; flex-shrink: 1; flex-basis: 0%;'.
+        - 'flex-grow: 1;' allows the column to grow and take up available space.
+        - 'flex-shrink: 1;' allows the column to shrink if necessary.
+        - 'flex-basis: 0%;' sets the initial size of the column before any growing/shrinking.
+          This means columns will try to be equal in size and distribute space evenly.
+    */
+    min-width: 300px; /* Minimum width before wrapping */
+    /*
+        'min-width: 300px;' sets a minimum width for each column. If the viewport
+        is too narrow for both columns to maintain at least 300px each (plus gap),
+        they will wrap to a single column due to 'flex-wrap: wrap;' on the container.
+    */
+    padding: 20px;
+    /*
+        Adds internal spacing within each column.
+    */
+    background-color: #FFFFFF; /* Secondary Background: White */
+    /*
+        Sets the background of each column to white.
+    */
+    border: 1px solid #DDDDDD; /* Border/Separator: Very Light Gray */
+    /*
+        Adds a very light gray border around each column for subtle separation.
+    */
+    border-radius: 8px;
+    /*
+        Rounds the corners of the columns.
+    */
+}
+
+/* Image Specific Styles */
+.image-content img {
+    /*
+        Styles for the <img> tag specifically within the '.image-content' column.
+    */
+    max-width: 100%;
+    /*
+        'max-width: 100%;' ensures the image will never be wider than its parent container
+        (the '.image-content' column). This is crucial for responsive images, as it
+        prevents them from overflowing on smaller screens.
+    */
+    height: auto;
+    /*
+        'height: auto;' maintains the image's aspect ratio. When 'max-width: 100%'
+        resizes the width, 'height: auto' adjusts the height proportionally.
+    */
+    display: block;
+    /*
+        'display: block;' removes any extra space below the image that browsers
+        might add due to images being inline elements by default.
+    */
+    margin: 0 auto 15px auto;
+    /*
+        'margin: 0 auto 15px auto;' centers the image horizontally within its column
+        and adds 15px of space below it, separating it from the caption.
+    */
+    border: 1px solid #CCCCCC; /* Image Border/Shadow: Light Gray */
+    /*
+        Adds a light gray border around the image.
+    */
+    border-radius: 8px;
+    /*
+        Rounds the corners of the image.
+    */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+    /*
+        Adds a slightly more pronounced shadow to the image to make it pop.
+    */
+}
+
+.image-caption {
+    /*
+        Styles for the image caption.
+    */
+    font-size: 0.9em;
+    /*
+        'font-size: 0.9em;' makes the caption text slightly smaller than the main body text.
+    */
+    text-align: center;
+    /*
+        Centers the caption text.
+    */
+    color: #555555; /* Slightly darker gray for captions */
+    /*
+        Sets the caption color to a slightly darker gray for subtle distinction.
+    */
+    margin-top: 10px;
+    /*
+        Adds space above the caption.
+    */
+}
+
+/* Headings within columns */
+.column h2 {
+    /*
+        Styles for <h2> tags specifically within the columns.
+    */
+    color: #0056B3; /* Accent Text/Headings: Medium Blue */
+    /*
+        Sets the column headings to the same medium blue as the main header.
+    */
+    margin-top: 0;
+    /*
+        Removes top margin to prevent excessive space above the heading within the column.
+    */
+    font-size: 1.8em;
+    /*
+        Sets a slightly smaller font size for subheadings compared to the main <h1>.
+    */
+    margin-bottom: 15px;
+    /*
+        Adds space below the column headings.
+    */
+}
+
+/* Paragraphs within columns */
+.column p {
+    /*
+        Styles for <p> tags specifically within the columns.
+    */
+    margin-bottom: 1em;
+    /*
+        Adds space below each paragraph, ensuring good separation between text blocks.
+        '1em' means one times the current font size, making it scale proportionally.
+    */
+}
+
+
+/* Footer Styles */
+footer {
+    /*
+        Styles for the <footer> element.
+    */
+    text-align: center;
+    /*
+        Centers the text content within the footer.
+    */
+    padding: 20px;
+    /*
+        Adds padding around the footer content.
+    */
+    margin-top: 20px;
+    /*
+        Adds space above the footer, separating it from the main content.
+    */
+    background-color: #FFFFFF; /* Secondary Background: White */
+    /*
+        Sets the footer's background to white.
+    */
+    border-radius: 10px;
+    /*
+        Rounds the corners of the footer.
+    */
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.05);
+    /*
+        Adds a subtle shadow above the footer, indicating it's at the bottom.
+        - '0 -2px' means no horizontal offset, 2px vertical offset upwards.
+    */
+    color: #555555; /* Slightly darker gray for footer text */
+    /*
+        Sets the footer text color to a slightly darker gray.
+    */
+    font-size: 0.9em;
+    /*
+        Makes the footer text slightly smaller.
+    */
+}
+
+/*
+    RESPONSIVE DESIGN WITH MEDIA QUERIES:
+    Media queries allow us to apply different styles based on device characteristics,
+    such as screen width. This is how we achieve the single-column layout on smaller screens.
+*/
+
+/* Small Screens (e.g., Mobile Phones) - up to 767px wide */
+@media (max-width: 767px) {
+    /*
+        This media query applies styles when the viewport width is 767 pixels or less.
+        This typically targets mobile phones and smaller tablets.
+    */
+    body {
+        padding: 10px; /* Reduce overall page padding on small screens */
+        /*
+            Decreases the padding around the body to maximize content space on small screens.
+        */
+    }
+
+    header {
+        padding: 20px 15px; /* Adjust header padding */
+        /*
+            Reduces padding in the header for smaller screens.
+        */
+    }
+
+    header h1 {
+        font-size: 1.8em; /* Smaller font size for main title on mobile */
+        /*
+            Makes the main title smaller to fit better on mobile screens.
+        */
+    }
+
+    .container {
+        flex-direction: column;
+        /*
+            'flex-direction: column;' changes the main axis of the flex container
+            from horizontal (row, default) to vertical. This causes the columns
+            to stack one below the other, creating the single-column layout.
+        */
+        padding: 15px; /* Adjust container padding */
+        /*
+            Reduces internal padding of the main content container.
+        */
+        gap: 15px; /* Reduce gap between stacked columns */
+        /*
+            Reduces the space between the now-stacked columns.
+        */
+    }
+
+    .column {
+        flex: auto; /* Allow columns to take up full available width when stacked */
+        /*
+            'flex: auto;' is a shorthand that allows the item to grow and shrink,
+            and its flex-basis is determined by its content. When stacked, this
+            effectively makes each column take up the full width of the container.
+        */
+        min-width: unset; /* Remove minimum width constraint when stacked */
+        /*
+            Removes the 'min-width' constraint, as it's no longer relevant when columns are stacked.
+            They will naturally take 100% width.
+        */
+        padding: 15px; /* Adjust column padding */
+        /*
+            Reduces internal padding of each column.
+        */
+    }
+
+    .column h2 {
+        font-size: 1.5em; /* Smaller font size for column headings on mobile */
+        /*
+            Adjusts heading sizes for better fit on small screens.
+        */
+        margin-bottom: 10px; /* Reduce space below headings */
+        /*
+            Reduces the space below column headings.
+        */
+    }
+
+    .column p {
+        font-size: 0.95em; /* Slightly smaller paragraph text */
+        /*
+            Makes paragraph text slightly smaller for better readability on small screens.
+        */
+        margin-bottom: 0.8em; /* Reduce space below paragraphs */
+        /*
+            Reduces the space below paragraphs.
+        */
+    }
+
+    .image-content img {
+        margin-bottom: 10px; /* Reduce margin below image */
+        /*
+            Reduces the space below the image.
+        */
+    }
+
+    .image-caption {
+        font-size: 0.85em; /* Smaller font size for caption on mobile */
+        /*
+            Makes the image caption text smaller.
+        */
+    }
+
+    footer {
+        padding: 15px; /* Adjust footer padding */
+        /*
+            Reduces padding in the footer.
+        */
+        font-size: 0.8em; /* Smaller font size for footer text */
+        /*
+            Makes the footer text smaller.
+        */
+    }
+}
+
+/* Medium Screens (e.g., Tablets) - between 768px and 1023px wide */
+@media (min-width: 768px) and (max-width: 1023px) {
+    /*
+        This media query applies styles when the viewport width is between 768px and 1023px.
+        This typically targets tablets in portrait or landscape mode.
+    */
+    body {
+        padding: 30px; /* Slightly more padding than mobile, less than desktop */
+        /*
+            Adjusts overall page padding for tablet sizes.
+        */
+    }
+
+    header {
+        padding: 30px 25px; /* Adjust header padding */
+        /*
+            Adjusts header padding for tablet sizes.
+        */
+    }
+
+    header h1 {
+        font-size: 2.2em; /* Slightly smaller than desktop, larger than mobile */
+        /*
+            Adjusts main title size for tablets.
+        */
+    }
+
+    .container {
+        gap: 25px; /* Slightly larger gap for tablets */
+        /*
+            Adjusts the gap between columns for tablets.
+        */
+        padding: 25px; /* Adjust container padding */
+        /*
+            Adjusts internal padding of the main content container.
+        */
+    }
+
+    .column {
+        flex: 1; /* Maintain equal width distribution */
+        /*
+            Ensures columns maintain equal width distribution on tablets.
+        */
+        min-width: 350px; /* Slightly larger min-width for tablets */
+        /*
+            Increases the minimum width before columns wrap, suitable for tablets.
+        */
+        padding: 25px; /* Adjust column padding */
+        /*
+            Adjusts internal padding of each column.
+        */
+    }
+
+    .column h2 {
+        font-size: 1.7em; /* Slightly smaller than desktop, larger than mobile */
+        /*
+            Adjusts column heading sizes for tablets.
+        */
+    }
+
+    .column p {
+        font-size: 1em; /* Standard paragraph size */
+        /*
+            Maintains standard paragraph size.
+        */
+    }
+}
+
+/* Large Screens (e.g., Desktops) - 1024px and wider */
+@media (min-width: 1024px) {
+    /*
+        This media query applies styles when the viewport width is 1024 pixels or more.
+        This typically targets desktop computers and large screens.
+        Most of the default styles defined outside media queries are already optimized
+        for larger screens, so this block primarily ensures those are maintained or
+        fine-tuned for optimal desktop viewing.
+    */
+    body {
+        padding: 40px; /* Generous padding for large screens */
+        /*
+            Provides ample padding around the content on large screens.
+        */
+    }
+
+    header {
+        padding: 50px 30px; /* More padding for header on large screens */
+        /*
+            Increases padding in the header for larger screens.
+        */
+    }
+
+    header h1 {
+        font-size: 3em; /* Larger font size for main title on desktop */
+        /*
+            Makes the main title more prominent on desktop.
+        */
+    }
+
+    .container {
+        gap: 30px; /* Larger gap between columns on desktop */
+        /*
+            Increases the space between columns for a more open layout on desktops.
+        */
+        padding: 30px; /* More internal padding for container */
+        /*
+            Increases internal padding of the main content container.
+        */
+    }
+
+    .column {
+        padding: 30px; /* More internal padding for columns */
+        /*
+            Increases internal padding of each column.
+        */
+    }
+
+    .column h2 {
+        font-size: 2em; /* Larger font size for column headings on desktop */
+        /*
+            Increases column heading sizes for desktops.
+        */
+    }
+}

@@ -1,0 +1,185 @@
+<!--
+    Full Prompt:
+    Create a complete responsive HTML5 page named two-column.html
+    with a main content area divided into two side-by-side columns using
+    either CSS Flexbox or Grid. One column should include text content about
+    an art-related topic, and the other should include an image from images/sample.jpg.
+    Ensure the layout automatically collapses to a single-column layout on
+    smaller screen sizes (such as tablets or phones). Link to an external
+    CSS file at css/two-column.css to handle all visual styling
+    and layout behavior. Be sure to clearly define breakpoints for
+    responsive behavior using media queries, and ensure padding and spacing
+    adjust appropriately at each size. Write neurotically detailed comments
+    in all files; explain every tag, class, style rule, and color value as
+    if you're walking a complete beginner through the reasoning behind each
+    choice. Be sure to include named comments describing your color scheme
+    and interaction behavior. Include this full prompt as a comment at the
+    top of the HTML file. Use placeholder content about an art topic of your
+    choice to complete the page.
+-->
+
+<!DOCTYPE html>
+<!--
+    The <!DOCTYPE html> declaration defines this document as an HTML5 document.
+    It's crucial for browsers to render the page in standards mode.
+-->
+<html lang="en">
+<!--
+    The <html> tag is the root element of an HTML page.
+    The 'lang="en"' attribute specifies the language of the document content
+    as English. This is important for accessibility (screen readers) and
+    search engine optimization.
+-->
+<head>
+    <!--
+        The <head> element contains meta-information about the HTML document.
+        This information is not displayed directly on the web page but is
+        used by browsers, search engines, and other web services.
+    -->
+    <meta charset="UTF-8">
+    <!--
+        The <meta charset="UTF-8"> tag specifies the character encoding for the document.
+        UTF-8 is a universal character set that includes almost all characters
+        and symbols in the world, preventing display issues with special characters.
+    -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--
+        The <meta name="viewport"> tag is critical for responsive web design.
+        - 'width=device-width' sets the width of the viewport to the width of the device screen.
+        - 'initial-scale=1.0' sets the initial zoom level when the page is first loaded.
+        These two settings ensure that the page scales correctly on different devices,
+        preventing horizontal scrolling on mobile phones.
+    -->
+    <title>Two-Column Responsive Layout</title>
+    <!--
+        The <title> tag defines the title of the HTML document.
+        This title appears in the browser's title bar or tab, and is used
+        as the default name when bookmarking the page.
+    -->
+    <link rel="stylesheet" href="css/two-column.css">
+    <!--
+        The <link> tag is used to link an external resource to the HTML document.
+        - 'rel="stylesheet"' specifies that the linked document is a stylesheet.
+        - 'href="css/two-column.css"' specifies the path to the external CSS file.
+        This separates the content (HTML) from the presentation (CSS), making
+        the code cleaner, easier to maintain, and allowing styles to be
+        reused across multiple pages.
+    -->
+</head>
+<body>
+    <!--
+        The <body> element contains all the visible content of the HTML document,
+        such as text, images, links, videos, etc.
+    -->
+    <header>
+        <!--
+            The <header> element represents introductory content, typically
+            containing one or more heading elements (<h1>-<h6>), logos,
+            navigation, or other introductory material.
+        -->
+        <h1>Exploring Impressionism</h1>
+        <!--
+            The <h1> tag defines the most important heading on the page.
+            There should typically be only one <h1> per page for semantic clarity
+            and search engine optimization.
+        -->
+    </header>
+
+    <main class="container">
+        <!--
+            The <main> element represents the dominant content of the <body>.
+            It should contain content that is unique to the document and
+            not repeated across a set of documents (like sidebars, navigation links,
+            copyright information, etc.).
+            The 'class="container"' is a custom class name that will be used
+            in CSS to apply specific styling, in this case, to create the
+            two-column layout using Flexbox.
+        -->
+        <section class="column text-content">
+            <!--
+                The <section> element groups together related content.
+                It's a semantic element, meaning it adds meaning to the content.
+                Here, it groups the text content about Impressionism.
+                - 'class="column"' is a shared class for both columns to apply
+                  common styling like padding.
+                - 'class="text-content"' is a specific class for this column
+                  to apply styles unique to the text content, if needed.
+            -->
+            <h2>The Dawn of Impressionism</h2>
+            <!--
+                The <h2> tag defines a secondary heading, less important than <h1>.
+                It helps to structure the content hierarchically.
+            -->
+            <p>
+                Impressionism was a 19th-century art movement characterized by
+                relatively small, thin, yet visible brush strokes, open composition,
+                emphasis on accurate depiction of light in its changing qualities
+                (often accentuating the effects of the passage of time), ordinary
+                subject matter, inclusion of movement as a crucial element of
+                human perception and experience, and unusual visual angles.
+                Radical for its time, it challenged the traditional academic
+                painting styles prevalent in France.
+            </p>
+            <p>
+                Artists like Claude Monet, Pierre-Auguste Renoir, Edgar Degas,
+                and Camille Pissarro were central to this movement. They often
+                painted outdoors (en plein air) to capture the fleeting effects
+                of sunlight and atmosphere, moving away from strict realism
+                towards a more subjective and immediate representation of their
+                perceptions. Their work often featured landscapes, cityscapes,
+                and scenes of modern life, reflecting the changing social
+                landscape of the era.
+            </p>
+            <p>
+                The term "Impressionism" itself was coined by art critic Louis Leroy
+                in 1874, initially as a derogatory remark, after viewing Monet's
+                painting "Impression, Sunrise." However, the artists embraced the
+                term, and it became synonymous with their revolutionary approach
+                to art. The movement laid the groundwork for subsequent art
+                movements like Post-Impressionism and Cubism, forever changing
+                the trajectory of Western art.
+            </p>
+        </section>
+
+        <section class="column image-content">
+            <!--
+                This <section> element groups the image content.
+                - 'class="column"' is shared for common styling.
+                - 'class="image-content"' is specific for this column.
+            -->
+            <h2>Monet's "Impression, Sunrise"</h2>
+            <!--
+                A heading for the image content.
+            -->
+            <img src="images/sample.jpg" alt="A painting titled Impression, Sunrise by Claude Monet, depicting a hazy sunrise over a harbor with boats.">
+            <!--
+                The <img> tag is used to embed an image in an HTML document.
+                - 'src="images/sample.jpg"' specifies the path to the image file.
+                  This assumes there is an 'images' folder in the same directory
+                  as the HTML file, containing 'sample.jpg'.
+                - 'alt="..."' provides alternative text for the image. This is
+                  crucial for accessibility (screen readers describe the image
+                  to visually impaired users) and for SEO. It also displays
+                  if the image fails to load.
+            -->
+            <p class="image-caption">
+                Claude Monet, "Impression, Sunrise" (1872). Oil on canvas.
+                Musée Marmottan Monet, Paris. This painting gave the movement its name.
+            </p>
+        </section>
+    </main>
+
+    <footer>
+        <!--
+            The <footer> element represents a footer for its nearest sectioning
+            content or sectioning root element. Typically, it contains information
+            about the author, copyright data, or related documents.
+        -->
+        <p>&copy; 2024 Art History Insights. All rights reserved.</p>
+        <!--
+            The &copy; HTML entity displays the copyright symbol.
+            This paragraph provides copyright information for the page.
+        -->
+    </footer>
+</body>
+</html>
