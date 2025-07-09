@@ -1,0 +1,454 @@
+/*
+    Current time is Wednesday, July 9, 2025 at 11:10:20 AM CDT.
+    Current location is Corpus Christi, Texas, United States.
+
+    This CSS file (css/navbar-hero.css) provides the styling for navbar-hero.html.
+    It uses Flexbox for layout and includes detailed comments explaining each rule.
+*/
+
+/* GLOBAL STYLES & RESETS */
+* {
+    /* The universal selector (*) applies styles to all elements on the page. */
+    box-sizing: border-box;
+    /*
+        `box-sizing: border-box;` changes how the total width and height of an element are calculated.
+        Normally, padding and border are added to the specified width/height.
+        With `border-box`, padding and border are included *within* the specified width/height.
+        This makes layout calculations much more intuitive and predictable.
+    */
+    margin: 0;
+    /* Removes default outer spacing (margins) from all elements. */
+    padding: 0;
+    /* Removes default inner spacing (paddings) from all elements. */
+}
+
+html, body {
+    /* Styles applied to both the root HTML element and the body element. */
+    height: 100%;
+    /* Makes both HTML and body elements take up the full height of the viewport. Essential for full-height hero section. */
+    font-family: Arial, sans-serif;
+    /* Sets a clean, common sans-serif font for the entire page. */
+    line-height: 1.6;
+    /* Sets the line height for better readability. 1.6 times the font size. */
+    color: #333;
+    /* Sets a dark gray color for default text. */
+}
+
+/* COLOR SCHEME:
+   - Primary Blue: #007bff (A vibrant blue for interactive elements and accents)
+   - Dark Gray: #343a40 (For background of the navbar and darker text)
+   - Light Gray: #f8f9fa (For backgrounds, like hover states or subtle separators)
+   - White: #ffffff (For text on dark backgrounds, or general page elements)
+   - Accent Gold: #ffc107 (A bright gold for call-to-action buttons)
+*/
+
+/* NAVBAR STYLING */
+.navbar {
+    /* Styles for the main navigation bar container. */
+    display: flex;
+    /*
+        Enables Flexbox for this container. This means its direct children (navbar-brand and navbar-nav)
+        will be laid out as flexible items along a main axis.
+    */
+    justify-content: space-between;
+    /*
+        Distributes space between Flex items. "space-between" puts the first item at the start,
+        the last item at the end, and evenly spaces the remaining items in between.
+        Here, it pushes the brand to the left and navigation links to the right.
+    */
+    align-items: center;
+    /*
+        Aligns Flex items along the cross axis (vertically, in a row-direction Flex container).
+        "center" vertically centers the brand and navigation list within the navbar.
+    */
+    background-color: #343a40;
+    /* Background color for the navbar (Dark Gray). */
+    padding: 1rem 2rem;
+    /*
+        Inner spacing (padding) for the navbar:
+        - `1rem` (16px, assuming default 16px font-size) top and bottom.
+        - `2rem` (32px) left and right.
+    */
+    position: fixed;
+    /*
+        Fixes the navbar to a specific position on the viewport.
+        It will stay in place even when the user scrolls.
+    */
+    width: 100%;
+    /* Makes the navbar span the full width of the viewport. */
+    top: 0;
+    /* Positions the navbar at the very top of the viewport. */
+    left: 0;
+    /* Positions the navbar at the very left of the viewport. */
+    z-index: 1000;
+    /*
+        Sets the stacking order of an element. Higher `z-index` values mean the element
+        will be rendered on top of elements with lower `z-index`. This ensures the
+        navbar is always on top of other content, like the hero section.
+    */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    /* Adds a subtle shadow to the bottom of the navbar, giving it depth. */
+}
+
+.navbar-brand .navbar-logo {
+    /* Styles for the branding (site name/logo) within the navbar. */
+    color: #ffffff;
+    /* Text color for the brand (White). */
+    text-decoration: none;
+    /* Removes the default underline from anchor tags. */
+    font-size: 1.8rem;
+    /* Sets a larger font size for the brand name. */
+    font-weight: bold;
+    /* Makes the brand name bold. */
+    transition: color 0.3s ease;
+    /* Smooth transition for color changes on hover. */
+}
+
+.navbar-brand .navbar-logo:hover {
+    /* Styles for when the mouse hovers over the brand name. */
+    color: #007bff;
+    /* Changes color to Primary Blue on hover. */
+}
+
+.navbar-nav {
+    /* Styles for the unordered list containing navigation links. */
+    list-style: none;
+    /* Removes the default bullet points from list items. */
+    display: flex;
+    /*
+        Enables Flexbox for this list, so its list items (`.nav-item`)
+        will be laid out horizontally in a row.
+    */
+    gap: 1.5rem;
+    /*
+        Sets the spacing between Flex items (list items).
+        `gap` is a shorthand for `row-gap` and `column-gap`. Here, it creates horizontal space.
+    */
+}
+
+.nav-item {
+    /* Styles for individual list items in the navigation. */
+    position: relative;
+    /*
+        Sets the positioning context for any absolutely positioned children.
+        This is crucial for the dropdown menu, as its `position: absolute;`
+        will be relative to this `.nav-item`.
+    */
+}
+
+.nav-link {
+    /* Styles for the actual navigation links (<a> tags and dropdown button). */
+    color: #ffffff;
+    /* Text color for navigation links (White). */
+    text-decoration: none;
+    /* Removes default underline. */
+    padding: 0.5rem 1rem;
+    /* Inner spacing for the links, making them easier to click. */
+    display: block;
+    /* Makes the link take up the full available width/height within its parent. */
+    transition: background-color 0.3s ease, color 0.3s ease;
+    /* Smooth transitions for background and text color changes on hover. */
+    border-radius: 4px;
+    /* Slightly rounded corners for the link background. */
+}
+
+.nav-link:hover {
+    /* Styles for when the mouse hovers over a navigation link. */
+    background-color: #007bff;
+    /* Changes background to Primary Blue on hover. */
+    color: #ffffff;
+    /* Ensures text remains white on hover. */
+}
+
+.dropdown-toggle {
+    /* Specific styles for the "More" button that triggers the dropdown. */
+    background: none;
+    /* Removes default button background. */
+    border: none;
+    /* Removes default button border. */
+    cursor: pointer;
+    /* Changes cursor to a pointer when hovering, indicating it's clickable. */
+    font-size: 1rem;
+    /* Ensures font size matches other nav links. */
+    font-family: inherit;
+    /* Inherits font family from parent, ensuring consistency. */
+    /* All other nav-link styles apply from the .nav-link rule above. */
+}
+
+/* DROPDOWN MENU STYLING */
+.dropdown-menu {
+    /* Styles for the container of the dropdown links. */
+    position: absolute;
+    /*
+        Positions the dropdown absolutely. This means it's positioned relative to its
+        closest positioned ancestor (which is `.nav-item` because it has `position: relative`).
+        Crucially, this ensures the dropdown is not confined by `overflow: hidden` on parent elements.
+    */
+    top: calc(100% + 15px);
+    /*
+        Positions the top of the dropdown.
+        `100%` means it starts directly below the bottom edge of its parent (`.nav-item`).
+        `+ 15px` adds extra spacing so it visually clears the fixed navbar.
+    */
+    left: 0;
+    /* Aligns the left edge of the dropdown with the left edge of its parent. */
+    background-color: #343a40;
+    /* Background color of the dropdown menu (Dark Gray). */
+    border-radius: 5px;
+    /* Slightly rounded corners for the dropdown. */
+    min-width: 160px;
+    /* Ensures the dropdown is wide enough for its content. */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+    /* Adds a more pronounced shadow for depth. */
+    z-index: 1001;
+    /*
+        Higher z-index than the navbar to ensure the dropdown appears on top of it,
+        even though it technically starts below it. This is important if the dropdown
+        overlaps the navbar due to its content or scrolling.
+    */
+    display: none;
+    /*
+        Initially hides the dropdown. It will be shown/hidden using JavaScript
+        by toggling the `display: block;` style.
+    */
+    padding: 0.5rem 0;
+    /* Adds vertical padding inside the dropdown menu. */
+    opacity: 0;
+    /* Starts completely transparent for a fade-in effect. */
+    transform: translateY(-10px);
+    /* Slightly moves the dropdown up initially for a subtle slide-down effect. */
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    /* Smooth transitions for opacity and transform (for fade and slide effects). */
+    pointer-events: none;
+    /*
+        Prevents pointer events (like clicks) when the dropdown is hidden.
+        This is crucial because even if `opacity` is 0, the element still exists
+        in the layout and could block clicks on elements beneath it if `pointer-events`
+        wasn't set to `none`.
+    */
+}
+
+.dropdown-menu.show {
+    /*
+        This class is added by JavaScript when the dropdown should be visible.
+        It overrides `display: none;` and applies the visible styles.
+    */
+    display: block;
+    /* Makes the dropdown visible. */
+    opacity: 1;
+    /* Makes the dropdown fully opaque (visible). */
+    transform: translateY(0);
+    /* Resets the transform to its original position, completing the slide-down effect. */
+    pointer-events: auto;
+    /* Re-enables pointer events when the dropdown is visible. */
+}
+
+.dropdown-item {
+    /* Styles for individual links inside the dropdown menu. */
+    color: #ffffff;
+    /* Text color for dropdown items (White). */
+    padding: 0.8rem 1.5rem;
+    /* Inner spacing for dropdown items, making them comfortable to click. */
+    text-decoration: none;
+    /* Removes default underline. */
+    display: block;
+    /* Makes the link take up the full width of the dropdown item, so the whole area is clickable. */
+    transition: background-color 0.2s ease, color 0.2s ease;
+    /* Smooth transitions for background and text color on hover. */
+}
+
+.dropdown-item:hover {
+    /* Styles for when the mouse hovers over a dropdown item. */
+    background-color: #007bff;
+    /* Changes background to Primary Blue on hover. */
+    color: #ffffff;
+    /* Ensures text remains white on hover. */
+}
+
+/* HERO SECTION STYLING */
+.hero-section {
+    /* Styles for the main hero section container. */
+    height: 100vh;
+    /*
+        Sets the height to 100% of the viewport height. This makes the hero section
+        take up the entire screen height.
+        `vh` stands for "viewport height".
+    */
+    display: flex;
+    /*
+        Enables Flexbox to center its content (`.hero-content`).
+    */
+    justify-content: center;
+    /*
+        Horizontally centers the Flex item (`.hero-content`) along the main axis.
+    */
+    align-items: center;
+    /*
+        Vertically centers the Flex item (`.hero-content`) along the cross axis.
+    */
+    text-align: center;
+    /* Centers text within the hero content. */
+    background-image: url('../images/hero.jpg');
+    /* Sets the background image for the hero section. Path is relative to the CSS file. */
+    background-size: cover;
+    /*
+        Scales the background image to cover the entire container.
+        This might crop parts of the image, but ensures no empty space.
+    */
+    background-position: center;
+    /* Centers the background image within the container. */
+    color: #ffffff;
+    /* Sets text color to white for contrast against the background image. */
+    position: relative;
+    /* Needed for pseudo-elements or if we were to position content absolutely within. */
+    margin-top: 60px; /* Adjust this value based on your actual navbar height */
+    /* Pushes the hero section down to clear the fixed navbar.
+       The value (60px) should roughly match the height of your navbar. */
+}
+
+.hero-section::before {
+    /*
+        A pseudo-element (`::before`) to create an overlay effect on the background image.
+        This makes the text more readable by slightly darkening the image.
+    */
+    content: '';
+    /* Required for pseudo-elements to render. */
+    position: absolute;
+    /* Positions the overlay absolutely within the hero section. */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    /* Makes the overlay cover the entire hero section. */
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Semi-transparent black overlay (0.5 opacity). */
+    z-index: 1;
+    /* Places the overlay above the background image but below the content. */
+}
+
+.hero-content {
+    /* Styles for the container holding the heading and button within the hero. */
+    position: relative;
+    /* Ensures this content is above the overlay. */
+    z-index: 2;
+    /* Places content above the ::before pseudo-element overlay. */
+    padding: 2rem;
+    /* Adds padding around the content. */
+    max-width: 800px;
+    /* Limits the maximum width of the content for better readability on large screens. */
+}
+
+.hero-content h1 {
+    /* Styles for the main heading in the hero section. */
+    font-size: 3.5rem;
+    /* Very large font size for prominence. */
+    margin-bottom: 1.5rem;
+    /* Spacing below the heading. */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    /* Adds a subtle text shadow for better readability against the background. */
+}
+
+.btn {
+    /* General styles for all buttons. */
+    display: inline-block;
+    /* Allows margin, padding, width, and height to be applied like block elements, but stays in line. */
+    padding: 1rem 2.5rem;
+    /* Inner spacing for the button. */
+    font-size: 1.2rem;
+    /* Larger font size for the button text. */
+    text-decoration: none;
+    /* Removes underline from anchor tags acting as buttons. */
+    border-radius: 50px;
+    /* Creates very rounded (pill-shaped) corners for the button. */
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    /* Smooth transitions for background color and a slight scale effect on hover. */
+    font-weight: bold;
+    /* Makes the button text bold. */
+}
+
+.btn-primary {
+    /* Specific styles for the primary call-to-action button. */
+    background-color: #ffc107;
+    /* Background color (Accent Gold). */
+    color: #343a40;
+    /* Text color (Dark Gray) for contrast. */
+    border: 2px solid #ffc107;
+    /* A solid border matching the background. */
+}
+
+.btn-primary:hover {
+    /* Styles for when the mouse hovers over the primary button. */
+    background-color: #e0a800;
+    /* Slightly darker gold on hover. */
+    transform: translateY(-3px);
+    /* Lifts the button slightly on hover for a subtle interactive effect. */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    /* Adds a shadow on hover. */
+}
+
+/* RESPONSIVE DESIGN (Optional but good practice) */
+@media (max-width: 768px) {
+    /*
+        Media query: styles inside this block will apply when the viewport width
+        is 768 pixels or less. This is typically for tablets and smaller devices.
+    */
+    .navbar {
+        flex-direction: column;
+        /* Changes the Flex direction to column, stacking brand and nav links vertically. */
+        align-items: flex-start;
+        /* Aligns items to the start (left) when stacked vertically. */
+        padding: 1rem;
+        /* Adjusts padding for smaller screens. */
+    }
+
+    .navbar-nav {
+        flex-direction: column;
+        /* Stacks navigation links vertically. */
+        width: 100%;
+        /* Makes the navigation list take full width. */
+        text-align: left;
+        /* Aligns text to the left. */
+        margin-top: 1rem;
+        /* Adds space between brand and nav links. */
+        gap: 0;
+        /* Removes gap between vertically stacked nav items. */
+    }
+
+    .nav-item {
+        width: 100%;
+        /* Makes each nav item take full width. */
+    }
+
+    .nav-link {
+        padding: 0.8rem 1rem;
+        /* Adjusts padding for vertical links. */
+    }
+
+    .dropdown-menu {
+        position: static; /* Changes to static for responsive display */
+        top: auto;
+        left: auto;
+        width: 100%; /* Make dropdown take full width */
+        box-shadow: none; /* Remove shadow for a cleaner look in mobile menu */
+        border-radius: 0; /* Remove border radius */
+        background-color: rgba(52, 58, 64, 0.9); /* Slightly transparent dark background */
+        padding: 0; /* Remove padding */
+        margin-top: 0.5rem; /* Small margin for visual separation */
+    }
+
+    .dropdown-item {
+        padding-left: 2rem; /* Indent dropdown items */
+    }
+
+    .hero-content h1 {
+        font-size: 2.5rem;
+        /* Reduces font size for headings on smaller screens. */
+    }
+
+    .btn {
+        padding: 0.8rem 2rem;
+        /* Adjusts button padding for smaller screens. */
+        font-size: 1rem;
+        /* Reduces button font size. */
+    }
+}
