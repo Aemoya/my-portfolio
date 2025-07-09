@@ -1,0 +1,640 @@
+/*
+    This CSS file (cascading style sheet) contains rules that dictate how 
+    the elements of our HTML page should be displayed. It's linked externally 
+    to the HTML file (`navbar.html`) for better organization and reusability.
+*/
+
+/* --- Color Scheme --- */
+/*
+    Primary Navigation Background: #e7d894 (a warm, muted yellow/gold)
+    Navigation Link Color: #4f4632 (a deep, rich brown)
+    This combination aims for an earthy, sophisticated, and inviting feel, 
+    reminiscent of natural materials or antique art, without being overly bright 
+    or distracting. The muted tones create a harmonious backdrop for artistic content.
+*/
+
+/* --- Interaction Behavior --- */
+/*
+    Hover Effect: Links will slightly darken and underline on hover, providing 
+    clear visual feedback to the user that the element is interactive and clickable. 
+    This enhances usability and improves the user experience by indicating interactivity.
+*/
+
+/* Universal Box-Sizing */
+*, *::before, *::after {
+    /*
+        The universal selector `*` targets all elements on the page.
+        `*::before` and `*::after` target pseudo-elements, which are used 
+        for styling specific parts of an element without adding new HTML.
+        
+        `box-sizing: border-box;` is a fundamental CSS reset. By default, 
+        CSS calculates element widths and heights based on `content-box`, 
+        meaning padding and border are added *on top* of the specified width/height.
+        `border-box` changes this so that the `width` and `height` properties 
+        include content, padding, and border. This makes layouts much more 
+        intuitive and predictable, preventing elements from unexpectedly growing 
+        larger than intended when padding or borders are added.
+    */
+    box-sizing: border-box;
+}
+
+/* Body Styles */
+body {
+    /*
+        The `body` selector targets the entire visible content of the HTML document.
+    */
+    font-family: Arial, sans-serif;
+    /*
+        `font-family` sets the typeface for text. 
+        - `Arial`: The primary choice.
+        - `sans-serif`: A generic fallback. If Arial isn't available, the browser 
+          will use any sans-serif font installed on the user's system. This ensures 
+          text is always readable. Sans-serif fonts are generally preferred for 
+          screen readability due to their clean lines.
+    */
+    margin: 0;
+    /*
+        `margin: 0;` removes the default margin that browsers typically apply 
+        to the `body` element. This ensures our content starts right at the 
+        edge of the browser window, giving us full control over spacing.
+    */
+    line-height: 1.6;
+    /*
+        `line-height` sets the height of each line of text. A value of 1.6 
+        means the line height is 1.6 times the font size. This adds space 
+        between lines of text, significantly improving readability.
+    */
+    color: #333;
+    /*
+        `color` sets the default text color for the body. `#333` is a very 
+        dark grey, providing good contrast against light backgrounds without 
+        being as stark as pure black.
+    */
+    background-color: #f4f4f4;
+    /*
+        `background-color` sets the background color of the body. `#f4f4f4` 
+        is a very light grey, offering a soft, neutral canvas for the content.
+    */
+}
+
+/* Header Styles */
+header {
+    /*
+        The `header` selector targets the <header> element in the HTML.
+        This element typically contains introductory content and navigational links.
+    */
+    background-color: #e7d894; /* Color Scheme: Primary Navigation Background */
+    /*
+        `background-color` sets the background color of the header. 
+        `#e7d894` is a warm, muted yellow/gold, chosen to give the navigation 
+        bar a distinct and inviting visual presence. This color was specifically 
+        requested by the user.
+    */
+    padding: 1rem 0;
+    /*
+        `padding` creates space between the content of the header and its border.
+        - `1rem`: 1 "root em" (relative to the font-size of the root HTML element), 
+          which typically translates to 16px. This adds vertical padding (top and bottom).
+        - `0`: No horizontal padding (left and right).
+        This provides breathing room above and below the navigation links.
+    */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    /*
+        `box-shadow` adds a shadow effect around the header, giving it a subtle 
+        3D lift off the page and making it appear more distinct.
+        - `0`: No horizontal offset for the shadow.
+        - `2px`: Vertical offset of 2 pixels (shadow falls downwards).
+        - `5px`: Blur radius of 5 pixels (makes the shadow soft).
+        - `rgba(0, 0, 0, 0.1)`: The color of the shadow. `rgba` stands for Red, 
+          Green, Blue, Alpha (transparency). `0, 0, 0` is black, and `0.1` 
+          means it's 10% opaque (very subtle).
+    */
+}
+
+/* Main Navigation Styles */
+.main-nav ul {
+    /*
+        `.main-nav ul` targets the `<ul>` (unordered list) element that is 
+        a direct child of any element with the class `main-nav`. This ensures 
+        we're styling our specific navigation list.
+    */
+    list-style: none;
+    /*
+        `list-style: none;` removes the default bullet points that browsers 
+        add to list items (`<li>`). This is necessary because we want a clean, 
+        horizontal navigation bar, not a bulleted list.
+    */
+    margin: 0;
+    /*
+        `margin: 0;` removes the default margin that browsers apply to `<ul>` elements. 
+        This helps with precise positioning.
+    */
+    padding: 0;
+    /*
+        `padding: 0;` removes the default padding that browsers apply to `<ul>` elements. 
+        Like margin, this helps ensure consistent layout.
+    */
+    display: flex;
+    /*
+        `display: flex;` is the magic property that turns this `<ul>` into a Flex container.
+        Flexbox is a one-dimensional layout system that allows you to arrange items 
+        (flex items) within a container (flex container) in a flexible and efficient way.
+        By setting `display: flex;`, all direct children (`<li>` elements in this case) 
+        become flex items and will try to lay out in a single row by default.
+    */
+    justify-content: space-around;
+    /*
+        `justify-content` controls how flex items are distributed along the main axis 
+        (horizontally, by default).
+        `space-around` distributes items evenly with equal space around each item. 
+        This means the first and last items will have half the space compared 
+        to the space between items, achieving an evenly spaced look for the navigation links.
+    */
+    align-items: center;
+    /*
+        `align-items` controls how flex items are aligned along the cross axis 
+        (vertically, by default, when the flex-direction is row).
+        `center` vertically centers the flex items within the flex container. 
+        While not strictly necessary for single-line text links here, it's 
+        good practice for vertical alignment in Flexbox layouts.
+    */
+    width: 100%;
+    /*
+        `width: 100%;` ensures the unordered list takes up the full available 
+        width of its parent container (the `header`), allowing `justify-content: space-around;` 
+        to distribute items across the entire width.
+    */
+    max-width: 960px; /* Optional: Constrain width for larger screens */
+    /*
+        `max-width` sets the maximum width an element can be. This is optional 
+        but good for responsiveness. On very wide screens, setting a `max-width` 
+        (e.g., 960px) helps prevent the navigation links from spreading out 
+        too far and becoming difficult to read across the page.
+    */
+    margin: 0 auto; /* Centers the nav horizontally if max-width is applied */
+    /*
+        `margin: 0 auto;` This is a common technique to horizontally center a 
+        block-level element that has a defined `width` or `max-width`.
+        - `0`: No top or bottom margin.
+        - `auto`: Automatically calculates equal left and right margins, 
+          pushing the element to the center of its containing block.
+    */
+}
+
+.main-nav a {
+    /*
+        `.main-nav a` targets each anchor (`<a>`) tag (our actual links) 
+        within the main navigation list items.
+    */
+    display: block;
+    /*
+        `display: block;` makes the `<a>` element behave like a block-level 
+        element. By default, `<a>` tags are inline, meaning they only take 
+        up as much width as their content. Making them `block` allows us 
+        to apply padding and gives a larger clickable area around the text.
+    */
+    padding: 0.8rem 1.5rem;
+    /*
+        `padding` creates space inside the link, around the text.
+        - `0.8rem`: Top and bottom padding, making the clickable area taller.
+        - `1.5rem`: Left and right padding, making the clickable area wider.
+        This provides ample space for users to click the links easily.
+    */
+    text-decoration: none;
+    /*
+        `text-decoration: none;` removes the default underline that browsers 
+        add to hyperlinks. We want to control the styling of our links manually.
+    */
+    color: #4f4632; /* Color Scheme: Navigation Link Color */
+    /*
+        `color` sets the text color of the links. `#4f4632` is a deep, rich 
+        brown, providing good contrast against the `#e7d894` background 
+        and complementing the earthy color scheme. This color was specifically 
+        requested by the user.
+    */
+    font-weight: bold;
+    /*
+        `font-weight: bold;` makes the text of the links bold, helping them 
+        stand out and be easily readable in the navigation.
+    */
+    transition: color 0.3s ease, background-color 0.3s ease;
+    /*
+        `transition` specifies how properties should change smoothly over time 
+        rather than instantly. This creates a pleasing visual effect when 
+        the user interacts with the link.
+        - `color 0.3s ease`: Smoothly animates changes to the `color` property 
+          over 0.3 seconds with an `ease` timing function (starts slow, speeds 
+          up, ends slow).
+        - `background-color 0.3s ease`: Smoothly animates changes to the 
+          `background-color` property over 0.3 seconds with an `ease` timing function.
+    */
+}
+
+.main-nav a:hover,
+.main-nav a:focus {
+    /*
+        `.main-nav a:hover` targets the link when the user's mouse cursor is 
+        hovering over it.
+        `.main-nav a:focus` targets the link when it has received keyboard focus 
+        (e.g., by tabbing through the page). This is crucial for accessibility.
+    */
+    color: #a08c52; /* Slightly darker brown on hover/focus */
+    /*
+        On hover/focus, the text color changes to a slightly darker shade of brown 
+        (`#a08c52`). This provides clear visual feedback to the user, indicating 
+        that the link is interactive and currently being engaged with.
+    */
+    text-decoration: underline;
+    /*
+        Adds an underline on hover/focus, further reinforcing the interactive state.
+    */
+    background-color: rgba(79, 70, 50, 0.1); /* Very subtle background on hover */
+    /*
+        Adds a very subtle, semi-transparent background color (`rgba(79, 70, 50, 0.1)`)
+        on hover/focus. This corresponds to the link's text color but with high transparency,
+        providing a soft highlight without being too distracting.
+    */
+}
+
+/* Main Content Area */
+main {
+    /*
+        The `main` selector targets the main content area of the page.
+    */
+    max-width: 960px;
+    /*
+        Constrains the maximum width of the main content to 960 pixels, 
+        preventing it from stretching too wide on large screens and improving readability.
+    */
+    margin: 2rem auto;
+    /*
+        `margin: 2rem auto;` centers the main content horizontally.
+        - `2rem`: Adds 2 "root ems" (approx 32px) of space above and below the content.
+        - `auto`: Automatically calculates equal left and right margins to center the block.
+    */
+    padding: 1rem;
+    /*
+        `padding: 1rem;` adds 1 "root em" of padding inside the main content area, 
+        creating space between the content and the edges of the `main` element.
+    */
+    background-color: #ffffff;
+    /*
+        Sets the background color of the main content area to white (`#ffffff`). 
+        This provides a clean, contrasting canvas for the text and images.
+    */
+    border-radius: 8px;
+    /*
+        `border-radius: 8px;` rounds the corners of the main content box by 8 pixels, 
+        giving it a softer, more modern aesthetic.
+    */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /*
+        Adds a slightly stronger shadow than the header, making the main content 
+        area appear to float subtly above the background.
+        - `0`: No horizontal offset.
+        - `4px`: Vertical offset.
+        - `8px`: Blur radius.
+        - `rgba(0, 0, 0, 0.1)`: Subtle black shadow with 10% opacity.
+    */
+}
+
+/* Section Styles */
+section {
+    /*
+        The `section` selector targets all `<section>` elements within the page.
+        These are used to group distinct content within the main area (e.g., Home, Gallery, Contact).
+    */
+    margin-bottom: 3rem;
+    /*
+        `margin-bottom: 3rem;` adds 3 "root ems" of space below each section, 
+        creating clear visual separation between them.
+    */
+    padding: 2rem 0;
+    /*
+        `padding: 2rem 0;` adds 2 "root ems" of vertical padding within each section.
+        No horizontal padding as the main container already handles that.
+    */
+    border-bottom: 1px solid #eee;
+    /*
+        `border-bottom` adds a thin, light grey line at the bottom of each section, 
+        visually dividing them.
+        - `1px`: Thickness of the border.
+        - `solid`: Style of the border (a continuous line).
+        - `#eee`: A very light grey color for the border.
+    */
+}
+
+section:last-of-type {
+    /*
+        `section:last-of-type` is a pseudo-class that targets the last `<section>` 
+        element on the page.
+    */
+    border-bottom: none;
+    /*
+        `border-bottom: none;` removes the bottom border from the very last section, 
+        as it's not needed for separation from content below it (the footer).
+    */
+}
+
+h1, h2, h3 {
+    /*
+        Targets all `<h1>`, `<h2>`, and `<h3>` heading elements.
+    */
+    color: #4f4632; /* Matching the link color for consistency */
+    /*
+        Sets the color of the headings to the same deep brown as the navigation links, 
+        creating a cohesive visual theme throughout the page.
+    */
+    text-align: center;
+    /*
+        `text-align: center;` centers the text within the heading elements.
+    */
+    margin-bottom: 1rem;
+    /*
+        Adds 1 "root em" of space below each heading, separating it from the content that follows.
+    */
+}
+
+p {
+    /*
+        Targets all `<p>` (paragraph) elements.
+    */
+    margin-bottom: 1rem;
+    /*
+        Adds 1 "root em" of space below each paragraph, ensuring readability and separation between blocks of text.
+    */
+}
+
+img {
+    /*
+        Targets all `<img>` (image) elements.
+    */
+    max-width: 100%;
+    /*
+        `max-width: 100%;` ensures that images will never overflow their 
+        parent container. If the image is larger than its container, it will 
+        scale down to fit, maintaining its aspect ratio. This is essential 
+        for responsive images.
+    */
+    height: auto;
+    /*
+        `height: auto;` automatically calculates the height of the image 
+        based on its `max-width: 100%` setting, preserving the image's 
+        original aspect ratio and preventing distortion.
+    */
+    display: block; /* Removes extra space below image */
+    /*
+        `display: block;` changes the image from an inline element to a 
+        block-level element. This removes a small amount of extra space 
+        that browsers typically add below inline images and allows `margin: auto;` 
+        to center them.
+    */
+    margin: 1.5rem auto; /* Center images within their container */
+    /*
+        `margin: 1.5rem auto;` adds vertical space around the image and 
+        horizontally centers it within its containing block.
+    */
+    border-radius: 5px;
+    /*
+        `border-radius: 5px;` slightly rounds the corners of images for a softer look.
+    */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    /*
+        Adds a subtle shadow to images, giving them a slight lift.
+    */
+}
+
+/* Gallery Grid Styling */
+.gallery-grid {
+    /*
+        `.gallery-grid` targets the `div` element with this class, which wraps 
+        our individual gallery items.
+    */
+    display: grid;
+    /*
+        `display: grid;` turns this container into a Grid container, a powerful 
+        two-dimensional layout system that allows precise control over rows and columns.
+    */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    /*
+        `grid-template-columns` defines the columns in the grid.
+        - `repeat()`: A function that repeats a pattern.
+        - `auto-fit`: Allows columns to fit automatically, creating as many as can fit.
+        - `minmax(280px, 1fr)`: Each column will be at least `280px` wide. If there's 
+          extra space, it will take up `1fr` (1 fraction of the available space), 
+          meaning all columns will grow equally. This creates a responsive grid 
+          that wraps items nicely on smaller screens and expands on larger ones.
+    */
+    gap: 20px;
+    /*
+        `gap: 20px;` creates a 20-pixel space between grid items (both rows and columns).
+    */
+    margin-top: 2rem;
+    /*
+        Adds 2 "root ems" of space above the gallery grid, separating it from the preceding text.
+    */
+}
+
+.gallery-item {
+    /*
+        `.gallery-item` targets each individual `div` within the gallery grid.
+    */
+    background-color: #f9f9f9;
+    /*
+        Sets a very light grey background for each gallery item.
+    */
+    padding: 1rem;
+    /*
+        Adds padding inside each gallery item.
+    */
+    border: 1px solid #ddd;
+    /*
+        Adds a light grey border around each gallery item.
+    */
+    border-radius: 8px;
+    /*
+        Rounds the corners of each gallery item.
+    */
+    text-align: center;
+    /*
+        Centers the text and images within each gallery item.
+    */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    /*
+        Adds a very subtle shadow, making each item slightly pop.
+    */
+}
+
+.gallery-item img {
+    /*
+        Targets images specifically within gallery items.
+    */
+    margin: 0.5rem auto 1rem auto;
+    /*
+        Adjusts margins for images within gallery items to fit the smaller context.
+    */
+}
+
+/* Form Styles */
+form {
+    /*
+        Targets the `<form>` element.
+    */
+    display: grid;
+    /*
+        Turns the form into a Grid container to easily align labels and inputs.
+    */
+    gap: 15px;
+    /*
+        Adds 15 pixels of space between grid items (form elements).
+    */
+    max-width: 500px; /* Constrain form width */
+    /*
+        Sets a maximum width for the form, preventing it from stretching too wide.
+    */
+    margin: 0 auto; /* Center the form */
+    /*
+        Centers the form horizontally on the page.
+    */
+    padding: 2rem;
+    /*
+        Adds padding inside the form.
+    */
+    background-color: #fff;
+    /*
+        Sets the background color of the form to white.
+    */
+    border-radius: 8px;
+    /*
+        Rounds the corners of the form.
+    */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    /*
+        Adds a subtle shadow to the form.
+    */
+}
+
+label {
+    /*
+        Targets all `<label>` elements in the form.
+    */
+    font-weight: bold;
+    /*
+        Makes labels bold for better visibility.
+    */
+    color: #4f4632; /* Matching theme color */
+    /*
+        Sets label color to match the theme.
+    */
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+    /*
+        Targets text input fields, email input fields, and text areas.
+    */
+    width: 100%;
+    /*
+        Makes these input fields take up the full width of their grid column.
+    */
+    padding: 0.8rem;
+    /*
+        Adds padding inside the input fields.
+    */
+    border: 1px solid #ccc;
+    /*
+        Adds a light grey border.
+    */
+    border-radius: 4px;
+    /*
+        Slightly rounds the corners.
+    */
+    font-size: 1rem;
+    /*
+        Sets font size to ensure readability.
+    */
+}
+
+input[type="submit"] {
+    /*
+        Targets the submit button.
+    */
+    background-color: #4f4632; /* Theme-consistent button color */
+    /*
+        Sets the button background to the dark brown theme color.
+    */
+    color: white;
+    /*
+        Sets text color to white for contrast.
+    */
+    padding: 1rem 2rem;
+    /*
+        Adds generous padding to the button.
+    */
+    border: none;
+    /*
+        Removes default border.
+    */
+    border-radius: 5px;
+    /*
+        Rounds button corners.
+    */
+    cursor: pointer;
+    /*
+        Changes cursor to a pointer when hovering, indicating it's clickable.
+    */
+    font-size: 1.1rem;
+    /*
+        Slightly larger font size for the button text.
+    */
+    font-weight: bold;
+    /*
+        Bold text for the button.
+    */
+    transition: background-color 0.3s ease;
+    /*
+        Smooth transition for background color on hover.
+    */
+}
+
+input[type="submit"]:hover {
+    /*
+        Targets the submit button on hover.
+    */
+    background-color: #6a5e4d; /* Slightly darker shade on hover */
+    /*
+        Darkens the button background on hover, providing feedback.
+    */
+}
+
+/* Footer Styles */
+footer {
+    /*
+        Targets the `<footer>` element.
+    */
+    text-align: center;
+    /*
+        Centers the text within the footer.
+    */
+    padding: 2rem 1rem;
+    /*
+        Adds padding above, below, and horizontally to the footer.
+    */
+    margin-top: 3rem;
+    /*
+        Adds significant space above the footer to separate it from the main content.
+    */
+    background-color: #333;
+    /*
+        Sets a dark grey background for the footer.
+    */
+    color: #fff;
+    /*
+        Sets white text color for contrast against the dark background.
+    */
+    font-size: 0.9rem;
+    /*
+        Slightly smaller font size for copyright info.
+    */
+}
