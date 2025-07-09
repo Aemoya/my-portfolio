@@ -1,0 +1,150 @@
+<!--
+    User Prompt:
+    Create a complete HTML5 page named basic.html. Add a centered <h1> heading and a short <p> paragraph. Link to an external CSS file (css/basic.css)
+    that sets the background color to white and the text color to black.
+    Write neurotically detailed comments in all files; explain every tag,
+    class, style rule, and color value as if you're walking a complete
+    beginner through the reasoning behind each choice. Be sure to include
+    named comments describing your color scheme and interaction behavior.
+    Include this full prompt as a comment at the top of the HTML file. Use
+    placeholder content about an art topic of your choice to complete the
+    page.
+-->
+
+<!DOCTYPE html>
+<!--
+    This is the DOCTYPE declaration. It tells the web browser that this document
+    is an HTML5 document. It's a crucial first line for modern web pages.
+-->
+<html lang="en">
+<!--
+    This is the root element of an HTML page. All other HTML elements
+    (except the DOCTYPE) are descendants of this element.
+    The 'lang="en"' attribute specifies the language of the document content
+    as English. This is important for accessibility (screen readers) and
+    search engine optimization (SEO).
+-->
+<head>
+    <!--
+        The <head> element contains meta-information about the HTML document.
+        This information is not displayed directly on the web page itself,
+        but it's essential for browsers, search engines, and other web services.
+    -->
+    <meta charset="UTF-8">
+    <!--
+        The <meta charset="UTF-8"> tag specifies the character encoding for the document.
+        UTF-8 is a universal character set that includes almost every character
+        and symbol in the world, making it the recommended and most widely used
+        encoding for web pages. It ensures that text (like special characters or
+        emojis) is displayed correctly across different browsers and devices.
+    -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--
+        The <meta name="viewport"> tag is crucial for responsive web design.
+        It controls how the page is displayed on mobile devices.
+        - 'width=device-width': Sets the width of the viewport to the width of the device screen.
+          This means if you're on a phone, the page will try to fit the phone's screen width.
+        - 'initial-scale=1.0': Sets the initial zoom level when the page is first loaded.
+          A value of 1.0 means no zoom, so the page appears at its actual size.
+          Together, these attributes ensure the page scales correctly and looks good
+          on various screen sizes, from desktops to smartphones.
+    -->
+    <title>The Art of Impressionism</title>
+    <!--
+        The <title> element defines the title of the HTML document.
+        This title appears in the browser's title bar or tab. It's also
+        what search engines display as the clickable headline in search results.
+        Choosing a descriptive title is good for both user experience and SEO.
+    -->
+    <link rel="stylesheet" href="css/basic.css">
+    <!--
+        The <link> element is used to link an external resource to the HTML document.
+        In this case, it links to an external CSS (Cascading Style Sheets) file.
+        - 'rel="stylesheet"': Specifies the relationship between the current document
+          and the linked document. Here, it indicates that the linked file is a stylesheet.
+        - 'href="css/basic.css"': Specifies the URL (or path) of the external stylesheet.
+          'css/basic.css' means the browser should look for a folder named 'css'
+          in the same directory as this HTML file, and inside that folder,
+          it should find a file named 'basic.css'. This separation of HTML (content)
+          and CSS (presentation) is a fundamental best practice in web development,
+          making code easier to manage, read, and update.
+    -->
+</head>
+<body>
+    <!--
+        The <body> element contains all the visible content of an HTML document.
+        Everything you see on a web page – text, images, links, videos, etc. –
+        is placed within the <body> tags.
+    -->
+    <header>
+        <!--
+            The <header> element represents introductory content, typically
+            a group of introductory or navigational aids. It often contains
+            headings, logos, search forms, and navigation links.
+            In this simple page, it just holds our main heading.
+        -->
+        <h1 class="centered-text">The Luminous World of Impressionism</h1>
+        <!--
+            The <h1> element defines the most important heading on the page.
+            There should typically only be one <h1> per page for semantic reasons
+            and SEO.
+            The 'class="centered-text"' attribute applies a CSS class named
+            'centered-text' to this heading. This class will be defined in our
+            'basic.css' file to apply specific styling, in this case, centering the text.
+            Using classes allows us to apply the same style to multiple elements
+            or to target specific elements for styling.
+        -->
+    </header>
+
+    <main>
+        <!--
+            The <main> element represents the dominant content of the <body>.
+            It should contain content that is unique to this document and
+            should not include content that is repeated across a set of documents
+            (like sidebars, navigation links, copyright information).
+            It helps with document structure and accessibility.
+        -->
+        <p class="centered-text">
+            <!--
+                The <p> element defines a paragraph. It's used for blocks of text.
+                Like the <h1>, it also uses the 'class="centered-text"' to ensure
+                its content is centered on the page, maintaining a consistent layout.
+            -->
+            Impressionism, an art movement that emerged in the 19th century,
+            revolutionized painting by focusing on capturing the fleeting
+            impressions of light, color, and atmosphere rather than precise detail.
+            Artists like Claude Monet, Pierre-Auguste Renoir, and Edgar Degas
+            used visible brushstrokes, open composition, and an emphasis on light
+            in its changing qualities to depict modern life and landscapes.
+            Their innovative approach paved the way for modern art.
+        </p>
+    </main>
+
+    <footer>
+        <!--
+            The <footer> element represents a footer for its nearest sectioning content
+            or sectioning root element. A footer typically contains information about
+            its section, such as who wrote it, links to related documents, copyright data,
+            and the like. In this simple example, it's just a placeholder.
+        -->
+        <p class="centered-text">Explore the beauty of light and color.</p>
+    </footer>
+
+    <!--
+        ### Named Comment: Color Scheme
+        This page employs a very minimalist and high-contrast color scheme:
+        - Background Color: White (#FFFFFF) - Chosen for its clean, bright, and neutral appearance,
+          which allows the text to stand out clearly and provides a classic, readable canvas.
+        - Text Color: Black (#000000) - Chosen for maximum contrast against the white background,
+          ensuring excellent readability for all users, including those with visual impairments.
+        This scheme prioritizes clarity and accessibility.
+
+        ### Named Comment: Interaction Behavior
+        This is a static HTML page, meaning it does not include any interactive elements
+        (like buttons that trigger actions, forms, or JavaScript-driven animations).
+        Therefore, there is no specific "interaction behavior" to describe beyond
+        the default browser behavior for viewing a web page (e.g., scrolling).
+        All content is purely for display.
+    -->
+</body>
+</html>
