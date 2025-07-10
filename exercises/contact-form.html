@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact the Gallery of Abstraction</title>
+    <link rel="stylesheet" href="css/contact-form.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="site-header">
+        <h1>Gallery of Abstraction</h1>
+        <nav>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#featured">Featured Works</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+
+        <section class="intro-section" id="about">
+            <h2>Exploring the Non-Objective</h2>
+            <p>
+                Welcome to the Gallery of Abstraction. We celebrate the beauty of non-representational art,
+                where form, color, and line exist for their own sake. Abstract expressionism, minimalism,
+                and geometric abstraction challenge traditional perceptions of art.
+            </p>
+            <p>
+                Our collection features works by pioneering artists who sought to evoke emotion
+                and intellectual response purely through visual elements. We believe art should
+                be experienced, not just observed.
+            </p>
+        </section>
+
+        <section class="contact-section">
+            <h2>Connect with the Curator</h2>
+
+            <form action="https://formsubmit.co/alexandra.moya.sst@gmail.com" method="POST" class="contact-form">
+
+                <input type="hidden" name="_honey" class="hidden-field">
+
+                <input type="hidden" name="_captcha" value="true" class="hidden-field">
+
+                <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" name="name" required class="input-field" placeholder="e.g., Jean Arp">
+                </div>
+
+                <div class="form-group">
+                    <label for="reply-email">Enter your email to receive a reply</label>
+                    <input type="email" id="reply-email" name="email" required class="input-field" placeholder="you@example.com">
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Your Message</label>
+                    <textarea id="message" name="message" rows="5" required class="textarea-field" placeholder="We welcome inquiries about non-objective art and exhibitions..."></textarea>
+                </div>
+
+                <button type="submit" class="submit-button">Send Message</button>
+            </form>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2025 Gallery of Abstraction. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

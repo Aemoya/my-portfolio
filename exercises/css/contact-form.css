@@ -1,0 +1,323 @@
+/*
+  Contact Form CSS (css/contact-form.css)
+
+  This stylesheet provides detailed styling for the contact form and the surrounding
+  HTML elements (header, footer, main content). It includes extensive comments
+  explaining the purpose of each style rule, class, and color choice.
+*/
+
+/* --- 1. Color Scheme & Typography --- */
+
+/*
+  Color Palette:
+  --color-dark-primary: #1a1a1a (Deep Charcoal - Used for background, body text, and main elements. Provides a sophisticated, gallery-like feel.)
+  --color-light-bg: #f8f8f8 (Off-White - Used for form background and secondary elements. Creates contrast for readability.)
+  --color-accent: #b8860b (Metallic Gold/Dark Goldenrod - Used for subtle accents, buttons, and interaction behaviors. Evokes a sense of classic art and refinement.)
+  --color-text-light: #ffffff (Pure White - Used for text against dark backgrounds.)
+  --color-text-dark: #333333 (Dark Gray - Used for body text and labels on light backgrounds.)
+
+  Typography:
+  'Playfair Display' (serif) - Used for headings (H1, H2). Provides an elegant, artistic feel.
+  'Open Sans' (sans-serif) - Used for body text and form inputs. Ensures readability and modernity.
+*/
+
+/*
+  The `*` selector applies these rules to all elements (the universal selector).
+  `box-sizing: border-box;` ensures that padding and borders are included in the element's total width and height.
+  This makes layout calculations much more predictable and easier.
+*/
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/*
+  Styling for the <body> element.
+  Defines the default font family and background color for the entire page.
+*/
+body {
+    font-family: 'Open Sans', sans-serif; /* Sets the default font for body text. */
+    line-height: 1.6; /* Improves readability by adding space between lines of text. */
+    color: var(--color-text-dark, #333333); /* Default text color, ensuring contrast. */
+    background-color: var(--color-light-bg, #f8f8f8); /* Light background for the overall page. */
+}
+
+/* --- 2. Layout and Structure --- */
+
+/*
+  Styling for the main content container.
+  `max-width: 900px;` limits the width of the content for better readability on large screens.
+  `margin: 0 auto;` centers the container horizontally on the page.
+  `padding: 20px;` adds space around the content inside the container.
+*/
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* --- 3. Header and Navigation --- */
+
+/*
+  The `.site-header` class styles the top section of the page.
+  It uses a dark background (`var(--color-dark-primary)`) to create a strong visual separation
+  and a gallery-like atmosphere.
+*/
+.site-header {
+    background-color: var(--color-dark-primary, #1a1a1a);
+    color: var(--color-text-light, #ffffff);
+    padding: 30px 20px;
+    text-align: center; /* Centers the text and navigation within the header. */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow for depth. */
+}
+
+/*
+  Styling for the main title within the header.
+  Uses the elegant 'Playfair Display' font.
+*/
+.site-header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem; /* Larger font size for prominence. */
+    margin-bottom: 10px;
+    letter-spacing: 2px; /* Adds space between letters for a refined look. */
+}
+
+/*
+  Styling for the navigation list inside the header.
+  `list-style: none;` removes the default bullet points.
+*/
+.site-header nav ul {
+    list-style: none;
+    display: flex; /* Arranges the list items in a row. */
+    justify-content: center; /* Centers the navigation links. */
+    padding: 0;
+}
+
+/*
+  Styling for individual navigation list items.
+  `margin: 0 15px;` adds horizontal space between the links.
+*/
+.site-header nav ul li {
+    margin: 0 15px;
+}
+
+/*
+  Styling for the navigation links (<a>).
+  `text-decoration: none;` removes the default underline from links.
+  `color: var(--color-text-light);` ensures links are visible against the dark header background.
+  `transition: color 0.3s ease;` prepares for a smooth color change on hover.
+*/
+.site-header nav a {
+    text-decoration: none;
+    color: var(--color-text-light, #ffffff);
+    font-weight: 600; /* Makes the links slightly bolder. */
+    transition: color 0.3s ease;
+}
+
+/*
+  Interaction Behavior: Link Hover
+  When the user hovers over a navigation link, the text color changes to the accent color (`--color-accent`).
+  This provides visual feedback to the user that the link is interactive.
+*/
+.site-header nav a:hover {
+    color: var(--color-accent, #b8860b);
+}
+
+/* --- 4. Content Sections --- */
+
+/*
+  General styling for headings within content sections.
+  Uses the 'Playfair Display' font for a consistent artistic theme.
+*/
+h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    color: var(--color-dark-primary, #1a1a1a);
+    margin-top: 30px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/*
+  Styling for the introductory section.
+  `margin-top: 40px;` adds spacing below the header.
+  `padding: 30px;` adds internal spacing.
+  `background-color: #ffffff;` gives this section a clean white background.
+  `border-radius: 8px;` rounds the corners for a softer look.
+  `box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);` adds a light shadow for elevation.
+*/
+.intro-section {
+    margin-top: 40px;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+/*
+  Styling for paragraphs within the intro section to improve readability.
+*/
+.intro-section p {
+    margin-bottom: 15px;
+    font-size: 1rem;
+    color: var(--color-text-dark, #333333);
+}
+
+/* --- 5. Contact Form Styling --- */
+
+/*
+  Styling for the main contact form section.
+  Similar styling to the intro section but slightly different padding for the form.
+*/
+.contact-section {
+    background-color: #ffffff;
+    padding: 40px;
+    margin-top: 40px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+/*
+  Styling for the <form> element itself.
+  'display: flex;' and 'flex-direction: column;' ensures the form groups stack vertically.
+  'gap: 20px;' creates consistent vertical spacing between form groups.
+*/
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 600px; /* Limits the form width for a clean appearance. */
+    margin: 0 auto; /* Centers the form within the section. */
+}
+
+/*
+  Styling for the form groups (label and input combination).
+*/
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+/*
+  Styling for <label> elements.
+  `font-weight: 600;` makes the labels stand out.
+  `margin-bottom: 8px;` adds space between the label and the input field.
+  `color: var(--color-dark-primary);` ensures labels are clearly visible.
+*/
+label {
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--color-dark-primary, #1a1a1a);
+}
+
+/*
+  Styling for input fields and textareas.
+  `width: 100%;` makes them fill the width of their container.
+  `padding: 12px 15px;` adds internal space for typing.
+  `border: 1px solid #ccc;` sets a subtle gray border.
+  `border-radius: 4px;` rounds the corners.
+  `font-size: 1rem;` ensures text within the inputs is readable.
+  `transition: border-color 0.3s ease;` prepares for a smooth change on focus.
+*/
+.input-field,
+.textarea-field {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-family: 'Open Sans', sans-serif; /* Ensures form inputs use the same readable font. */
+    background-color: var(--color-light-bg, #f8f8f8);
+    transition: border-color 0.3s ease;
+}
+
+/*
+  Interaction Behavior: Input/Textarea Focus
+  When a user clicks or tabs into an input field or textarea, the border color changes
+  to the accent color (`--color-accent`). This provides a clear visual indication
+  of which field is currently active.
+*/
+.input-field:focus,
+.textarea-field:focus {
+    outline: none; /* Removes the default browser outline. */
+    border-color: var(--color-accent, #b8860b); /* Changes border color to the gold accent. */
+    box-shadow: 0 0 0 3px rgba(184, 134, 11, 0.2); /* Adds a subtle shadow for elevation and emphasis. */
+}
+
+/*
+  Styling for the <textarea> specifically.
+  `resize: vertical;` allows the user to resize the textarea vertically, but not horizontally.
+*/
+.textarea-field {
+    resize: vertical;
+}
+
+/*
+  Styling for the submit button.
+  `background-color: var(--color-accent);` uses the gold accent color for prominence.
+  `color: var(--color-text-light);` ensures the text is readable against the gold background.
+  `border: none;` removes the default button border.
+  `padding: 15px 30px;` adds generous padding for a large, clickable area.
+  `border-radius: 50px;` creates a pill-shaped button.
+  `cursor: pointer;` changes the mouse cursor to a pointer when hovering over the button.
+  `font-weight: 700;` makes the text bold.
+  `transition: background-color 0.3s ease, transform 0.1s ease;` prepares for smooth hover effects.
+*/
+.submit-button {
+    background-color: var(--color-accent, #b8860b);
+    color: var(--color-text-light, #ffffff);
+    border: none;
+    padding: 15px 30px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: 700;
+    align-self: center; /* Centers the button horizontally within the flex container. */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/*
+  Interaction Behavior: Button Hover
+  When the user hovers over the submit button, the background color slightly darkens.
+*/
+.submit-button:hover {
+    background-color: #a4780a; /* A darker shade of the gold accent color. */
+}
+
+/*
+  Interaction Behavior: Button Active (Click)
+  When the user clicks the button, `transform: translateY(1px);` provides a slight "push" effect,
+  and `box-shadow` is reduced, simulating a button press.
+*/
+.submit-button:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+/*
+  Placeholder style for inputs to ensure consistency.
+  `opacity: 0.7;` makes the placeholder text slightly transparent.
+*/
+.input-field::placeholder,
+.textarea-field::placeholder {
+    color: #999;
+    font-style: italic;
+    opacity: 0.7;
+}
+
+/* --- 6. Footer --- */
+
+/*
+  Styling for the footer section.
+  Similar to the header, uses a dark background for consistency.
+  `margin-top: 50px;` adds significant space before the footer.
+*/
+.site-footer {
+    background-color: var(--color-dark-primary, #1a1a1a);
+    color: var(--color-text-light, #ffffff);
+    text-align: center;
+    padding: 20px;
+    margin-top: 50px;
+    font-size: 0.9rem;
+}
