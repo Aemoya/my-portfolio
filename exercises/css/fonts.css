@@ -1,0 +1,210 @@
+/* This CSS file (fonts.css) contains all the styling rules for our fonts.html page.
+It's an external stylesheet, which helps separate the presentation (CSS)
+from the content (HTML), making our code organized and easier to manage.
+*/
+
+/* --- Global Styles and Reset --- */
+/* These are general styles applied to the entire document or common elements.
+They act as a basic reset to ensure consistent rendering across different browsers.
+*/
+body {
+    /* The 'body' selector targets the entire visible content of the HTML document.
+    */
+    font-family: 'Roboto', sans-serif;
+    /* 'font-family' specifies the typeface for the text.
+    - 'Roboto': This is our primary font for paragraph text, loaded from Google Fonts.
+    - 'sans-serif': This is a generic font family. If 'Roboto' fails to load for any reason,
+      the browser will use a generic sans-serif font available on the user's system
+      (e.g., Arial, Helvetica). This ensures that text is always displayed.
+    */
+    line-height: 1.6;
+    /* 'line-height' sets the height of each line of text. A value of 1.6 (which is
+    1.6 times the font size) provides good readability by adding sufficient
+    vertical spacing between lines, preventing text from appearing too dense.
+    */
+    margin: 0;
+    /* 'margin: 0' removes the default margin that browsers often apply to the <body> element.
+    This ensures our content starts right at the edge of the viewport,
+    giving us full control over spacing.
+    */
+    padding: 20px;
+    /* 'padding: 20px' adds 20 pixels of space inside the <body> element,
+    between the content and the edges of the browser window. This creates
+    a comfortable buffer and prevents content from touching the screen edges.
+    */
+    background-color: #f8f8f8; /* Light Grey Background */
+    /* 'background-color' sets the background color of the element.
+    - '#f8f8f8': This is a very light grey color, almost off-white.
+      It's chosen to be soft on the eyes and provide a clean canvas for the text.
+      This is part of our defined color scheme.
+    */
+    color: #333333; /* Dark Grey Text */
+    /* 'color' sets the color of the text within the element.
+    - '#333333': This is a dark grey color. It provides excellent contrast
+      against the light background, ensuring high readability without being
+      as harsh as pure black. This is also part of our color scheme.
+    */
+}
+
+/* --- Color Scheme Definition --- */
+/*
+Named comments for clarity on our chosen color palette.
+- Primary Background: #f8f8f8 (Very Light Grey / Off-White)
+- Primary Text Color: #333333 (Dark Grey)
+- Accent Color (for potential future use or subtle highlights): #607d8b (Muted Blue-Grey)
+  (Not explicitly used in this basic example, but defined for consistency if more elements were added.)
+*/
+
+/* --- Heading Styles --- */
+/* These styles apply specifically to heading elements (h1, h2, h3, h4, h5, h6).
+*/
+h1, h2, h3, h4, h5, h6 {
+    /* This is a grouped selector, meaning the following styles will apply to
+    all heading levels from <h1> to <h6>.
+    */
+    font-family: 'Playfair Display', serif;
+    /* 'font-family' for headings.
+    - 'Playfair Display': Our chosen elegant, serif font from Google Fonts for headings.
+    - 'serif': The fallback generic font family. If 'Playfair Display' doesn't load,
+      the browser will use a default serif font (e.g., Times New Roman).
+    */
+    color: #2c3e50; /* Darker Blue-Grey for Headings */
+    /* 'color' sets the text color for headings.
+    - '#2c3e50': A dark, muted blue-grey. This color provides a good contrast
+      with the background and differentiates headings from paragraph text,
+      giving them a more prominent and artistic feel, fitting the art topic.
+    */
+    margin-top: 1.5em;
+    /* 'margin-top' adds space above each heading. 'em' is a relative unit,
+    meaning 1.5 times the current font size of the element. This creates
+    visual separation between sections.
+    */
+    margin-bottom: 0.5em;
+    /* 'margin-bottom' adds space below each heading. A smaller value here
+    keeps the heading visually closer to its associated paragraph.
+    */
+}
+
+h1 {
+    /* Specific styles for the main <h1> heading.
+    */
+    font-size: 2.8em;
+    /* 'font-size' sets the size of the text. 2.8em makes the <h1> significantly
+    larger than other text, clearly marking it as the primary title of the page.
+    */
+    text-align: center;
+    /* 'text-align: center' horizontally centers the text within the <h1> element.
+    This is often used for main titles to give them prominence.
+    */
+    margin-bottom: 1em;
+    /* Adds more space below the main title, separating it from the content that follows.
+    */
+}
+
+h2 {
+    /* Specific styles for <h2> headings.
+    */
+    font-size: 2em;
+    /* 'font-size: 2em' makes <h2> headings larger than paragraph text but smaller
+    than <h1>, establishing a clear hierarchy.
+    */
+    border-bottom: 2px solid #a7b7c7; /* Subtle Underline for H2 */
+    /* 'border-bottom' adds a line below the <h2>.
+    - '2px': The thickness of the line.
+    - 'solid': The style of the line (a continuous line).
+    - '#a7b7c7': A very light, muted blue-grey color for the line.
+      This provides a subtle visual separation without being too distracting,
+      adding a touch of elegance.
+    */
+    padding-bottom: 5px;
+    /* 'padding-bottom' adds space between the text of the <h2> and its bottom border.
+    This prevents the border from touching the text directly.
+    */
+    margin-bottom: 1em;
+    /* Adds space below the <h2>, separating it from the paragraph that follows.
+    */
+}
+
+/* --- Paragraph Styles --- */
+/* These styles apply specifically to paragraph elements (<p>).
+*/
+p {
+    /* The 'p' selector targets all paragraph elements.
+    */
+    font-size: 1.1em;
+    /* 'font-size: 1.1em' makes paragraph text slightly larger than the browser's
+    default font size, improving readability, especially on larger screens.
+    */
+    margin-bottom: 1em;
+    /* 'margin-bottom' adds space below each paragraph, ensuring paragraphs
+    don't run into each other and are clearly separated.
+    */
+    text-align: justify;
+    /*
+    'text-align: justify' aligns text along both the left and right margins,
+    creating a clean, block-like appearance for paragraphs, similar to
+    how text is often presented in books or newspapers.
+    */
+}
+
+/* --- Layout and Container Styles (Optional but good practice) --- */
+/* These styles help to structure the overall layout of the page content,
+making it more readable and visually appealing.
+*/
+body > header,
+body > main,
+body > footer {
+    /* This selector targets the direct children <header>, <main>, and <footer>
+    of the <body> element.
+    */
+    max-width: 800px;
+    /* 'max-width' sets the maximum width an element can be. This prevents
+    the content from stretching too wide on very large screens, which can
+    make long lines of text difficult to read. 800px is a common readable width.
+    */
+    margin-left: auto;
+    /* 'margin-left: auto' in combination with 'margin-right: auto'
+    (and a defined 'max-width') horizontally centers the block element
+    within its parent container (in this case, the <body>).
+    */
+    margin-right: auto;
+    /* See 'margin-left: auto' explanation above. Together, they center the content.
+    */
+    padding: 0 20px;
+    /* 'padding: 0 20px' adds horizontal padding (20px on left and right)
+    to these sections. The '0' for top/bottom padding means no extra
+    vertical padding is added here, as vertical spacing is handled by
+    margins on individual elements. This ensures content doesn't touch
+    the side edges when the screen is narrower than 800px.
+    */
+}
+
+footer {
+    /* Specific styles for the <footer> element.
+    */
+    text-align: center;
+    /* Centers the text within the footer.
+    */
+    margin-top: 40px;
+    /* Adds a generous amount of space above the footer, separating it clearly
+    from the main content.
+    */
+    font-size: 0.9em;
+    /* Makes the footer text slightly smaller, as it's typically less important
+    than the main content.
+    */
+    color: #6c7a89; /* Lighter Grey for Footer Text */
+    /* Sets a slightly lighter grey color for the footer text, making it
+    subtle but still readable.
+    */
+}
+
+/* --- Interaction Behavior (Named Comment) --- */
+/*
+For this static page, there are no interactive elements (like buttons or links)
+that require specific hover/active states. However, if there were:
+- Links would have a subtle 'text-decoration: underline;' on hover.
+- Buttons would have a 'background-color' or 'box-shadow' change on hover/active.
+The goal would be to provide clear visual feedback to the user when they
+interact with an element, indicating it is clickable or actionable.
+*/
