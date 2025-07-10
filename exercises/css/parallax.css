@@ -1,0 +1,434 @@
+/*
+Color Scheme:
+- Primary Backgrounds (Solid Sections):
+    - Light Grey: #f4f4f4 (soft, neutral base)
+    - Slightly Darker Grey: #e0e0e0 (for subtle variation or footer-like sections)
+- Text Colors:
+    - Dark Grey: #333 (highly readable on light backgrounds)
+    - White: #fff (for text on dark/image backgrounds)
+- Heading Colors:
+    - Darker Grey: #222 (for emphasis on light backgrounds)
+- Parallax Overlay:
+    - Semi-transparent Black: rgba(0, 0, 0, 0.5) (to ensure text readability over images)
+
+Interaction Behavior (Parallax):
+The core parallax effect is achieved using `background-attachment: fixed;`.
+When the user scrolls, the background image remains stationary relative to the viewport,
+while the foreground content scrolls over it, creating the illusion of depth.
+The `background-size: cover;` and `background-position: center center;` ensure the
+image always fills the section and is centered, regardless of screen size.
+*/
+
+/* Universal Box-Sizing */
+*, *::before, *::after {
+    /*
+    The universal selector (*) targets all elements on the page.
+    - "box-sizing: border-box;" is a fundamental CSS rule for layout.
+    It changes how the total width and height of an element are calculated.
+    Normally, padding and border are added *on top* of the specified width/height.
+    With `border-box`, padding and border are *included* within the specified
+    width/height. This makes layout calculations much more intuitive and
+    predictable, especially in responsive designs.
+    */
+    box-sizing: border-box;
+}
+
+/* Body Styling */
+body {
+    /*
+    Styles applied to the <body> element affect the entire page.
+    */
+    margin: 0;
+    /*
+    "margin: 0;" removes the default margin that browsers typically apply to the <body>.
+    This ensures the content starts exactly at the edge of the viewport.
+    */
+    font-family: 'Inter', sans-serif;
+    /*
+    "font-family: 'Inter', sans-serif;" sets the primary font for the entire page.
+    'Inter' is a modern, highly readable typeface. 'sans-serif' is a generic
+    font family fallback, meaning if 'Inter' isn't available, the browser will
+    use a generic sans-serif font (like Arial, Helvetica) instead.
+    */
+    line-height: 1.6;
+    /*
+    "line-height: 1.6;" sets the spacing between lines of text. A value of 1.6
+    (which means 160% of the font-size) provides good readability, preventing
+    text from looking too cramped.
+    */
+    color: #333;
+    /*
+    "color: #333;" sets the default text color to a dark grey. This provides
+    good contrast against light backgrounds, enhancing readability.
+    */
+    scroll-behavior: smooth;
+    /*
+    "scroll-behavior: smooth;" enables smooth scrolling when navigating to
+    anchor links within the page. Instead of instantly jumping, the page
+    will animate the scroll, providing a better user experience.
+    */
+}
+
+/* Content Wrapper */
+.content-wrapper {
+    /*
+    This class is applied to a <div> inside each section to control the
+    maximum width of the content and center it horizontally.
+    */
+    max-width: 960px;
+    /*
+    "max-width: 960px;" limits the content's width to 960 pixels. This prevents
+    lines of text from becoming too long on very wide screens, which can make
+    them difficult to read.
+    */
+    margin: 0 auto;
+    /*
+    "margin: 0 auto;" horizontally centers the block-level element within its parent.
+    "0" sets top and bottom margins to zero, and "auto" distributes available
+    horizontal space equally on the left and right.
+    */
+    padding: 60px 20px;
+    /*
+    "padding: 60px 20px;" adds internal spacing around the content.
+    - "60px" for top and bottom padding, creating vertical breathing room.
+    - "20px" for left and right padding, preventing content from touching
+      the edges of the viewport on smaller screens.
+    */
+}
+
+/* Section General Styling */
+.section {
+    /*
+    This class applies common styling to all <section> elements.
+    */
+    position: relative;
+    /*
+    "position: relative;" is crucial for positioning child elements (like overlays)
+    relative to this section. It also establishes a new positioning context.
+    */
+    display: flex;
+    /*
+    "display: flex;" makes the section a flex container. This is useful for
+    vertically centering content within the section if needed, or for flexible
+    arrangement of child elements.
+    */
+    align-items: center;
+    /*
+    "align-items: center;" vertically centers the flex items (in this case, the
+    .content-wrapper) along the cross-axis (vertical axis for a default row direction).
+    */
+    justify-content: center;
+    /*
+    "justify-content: center;" horizontally centers the flex items along the main-axis
+    (horizontal axis for a default row direction).
+    */
+    text-align: center;
+    /*
+    "text-align: center;" horizontally centers inline-level content (like text)
+    within the section.
+    */
+    overflow: hidden;
+    /*
+    "overflow: hidden;" clips any content that overflows the element's box.
+    This is important for parallax sections to prevent background images from
+    leaking outside their boundaries if they are slightly larger than the section.
+    */
+}
+
+/* Solid Background Sections */
+.solid-bg-1 {
+    /*
+    Specific styling for the first solid background section (page title).
+    */
+    background-color: #f4f4f4;
+    /*
+    "background-color: #f4f4f4;" sets a very light grey background,
+    providing a clean and neutral base for the page title.
+    */
+    color: #222;
+    /*
+    "color: #222;" sets a very dark grey for the text, offering strong
+    contrast against the light background for readability.
+    */
+    min-height: auto; /* Height based on content */
+    /*
+    "min-height: auto;" ensures the section's height adjusts dynamically
+    to fit its content, preventing unnecessary empty space.
+    */
+}
+
+.solid-bg-2 {
+    /*
+    Specific styling for the second solid background section (art topic).
+    */
+    background-color: #e0e0e0;
+    /*
+    "background-color: #e0e0e0;" sets a slightly darker grey than solid-bg-1,
+    creating a subtle visual distinction between solid content sections.
+    */
+    color: #333;
+    /*
+    "color: #333;" sets a dark grey for the text, maintaining good contrast.
+    */
+    min-height: auto; /* Height based on content */
+}
+
+.solid-bg-3 {
+    /*
+    Specific styling for the final solid background section.
+    */
+    background-color: #f4f4f4; /* Reusing the light grey for consistency */
+    /*
+    "background-color: #f4f4f4;" reuses the lightest grey, creating a visual
+    bookend effect with the first section and maintaining a clean aesthetic.
+    */
+    color: #333;
+    /*
+    "color: #333;" sets a dark grey for the text.
+    */
+    min-height: auto; /* Height based on content */
+}
+
+/* Headings Styling */
+h1 {
+    /*
+    Styles for the main page title (h1).
+    */
+    font-size: 3.5em; /* Large font size for prominence */
+    /*
+    "font-size: 3.5em;" sets the font size to 3.5 times the base font size.
+    This makes the main title large and prominent. 'em' is a relative unit,
+    scaling with the parent's font size.
+    */
+    margin-bottom: 20px;
+    /*
+    "margin-bottom: 20px;" adds space below the heading, separating it from
+    subsequent content.
+    */
+    font-weight: 700; /* Bold font weight */
+    /*
+    "font-weight: 700;" makes the text bold, emphasizing the title.
+    */
+    line-height: 1.2;
+    /*
+    "line-height: 1.2;" adjusts the line spacing for the heading to be tighter
+    than body text, which is typical for large titles.
+    */
+}
+
+h2 {
+    /*
+    Styles for sub-headings (h2).
+    */
+    font-size: 2.2em; /* Smaller than h1, but still prominent */
+    /*
+    "font-size: 2.2em;" sets a noticeable font size for sub-headings,
+    clearly distinguishing them from paragraph text.
+    */
+    margin-bottom: 15px;
+    /*
+    "margin-bottom: 15px;" adds space below the sub-heading.
+    */
+    font-weight: 600; /* Slightly less bold than h1 */
+    /*
+    "font-weight: 600;" provides a good level of boldness for sub-headings.
+    */
+    color: #222; /* Darker color for emphasis */
+    /*
+    "color: #222;" uses a very dark grey for headings on light backgrounds,
+    ensuring they stand out.
+    */
+}
+
+p {
+    /*
+    Styles for paragraph text.
+    */
+    font-size: 1.1em; /* Slightly larger than base for readability */
+    /*
+    "font-size: 1.1em;" makes the paragraph text slightly larger than the
+    default, improving readability, especially on various screen sizes.
+    */
+    margin-bottom: 20px;
+    /*
+    "margin-bottom: 20px;" adds spacing between paragraphs, making the text
+    less dense and easier to scan.
+    */
+    max-width: 800px; /* Limit paragraph width for readability */
+    /*
+    "max-width: 800px;" prevents paragraphs from becoming excessively wide,
+    which can make long lines of text hard to read.
+    */
+    margin-left: auto;
+    margin-right: auto;
+    /*
+    "margin-left: auto; margin-right: auto;" centers the paragraph text
+    horizontally within its container if its width is less than the container's.
+    */
+    text-align: left; /* Align text to the left for standard reading flow */
+    /*
+    "text-align: left;" aligns the text to the left. While the content-wrapper
+    is centered, the text within paragraphs is typically left-aligned for
+    optimal reading flow in English.
+    */
+}
+
+/* Parallax Background Sections */
+.parallax-bg {
+    /*
+    This class applies the core parallax effect and common styling to all
+    sections that use a background image for parallax.
+    */
+    background-size: cover;
+    /*
+    "background-size: cover;" scales the background image to be as large as
+    possible so that the background area is completely covered by the image.
+    Some parts of the background image may be outside the background positioning
+    area. This is crucial for responsive background images.
+    */
+    background-position: center center;
+    /*
+    "background-position: center center;" centers the background image both
+    horizontally and vertically within its container.
+    */
+    background-repeat: no-repeat;
+    /*
+    "background-repeat: no-repeat;" prevents the background image from tiling
+    (repeating itself) if it's smaller than the container.
+    */
+    background-attachment: fixed;
+    /*
+    "background-attachment: fixed;" is the magic property for parallax.
+    It makes the background image fixed relative to the viewport, meaning
+    it doesn't scroll with the rest of the content. As the user scrolls,
+    the foreground content moves over the stationary background, creating
+    the parallax illusion.
+    */
+    color: #fff; /* White text for contrast on dark images */
+    /*
+    "color: #fff;" sets the text color to white, ensuring it stands out
+    and is readable against the potentially dark background images.
+    */
+    display: flex; /* Use flexbox to center content */
+    align-items: center;
+    justify-content: center;
+}
+
+/* Parallax Section 1 Specific Styling */
+.parallax-1 {
+    /*
+    Specific styling for the first parallax section.
+    */
+    background-image: url('../images/parallax.jpg');
+    /*
+    "background-image: url('../images/parallax.jpg');" sets the specific
+    image to be used as the background for this parallax section. The path
+    `../images/parallax.jpg` means "go up one directory from the current CSS
+    file, then into the 'images' folder, and find 'parallax.jpg'".
+    */
+    height: 25vh;
+    /*
+    "height: 25vh;" sets the height of this section to 25% of the viewport height.
+    'vh' (viewport height) is a responsive unit, meaning the section's height
+    will scale with the user's browser window height.
+    */
+}
+
+/* Parallax Section 2 Specific Styling */
+.parallax-2 {
+    /*
+    Specific styling for the second parallax section.
+    */
+    background-image: url('../images/parallax.jpg'); /* Reusing the same image */
+    /*
+    "background-image: url('../images/parallax.jpg');" sets the background
+    image. It's the same image as the first parallax section, as per the prompt.
+    */
+    height: 10vh;
+    /*
+    "height: 10vh;" sets the height of this section to 10% of the viewport height,
+    making it a shorter visual break than the first parallax section.
+    */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    /*
+    @media (max-width: 768px) is a media query. It applies the styles within
+    its block only when the viewport width is 768 pixels or less. This is
+    a common breakpoint for tablets and smaller devices.
+    */
+    h1 {
+        font-size: 2.5em; /* Smaller font size for mobile */
+        /*
+        Reduces the main heading font size on smaller screens to prevent it
+        from being too large and overwhelming.
+        */
+    }
+
+    h2 {
+        font-size: 1.8em; /* Smaller font size for mobile sub-headings */
+        /*
+        Reduces sub-heading font size for better fit on smaller screens.
+        */
+    }
+
+    p {
+        font-size: 1em; /* Slightly smaller paragraph text for mobile */
+        /*
+        Adjusts paragraph font size for better readability on smaller screens.
+        */
+    }
+
+    .content-wrapper {
+        padding: 40px 15px; /* Adjust padding for smaller screens */
+        /*
+        Reduces vertical and horizontal padding to optimize space on mobile devices.
+        */
+    }
+
+    .parallax-1 {
+        height: 20vh; /* Slightly reduced height for mobile parallax */
+        /*
+        Adjusts the height of the first parallax section for mobile,
+        making it less dominant and allowing more content to be visible.
+        */
+    }
+
+    .parallax-2 {
+        height: 8vh; /* Slightly reduced height for mobile parallax */
+        /*
+        Adjusts the height of the second parallax section for mobile.
+        */
+}
+}
+
+@media (max-width: 480px) {
+    /*
+    @media (max-width: 480px) applies styles when the viewport width is
+    480 pixels or less, typically targeting smartphones in portrait mode.
+    */
+    h1 {
+        font-size: 2em; /* Even smaller font size for very small screens */
+    }
+
+    h2 {
+        font-size: 1.5em; /* Even smaller font size for very small screens */
+    }
+
+    p {
+        font-size: 0.95em; /* Slightly smaller paragraph text for very small screens */
+    }
+
+    .content-wrapper {
+        padding: 30px 10px; /* Further adjust padding for very small screens */
+    }
+
+    .parallax-1 {
+        height: 18vh; /* Further reduced height for very small screens */
+    }
+
+    .parallax-2 {
+        height: 7vh; /* Further reduced height for very small screens */
+    }
+}
