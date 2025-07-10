@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<!--
+    This is the main HTML5 document for our art gallery page.
+    It's named 'gallery.html' as per the prompt.
+-->
+<html lang="en">
+<head>
+    <!--
+        The <head> section contains meta-information about the HTML document,
+        such as its character set, viewport settings, title, and links to
+        external resources like stylesheets.
+    -->
+
+    <!--
+        Meta tag specifying the character encoding for the document.
+        'UTF-8' is a universal character set that supports almost all characters
+        and symbols in the world, ensuring text displays correctly across different
+        languages and systems.
+    -->
+    <meta charset="UTF-8">
+
+    <!--
+        Meta tag for responsive design.
+        'width=device-width' sets the width of the viewport to the width of the device.
+        'initial-scale=1.0' sets the initial zoom level when the page is first loaded.
+        This is crucial for ensuring the page adapts well to different screen sizes,
+        especially on mobile devices.
+    -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--
+        The <title> tag defines the title of the document, which appears in the
+        browser's title bar or tab. It's also used by search engines.
+    -->
+    <title>The Digital Canvas: A Modern Art Collection</title>
+
+    <!--
+        Link to our external CSS stylesheet.
+        'rel="stylesheet"' indicates that the linked document is a stylesheet.
+        'href="css/gallery.css"' specifies the path to our CSS file.
+        This separates the content (HTML) from the presentation (CSS), making
+        the code cleaner, easier to maintain, and allowing styles to be
+        reused across multiple pages.
+    -->
+    <link rel="stylesheet" href="css/gallery.css">
+
+    <!--
+        Link to Google Fonts for the "Inter" font.
+        This imports the Inter font family, which is a clean and modern
+        sans-serif font, improving the overall typography and readability
+        of the page. We're specifically requesting the 'wght@400;700'
+        styles, which means regular (400) and bold (700) weights.
+    -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!--
+        The <body> section contains the visible content of the HTML document.
+        This includes all text, images, links, and other elements that users
+        will see and interact with.
+    -->
+
+    <!--
+        The <header> element represents introductory content, typically
+        containing a group of introductory or navigational aids.
+        Here, it holds the main title of our gallery.
+    -->
+    <header>
+        <!--
+            The <h1> tag defines the most important heading on the page.
+            It provides a clear, concise title for the entire content.
+        -->
+        <h1>The Digital Canvas: A Modern Art Collection</h1>
+    </header>
+
+    <!--
+        The <main> element represents the dominant content of the <body>.
+        It should contain content that is unique to the document and
+        excludes any content that is repeated across a set of documents,
+        such as sidebars, navigation links, copyright information, etc.
+    -->
+    <main>
+        <!--
+            A <section> element groups related content. Here, it's used
+            for the introductory text about the art topic.
+        -->
+        <section class="intro-text">
+            <!--
+                The <h2> tag defines a sub-heading, less important than <h1>.
+            -->
+            <h2>Exploring Abstract Expressions</h2>
+            <!--
+                <p> tags define paragraphs of text.
+            -->
+            <p>
+                Welcome to "The Digital Canvas," an exhibition dedicated to the vibrant and ever-evolving world of abstract art.
+                Here, we delve into the depths of color, form, and emotion, showcasing pieces that challenge perception
+                and invite personal interpretation. Each artwork is a journey, a conversation between the artist's vision
+                and your unique perspective.
+            </p>
+            <p>
+                Our collection highlights the beauty of non-representational forms, where lines dance, colors sing,
+                and textures whisper stories untold. Prepare to immerse yourself in a realm where imagination reigns
+                supreme and boundaries dissolve.
+            </p>
+        </section>
+
+        <!--
+            This <div> acts as the container for our image grid.
+            The class 'gallery-grid' will be used in CSS to apply
+            CSS Grid properties for layout.
+        -->
+        <div class="gallery-grid">
+            <!--
+                Each <div> with the class 'gallery-item' will hold one image.
+                This allows us to apply specific styling and hover effects
+                to each individual image and its container.
+            -->
+            <div class="gallery-item">
+                <!--
+                    The <img> tag is used to embed an image in an HTML page.
+                    'src' specifies the path to the image file.
+                    'alt' provides alternative text for the image, which is crucial
+                    for accessibility (screen readers) and when the image cannot be displayed.
+                    The 'onerror' attribute provides a fallback if the image fails to load,
+                    displaying a placeholder image instead. This ensures the layout doesn't break
+                    and the user still sees something.
+                -->
+                <img src="images/gallery1.jpg" alt="Abstract painting with swirling blue and gold colors" onerror="this.onerror=null;this.src='https://placehold.co/600x400/90EE90/000000?text=Image+1+Missing';">
+            </div>
+            <div class="gallery-item">
+                <img src="images/gallery2.jpg" alt="Vibrant abstract piece with geometric shapes in red and yellow" onerror="this.onerror=null;this.src='https://placehold.co/600x400/ADD8E6/000000?text=Image+2+Missing';">
+            </div>
+            <div class="gallery-item">
+                <img src="images/gallery3.jpg" alt="Minimalist abstract art with black lines on a white background" onerror="this.onerror=null;this.src='https://placehold.co/600x400/FFB6C1/000000?text=Image+3+Missing';">
+            </div>
+            <div class="gallery-item">
+                <img src="images/gallery4.jpg" alt="Textured abstract painting with earthy tones and subtle brushstrokes" onerror="this.onerror=null;this.src='https://placehold.co/600x400/DDA0DD/000000?text=Image+4+Missing';">
+            </div>
+            <div class="gallery-item">
+                <img src="images/gallery5.jpg" alt="Dynamic abstract art with splashes of green and purple" onerror="this.onerror=null;this.src='https://placehold.co/600x400/F0E68C/000000?text=Image+5+Missing';">
+            </div>
+            <div class="gallery-item">
+                <img src="images/gallery6.jpg" alt="Abstract composition with flowing lines and soft gradients" onerror="this.onerror=null;this.src='https://placehold.co/600x400/87CEEB/000000?text=Image+6+Missing';">
+            </div>
+        </div>
+    </main>
+
+    <!--
+        The <footer> element represents a footer for its nearest sectioning content
+        or sectioning root element. Typically, it contains information about the author,
+        copyright data, or related documents.
+    -->
+    <footer>
+        <!--
+            The <p> tag defines a paragraph.
+            The &copy; HTML entity displays the copyright symbol.
+            getFullYear() is a JavaScript method that returns the current year.
+            This ensures the copyright year is always up-to-date.
+        -->
+        <p>&copy; <span id="current-year"></span> The Digital Canvas. All rights reserved.</p>
+    </footer>
+
+    <!--
+        A small JavaScript snippet to dynamically update the copyright year.
+        This is placed at the end of the <body> for performance, so the HTML
+        content can load before the script runs.
+    -->
+    <script>
+        // Get the span element by its ID.
+        const currentYearSpan = document.getElementById('current-year');
+        // Set its inner text to the current full year.
+        currentYearSpan.textContent = new Date().getFullYear();
+    </script>
+
+</body>
+</html>

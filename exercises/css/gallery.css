@@ -1,0 +1,505 @@
+/*
+    This is the external CSS stylesheet for our art gallery page.
+    It's named 'gallery.css' and is responsible for all the visual
+    presentation of the 'gallery.html' document.
+*/
+
+/*
+    =====================================================================
+    0. Basic Reset & Global Styles
+    =====================================================================
+    This section sets up a foundational style for the entire page,
+    ensuring consistency across different browsers and providing a
+    clean slate for our custom styles.
+*/
+
+* {
+    /*
+        The universal selector (*) applies styles to all elements on the page.
+        'box-sizing: border-box;' is a crucial CSS property. It changes how
+        the total width and height of an element are calculated.
+        Normally, padding and border are added to the specified width/height,
+        which can make layouts unpredictable. With 'border-box', padding and
+        border are *included* within the specified width/height, making layout
+        calculations much more intuitive and predictable, especially with
+        responsive designs.
+    */
+    box-sizing: border-box;
+}
+
+body {
+    /*
+        Font Family: 'Inter', sans-serif.
+        This sets the primary font for all text on the page. 'Inter' is a
+        modern, highly readable sans-serif typeface. 'sans-serif' is a
+        generic fallback in case 'Inter' cannot be loaded, ensuring that
+        the text still displays with a clean, unadorned font.
+    */
+    font-family: 'Inter', sans-serif;
+
+    /*
+        Background Color: #f4f4f4 (a very light gray).
+        This provides a soft, neutral background for the entire page,
+        allowing the art images to stand out.
+    */
+    background-color: #f4f4f4;
+
+    /*
+        Text Color: #333 (a dark gray, almost black).
+        This ensures high contrast with the light background, making
+        the text easily readable.
+    */
+    color: #333;
+
+    /*
+        Line Height: 1.6 (unitless value, relative to font-size).
+        This increases the spacing between lines of text, improving
+        readability, especially for longer paragraphs.
+    */
+    line-height: 1.6;
+
+    /*
+        Margin: 0.
+        Removes default browser margins around the body, allowing
+        us to control spacing precisely.
+    */
+    margin: 0;
+
+    /*
+        Padding: 20px.
+        Adds some space around the entire content within the body,
+        preventing content from touching the edges of the browser window.
+    */
+    padding: 20px;
+
+    /*
+        Display: flex; Flex-direction: column; Align-items: center;
+        These properties are used to center the main content horizontally.
+        'display: flex' turns the body into a flex container.
+        'flex-direction: column' stacks its direct children (header, main, footer)
+        vertically.
+        'align-items: center' centers the children along the cross-axis (horizontally
+        in a column layout).
+    */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/*
+    =====================================================================
+    1. Layout Containers
+    =====================================================================
+    These styles define the overall structure and positioning of major
+    sections on the page.
+*/
+
+header, main, footer {
+    /*
+        Max-width: 1200px.
+        This limits the maximum width of the header, main content, and footer.
+        It prevents the content from becoming too wide on very large screens,
+        which can make text lines too long and difficult to read, and images
+        too spread out.
+    */
+    max-width: 1200px;
+
+    /*
+        Width: 100%.
+        Ensures that these elements always take up the full available width
+        up to their 'max-width', making them responsive to smaller screens.
+    */
+    width: 100%;
+
+    /*
+        Margin-bottom: 40px.
+        Adds space below each major section, separating them visually.
+    */
+    margin-bottom: 40px;
+}
+
+header {
+    /*
+        Text-align: center.
+        Centers the text content within the header.
+    */
+    text-align: center;
+
+    /*
+        Padding: 20px 0.
+        Adds vertical padding to the header, providing space above and below
+        the title.
+    */
+    padding: 20px 0;
+}
+
+h1 {
+    /*
+        Font-size: 2.5em (relative to parent font-size).
+        Makes the main heading large and prominent.
+    */
+    font-size: 2.5em;
+
+    /*
+        Color: #2c3e50 (a dark, deep blue-gray).
+        A slightly softer color than pure black for the heading,
+        adding a touch of sophistication.
+    */
+    color: #2c3e50;
+
+    /*
+        Margin-bottom: 20px.
+        Adds space below the heading, separating it from subsequent content.
+    */
+    margin-bottom: 20px;
+}
+
+.intro-text {
+    /*
+        Padding: 20px;
+        Adds internal spacing around the introductory text.
+    */
+    padding: 20px;
+
+    /*
+        Background-color: #ffffff (pure white).
+        Gives the introductory text section a distinct background,
+        making it stand out from the body background.
+    */
+    background-color: #ffffff;
+
+    /*
+        Border-radius: 8px.
+        Applies rounded corners to the introductory text box,
+        giving it a softer, modern look.
+    */
+    border-radius: 8px;
+
+    /*
+        Box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05).
+        Adds a subtle shadow, giving the box a slight lifted effect
+        and separating it visually from the background.
+        - 0 (horizontal offset): no horizontal shadow.
+        - 2px (vertical offset): shadow extends 2px downwards.
+        - 5px (blur radius): shadow is blurred by 5px.
+        - rgba(0, 0, 0, 0.05): black color with 5% opacity, making it very faint.
+    */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+
+    /*
+        Text-align: center.
+        Centers the text within the introductory section.
+    */
+    text-align: center;
+
+    /*
+        Margin-bottom: 40px.
+        Adds space below the introductory text section.
+    */
+    margin-bottom: 40px;
+}
+
+h2 {
+    /*
+        Font-size: 1.8em.
+        Sets the size for sub-headings, making them smaller than h1 but still prominent.
+    */
+    font-size: 1.8em;
+
+    /*
+        Color: #34495e (a slightly lighter dark blue-gray).
+        Consistent with the heading color scheme.
+    */
+    color: #34495e;
+
+    /*
+        Margin-bottom: 15px.
+        Adds space below the sub-heading.
+    */
+    margin-bottom: 15px;
+}
+
+/*
+    =====================================================================
+    2. Gallery Grid Layout (Desktop First)
+    =====================================================================
+    This section defines the core grid layout for the images,
+    starting with the desktop view and then adapting for smaller screens.
+*/
+
+.gallery-grid {
+    /*
+        CSS Grid Layout:
+        'display: grid;' transforms the '.gallery-grid' container into a
+        grid container, enabling the use of grid-specific properties for
+        its direct children (the '.gallery-item' divs).
+    */
+    display: grid;
+
+    /*
+        Grid Template Columns: repeat(3, 1fr).
+        This is the most important property for defining the column layout.
+        'repeat(3, 1fr)' creates three columns, each taking up an equal
+        fraction of the available space (1fr means 1 fraction unit).
+        This results in a perfectly balanced three-column layout for desktop screens.
+    */
+    grid-template-columns: repeat(3, 1fr);
+
+    /*
+        Gap: 20px.
+        This property creates a 20-pixel space (gutter) between grid items,
+        both horizontally and vertically. It ensures visual separation and
+        prevents images from touching each other.
+    */
+    gap: 20px;
+
+    /*
+        Padding: 0 20px.
+        Adds horizontal padding to the grid container, ensuring the grid
+        doesn't touch the very edges of the screen on smaller viewports.
+    */
+    padding: 0 20px;
+}
+
+/*
+    =====================================================================
+    3. Individual Gallery Items & Images
+    =====================================================================
+    These styles apply to each image container and the images themselves,
+    including visual enhancements and responsiveness.
+*/
+
+.gallery-item {
+    /*
+        Background Color: #ffffff (pure white).
+        Each image item will have a white background, creating a clean
+        frame around the images.
+    */
+    background-color: #ffffff;
+
+    /*
+        Border Radius: 8px.
+        Applies rounded corners to each image container, giving them a
+        softer, modern aesthetic.
+    */
+    border-radius: 8px;
+
+    /*
+        Overflow: hidden.
+        This is crucial for the hover effect. When the image inside scales
+        up, 'overflow: hidden' ensures that any part of the image that
+        extends beyond the rounded corners of its parent container
+        ('.gallery-item') is clipped, maintaining the rounded shape.
+    */
+    overflow: hidden;
+
+    /*
+        Box Shadow: 0 4px 8px rgba(0, 0, 0, 0.1).
+        Adds a subtle shadow beneath each image item, giving it a slight
+        3D effect and making it appear to float above the background.
+        - 0 (horizontal offset): no horizontal shadow.
+        - 4px (vertical offset): shadow extends 4px downwards.
+        - 8px (blur radius): shadow is blurred by 8px.
+        - rgba(0, 0, 0, 0.1): black color with 10% opacity, making it faint.
+    */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+    /*
+        Transition: all 0.3s ease-in-out.
+        This property creates a smooth animation for any changes to the
+        'box-shadow' property when the user hovers over the item.
+        - 'all': applies the transition to all animatable CSS properties.
+        - '0.3s': the duration of the transition (0.3 seconds).
+        - 'ease-in-out': the timing function, which makes the animation
+          start slowly, accelerate, and then end slowly, creating a natural feel.
+    */
+    transition: all 0.3s ease-in-out;
+}
+
+.gallery-item img {
+    /*
+        Width: 100%.
+        Ensures that the image inside the '.gallery-item' always takes
+        up the full width of its parent container, making it responsive.
+    */
+    width: 100%;
+
+    /*
+        Height: auto.
+        Maintains the image's aspect ratio. As the width changes, the
+        height will automatically adjust proportionally, preventing
+        image distortion.
+    */
+    height: auto;
+
+    /*
+        Display: block.
+        Removes any extra space that browsers might add below images
+        by default (due to them being inline elements). This ensures
+        the image behaves like a block-level element, taking up its
+        own line and allowing precise control over its spacing.
+    */
+    display: block;
+
+    /*
+        Transition: transform 0.3s ease-in-out.
+        This property creates a smooth animation specifically for the
+        'transform' property (which we'll use for scaling on hover).
+        - 'transform': the specific property to animate.
+        - '0.3s': the duration of the transition (0.3 seconds).
+        - 'ease-in-out': the timing function for a smooth start and end.
+    */
+    transition: transform 0.3s ease-in-out;
+}
+
+/*
+    =====================================================================
+    4. Interaction Behavior (Hover Effects)
+    =====================================================================
+    This section defines what happens when a user hovers their mouse
+    over an image item, providing visual feedback.
+*/
+
+/*
+    Interaction Behavior: Image Scale and Box Shadow
+    When the mouse cursor hovers over a '.gallery-item' (the container
+    around the image), these styles are applied.
+*/
+.gallery-item:hover {
+    /*
+        Box Shadow: 0 8px 16px rgba(0, 0, 0, 0.2).
+        On hover, the box shadow becomes more pronounced.
+        - 0 (horizontal offset): no horizontal shadow.
+        - 8px (vertical offset): shadow extends further downwards (was 4px).
+        - 16px (blur radius): shadow is more blurred (was 8px).
+        - rgba(0, 0, 0, 0.2): black color with 20% opacity (was 10%), making it darker.
+        This gives a stronger lifted effect, indicating interactivity.
+    */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/*
+    Interaction Behavior: Image Scale
+    When the mouse cursor hovers over a '.gallery-item', the 'img'
+    element *inside* that item will be transformed.
+*/
+.gallery-item:hover img {
+    /*
+        Transform: scale(1.05).
+        This is our primary hover effect. 'scale(1.05)' increases the
+        size of the image by 5% (1.05 times its original size).
+        Because we have 'overflow: hidden' on the parent '.gallery-item'
+        and a 'transition' on the 'img', this scaling happens smoothly
+        and stays within the rounded boundaries of the container.
+    */
+    transform: scale(1.05); /* Scales the image up by 5% */
+}
+
+
+/*
+    =====================================================================
+    5. Responsive Design (Media Queries)
+    =====================================================================
+    This section uses media queries to adjust the layout for different
+    screen sizes, ensuring the gallery is fully responsive.
+*/
+
+/*
+    Media Query for Smaller Screens (Tablets and Phones):
+    @media (max-width: 768px) applies the enclosed styles only when the
+    viewport width is 768 pixels or less. This breakpoint is commonly
+    used to target tablets in portrait mode and larger phones.
+*/
+@media (max-width: 768px) {
+    .gallery-grid {
+        /*
+            Grid Template Columns: repeat(1, 1fr).
+            On screens 768px wide or less, the grid layout collapses to
+            a single column. 'repeat(1, 1fr)' means there will be only
+            one column, taking up the full available width. This makes
+            the gallery easy to view and scroll on smaller devices,
+            as requested by the prompt.
+        */
+        grid-template-columns: repeat(1, 1fr);
+
+        /*
+            Padding: 0 15px.
+            Slightly reduces horizontal padding for the grid on smaller screens
+            to maximize content space while still providing some margin.
+        */
+        padding: 0 15px;
+    }
+
+    body {
+        /*
+            Padding: 15px.
+            Reduces the overall body padding on smaller screens to make
+            better use of the limited screen real estate.
+        */
+        padding: 15px;
+    }
+
+    h1 {
+        /*
+            Font-size: 2em.
+            Reduces the main heading font size slightly on smaller screens
+            to prevent it from appearing too large and overwhelming.
+        */
+        font-size: 2em;
+    }
+
+    h2 {
+        /*
+            Font-size: 1.5em.
+            Reduces the sub-heading font size for smaller screens.
+        */
+        font-size: 1.5em;
+    }
+}
+
+/*
+    =====================================================================
+    6. Footer Styles
+    =====================================================================
+    Styles specifically for the footer content.
+*/
+
+footer {
+    /*
+        Text-align: center.
+        Centers the copyright text within the footer.
+    */
+    text-align: center;
+
+    /*
+        Padding: 20px 0.
+        Adds vertical padding to the footer.
+    */
+    padding: 20px 0;
+
+    /*
+        Margin-top: 40px.
+        Adds space above the footer, separating it from the main content.
+    */
+    margin-top: 40px;
+
+    /*
+        Border-top: 1px solid #eee.
+        Adds a subtle light gray line above the footer, visually
+        separating it from the main content.
+    */
+    border-top: 1px solid #eee;
+
+    /*
+        Color: #777 (a medium gray).
+        Sets a softer color for the footer text, indicating it's
+        secondary information.
+    */
+    color: #777;
+
+    /*
+        Font-size: 0.9em.
+        Makes the footer text slightly smaller.
+    */
+    font-size: 0.9em;
+}
