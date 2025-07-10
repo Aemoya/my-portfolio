@@ -1,0 +1,200 @@
+/*
+    Neurotically detailed comments explaining every tag, class, style rule, and color value.
+    This stylesheet (css/lists-links.css) is linked to the HTML file (lists-links.html).
+*/
+
+/*
+    Color Scheme:
+    - Primary Background: #f4f4f4 (a very light gray, almost white, for a clean and minimalist look)
+    - Text Color (Dark): #333 (a dark gray, providing good contrast against the light background for readability)
+    - Accent Color (Links/Hover): #007bff (a vibrant blue, commonly used for links, offering good visibility and a modern feel)
+    - Hover Underline: #0056b3 (a slightly darker shade of the accent blue, for subtle visual feedback on hover)
+*/
+
+/*
+    Interaction Behavior:
+    - On hover over navigation links, the text color changes from dark gray (#333) to a vibrant blue (#007bff).
+    - Simultaneously, a solid underline appears below the text, also in the vibrant blue.
+    - A smooth transition effect is applied to both the color and text-decoration properties,
+      making the change appear gradual and pleasing to the eye rather than abrupt.
+*/
+
+body {
+    /* The `body` selector targets the entire content area of the HTML document. */
+    font-family: Arial, sans-serif;
+    /* `font-family` specifies the font to be used for text within the body.
+       'Arial' is a common sans-serif font, widely available.
+       'sans-serif' is a generic font family fallback, meaning if Arial isn't available,
+       the browser will use another sans-serif font (like Helvetica or a system default). */
+    margin: 0;
+    /* `margin: 0;` removes any default outer spacing (margin) around the body.
+       Browsers often apply a small default margin, which can interfere with layout. */
+    background-color: #f4f4f4;
+    /* `background-color` sets the background color of the entire page.
+       `#f4f4f4` is a very light gray, almost off-white, providing a clean and soft backdrop. */
+    color: #333;
+    /* `color` sets the default text color for elements within the body.
+       `#333` is a dark gray, offering good readability against the light background. */
+    line-height: 1.6;
+    /* `line-height` sets the height of each line of text.
+       `1.6` means the line height will be 1.6 times the font size, improving readability
+       by adding more space between lines. */
+    display: flex;
+    /* `display: flex;` turns the body into a flex container. This is crucial for
+       using Flexbox properties to center content within the body. */
+    flex-direction: column;
+    /* `flex-direction: column;` arranges flex items (direct children of the body)
+       in a vertical column. This means the header, main, and footer will stack vertically. */
+    min-height: 100vh;
+    /* `min-height: 100vh;` ensures the body takes up at least the full height of the
+       viewport (vh stands for viewport height). This is important for centering
+       content vertically on pages with less content. */
+}
+
+header, footer {
+    /* These selectors target the `header` and `footer` elements. */
+    background-color: #333;
+    /* Sets a dark gray background color for the header and footer. */
+    color: #f4f4f4;
+    /* Sets the text color to the light gray for contrast against the dark background. */
+    padding: 1rem;
+    /* Adds 1 unit of padding (inner spacing) around the content of the header and footer.
+       `1rem` is relative to the root font size (typically 16px, so 1rem = 16px). */
+    text-align: center;
+    /* Centers the text content horizontally within the header and footer. */
+}
+
+h1, h2 {
+    /* These selectors target `h1` and `h2` heading elements. */
+    color: #007bff;
+    /* Sets the color of the headings to the vibrant blue, making them stand out. */
+    text-align: center;
+    /* Centers the heading text horizontally. */
+    margin-top: 1.5rem;
+    /* Adds extra space above the headings. */
+    margin-bottom: 1rem;
+    /* Adds extra space below the headings. */
+}
+
+p {
+    /* This selector targets all `p` (paragraph) elements. */
+    max-width: 800px;
+    /* Sets a maximum width for paragraphs to prevent lines of text from becoming too long,
+       which can make them hard to read. */
+    margin: 0 auto 1rem auto;
+    /* Centers paragraphs horizontally on the page.
+       `margin: 0 auto 1rem auto;` sets top margin to 0, left/right margin to `auto` (for centering),
+       and bottom margin to 1rem. */
+    padding: 0 1rem;
+    /* Adds some padding on the left and right sides of the paragraph, useful on smaller screens. */
+    text-align: justify;
+    /* Distributes words evenly, creating a straight edge on both the left and right. */
+}
+
+main {
+    /* The `main` selector targets the main content area of the page. */
+    flex-grow: 1;
+    /* `flex-grow: 1;` allows the `main` element to grow and take up any available
+       extra space within the flex container (`body`). This ensures the footer is
+       pushed to the bottom of the viewport even if there's not much content. */
+    display: flex;
+    /* Turns the `main` element into a flex container itself. */
+    flex-direction: column;
+    /* Arranges its children (the paragraph, nav, and section) in a column. */
+    align-items: center;
+    /* `align-items: center;` horizontally centers the flex items (children)
+       along the cross axis (which is horizontal because `flex-direction` is `column`). */
+    justify-content: center;
+    /* `justify-content: center;` vertically centers the flex items along the main
+       axis (which is vertical because `flex-direction` is `column`). */
+    padding: 20px 0;
+    /* Adds vertical padding inside the main content area. */
+}
+
+.main-navigation {
+    /* This targets the `nav` element that has the class `main-navigation`.
+       This class is specifically for our navigation block. */
+    background-color: #fff;
+    /* Sets a white background color for the navigation container, making it stand out. */
+    padding: 20px 40px;
+    /* Adds inner spacing (padding) around the navigation links. */
+    border-radius: 8px;
+    /* Rounds the corners of the navigation container, giving it a softer look. */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Adds a subtle shadow effect, making the navigation block appear slightly raised.
+       `0 4px 8px` defines the x-offset, y-offset, and blur radius of the shadow.
+       `rgba(0, 0, 0, 0.1)` defines the color (black) and its transparency (10% opaque). */
+    margin: 20px auto;
+    /* `margin: 20px auto;` adds 20px of top/bottom margin and uses `auto` for
+       left/right margin, which horizontally centers the navigation block within its parent.
+       This is an alternative to Flexbox centering for a block-level element. */
+    max-width: fit-content;
+    /* Sets the maximum width of the navigation container to be just wide enough
+       to fit its content. This prevents it from stretching across the entire page. */
+}
+
+.main-navigation ul {
+    /* This targets the unordered list (`ul`) inside the `.main-navigation` element. */
+    list-style: none;
+    /* `list-style: none;` removes the default bullet points (or numbers) from list items. */
+    padding: 0;
+    /* `padding: 0;` removes any default inner spacing from the list.
+       Browsers often add default padding to `ul` elements. */
+    margin: 0;
+    /* `margin: 0;` removes any default outer spacing from the list. */
+    display: flex;
+    /* Turns the `ul` into a flex container. */
+    flex-direction: column;
+    /* Arranges the list items (`li`) in a vertical column. */
+    align-items: flex-start;
+    /* Aligns flex items to the start of the cross axis (left, in a column layout).
+       This ensures the text of the links aligns neatly on the left. */
+}
+
+.main-navigation li {
+    /* This targets each list item (`li`) inside the `.main-navigation` unordered list. */
+    margin-bottom: 15px;
+    /* Adds 15px of space below each list item, creating vertical separation between links. */
+}
+
+.main-navigation li:last-child {
+    /* This targets the very last list item (`li`) in the navigation list. */
+    margin-bottom: 0;
+    /* Removes the bottom margin from the last list item to prevent excessive spacing
+       below the final link. */
+}
+
+.main-navigation a {
+    /* This targets all anchor (`a`) elements (our links) inside the `.main-navigation` element. */
+    text-decoration: none;
+    /* `text-decoration: none;` removes the default underline from the links.
+       We'll add an underline back on hover for a nicer effect. */
+    color: #333;
+    /* Sets the initial color of the links to dark gray, matching the body text. */
+    font-size: 1.1rem;
+    /* Increases the font size of the links slightly for better visibility. */
+    padding: 5px 0;
+    /* Adds some vertical padding around the link text, making the hover area larger. */
+    transition: color 0.3s ease, text-decoration 0.3s ease;
+    /* `transition` defines a smooth animation for CSS property changes.
+       `color 0.3s ease` means changes to the `color` property will take 0.3 seconds
+       to animate, with an `ease` (slow start, fast middle, slow end) timing function.
+       `text-decoration 0.3s ease` applies the same transition to the `text-decoration` property.
+       This creates the "smooth transition" effect for the hover state. */
+    display: inline-block;
+    /* `display: inline-block;` allows us to apply padding and transitions more reliably
+       to an inline element like `<a>`. It also prevents issues with `text-decoration`
+       transitioning correctly in some browsers. */
+}
+
+.main-navigation a:hover {
+    /* This targets anchor (`a`) elements when the mouse cursor is hovering over them. */
+    color: #007bff;
+    /* Changes the text color to the vibrant blue when hovered over. */
+    text-decoration: underline;
+    /* Adds an underline to the text when hovered over.
+       Combined with the `transition` on the `a` element, this underline will appear smoothly. */
+    text-decoration-color: #007bff;
+    /* Explicitly sets the color of the underline to the vibrant blue,
+       matching the link text color on hover. */
+}
