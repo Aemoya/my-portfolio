@@ -1,0 +1,361 @@
+/*
+User Prompt:
+Create a complete HTML5 page named button-hover.html that displays a large call-to-action button centered on the screen. Style the button in an external CSS file at css/button-hover.css
+ using a custom background color, rounded corners, appropriate padding,
+and a smooth hover transition. On hover, change the button’s background
+color to a clearly contrasting or visually engaging alternative. Write
+neurotically detailed comments in all files; explain every tag, class,
+style rule, and color value as if you're walking a complete beginner
+through the reasoning behind each choice. Be sure to include named
+comments describing your color scheme and interaction behavior. Include
+this full prompt as a comment at the top of the HTML file. Use
+placeholder content about an art topic of your choice to complete the
+page.
+*/
+
+/* --- Global Styles --- */
+
+/*
+The '*' is a universal selector, meaning these styles apply to every element on the page.
+This is used to reset default browser margins and paddings for consistent styling.
+*/
+* {
+    margin: 0; /* Removes default outer spacing around elements. */
+    padding: 0; /* Removes default inner spacing within elements. */
+    box-sizing: border-box; /*
+                               This property changes how the total width and height
+                               of an element are calculated. With 'border-box',
+                               padding and border are included in the element's
+                               total width and height, making layout calculations
+                               much more intuitive and predictable.
+                             */
+}
+
+html, body {
+    height: 100%; /*
+                    Sets the height of both the html and body elements to 100%
+                    of the viewport height. This is crucial for allowing the
+                    flexbox centering on the body to work correctly across the
+                    entire screen.
+                  */
+    font-family: 'Inter', sans-serif; /*
+                                        Sets the primary font for the entire page to 'Inter'.
+                                        'sans-serif' is a generic family fallback, meaning if 'Inter'
+                                        can't be loaded, the browser will use a generic sans-serif font
+                                        (like Arial or Helvetica), ensuring text is always readable.
+                                      */
+    line-height: 1.6; /*
+                        Sets the spacing between lines of text. A value of 1.6
+                        means the line height is 1.6 times the font size,
+                        which improves readability by providing enough vertical
+                        space between lines.
+                      */
+    color: #333; /*
+                   Sets the default text color for the entire page to a dark grey.
+                   This provides good contrast against a light background.
+                 */
+    background-color: #f4f4f4; /*
+                                  Sets a very light grey background color for the entire page.
+                                  This provides a soft, neutral canvas for the content.
+                                */
+}
+
+/* --- Layout and Centering --- */
+
+body {
+    display: flex; /*
+                      Enables Flexbox for the body element. Flexbox is a one-dimensional
+                      layout method for arranging items in rows or columns.
+                    */
+    flex-direction: column; /*
+                               Arranges the direct children of the body (header, main, footer)
+                               in a vertical column.
+                             */
+    justify-content: center; /*
+                                Vertically centers the content along the main axis (column).
+                                This pushes the header, main, and footer to the center of the viewport.
+                              */
+    align-items: center; /*
+                            Horizontally centers the content along the cross axis (row).
+                            This ensures that the main content block is centered horizontally.
+                          */
+    min-height: 100vh; /*
+                         Ensures the body takes at least 100% of the viewport height (vh).
+                         This is important for centering on pages with minimal content,
+                         preventing the body from collapsing.
+                       */
+    padding: 20px; /*
+                      Adds some padding around the entire body content, ensuring
+                      content doesn't touch the edges of the browser window.
+                    */
+}
+
+main {
+    flex-grow: 1; /*
+                    Allows the <main> element to grow and take up any available
+                    space. This is crucial when using `justify-content: center`
+                    on the body, as it pushes the header to the top and footer
+                    to the bottom, while the main content expands to fill the middle.
+                  */
+    width: 100%; /* Ensures the main content takes up the full available width. */
+    max-width: 800px; /*
+                         Sets a maximum width for the main content. This prevents
+                         the content from becoming too wide on large screens,
+                         improving readability.
+                       */
+    margin: 20px 0; /*
+                       Adds vertical margin above and below the main content.
+                       '20px' for top/bottom, '0' for left/right.
+                     */
+    background-color: #fff; /*
+                               Sets a white background for the main content area,
+                               making it stand out from the body's light grey background.
+                             */
+    padding: 40px; /*
+                      Adds generous inner spacing within the main content area,
+                      creating breathing room around the text and button.
+                    */
+    border-radius: 12px; /*
+                            Applies rounded corners to the main content box,
+                            giving it a softer, modern look.
+                          */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /*
+                                                  Adds a subtle shadow effect to the main content box.
+                                                  - 0px horizontal offset
+                                                  - 4px vertical offset
+                                                  - 15px blur radius
+                                                  - rgba(0, 0, 0, 0.1) is a black color with 10% opacity,
+                                                    creating a soft, diffused shadow.
+                                                */
+    text-align: center; /* Centers all inline content (like text) within the main element. */
+}
+
+.button-container {
+    display: flex; /*
+                      Enables Flexbox for the button container.
+                      This is used to center the button horizontally within its parent.
+                    */
+    justify-content: center; /*
+                                Horizontally centers the children (the button) along the main axis.
+                              */
+    margin-top: 30px; /*
+                         Adds space above the button container, separating it
+                         from the text above.
+                       */
+}
+
+/* --- Typography --- */
+
+h1 {
+    font-size: 3em; /*
+                       Sets the font size of the main heading. '3em' means 3 times
+                       the default font size of the parent element, making it very large.
+                     */
+    color: #2c3e50; /*
+                      Sets the color of the main heading to a deep, dark blue-grey.
+                      This color is strong and professional.
+                    */
+    margin-bottom: 15px; /* Adds space below the heading. */
+    text-align: center; /* Centers the heading text. */
+}
+
+h2 {
+    font-size: 2.2em; /*
+                         Sets the font size for subheadings. '2.2em' makes it
+                         smaller than h1 but still prominent.
+                       */
+    color: #34495e; /*
+                      Sets the color of subheadings to a slightly lighter dark blue-grey.
+                    */
+    margin-bottom: 20px; /* Adds space below the subheading. */
+}
+
+h3 {
+    font-size: 1.8em; /*
+                         Sets the font size for smaller headings. '1.8em' is
+                         smaller than h2 but larger than paragraph text.
+                       */
+    color: #34495e; /* Uses the same color as h2 for consistency. */
+    margin-bottom: 15px; /* Adds space below the heading. */
+}
+
+p {
+    font-size: 1.1em; /*
+                         Sets the font size for paragraphs. '1.1em' makes it
+                         slightly larger than the browser's default, improving
+                         readability.
+                       */
+    margin-bottom: 20px; /* Adds space below each paragraph. */
+    line-height: 1.8; /*
+                         Increases line height for paragraphs for better readability,
+                         especially for longer blocks of text.
+                       */
+    color: #555; /* Sets paragraph text color to a medium grey for softness. */
+    text-align: justify; /*
+                            Aligns text to both the left and right margins,
+                            creating clean edges, common in print media.
+                            Note: Can sometimes create awkward spacing between words.
+                          */
+}
+
+/* --- Button Styling (The Core of the Request) --- */
+
+/* --- Color Scheme for Button ---
+   Primary Button Background: #3498db (A vibrant, inviting blue)
+   Hover Button Background:   #e74c3c (A strong, contrasting red/orange)
+   Text Color:                #ffffff (Pure white for high contrast)
+*/
+
+.call-to-action-button {
+    /* --- Base Button Styles --- */
+    background-color: #3498db; /*
+                                  Sets the initial background color of the button to a vibrant blue.
+                                  This color is often associated with trustworthiness and technology,
+                                  and it stands out well as a call-to-action.
+                                */
+    color: #ffffff; /*
+                       Sets the text color inside the button to pure white.
+                       This provides excellent contrast against the blue background,
+                       making the button text highly readable.
+                     */
+    padding: 20px 40px; /*
+                           Adds inner spacing within the button.
+                           - 20px for top and bottom padding (vertical space).
+                           - 40px for left and right padding (horizontal space).
+                           This generous padding makes the button feel large and clickable.
+                         */
+    border: none; /*
+                    Removes the default border that browsers apply to buttons.
+                    We want a clean, borderless look.
+                  */
+    border-radius: 10px; /*
+                            Applies rounded corners to the button. '10px' creates
+                            a noticeably soft, modern shape, making it more appealing.
+                          */
+    font-size: 1.5em; /*
+                         Sets the font size of the button text. '1.5em' makes the
+                         text large and easy to read, emphasizing the call-to-action.
+                       */
+    font-weight: 700; /*
+                         Sets the font weight to bold (700). This makes the text
+                         stand out even more.
+                       */
+    cursor: pointer; /*
+                        Changes the mouse cursor to a pointer (hand icon) when
+                        hovering over the button. This visually indicates that
+                        the element is clickable.
+                      */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /*
+                                                  Adds a more pronounced shadow to the button.
+                                                  - 0px horizontal offset
+                                                  - 5px vertical offset
+                                                  - 15px blur radius
+                                                  - rgba(0, 0, 0, 0.2) is a black color with 20% opacity,
+                                                    giving it a subtle "lifted" appearance.
+                                                */
+    outline: none; /*
+                     Removes the default outline that appears on buttons when they
+                     are focused (e.g., clicked or tabbed to). We'll handle focus
+                     styles separately if needed for accessibility.
+                   */
+
+    /* --- Interaction Behavior: Smooth Transition --- */
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    /*
+      The 'transition' property creates a smooth animation effect when CSS properties change.
+      - "background-color 0.3s ease": Animates the background color change over 0.3 seconds
+        with an 'ease' timing function (starts slow, speeds up, ends slow).
+      - "transform 0.3s ease": Animates any 'transform' properties (like scale) over 0.3 seconds.
+      - "box-shadow 0.3s ease": Animates the box shadow change over 0.3 seconds.
+      This makes the hover effect appear fluid and professional, rather than abrupt.
+    */
+}
+
+.call-to-action-button:hover {
+    /* --- Interaction Behavior: Hover State --- */
+    background-color: #e74c3c; /*
+                                  Changes the background color to a strong, contrasting red/orange
+                                  on hover. This color is visually engaging and signals a clear
+                                  change in state, reinforcing the interactivity.
+                                  It's a common practice to use a vibrant color for hover.
+                                */
+    transform: translateY(-3px); /*
+                                    Moves the button slightly upwards by 3 pixels on hover.
+                                    This subtle vertical shift adds a tactile, "popping out"
+                                    effect, making the button feel more responsive and clickable.
+                                  */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /*
+                                                  Increases the shadow on hover.
+                                                  - 0px horizontal offset
+                                                  - 8px vertical offset (more pronounced lift)
+                                                  - 20px blur radius (more diffused)
+                                                  - rgba(0, 0, 0, 0.3) is black with 30% opacity (darker shadow).
+                                                  This enhances the "lifted" effect, making the button
+                                                  appear to come forward from the screen.
+                                                */
+}
+
+/* --- Footer Styles --- */
+footer {
+    margin-top: 40px; /* Adds space above the footer, separating it from the main content. */
+    padding: 20px; /* Adds inner spacing within the footer. */
+    text-align: center; /* Centers the text within the footer. */
+    color: #777; /* Sets the footer text color to a light grey. */
+    font-size: 0.9em; /* Makes the footer text slightly smaller. */
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 768px) {
+    /*
+      This is a media query. Styles inside this block will only apply when
+      the screen width is 768 pixels or less (typical for tablets in portrait mode and smaller).
+      It's used to make the design responsive and look good on smaller devices.
+    */
+    h1 {
+        font-size: 2.5em; /* Reduces the main heading font size for smaller screens. */
+    }
+
+    h2 {
+        font-size: 1.8em; /* Reduces subheading font size. */
+    }
+
+    .call-to-action-button {
+        font-size: 1.2em; /* Reduces button text font size. */
+        padding: 15px 30px; /* Reduces button padding. */
+    }
+
+    main {
+        padding: 25px; /* Reduces main content padding. */
+    }
+}
+
+@media (max-width: 480px) {
+    /*
+      Another media query for even smaller screens (typical for mobile phones).
+      These styles apply when the screen width is 480 pixels or less.
+    */
+    h1 {
+        font-size: 2em; /* Further reduces main heading font size. */
+    }
+
+    h2 {
+        font-size: 1.5em; /* Further reduces subheading font size. */
+    }
+
+    p {
+        font-size: 1em; /* Adjusts paragraph font size. */
+        text-align: left; /*
+                            On very small screens, justified text can look bad due to
+                            large gaps between words. Left alignment is often preferred.
+                          */
+    }
+
+    .call-to-action-button {
+        font-size: 1em; /* Further reduces button text font size for very small screens. */
+        padding: 12px 25px; /* Further reduces button padding. */
+    }
+
+    main {
+        padding: 20px; /* Further reduces main content padding. */
+    }
+}

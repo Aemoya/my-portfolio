@@ -1,0 +1,181 @@
+<!--
+User Prompt:
+Create a complete HTML5 page named button-hover.html that displays a large call-to-action button centered on the screen. Style the button in an external CSS file at css/button-hover.css
+ using a custom background color, rounded corners, appropriate padding,
+and a smooth hover transition. On hover, change the button’s background
+color to a clearly contrasting or visually engaging alternative. Write
+neurotically detailed comments in all files; explain every tag, class,
+style rule, and color value as if you're walking a complete beginner
+through the reasoning behind each choice. Be sure to include named
+comments describing your color scheme and interaction behavior. Include
+this full prompt as a comment at the top of the HTML file. Use
+placeholder content about an art topic of your choice to complete the
+page.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--
+    The <head> section contains meta-information about the HTML document,
+    such as its title, links to stylesheets, and character set.
+    This information is not directly displayed on the web page.
+    -->
+
+    <meta charset="UTF-8">
+    <!--
+    The <meta charset="UTF-8"> tag specifies the character encoding for the document.
+    "UTF-8" is a universal character encoding that supports almost all characters
+    and symbols in the world, ensuring that text is displayed correctly across
+    different browsers and operating systems. It's crucial for avoiding garbled text.
+    -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--
+    The <meta name="viewport"> tag is essential for responsive web design.
+    - "width=device-width": This sets the width of the viewport to the width of the device's screen.
+      This means the page will adapt to the screen size of the device (e.g., phone, tablet, desktop).
+    - "initial-scale=1.0": This sets the initial zoom level when the page is first loaded.
+      A value of 1.0 means no zooming, so the page appears at its actual size,
+      which is generally desired for a consistent user experience.
+    -->
+
+    <title>Discover Impressionism - Button Hover Example</title>
+    <!--
+    The <title> tag defines the title of the HTML document.
+    This title appears in the browser's title bar or tab.
+    It's also used by search engines and when bookmarking the page.
+    Here, it tells the user what the page is about: "Discover Impressionism"
+    and indicates it's a "Button Hover Example" for clarity.
+    -->
+
+    <link rel="stylesheet" href="css/button-hover.css">
+    <!--
+    The <link> tag is used to link an external resource to the HTML document.
+    - "rel="stylesheet"": This attribute specifies the relationship between the current
+      document and the linked document. "stylesheet" indicates that the linked file
+      is a cascading style sheet, which defines the visual presentation of the page.
+    - "href="css/button-hover.css"": This attribute specifies the URL (path) of the
+      external stylesheet file. In this case, it's located in a 'css' folder
+      relative to the HTML file, and its name is 'button-hover.css'.
+      This separation of HTML (structure) and CSS (style) is a best practice
+      for maintainability and cleaner code.
+    -->
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <!--
+    This link tag imports the 'Inter' font from Google Fonts.
+    - "href" points to the Google Fonts API which provides the font files.
+    - "family=Inter:wght@400;700": Requests the 'Inter' font with normal (400) and bold (700) weights.
+    - "display=swap": This is a font-display descriptor that tells the browser
+      how to display text while the font is loading. 'swap' means the browser
+      will use a fallback font immediately and swap it with 'Inter' once it's loaded,
+      improving perceived performance.
+    -->
+</head>
+<body>
+    <!--
+    The <body> section contains the visible content of the HTML document.
+    Everything you see on a web page (text, images, buttons, etc.) goes inside here.
+    -->
+
+    <header>
+        <!--
+        The <header> element represents introductory content, typically a group of
+        introductory or navigational aids. It often contains heading elements.
+        -->
+        <h1>Journey into Impressionism</h1>
+        <!--
+        The <h1> tag defines the main heading of the page. There should typically
+        only be one <h1> per page, representing the most important title.
+        -->
+        <p>Explore the vibrant world of light, color, and fleeting moments.</p>
+        <!--
+        The <p> tag defines a paragraph of text. It's used for general textual content.
+        -->
+    </header>
+
+    <main>
+        <!--
+        The <main> element represents the dominant content of the <body> of a document.
+        It should contain content that is unique to the document and should not include
+        content that is repeated across a set of documents, such as sidebars,
+        navigation links, copyright information, site logos, and search forms.
+        -->
+
+        <section class="hero-section">
+            <!--
+            The <section> element groups related content. Here, it's used to define
+            a "hero" section, which is typically the first prominent section on a page,
+            often containing a large heading and a call-to-action.
+            The class "hero-section" allows us to apply specific styles to this section.
+            -->
+            <h2>Uncover the Masters</h2>
+            <!--
+            The <h2> tag defines a subheading, typically used for sections within the main content.
+            -->
+            <p>Dive deep into the brushstrokes of Monet, Renoir, Degas, and more.
+               Discover the techniques that revolutionized art history.</p>
+            <!--
+            Another paragraph providing more descriptive text.
+            -->
+
+            <div class="button-container">
+                <!--
+                This <div> element acts as a container specifically for our button.
+                We give it the class "button-container" so we can apply CSS styles
+                to it, specifically to center its child element (the button) on the screen.
+                Using a container helps in layout and organization.
+                -->
+                <button class="call-to-action-button">
+                    <!--
+                    The <button> element represents a clickable button.
+                    The text inside the tags is what will be displayed on the button.
+                    We've given it the class "call-to-action-button" to target it with
+                    specific styles in our CSS file. This class name is descriptive,
+                    indicating its purpose.
+                    -->
+                    Explore the Gallery Now!
+                </button>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <!--
+            Another section for additional content, demonstrating how a typical
+            page might be structured.
+            -->
+            <h3>What is Impressionism?</h3>
+            <p>Impressionism was a 19th-century art movement characterized by
+               relatively small, thin, yet visible brush strokes, open composition,
+               emphasis on accurate depiction of light in its changing qualities
+               (often accentuating the effects of the passage of time), ordinary
+               subject matter, inclusion of movement as a crucial element of
+               human perception and experience, and unusual visual angles.
+               It originated with a group of Paris-based artists whose independent
+               exhibitions brought them to prominence during the 1870s and 1880s.
+               The name of the style derives from the title of a Claude Monet work,
+               'Impression, soleil levant' (Impression, Sunrise), which provoked
+               the critic Louis Leroy to coin the term in a satirical review
+               published in the Parisian newspaper Le Charivari.</p>
+            <!--
+            A paragraph providing detailed information about Impressionism.
+            -->
+        </section>
+    </main>
+
+    <footer>
+        <!--
+        The <footer> element represents a footer for its nearest sectioning content
+        or sectioning root. A footer typically contains information about its
+        section, such as who wrote it, links to related documents, copyright data,
+        and the like.
+        -->
+        <p>&copy; 2025 Art Discovery. All rights reserved.</p>
+        <!--
+        A paragraph displaying copyright information. The '&copy;' is an HTML entity
+        for the copyright symbol.
+        -->
+    </footer>
+</body>
+</html>
