@@ -1,0 +1,380 @@
+/*
+This is the external stylesheet for colors.html, located at css/colors.css.
+It handles all the styling for the HTML page, including the custom color palette,
+typography, layout, and button hover effects.
+Neurotically detailed comments explain every style rule and color value.
+Named comments describe the color scheme and interaction behavior.
+*/
+
+/* --- Color Scheme Definition --- */
+/*
+This section defines custom CSS properties (variables) for our brand-inspired color palette.
+Using CSS variables makes it easy to manage and update colors across the entire website.
+If we decide to change a color, we only need to update it in one place here.
+*/
+:root {
+    /*
+    The :root pseudo-class targets the document's root element (the <html> tag).
+    Defining variables here makes them globally accessible throughout the entire CSS document.
+    */
+    --page-bg-color: #E0E6F0; /* A very light, cool blue-grey, reminiscent of a soft, airy sky or canvas. Chosen for a calming, light background, evoking the gentle light in Impressionist paintings. */
+    --text-color: #333C4E;    /* A dark, muted blue-grey, providing excellent contrast against the light background without being harsh black. It suggests the subtle shadows and deeper tones found in art. */
+    --button-bg-color: #6A99B8; /* A muted blue-green/teal, chosen for its harmonious yet distinct presence. It's a color often found in natural landscapes, reflecting the outdoor themes of Impressionism. */
+    --button-hover-bg-color: #D4A373; /* A warm, muted orange/peach. This color is a complementary or contrasting hue to the button's base background (#6A99B8). It provides a gentle visual pop on hover, reminiscent of a sunset glow or warm highlights in a painting. */
+}
+
+/* --- General Body Styling --- */
+body {
+    /*
+    The 'body' selector targets the entire visible content area of the HTML document.
+    */
+    font-family: 'Inter', sans-serif;
+    /*
+    'font-family' specifies the typeface for text. 'Inter' is the primary font,
+    imported from Google Fonts. 'sans-serif' is a generic fallback font,
+    ensuring text is displayed even if 'Inter' fails to load.
+    */
+    background-color: var(--page-bg-color);
+    /*
+    'background-color' sets the background of the entire page.
+    We use our custom CSS variable '--page-bg-color' for consistency.
+    */
+    color: var(--text-color);
+    /*
+    'color' sets the default text color for the entire page.
+    Again, using our custom CSS variable '--text-color'.
+    */
+    display: flex;
+    /*
+    'display: flex' turns the body into a flex container, enabling flexible box layout.
+    This is crucial for easily centering content both horizontally and vertically.
+    */
+    flex-direction: column;
+    /*
+    'flex-direction: column' arranges flex items (the .container div in this case)
+    in a vertical column.
+    */
+    align-items: center;
+    /*
+    'align-items: center' horizontally centers the flex items along the cross-axis
+    (which is horizontal when flex-direction is column).
+    */
+    justify-content: center;
+    /*
+    'justify-content: center' vertically centers the flex items along the main-axis
+    (which is vertical when flex-direction is column).
+    */
+    min-height: 100vh;
+    /*
+    'min-height: 100vh' ensures the body takes up at least 100% of the viewport height.
+    'vh' stands for "viewport height". This is essential for vertical centering to work
+    correctly, making the content appear in the middle of the screen even if it's short.
+    */
+    margin: 0;
+    /*
+    'margin: 0' removes any default margin that browsers might apply to the body element,
+    ensuring the content starts exactly at the edges of the viewport.
+    */
+    padding: 20px;
+    /*
+    'padding: 20px' adds 20 pixels of space inside the body, between its content and its edges.
+    This prevents content from touching the very edges of the browser window.
+    */
+    box-sizing: border-box;
+    /*
+    'box-sizing: border-box' changes how the total width and height of an element are calculated.
+    With 'border-box', padding and border are included *inside* the element's specified width/height,
+    which makes layout calculations more intuitive and predictable.
+    */
+    border-radius: 15px; /* Apply rounded corners to the body for a softer look */
+    /*
+    'border-radius: 15px' applies a radius of 15 pixels to all four corners of the body element,
+    giving it a slightly rounded, softer appearance. This contributes to the overall "brand-inspired" aesthetic.
+    */
+}
+
+/* --- Container Styling --- */
+.container {
+    /*
+    The '.container' class targets the <div> element that wraps the main content.
+    */
+    background-color: rgba(255, 255, 255, 0.9); /* A slightly transparent white background for the content area */
+    /*
+    'background-color: rgba(255, 255, 255, 0.9)' sets the background of the container.
+    'rgba' allows us to specify red, green, blue, and alpha (opacity) values.
+    Here, it's white (255, 255, 255) with 90% opacity (0.9), allowing a hint of the
+    page's background color to show through, adding depth.
+    */
+    padding: 40px;
+    /*
+    'padding: 40px' adds 40 pixels of space inside the container, between its content and its edges.
+    This creates breathing room around the heading, paragraph, and buttons.
+    */
+    border-radius: 20px;
+    /*
+    'border-radius: 20px' applies more pronounced rounded corners to the container,
+    making it look like a distinct, soft-edged card on the page.
+    */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    /*
+    'box-shadow' adds a subtle shadow effect to the container, giving it a sense of depth
+    and making it appear slightly lifted off the page.
+    - '0 10px' means no horizontal offset, 10px vertical offset.
+    - '20px' is the blur radius (how spread out the shadow is).
+    - 'rgba(0, 0, 0, 0.1)' is a light black color with 10% opacity, making the shadow soft.
+    */
+    max-width: 800px;
+    /*
+    'max-width: 800px' limits the maximum width of the container to 800 pixels.
+    This prevents the content from stretching too wide on very large screens,
+    improving readability.
+    */
+    width: 100%;
+    /*
+    'width: 100%' ensures the container takes up 100% of its parent's available width,
+    up to its 'max-width'. This makes it responsive on smaller screens.
+    */
+    text-align: center;
+    /*
+    'text-align: center' horizontally centers inline content (like text) within the container.
+    */
+}
+
+/* --- Heading Styling --- */
+h1 {
+    /*
+    The 'h1' selector targets the main heading of the page.
+    */
+    font-size: 2.8em;
+    /*
+    'font-size: 2.8em' sets the size of the heading text. 'em' is a relative unit,
+    meaning 2.8 times the default font size of the parent element (which is typically the body's font size).
+    This makes the heading large and prominent.
+    */
+    margin-bottom: 30px;
+    /*
+    'margin-bottom: 30px' adds 30 pixels of space below the heading,
+    separating it from the paragraph that follows.
+    */
+    color: var(--text-color); /* Ensure heading uses the primary text color */
+    /*
+    Explicitly setting the 'color' of the heading to our '--text-color' variable,
+    even though it might inherit from the body, ensures consistency.
+    */
+}
+
+/* --- Paragraph Styling --- */
+p {
+    /*
+    The 'p' selector targets all paragraph elements.
+    */
+    font-size: 1.1em;
+    /*
+    'font-size: 1.1em' makes the paragraph text slightly larger than the default,
+    improving readability.
+    */
+    line-height: 1.6;
+    /*
+    'line-height: 1.6' sets the spacing between lines of text. A value of 1.6
+    (160% of the font size) provides good readability by preventing lines from
+    appearing too cramped.
+    */
+    margin-bottom: 40px;
+    /*
+    'margin-bottom: 40px' adds substantial space below the paragraph,
+    creating a clear separation between the text content and the buttons.
+    */
+    max-width: 700px; /* Limit paragraph width for better readability on wide screens */
+    /*
+    'max-width: 700px' prevents the paragraph text from becoming too wide on large screens,
+    which can make it harder to read. It will still be 100% width on smaller screens.
+    */
+    margin-left: auto;
+    margin-right: auto;
+    /*
+    'margin-left: auto' and 'margin-right: auto' combined with a 'max-width'
+    will center the paragraph horizontally within its parent container.
+    */
+}
+
+/* --- Button Group Styling --- */
+.button-group {
+    /*
+    The '.button-group' class targets the <div> that wraps the two buttons.
+    */
+    display: flex;
+    /*
+    'display: flex' makes this div a flex container, allowing its children (the buttons)
+    to be laid out flexibly.
+    */
+    gap: 20px;
+    /*
+    'gap: 20px' is a modern CSS property that creates space between flex items
+    (the buttons) without needing to apply margins to individual buttons.
+    It adds 20 pixels of space between the buttons.
+    */
+    justify-content: center;
+    /*
+    'justify-content: center' horizontally centers the flex items (buttons)
+    within the button group container.
+    */
+    flex-wrap: wrap; /* Allow buttons to wrap to the next line on small screens */
+    /*
+    'flex-wrap: wrap' allows the flex items (buttons) to wrap onto multiple lines
+    if there isn't enough space for them to fit on a single line. This is crucial
+    for responsiveness on smaller mobile devices.
+    */
+}
+
+/* --- Button Styling --- */
+button {
+    /*
+    The 'button' selector targets all <button> elements on the page.
+    */
+    background-color: var(--button-bg-color);
+    /*
+    'background-color' sets the initial background color of the buttons,
+    using our custom CSS variable '--button-bg-color'.
+    */
+    color: #FFFFFF;
+    /*
+    'color: #FFFFFF' sets the text color of the buttons to pure white,
+    ensuring high contrast and readability against the button background.
+    */
+    padding: 15px 30px;
+    /*
+    'padding' adds space inside the button, between its text and its edges.
+    - '15px' applies to the top and bottom.
+    - '30px' applies to the left and right.
+    This makes the buttons larger and easier to click/tap.
+    */
+    border: none;
+    /*
+    'border: none' removes the default border that browsers apply to buttons,
+    giving us full control over their appearance.
+    */
+    border-radius: 10px;
+    /*
+    'border-radius: 10px' applies rounded corners to the buttons,
+    matching the overall soft, brand-inspired aesthetic.
+    */
+    cursor: pointer;
+    /*
+    'cursor: pointer' changes the mouse cursor to a hand icon when hovering over the button.
+    This visually indicates that the element is clickable.
+    */
+    font-size: 1.1em;
+    /*
+    'font-size: 1.1em' makes the button text slightly larger than the default,
+    improving readability and prominence.
+    */
+    font-weight: 600; /* Make button text a bit bolder */
+    /*
+    'font-weight: 600' makes the text inside the button semi-bold,
+    making it stand out more.
+    */
+    transition: background-color 0.3s ease;
+    /*
+    'transition' specifies how properties should animate when they change.
+    - 'background-color' is the property that will animate.
+    - '0.3s' is the duration of the animation (0.3 seconds).
+    - 'ease' is the timing function, providing a smooth start, then fast, then slow end.
+    This creates a smooth visual effect when the button's background color changes on hover.
+    */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Add a subtle shadow to buttons */
+    /*
+    'box-shadow' adds a subtle shadow to the buttons, similar to the container,
+    giving them a slight lifted appearance and enhancing the interactive feel.
+    */
+}
+
+/* --- Button Hover Effect --- */
+/*
+--- Interaction Behavior Definition ---
+This section defines the visual change that occurs when a user hovers their mouse over a button.
+*/
+button:hover {
+    /*
+    The ':hover' pseudo-class applies styles to an element when the user's mouse pointer
+    is over it. This provides visual feedback, indicating interactivity.
+    */
+    background-color: var(--button-hover-bg-color);
+    /*
+    'background-color' changes the button's background to our
+    '--button-hover-bg-color' variable when hovered. This is the complementary/contrasting color,
+    providing a clear and pleasant visual response to user interaction.
+    */
+    transform: translateY(-2px); /* Slightly lift the button on hover */
+    /*
+    'transform: translateY(-2px)' moves the button slightly upwards by 2 pixels on hover.
+    This subtle animation adds to the interactive feel, making the button feel more "responsive"
+    to the user's action.
+    */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Enhance shadow on hover */
+    /*
+    'box-shadow' is updated on hover to make the shadow slightly larger and more pronounced,
+    further emphasizing the interactive state.
+    */
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 600px) {
+    /*
+    '@media (max-width: 600px)' is a media query. It applies the styles within its block
+    only when the viewport width is 600 pixels or less. This is crucial for making the
+    layout adapt gracefully to smaller screens, like mobile phones.
+    */
+    .container {
+        padding: 20px; /* Reduce padding on smaller screens */
+        /*
+        On smaller screens, we reduce the padding of the container to save space
+        and ensure content doesn't feel too cramped.
+        */
+    }
+
+    h1 {
+        font-size: 2em; /* Reduce heading font size on smaller screens */
+        /*
+        The heading font size is reduced to prevent it from taking up too much space
+        and to ensure it fits well on smaller mobile screens.
+        */
+    }
+
+    p {
+        font-size: 1em; /* Adjust paragraph font size for smaller screens */
+        /*
+        Paragraph font size is slightly adjusted for better readability on smaller devices.
+        */
+        margin-bottom: 30px; /* Adjust margin below paragraph */
+    }
+
+    .button-group {
+        flex-direction: column; /* Stack buttons vertically on small screens */
+        /*
+        On very small screens, instead of laying out buttons side-by-side,
+        'flex-direction: column' stacks them vertically, making them easier to tap.
+        */
+        gap: 15px; /* Adjust gap between stacked buttons */
+        /*
+        The gap between buttons is slightly reduced when they are stacked vertically.
+        */
+    }
+
+    button {
+        width: 100%; /* Make buttons full width when stacked */
+        /*
+        When buttons are stacked vertically, 'width: 100%' makes each button
+        take up the full available width of its parent, making them large and
+        easy to tap on mobile devices.
+        */
+        padding: 12px 20px; /* Adjust button padding for smaller screens */
+        /*
+        Button padding is slightly reduced to make them fit better on smaller screens
+        while still providing a good touch target.
+        */
+        font-size: 1em; /* Adjust button font size for smaller screens */
+        /*
+        Button font size is also adjusted for better fit and readability on mobile.
+        */
+    }
+}
