@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accessible Art Gallery - Exploring Modern Art</title>
+    <link rel="stylesheet" href="css/accessibility.css">
+    </head>
+<body>
+    <header role="banner">
+        <h1>The Canvas Chronicle</h1>
+        <p>Exploring the Depths of Modern Art</p>
+        </header>
+
+    <nav aria-label="Main navigation">
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#exhibitions">Exhibitions</a></li>
+            <li><a href="#artists">Artists</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <main role="main">
+        <section id="about" aria-labelledby="about-heading">
+            <h2 id="about-heading">About The Canvas Chronicle</h2>
+            <p>Welcome to The Canvas Chronicle, your premier online destination for exploring the vibrant
+                and diverse world of modern art. We delve into the movements, the masterpieces, and the
+                minds that have shaped the contemporary artistic landscape. From Cubism to Abstract
+                Expressionism, from Pop Art to Minimalism, we strive to bring you insightful articles,
+                artist profiles, and exhibition highlights that ignite your passion for art.</p>
+            <p>Our mission is to make modern art accessible to everyone, fostering understanding and
+                appreciation for its complexities and beauty. Join us on this journey of discovery
+                as we celebrate innovation, challenge perceptions, and explore the limitless possibilities
+                of human creativity.</p>
+        </section>
+
+        <section id="exhibitions" aria-labelledby="exhibitions-heading">
+            <h2 id="exhibitions-heading">Current & Upcoming Exhibitions</h2>
+            <h3>The Abstract Unveiled: A Retrospective</h3>
+            <p>Explore the evolution of abstract art from its early pioneers to its contemporary masters.
+                Featuring works from Jackson Pollock, Mark Rothko, and Helen Frankenthaler.</p>
+            <p><em>Dates: July 15 - September 30, 2025</em></p>
+
+            <h3>Pop Culture Pulse: Andy Warhol & Beyond</h3>
+            <p>A vibrant exhibition showcasing the impact of pop culture on art, highlighting iconic
+                works by Andy Warhol, Roy Lichtenstein, and Keith Haring.</p>
+            <p><em>Dates: October 10 - December 20, 2025</em></p>
+        </section>
+
+        <section id="artists" aria-labelledby="artists-heading">
+            <h2 id="artists-heading">Featured Artists</h2>
+            <p>Discover the visionary artists who continue to push the boundaries of artistic expression.</p>
+            <ul>
+                <li>Frida Kahlo - Mexican surrealist painter known for her self-portraits.</li>
+                <li>Pablo Picasso - Spanish painter, sculptor, printmaker, ceramicist and theatre designer, co-founder of the Cubist movement.</li>
+                <li>Yayoi Kusama - Japanese contemporary artist known for her polka dots and immersive installations.</li>
+                <li>Jean-Michel Basquiat - American artist who rose to success from the street art scene.</li>
+            </ul>
+        </section>
+
+        <section id="contact" aria-labelledby="contact-heading">
+            <h2 id="contact-heading">Contact Us</h2>
+            <p>Have a question or want to share your thoughts? Fill out the form below!</p>
+
+            <form aria-describedby="form-description">
+                <p id="form-description" class="sr-only">Use this form to send us a message about modern art inquiries.</p>
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="user_name" autocomplete="name" required aria-required="true">
+                    </div>
+
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="user_email" autocomplete="email" required aria-required="true">
+                    </div>
+
+                <button type="submit">Send Message</button>
+                </form>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2025 The Canvas Chronicle. All rights reserved.</p>
+        </footer>
+
+</body>
+</html>
