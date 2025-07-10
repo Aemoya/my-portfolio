@@ -1,0 +1,209 @@
+/*
+This is the external stylesheet for shadows-borders.html.
+It contains all the CSS rules that define the layout, appearance,
+and visual effects of the HTML elements.
+*/
+
+/*
+Color Scheme:
+--primary-bg: #F8F8F8 (Very light grey, almost white - background for the entire page, clean and neutral)
+--container-bg: #FFFFFF (Pure white - background for the main content container, provides contrast)
+--box-bg: #F0F0F0 (Light grey - background for individual content boxes, subtle separation from container)
+--text-color: #333333 (Dark grey - primary text color, good readability on light backgrounds)
+--heading-color: #2C3E50 (Dark blue-grey - for headings, provides a strong visual anchor)
+
+--border-color-one: #A0A0A0 (Medium grey - for solid border, soft but present)
+--shadow-color-one: rgba(0, 0, 0, 0.1) (Light black with 10% opacity - for subtle shadow, creates gentle lift)
+
+--border-color-two: #8E44AD (Medium purple - for dashed border, adds a touch of distinctiveness)
+--shadow-color-two: rgba(0, 0, 0, 0.25) (Black with 25% opacity - for more pronounced shadow, stronger depth)
+
+--border-color-three: #E67E22 (Orange - for double border, vibrant and eye-catching)
+--shadow-color-three-a: rgba(0, 0, 0, 0.15) (Black with 15% opacity - first layer of multi-layer shadow)
+--shadow-color-three-b: rgba(0, 0, 0, 0.08) (Black with 8% opacity - second layer of multi-layer shadow, softer)
+
+Interaction Behavior (Static Visual):
+The interaction behavior here is purely visual and static. There are no interactive elements
+like buttons or hover effects. The goal is to create a visual hierarchy and sense of depth
+through the combination of borders and shadows.
+- Box One: Appears as a fundamental, clearly defined element, slightly lifted.
+- Box Two: Appears more dynamic, with a directional shadow suggesting movement or specific lighting.
+- Box Three: Appears more refined or highlighted, with a layered shadow creating a nuanced depth.
+This guides the user's eye and provides visual interest without requiring direct interaction.
+*/
+
+/* Universal Box Model Reset */
+*, *::before, *::after {
+    /*
+    The '*' selector targets all elements.
+    '::before' and '::after' target pseudo-elements, ensuring consistency.
+    */
+    box-sizing: border-box;
+    /*
+    'box-sizing: border-box;' is a fundamental CSS reset.
+    It changes how the total width and height of an element are calculated.
+    Normally, padding and border are added *to* the specified width/height,
+    making elements larger than intended. With 'border-box', padding and border
+    are *included* within the specified width/height, making layout calculations
+    much more intuitive and predictable. This is crucial for consistent sizing
+    in responsive layouts, especially with Flexbox.
+    */
+    margin: 0;
+    /* Removes default outer spacing (margins) from all elements. */
+    padding: 0;
+    /* Removes default inner spacing (padding) from all elements. */
+}
+
+/* Body Styling - Overall Page Appearance */
+body {
+    font-family: 'Inter', sans-serif; /* Specifies the primary font for the entire page. 'Inter' is a modern, clean sans-serif font. 'sans-serif' is a generic fallback. */
+    line-height: 1.6; /* Sets the spacing between lines of text, improving readability. 1.6 times the font-size is a good general value. */
+    background-color: var(--primary-bg); /* Sets the background color of the entire page using a CSS variable for easy theme changes. Value: #F8F8F8 (very light grey). */
+    color: var(--text-color); /* Sets the default text color for the entire page. Value: #333333 (dark grey). */
+    display: flex; /* Enables Flexbox for the body. This is used to vertically center the content if needed, and to ensure header/footer are correctly placed. */
+    flex-direction: column; /* Arranges flex items (header, main, footer) in a column. */
+    min-height: 100vh; /* Ensures the body takes at least the full height of the viewport, useful for sticky footers. */
+    align-items: center; /* Centers the flex items horizontally within the body. */
+    padding: 20px; /* Adds padding around the entire body content, preventing it from touching the edges of the browser window. */
+}
+
+/* Header Styling */
+.page-header {
+    width: 100%; /* Makes the header span the full width of its parent (body). */
+    max-width: 1200px; /* Limits the maximum width of the header for larger screens, keeping content readable. */
+    text-align: center; /* Centers the text within the header. */
+    margin-bottom: 40px; /* Adds space below the header, separating it from the main content. */
+    padding: 20px; /* Adds inner spacing around the header content. */
+    background-color: var(--container-bg); /* Sets the background color for the header. Value: #FFFFFF (pure white). */
+    border-radius: 12px; /* Rounds the corners of the header, giving it a softer look. */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* Adds a subtle shadow to the header for a slight lift. */
+}
+
+.page-header h1 {
+    color: var(--heading-color); /* Sets the color of the main heading. Value: #2C3E50 (dark blue-grey). */
+    font-size: 2.5em; /* Sets the font size of the heading relative to the parent's font size (2.5 times). */
+    margin-bottom: 10px; /* Adds a small margin below the heading. */
+}
+
+/* Main Container Styling - Flexbox Parent */
+.container {
+    display: flex; /* Enables Flexbox for this container. This is the core for horizontal alignment. */
+    flex-wrap: wrap; /* Allows flex items (content boxes) to wrap onto the next line if there isn't enough space. Essential for responsiveness. */
+    justify-content: center; /* Distributes space between and around flex items, centering them horizontally when there's extra space. */
+    align-items: flex-start; /* Aligns flex items to the start of the cross-axis (top of the container). */
+    gap: 30px; /* Creates a consistent gap (spacing) between flex items. This is a modern alternative to using margins on individual items. */
+    width: 100%; /* Makes the container span the full width of its parent (body). */
+    max-width: 1200px; /* Limits the maximum width of the container for larger screens, preventing overly wide content. */
+    padding: 30px; /* Adds inner spacing around the content boxes within the container. */
+    background-color: var(--container-bg); /* Sets the background color for the main content area. Value: #FFFFFF (pure white). */
+    border-radius: 12px; /* Rounds the corners of the container. */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1); /* Adds a slightly more prominent shadow to the main container. */
+    flex-grow: 1; /* Allows the container to grow and take up available vertical space, pushing the footer down. */
+}
+
+/* Common Styling for Content Boxes */
+.content-box {
+    background-color: var(--box-bg); /* Sets the background color for each individual content box. Value: #F0F0F0 (light grey). */
+    padding: 25px; /* Adds inner spacing within each box, separating content from the border. */
+    border-radius: 10px; /* Rounds the corners of each box. */
+    width: calc(33.33% - 20px); /* Calculates the width for each box. 33.33% for three columns, minus 20px to account for the gap (30px gap / 3 boxes = 10px per box, but also consider the gaps between them). A more robust way would be to use flex-basis. */
+    min-width: 300px; /* Ensures boxes don't get too narrow on smaller screens, preventing content from becoming unreadable. */
+    text-align: center; /* Centers text content within each box. */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Adds a smooth transition effect for transform and box-shadow properties on hover (though no hover is defined, it's good practice for future interaction). */
+}
+
+/* Responsive adjustments for content boxes */
+@media (max-width: 992px) {
+    /* Media query for screens smaller than 992px (e.g., tablets and smaller desktops). */
+    .content-box {
+        width: calc(50% - 20px); /* On medium screens, make boxes take up half the width, creating two columns. */
+    }
+}
+
+@media (max-width: 768px) {
+    /* Media query for screens smaller than 768px (e.g., larger mobile devices). */
+    .content-box {
+        width: 100%; /* On small screens, make boxes take up full width, stacking them vertically. */
+        margin-bottom: 20px; /* Add some margin between stacked boxes. */
+    }
+    .container {
+        padding: 20px; /* Reduce container padding on smaller screens. */
+    }
+    .page-header h1 {
+        font-size: 2em; /* Reduce heading font size for smaller screens. */
+    }
+}
+
+.content-box h2 {
+    color: var(--heading-color); /* Sets the color for box headings. Value: #2C3E50. */
+    margin-bottom: 15px; /* Adds space below box headings. */
+    font-size: 1.8em; /* Sets font size for box headings. */
+}
+
+.content-box img {
+    max-width: 100%; /* Ensures images scale down to fit within their parent box. */
+    height: auto; /* Maintains the image's aspect ratio when scaling. */
+    border-radius: 8px; /* Rounds the corners of the images. */
+    margin-bottom: 15px; /* Adds space below images. */
+    display: block; /* Makes the image a block-level element, allowing margin-bottom to work correctly. */
+    margin-left: auto; /* Centers the image horizontally. */
+    margin-right: auto; /* Centers the image horizontally. */
+}
+
+.content-box p {
+    font-size: 0.95em; /* Slightly reduces the font size for paragraph text. */
+    line-height: 1.7; /* Increases line height for better readability of paragraph text. */
+    text-align: left; /* Aligns paragraph text to the left within the box. */
+}
+
+/* Specific Styles for Box One (Monet) */
+.box-one {
+    border: 3px solid var(--border-color-one); /* Sets a 3px wide, solid border with a medium grey color (#A0A0A0). The solid line suggests clarity and definition. */
+    box-shadow: 0 5px 15px var(--shadow-color-one); /* Adds a subtle box-shadow.
+                                                    - 0px horizontal offset (no left/right shadow).
+                                                    - 5px vertical offset (shadow below).
+                                                    - 15px blur radius (shadow is soft and diffused).
+                                                    - var(--shadow-color-one) is rgba(0, 0, 0, 0.1), a very light black with low opacity.
+                                                    This creates a gentle lift, suggesting a foundational or primary element without being overly dramatic. */
+}
+
+/* Specific Styles for Box Two (Degas) */
+.box-two {
+    border: 3px dashed var(--border-color-two); /* Sets a 3px wide, dashed border with a medium purple color (#8E44AD). The dashed line suggests rhythm, movement, or a less rigid boundary. */
+    box-shadow: 8px 8px 20px var(--shadow-color-two); /* Adds a more pronounced, directional box-shadow.
+                                                     - 8px horizontal offset (shadow to the right).
+                                                     - 8px vertical offset (shadow below).
+                                                     - 20px blur radius (shadow is soft but distinct).
+                                                     - var(--shadow-color-two) is rgba(0, 0, 0, 0.25), a darker black with higher opacity.
+                                                     This creates a stronger sense of depth and a specific light source, making the box appear to 'lean' or be more dynamically positioned. */
+}
+
+/* Specific Styles for Box Three (Renoir) */
+.box-three {
+    border: 5px double var(--border-color-three); /* Sets a 5px wide, double border with an orange color (#E67E22). The double line creates a sophisticated, framed, or layered appearance, suggesting elegance or a special focus. */
+    box-shadow: 0 0 25px var(--shadow-color-three-a), /* First layer of box-shadow.
+                                                        - 0px horizontal/vertical offset (shadow is centered around the box).
+                                                        - 25px blur radius (very diffused, like a glow).
+                                                        - var(--shadow-color-three-a) is rgba(0, 0, 0, 0.15).
+                                                        This creates a subtle, widespread glow. */
+                0 0 10px var(--shadow-color-three-b) inset; /* Second layer of box-shadow, an inset shadow.
+                                                              - 0px horizontal/vertical offset (centered).
+                                                              - 10px blur radius (softer, internal blur).
+                                                              - var(--shadow-color-three-b) is rgba(0, 0, 0, 0.08).
+                                                              - 'inset' makes the shadow appear inside the box, creating a subtle inner depth or a slight "push-in" effect.
+                                                              The combination of an outer glow and an inner subtle shadow gives a rich, layered sense of depth, making the box feel more refined or highlighted. */
+}
+
+/* Footer Styling */
+.page-footer {
+    width: 100%; /* Makes the footer span the full width of its parent (body). */
+    max-width: 1200px; /* Limits the maximum width of the footer. */
+    text-align: center; /* Centers the text within the footer. */
+    margin-top: 40px; /* Adds space above the footer, separating it from the main content. */
+    padding: 20px; /* Adds inner spacing around the footer content. */
+    background-color: var(--container-bg); /* Sets the background color for the footer. Value: #FFFFFF. */
+    border-radius: 12px; /* Rounds the corners of the footer. */
+    box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.08); /* Adds a subtle shadow above the footer, making it appear slightly lifted from the bottom. */
+    color: var(--text-color); /* Sets the text color for the footer. */
+    font-size: 0.9em; /* Slightly reduces the font size for footer text. */
+}

@@ -1,0 +1,199 @@
+<!--
+Create a complete HTML5 page named shadows-borders.html
+ that displays three visually distinct content boxes side by side. Use
+CSS Flexbox to align them horizontally across the page. Each box should
+have a unique combination of border style (solid, dashed, or double) and
+ box-shadow settings to suggest visual depth and separation. Link to an
+external stylesheet at css/shadows-borders.css to handle
+all layout and styling. Comment on each box’s visual treatment and how
+it contributes to a sense of hierarchy or depth. Write neurotically
+detailed comments in all files; explain every tag, class, style rule,
+and color value as if you're walking a complete beginner through the
+reasoning behind each choice. Be sure to include named comments
+describing your color scheme and interaction behavior. Include this full
+prompt as a comment at the top of the HTML file. Use placeholder
+content about an art topic of your choice to complete the page.
+-->
+
+<!DOCTYPE html>
+<!--
+This is the document type declaration. It tells the browser that this is an HTML5 document.
+It's crucial for ensuring modern rendering behavior.
+-->
+<html lang="en">
+<!--
+The <html> tag is the root element of an HTML page.
+The 'lang="en"' attribute specifies the language of the document content as English.
+This is important for accessibility (screen readers) and search engine optimization.
+-->
+<head>
+    <!--
+    The <head> section contains meta-information about the HTML document.
+    This information is not displayed directly on the web page but is used by browsers,
+    search engines, and other web services.
+    -->
+    <meta charset="UTF-8">
+    <!--
+    The <meta charset="UTF-8"> tag specifies the character encoding for the document.
+    UTF-8 is a universal character encoding that supports almost all characters and symbols
+    in the world, preventing display issues with special characters.
+    -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--
+    The <meta name="viewport"> tag is essential for responsive web design.
+    - 'width=device-width' sets the width of the viewport to the width of the device screen.
+    - 'initial-scale=1.0' sets the initial zoom level when the page is first loaded.
+    This ensures the page scales correctly on different devices (desktops, tablets, mobile phones).
+    -->
+    <title>Shadows and Borders - Art Exploration</title>
+    <!--
+    The <title> tag sets the title of the HTML document, which appears in the browser's
+    title bar or tab. It's important for user experience and search engine optimization.
+    -->
+    <link rel="stylesheet" href="css/shadows-borders.css">
+    <!--
+    The <link> tag is used to link an external resource to the HTML document.
+    - 'rel="stylesheet"' specifies that the linked document is a stylesheet.
+    - 'href="css/shadows-borders.css"' provides the path to our external CSS file.
+    This separation of HTML structure and CSS styling is a best practice for maintainability
+    and organization.
+    -->
+</head>
+<body>
+    <!--
+    The <body> section contains all the visible content of the HTML document,
+    such as text, images, links, videos, etc.
+    -->
+    <header class="page-header">
+        <!--
+        The <header> tag represents introductory content, typically a group of introductory
+        or navigational aids. Here, it holds the main title of our page.
+        The 'page-header' class is used for specific styling of this header.
+        -->
+        <h1>The Art of Depth: Impressionism Through Borders and Shadows</h1>
+        <!--
+        The <h1> tag defines the most important heading on the page.
+        It's good practice to have only one <h1> per page for semantic clarity and SEO.
+        -->
+    </header>
+
+    <main class="container">
+        <!--
+        The <main> tag represents the dominant content of the <body>.
+        It should be unique to the document and should not contain content that is repeated
+        across a group of documents (like sidebars, navigation links, copyright information).
+        The 'container' class is crucial here, as it will be styled with CSS Flexbox
+        to arrange its child elements (the content boxes) horizontally.
+        -->
+
+        <section class="content-box box-one">
+            <!--
+            The <section> tag groups related content. Here, each section represents
+            a distinct content box.
+            - 'content-box' is a general class applied to all boxes for common styling.
+            - 'box-one' is a specific class for unique styling of this particular box.
+            -->
+            <h2>Monet's Light and Water</h2>
+            <!--
+            The <h2> tag defines a subheading, less important than <h1> but more
+            important than <h3>, and so on.
+            -->
+            <img src="https://placehold.co/400x250/E0BBE4/FFFFFF?text=Monet's+Water+Lilies" alt="Placeholder image of Monet's Water Lilies">
+            <!--
+            The <img> tag embeds an image into the document.
+            - 'src' attribute specifies the path to the image. Using a placeholder service
+              like placehold.co allows us to generate images on the fly for demonstration.
+              The dimensions (400x250), background color (#E0BBE4), text color (#FFFFFF),
+              and text content ("Monet's Water Lilies") are specified in the URL.
+            - 'alt' attribute provides alternative text for the image. This is vital for
+              accessibility (screen readers describe the image) and for when the image
+              cannot be displayed (e.g., broken link).
+            -->
+            <p>
+                Claude Monet, a founder of French Impressionist painting, is known for his
+                series paintings, which depict the same subject at different times of day
+                and in varying light conditions. His "Water Lilies" series, in particular,
+                explores the interplay of light on water and the subtle shifts in color
+                and reflection. This box aims to evoke a sense of delicate observation,
+                much like Monet's approach to capturing fleeting moments.
+            </p>
+            <!--
+            The <p> tag defines a paragraph of text.
+            -->
+            <!--
+            Visual Treatment for Box One:
+            This box features a 'solid' border and a subtle, soft box-shadow.
+            The solid border provides a clear, defined edge, suggesting stability and directness.
+            The soft, diffused shadow (small offset, large blur, light color) creates a gentle
+            lift from the page, giving it a sense of being slightly raised and accessible.
+            This treatment contributes to a feeling of primary focus, a foundational element
+            that is present and clear, much like the foundational role of Monet in Impressionism.
+            It's not aggressively popping out but is distinctly present.
+            -->
+        </section>
+
+        <section class="content-box box-two">
+            <h2>Degas' Movement and Form</h2>
+            <img src="https://placehold.co/400x250/957DAD/FFFFFF?text=Degas'+Dancers" alt="Placeholder image of Degas' Dancers">
+            <p>
+                Edgar Degas, though often associated with Impressionism, preferred to be
+                called a Realist or Independent. He focused on capturing movement,
+                especially of dancers and bathers, often using unusual angles and compositions.
+                His work explored the human form in motion, emphasizing line and form over
+                the pure play of light. This box aims for a dynamic, yet contained, feel.
+            </p>
+            <!--
+            Visual Treatment for Box Two:
+            This box uses a 'dashed' border and a more pronounced, directional box-shadow.
+            The dashed border introduces a sense of rhythm or broken continuity, hinting at
+            movement or a less rigid structure, much like the dynamic poses in Degas' work.
+            The box-shadow is offset more significantly to one side (bottom-right), giving
+            the impression that light is coming from a specific direction, casting a more
+            defined shadow. This creates a stronger sense of depth and separation from the
+            page, suggesting a secondary, perhaps more active or specific, element in the hierarchy.
+            It feels like it's "leaning" or moving slightly.
+            -->
+        </section>
+
+        <section class="content-box box-three">
+            <h2>Renoir's Joyful Portraits</h2>
+            <img src="https://placehold.co/400x250/FFC72C/FFFFFF?text=Renoir's+Luncheon+of+the+Boating+Party" alt="Placeholder image of Renoir's Luncheon of the Boating Party">
+            <p>
+                Pierre-Auguste Renoir was a leading painter in the development of the
+                Impressionist style. He is celebrated for his vibrant and light-filled
+                paintings of real life, particularly portraits and figure paintings.
+                Renoir's work often conveys a sense of joy and intimacy, focusing on
+                the beauty of human interaction and the softness of flesh. This box
+                seeks to convey a sense of warmth and inviting presence.
+            </p>
+            <!--
+            Visual Treatment for Box Three:
+            This box utilizes a 'double' border and a subtle, multi-layered box-shadow.
+            The double border provides a sophisticated, almost framed look, suggesting
+            elegance and perhaps a deeper, more complex structure. It gives a sense of
+            being a "window" or a more formal presentation.
+            The box-shadow, with multiple layers (one subtle, one slightly more defined),
+            creates a richer, more nuanced sense of depth. It doesn't just "lift" but
+            seems to have a subtle glow or a layered presence, making it feel more
+            "important" or "special" – perhaps drawing the eye as a highlight.
+            This contributes to a sense of elevated status or a focal point,
+            a more refined element in the visual hierarchy.
+            -->
+        </section>
+    </main>
+
+    <footer class="page-footer">
+        <!--
+        The <footer> tag represents a footer for its nearest sectioning content or
+        root element. It typically contains information about the author, copyright data,
+        or related documents.
+        The 'page-footer' class is used for specific styling of this footer.
+        -->
+        <p>&copy; 2024 Art Exploration. All rights reserved.</p>
+        <!--
+        The '&copy;' is an HTML entity for the copyright symbol.
+        -->
+    </footer>
+
+</body>
+</html>
