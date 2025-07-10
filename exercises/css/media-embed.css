@@ -1,0 +1,422 @@
+/*
+  This CSS file (`media-embed.css`) controls the layout, appearance, and
+  responsiveness of the `media-embed.html` page.
+*/
+
+/*
+  ==============================================================================
+  Global Styles & Reset
+  ==============================================================================
+*/
+
+/* Universal Box-Sizing */
+*, *::before, *::after {
+  /*
+    The `*` selector targets all elements. `*::before` and `*::after` target
+    pseudo-elements.
+    `box-sizing: border-box;` changes how the total width and height of an
+    element are calculated. With `border-box`, padding and border are included
+    in the element's total width and height. This makes layout calculations
+    much more intuitive and predictable, preventing elements from growing
+    unexpectedly when padding or borders are added.
+  */
+  box-sizing: border-box;
+}
+
+/* Body Styles */
+body {
+  /*
+    The `body` selector targets the main content area of the HTML document.
+  */
+  font-family: 'Inter', sans-serif;
+  /*
+    `font-family`: Specifies the font to be used for text within the body.
+    'Inter' is a modern, highly readable font. `sans-serif` is a generic
+    fallback font family, ensuring that text will still display in a readable
+    font even if 'Inter' isn't available.
+  */
+  margin: 0;
+  /*
+    `margin: 0;`: Removes the default margin that browsers typically apply
+    to the `body` element, ensuring content starts at the very edge of the viewport.
+  */
+  padding: 20px;
+  /*
+    `padding: 20px;`: Adds 20 pixels of space between the content of the body
+    and its edges. This creates a visual buffer around the main content.
+  */
+
+  /*
+    Color Scheme: "Art Gallery Serenity"
+    This scheme uses a calming, neutral background with contrasting text
+    and subtle accent colors to highlight content.
+  */
+  background-color: #f8f8f8; /* Light Gray: A soft, neutral background color that is easy on the eyes. */
+  color: #333; /* Dark Gray: A dark, readable color for general text, providing good contrast against the light background. */
+  line-height: 1.6;
+  /*
+    `line-height: 1.6;`: Sets the height of each line of text relative to the font size.
+    A value of 1.6 provides good readability by adding sufficient space between lines.
+  */
+}
+
+/*
+  ==============================================================================
+  Container & Layout
+  ==============================================================================
+*/
+
+.container {
+  /*
+    The `.container` class is applied to the main `div` that wraps all the
+    page content. Its purpose is to center the content and limit its maximum
+    width for better readability on large screens.
+  */
+  max-width: 960px;
+  /*
+    `max-width: 960px;`: Limits the maximum width of the container to 960 pixels.
+    This prevents the content from stretching too wide on very large screens,
+    which can make lines of text too long and hard to read.
+  */
+  margin: 0 auto;
+  /*
+    `margin: 0 auto;`: This is a common technique to horizontally center a block-level
+    element within its parent.
+    - `0`: Sets the top and bottom margins to 0.
+    - `auto`: Automatically calculates equal left and right margins, pushing the
+      element to the center.
+  */
+  padding: 20px;
+  /*
+    `padding: 20px;`: Adds internal spacing (padding) of 20 pixels on all sides
+    within the container, ensuring content doesn't touch the edges of the container.
+  */
+  background-color: #ffffff; /* Pure White: Provides a clean canvas for the content, contrasting with the body background. */
+  border-radius: 8px;
+  /*
+    `border-radius: 8px;`: Applies rounded corners to the container with an 8-pixel radius,
+    giving it a softer, more modern look.
+  */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  /*
+    `box-shadow`: Adds a subtle shadow effect around the container, giving it
+    a sense of depth and making it stand out from the background.
+    - `0 4px 8px`: Horizontal offset (0), vertical offset (4px), blur radius (8px).
+    - `rgba(0, 0, 0, 0.1)`: Color of the shadow (black with 10% opacity), making it soft.
+  */
+}
+
+/*
+  ==============================================================================
+  Typography
+  ==============================================================================
+*/
+
+h1, h2, h3 {
+  /*
+    These selectors target all heading elements.
+  */
+  color: #2c3e50; /* Dark Blue-Gray: A strong, professional color for headings that stands out. */
+  text-align: center;
+  /*
+    `text-align: center;`: Centers the text content within the heading elements.
+  */
+  margin-bottom: 20px;
+  /*
+    `margin-bottom: 20px;`: Adds space below each heading, separating it from
+    the content that follows.
+  */
+}
+
+h1 {
+  font-size: 2.5em;
+  /*
+    `font-size: 2.5em;`: Sets the font size of the `<h1>` to 2.5 times the
+    base font size (which is typically 16px for browsers, so 40px). `em` units
+    are relative to the parent element's font size, making typography more scalable.
+  */
+  padding-bottom: 10px;
+  /*
+    `padding-bottom: 10px;`: Adds internal spacing below the `<h1>` text.
+  */
+  border-bottom: 2px solid #e0e0e0; /* Light Gray Border: A subtle line to visually separate the main title. */
+}
+
+h2 {
+  font-size: 2em;
+  /*
+    `font-size: 2em;`: Sets the font size of the `<h2>` to 2 times the base font size.
+  */
+  margin-top: 40px;
+  /*
+    `margin-top: 40px;`: Adds more space above `<h2>` headings to clearly
+    demarcate new sections.
+  */
+}
+
+h3 {
+  font-size: 1.5em;
+  /*
+    `font-size: 1.5em;`: Sets the font size of the `<h3>` to 1.5 times the base font size.
+  */
+  margin-top: 30px;
+  /*
+    `margin-top: 30px;`: Adds space above `<h3>` headings.
+  */
+  color: #3498db; /* Bright Blue: A vibrant accent color used for sub-headings to draw attention. */
+}
+
+p {
+  /*
+    The `p` selector targets all paragraph elements.
+  */
+  margin-bottom: 15px;
+  /*
+    `margin-bottom: 15px;`: Adds space below each paragraph, separating it from
+    the next block of text or element.
+  */
+  text-align: justify;
+  /*
+    `text-align: justify;`: Distributes text evenly between the left and right
+    edges of the line, creating a clean, block-like appearance.
+  */
+}
+
+/*
+  ==============================================================================
+  Responsive Embeds (Video & Map)
+  ==============================================================================
+
+  Interaction Behavior: "Fluid Responsiveness"
+  The primary interaction behavior modeled here is how the embedded media
+  (YouTube video and Google Map) gracefully adapt their size and aspect ratio
+  to different screen dimensions, ensuring optimal viewing on any device.
+  This is achieved using the "intrinsic ratio" technique.
+*/
+
+.video-responsive,
+.map-responsive {
+  /*
+    These classes are applied to the `div` containers that wrap the `<iframe>`
+    elements for both the video and the map. This technique is known as the
+    "intrinsic ratio" or "aspect ratio box" method for responsive embeds.
+  */
+  position: relative;
+  /*
+    `position: relative;`: Establishes a positioning context for its absolutely
+    positioned children (the `<iframe>`). This means the `top`, `left`, `width`,
+    and `height` properties of the `<iframe>` will be relative to this container.
+  */
+  padding-bottom: 56.25%; /* 16:9 Aspect Ratio (9 / 16 * 100%) */
+  /*
+    `padding-bottom: 56.25%;`: This is the magic number for a 16:9 aspect ratio.
+    The `padding-bottom` property, when given a percentage value, is calculated
+    relative to the *width* of the parent element. By setting `height: 0;`,
+    this padding effectively creates a box whose height is always 56.25% of its width,
+    thus maintaining the 16:9 aspect ratio.
+  */
+  height: 0;
+  /*
+    `height: 0;`: Sets the actual height of the container to zero. The visual height
+    is then determined solely by the `padding-bottom`.
+  */
+  overflow: hidden;
+  /*
+    `overflow: hidden;`: Ensures that any content that might spill out of the
+    container (though unlikely with this technique) is clipped.
+  */
+  margin: 20px auto;
+  /*
+    `margin: 20px auto;`: Adds 20 pixels of top/bottom margin for spacing
+    and horizontally centers the responsive container within its parent.
+  */
+  max-width: 100%;
+  /*
+    `max-width: 100%;`: Ensures the container doesn't exceed the width of its parent.
+  */
+  background-color: #ecf0f1; /* Light Blue-Gray: A subtle background for the embed areas. */
+  border-radius: 8px;
+  /*
+    `border-radius: 8px;`: Applies rounded corners to the embed containers.
+  */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+  /*
+    `box-shadow`: A lighter shadow for the embed containers, making them slightly
+    recessed.
+  */
+}
+
+.map-responsive {
+  /*
+    Specific adjustments for the map if needed, though 16:9 often works well for maps too.
+    If a different aspect ratio is desired for the map (e.g., 4:3), this value would change.
+    For 4:3, it would be `padding-bottom: 75%;` (3 / 4 * 100%).
+    Keeping 16:9 here for consistency and common use case.
+  */
+  padding-bottom: 75%; /* Adjusting for a slightly taller map (4:3 aspect ratio) */
+  /*
+    `padding-bottom: 75%;`: For the map, we're using a 4:3 aspect ratio (3 / 4 * 100%).
+    This makes the map appear a bit taller, which is often desirable for geographic
+    context, while still maintaining responsiveness.
+  */
+}
+
+
+.video-responsive iframe,
+.map-responsive iframe {
+  /*
+    These selectors target the `<iframe>` elements *inside* the responsive containers.
+  */
+  position: absolute;
+  /*
+    `position: absolute;`: Takes the iframe out of the normal document flow and
+    positions it relative to its closest positioned ancestor (which is the
+    `.video-responsive` or `.map-responsive` div because it has `position: relative;`).
+  */
+  top: 0;
+  left: 0;
+  /*
+    `top: 0; left: 0;`: Positions the iframe at the top-left corner of its
+    parent responsive container.
+  */
+  width: 100%;
+  height: 100%;
+  /*
+    `width: 100%; height: 100%;`: Makes the iframe fill the entire space of its
+    parent responsive container. Since the parent container's height is controlled
+    by `padding-bottom` (maintaining the aspect ratio), the iframe will scale
+    proportionally with the container.
+  */
+  border: 0;
+  /*
+    `border: 0;`: Removes any default borders that browsers might apply to iframes.
+  */
+  border-radius: 8px; /* Match parent container's rounded corners */
+  /*
+    `border-radius: 8px;`: Ensures the iframe itself also has rounded corners,
+    matching its parent container for a consistent look.
+  */
+}
+
+/*
+  ==============================================================================
+  Footer
+  ==============================================================================
+*/
+
+footer {
+  /*
+    The `footer` selector targets the footer element at the bottom of the page.
+  */
+  text-align: center;
+  /*
+    `text-align: center;`: Centers the text content within the footer.
+  */
+  margin-top: 40px;
+  /*
+    `margin-top: 40px;`: Adds significant space above the footer, separating it
+    from the main content.
+  */
+  padding-top: 20px;
+  /*
+    `padding-top: 20px;`: Adds internal spacing above the footer content.
+  */
+  border-top: 1px solid #e0e0e0; /* Light Gray Border: A subtle line to visually separate the footer. */
+  color: #7f8c8d; /* Muted Gray: A softer color for footer text, indicating secondary information. */
+  font-size: 0.9em;
+  /*
+    `font-size: 0.9em;`: Makes the footer text slightly smaller than the base font size.
+  */
+}
+
+/*
+  ==============================================================================
+  Media Queries for Responsiveness
+  ==============================================================================
+*/
+
+@media (max-width: 768px) {
+  /*
+    `@media (max-width: 768px)`: This is a media query. The styles defined
+    inside this block will only apply when the viewport width is 768 pixels
+    or less (typically for tablets and smaller screens).
+  */
+  h1 {
+    font-size: 2em;
+    /*
+      `font-size: 2em;`: Reduces the font size of the main heading on smaller screens
+      to prevent it from taking up too much space.
+    */
+  }
+
+  h2 {
+    font-size: 1.7em;
+    /*
+      `font-size: 1.7em;`: Reduces the font size of secondary headings.
+    */
+  }
+
+  h3 {
+    font-size: 1.3em;
+    /*
+      `font-size: 1.3em;`: Reduces the font size of tertiary headings.
+    */
+  }
+
+  .container {
+    padding: 15px;
+    /*
+      `padding: 15px;`: Slightly reduces the internal padding of the main container
+      on smaller screens to optimize space.
+    */
+  }
+
+  body {
+    padding: 10px;
+    /*
+      `padding: 10px;`: Reduces the overall body padding on smaller screens.
+    */
+  }
+}
+
+@media (max-width: 480px) {
+  /*
+    `@media (max-width: 480px)`: This media query applies styles when the
+    viewport width is 480 pixels or less (typically for mobile phones).
+  */
+  h1 {
+    font-size: 1.8em;
+    /*
+      `font-size: 1.8em;`: Further reduces the font size of the main heading
+      for very small screens.
+    */
+  }
+
+  h2 {
+    font-size: 1.5em;
+    /*
+      `font-size: 1.5em;`: Further reduces the font size of secondary headings.
+    */
+  }
+
+  h3 {
+    font-size: 1.2em;
+    /*
+      `font-size: 1.2em;`: Further reduces the font size of tertiary headings.
+    */
+  }
+
+  .container {
+    padding: 10px;
+    /*
+      `padding: 10px;`: Further reduces the internal padding of the main container.
+    */
+  }
+
+  body {
+    padding: 5px;
+    /*
+      `padding: 5px;`: Minimal body padding for maximum content space on tiny screens.
+    */
+  }
+}

@@ -1,0 +1,235 @@
+<!--
+Full Prompt: Create a complete responsive HTML5 page named media-embed.html
+that includes two embedded elements: a YouTube video and a Google Map
+iframe. Use the following YouTube video URL for the embed: https://www.youtube.com/watch?v=o7poP4QV7kU.
+For the map, embed a Google Map of the Tate Modern in London. Center
+both embeds on the page and ensure they resize properly across all
+screen sizes, including mobile devices. Wrap each iframe in a responsive
+container if necessary to preserve aspect ratio and responsiveness.
+Link to an external stylesheet at css/media-embed.css to
+control all layout and appearance. Write neurotically detailed comments
+in all files; explain every tag, class, style rule, and color value as
+if you're walking a complete beginner through the reasoning behind each
+choice. Be sure to include named comments describing your color scheme
+and interaction behavior. Include this full prompt as a comment at the
+top of the HTML file. Use placeholder content about an art topic of your
+choice to complete the page.
+-->
+
+<!DOCTYPE html>
+<!--
+  The `<!DOCTYPE html>` declaration defines this document to be an HTML5 document.
+  It's crucial for browsers to render the page in standards mode.
+-->
+<html lang="en">
+<!--
+  The `<html>` tag is the root element of an HTML page.
+  The `lang="en"` attribute specifies the language of the document content,
+  which helps search engines and assistive technologies (like screen readers).
+-->
+<head>
+  <!--
+    The `<head>` section contains meta-information about the HTML document,
+    such as its title, links to stylesheets, and other metadata. This content
+    is not directly visible on the web page itself.
+  -->
+
+  <meta charset="UTF-8">
+  <!--
+    The `<meta charset="UTF-8">` tag specifies the character encoding for the document.
+    UTF-8 is a universal character set that includes almost all characters and symbols
+    in the world, ensuring that text displays correctly across different languages and platforms.
+  -->
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!--
+    The `<meta name="viewport" ...>` tag is critical for responsive web design.
+    - `width=device-width`: Sets the width of the viewport to the width of the device screen.
+      This means the page will take up the full available width on any device.
+    - `initial-scale=1.0`: Sets the initial zoom level when the page is first loaded.
+      A value of 1.0 means no zoom, displaying the page at its actual size, which is
+      essential for consistent rendering across devices.
+  -->
+
+  <title>Art & Immersion: Media Embeds</title>
+  <!--
+    The `<title>` tag defines the title of the HTML document. This title appears
+    in the browser's title bar or tab, and is also used by search engines.
+  -->
+
+  <link rel="stylesheet" href="css/media-embed.css">
+  <!--
+    The `<link>` tag is used to link an external resource to the HTML document.
+    - `rel="stylesheet"`: Specifies the relationship of the linked document to the current document,
+      indicating that it's a stylesheet.
+    - `href="css/media-embed.css"`: Specifies the URL (path) of the external stylesheet file.
+      This means all styling for this HTML page will be defined in the `media-embed.css` file
+      located in the `css` folder.
+  -->
+</head>
+<body>
+  <!--
+    The `<body>` section contains all the visible content of the HTML document,
+    such as text, images, videos, maps, and other elements that users interact with.
+  -->
+
+  <div class="container">
+    <!--
+      The `<div>` tag is a generic container for flow content. It's used here
+      to group and structure the main content of the page.
+      The `class="container"` attribute assigns a CSS class, allowing us to
+      apply specific styling (like centering and max-width) to this element
+      via the `media-embed.css` stylesheet.
+    -->
+
+    <header>
+      <!--
+        The `<header>` tag represents introductory content, typically containing
+        a group of navigational aids or introductory headings.
+      -->
+      <h1>Exploring Modern Art Through Digital Media</h1>
+      <!--
+        The `<h1>` tag defines the most important heading on the page.
+        It's used here for the main title of the content.
+      -->
+    </header>
+
+    <main>
+      <!--
+        The `<main>` tag represents the dominant content of the `<body>` of a document.
+        It's a semantic tag that helps define the main content area of the page.
+      -->
+
+      <section class="content-section">
+        <!--
+          The `<section>` tag represents a standalone section of content, which doesn't
+          have a more specific semantic element to represent it. Here, it's used to
+          group related content, like the video embed and its accompanying text.
+          The `class="content-section"` allows for specific styling of these sections.
+        -->
+        <h2>The Abstract Expressionist Movement</h2>
+        <!--
+          The `<h2>` tag defines a secondary heading, typically used for section titles.
+        -->
+        <p>
+          Abstract Expressionism, a post-World War II art movement, emerged in New York City
+          in the 1940s. It was the first specifically American movement to achieve worldwide
+          influence and put New York City at the center of the art world. Artists like
+          Jackson Pollock and Mark Rothko sought to express emotions and ideas through
+          large-scale, non-representational works. This movement emphasized spontaneous,
+          subconscious creation, often involving dynamic brushstrokes and intense color fields.
+        </p>
+
+        <h3>Watch: A Deep Dive into Abstract Expressionism</h3>
+        <!--
+          The `<h3>` tag defines a tertiary heading, providing further sub-section titles.
+        -->
+        <div class="video-responsive">
+          <!--
+            This `<div>` with `class="video-responsive"` is a crucial container for
+            making the embedded YouTube video responsive.
+            In `media-embed.css`, this class will apply styles that maintain the
+            16:9 aspect ratio of the video as the screen size changes.
+            This is achieved by using `position: relative;`, `padding-bottom: 56.25%;`
+            (which is 9/16 * 100%), `height: 0;`, and `overflow: hidden;`.
+          -->
+          <iframe
+            src="https://www.youtube.com/embed/o7poP4QV7kU"
+            title="YouTube video player about Abstract Expressionism"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen>
+          </iframe>
+          <!--
+            The `<iframe>` tag is used to embed another HTML document within the current HTML document.
+            - `src="https://www.youtube.com/embed/o7poP4QV7kU"`: Specifies the URL of the document to embed.
+              This is the embed URL for the YouTube video. Note that it's `youtube.com/embed/`
+              and not the standard watch URL.
+            - `title="YouTube video player about Abstract Expressionism"`: Provides an accessible title
+              for the iframe, which is important for screen readers and SEO.
+            - `frameborder="0"`: Removes the border around the iframe (modern CSS usually handles this).
+            - `allow="..."`: Specifies a feature policy for the iframe, controlling what features
+              (like accelerometer, autoplay, etc.) are available to the embedded content.
+            - `referrerpolicy="strict-origin-when-cross-origin"`: Controls how much referrer information
+              is sent with requests initiated from the iframe.
+            - `allowfullscreen`: Allows the user to toggle fullscreen mode for the video.
+            Inside the `video-responsive` container, the CSS will make this iframe
+            take up 100% width and height of its parent, ensuring it scales correctly.
+          -->
+        </div>
+        <p>
+          The video provides an excellent overview of the key artists, techniques,
+          and philosophical underpinnings of Abstract Expressionism, showcasing
+          its profound impact on the trajectory of modern art.
+        </p>
+      </section>
+
+      <section class="content-section">
+        <h2>The Tate Modern: A Hub for Contemporary Art</h2>
+        <p>
+          The Tate Modern, located in London, is a world-renowned contemporary art museum.
+          Housed in the former Bankside Power Station, its iconic architecture and vast
+          collection make it a must-visit destination for art enthusiasts. It features
+          works by international artists from 1900 to the present day, including
+          masterpieces of Cubism, Surrealism, Pop Art, and more.
+        </p>
+
+        <h3>Find Us: Tate Modern on the Map</h3>
+        <div class="map-responsive">
+          <!--
+            This `<div>` with `class="map-responsive"` serves the same purpose as
+            `video-responsive` but for the Google Map iframe. It ensures the map
+            maintains its aspect ratio and scales responsively.
+            The `padding-bottom` will also be set to maintain a suitable aspect ratio
+            for the map.
+          -->
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2483.585509172465!2d-0.09951168423049909!3d51.50760637963497!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487604a9557b7747%3A0x8f266f882193b069!2sTate%20Modern!5e0!3m2!1sen!2suk!4v1700000000000!5m2!1sen!2suk"
+            width="600"
+            height="450"
+            style="border:0;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Google Map of Tate Modern, London">
+          </iframe>
+          <!--
+            The `<iframe>` tag for the Google Map embed.
+            - `src="..."`: The embed URL provided by Google Maps for Tate Modern.
+              This URL is quite long as it contains all the map coordinates and settings.
+            - `width="600"` and `height="450"`: These are default dimensions provided
+              by Google Maps. However, the CSS applied to `map-responsive` and the
+              iframe itself (`width: 100%; height: 100%;`) will override these
+              to ensure responsiveness.
+            - `style="border:0;"`: Removes the default iframe border.
+            - `allowfullscreen=""`: Allows the map to be viewed in fullscreen.
+            - `loading="lazy"`: Suggests to the browser to load the iframe content
+              only when it is near the viewport, improving initial page load performance.
+            - `referrerpolicy="no-referrer-when-downgrade"`: Controls referrer information.
+            - `title="Google Map of Tate Modern, London"`: Accessible title for the map.
+          -->
+        </div>
+        <p>
+          Whether you're planning a visit or just curious about its location,
+          the embedded map provides a clear view of the Tate Modern's surroundings
+          and helps in navigation. Its position on the South Bank of the River Thames
+          makes it easily accessible and a central point for London's cultural scene.
+        </p>
+      </section>
+    </main>
+
+    <footer>
+      <!--
+        The `<footer>` tag represents a footer for its nearest sectioning content.
+        It typically contains information about the author, copyright data, or related links.
+      -->
+      <p>&copy; 2025 Art & Immersion. All rights reserved.</p>
+      <!--
+        The `<p>` tag defines a paragraph of text.
+      -->
+    </footer>
+
+  </div>
+</body>
+</html>
