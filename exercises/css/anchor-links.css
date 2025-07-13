@@ -1,0 +1,340 @@
+/*
+This is the css/anchor-links.css file.
+It provides all the styling for the anchor-links.html page,
+including the sticky navigation bar, smooth scrolling, and section layouts.
+
+Neurotically detailed comments explain every style rule, class, and color value,
+along with the reasoning behind each choice.
+*/
+
+/* --- Color Scheme --- */
+/*
+Our color scheme is designed to be clean, modern, and easy on the eyes.
+We use a combination of cool tones for backgrounds and navigation,
+with a contrasting accent color for interactive elements.
+
+--primary-bg-color: #f8f8f8; - A very light gray, almost white. This serves as the main background color for the page content, providing a clean and bright canvas.
+--secondary-bg-color: #e0e0e0; - A slightly darker light gray. Used for alternating section backgrounds to provide subtle visual separation and depth.
+--nav-bg-color: #333; - A dark charcoal gray. This is the background color for our sticky navigation bar, providing a strong contrast against the page content for visibility.
+--nav-text-color: #ffffff; - Pure white. Used for the text color within the navigation bar, ensuring high readability against the dark background.
+--nav-link-hover-color: #007bff; - A vibrant blue. This is our accent color, used when hovering over navigation links to provide clear visual feedback that the link is interactive.
+--text-color: #333; - A dark charcoal gray. This is the primary text color for the main content, offering good contrast against light backgrounds.
+--heading-color: #1a1a1a; - A very dark gray, almost black. Used for headings to give them more prominence and visual weight.
+*/
+
+:root {
+    /* The :root pseudo-class targets the document's root element (the <html> tag).
+       Using CSS custom properties (variables) here allows us to define colors and
+       other values once and reuse them throughout the stylesheet, making it easier
+       to manage and update the theme. */
+    --primary-bg-color: #f8f8f8;
+    --secondary-bg-color: #e0e0e0;
+    --nav-bg-color: #333;
+    --nav-text-color: #ffffff;
+    --nav-link-hover-color: #007bff;
+    --text-color: #333;
+    --heading-color: #1a1a1a;
+}
+
+/* --- Global Reset and Base Styles --- */
+html {
+    /* The html element is the root of the document. */
+    scroll-behavior: smooth;
+    /* This property specifies whether to smoothly animate the scroll position
+       when the user clicks on an anchor link (e.g., href="#sectionId").
+       Instead of an abrupt jump, the page will scroll gracefully to the target,
+       improving user experience. */
+}
+
+body {
+    /* The body element contains all the visible content of the HTML document. */
+    font-family: 'Inter', sans-serif;
+    /* Sets the primary font for the entire page. 'Inter' is a modern, highly readable font.
+       'sans-serif' is a generic family fallback, ensuring that if 'Inter' isn't available,
+       a similar sans-serif font will be used. */
+    margin: 0;
+    /* Removes the default margin that browsers apply to the <body> element,
+       preventing unwanted whitespace around the page edges. */
+    padding: 0;
+    /* Removes the default padding that browsers apply to the <body> element. */
+    line-height: 1.6;
+    /* Sets the height of each line of text relative to the font size.
+       1.6 provides good readability by adding space between lines. */
+    color: var(--text-color);
+    /* Sets the default text color for the entire body using our custom property. */
+    background-color: var(--primary-bg-color);
+    /* Sets the default background color for the entire page using our custom property. */
+}
+
+/* --- Sticky Navigation Bar Styling --- */
+.sticky-nav {
+    /* This class is applied to the <header> element in HTML. */
+    position: fixed;
+    /* 'fixed' positions the element relative to the viewport.
+       This means it will stay in the same place even when the page is scrolled. */
+    top: 0;
+    /* Positions the element at the very top of the viewport (0 pixels from the top edge). */
+    width: 100%;
+    /* Makes the navigation bar span the full width of the viewport. */
+    background-color: var(--nav-bg-color);
+    /* Sets the background color of the navigation bar using our dark charcoal custom property. */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    /* Adds a subtle shadow beneath the navigation bar.
+       '0 2px 5px' means: 0px horizontal offset, 2px vertical offset, 5px blur radius.
+       'rgba(0, 0, 0, 0.2)' defines a black color with 20% opacity, creating a soft shadow effect.
+       This gives the nav bar a slight lift and separation from the content. */
+    z-index: 1000;
+    /* Sets the stack order of the element. Elements with a higher z-index are placed
+       in front of elements with a lower z-index. 1000 is a high value to ensure
+       the navigation bar always stays on top of other content when scrolling. */
+    padding: 1rem 0;
+    /* Adds padding inside the navigation bar.
+       '1rem' padding top/bottom (1rem = 16px by default), 0 padding left/right.
+       This gives some vertical space around the navigation links. */
+    border-bottom-left-radius: 8px; /* Adds rounded corners to the bottom-left of the nav bar */
+    border-bottom-right-radius: 8px; /* Adds rounded corners to the bottom-right of the nav bar */
+}
+
+.sticky-nav nav {
+    /* Styles the <nav> element inside the .sticky-nav header. */
+    display: flex;
+    /* Uses Flexbox for layout. Flexbox provides an efficient way to lay out,
+       align, and distribute space among items in a container. */
+    justify-content: center;
+    /* Aligns flex items along the main axis (horizontally, in this case)
+       to the center of the container. This centers our navigation links. */
+    align-items: center;
+    /* Aligns flex items along the cross axis (vertically, in this case)
+       to the center of the container. This vertically centers our links within the nav bar. */
+    max-width: 1200px;
+    /* Sets a maximum width for the navigation content. This prevents the nav links
+       from spreading too wide on very large screens, keeping them visually contained. */
+    margin: 0 auto;
+    /* Centers the navigation content horizontally within its parent (.sticky-nav).
+       '0' for top/bottom margin, 'auto' for left/right margin. */
+}
+
+.sticky-nav ul {
+    /* Styles the <ul> (unordered list) inside the <nav> element. */
+    list-style: none;
+    /* Removes the default bullet points from the list items. */
+    margin: 0;
+    /* Removes the default margin from the unordered list. */
+    padding: 0;
+    /* Removes the default padding from the unordered list. */
+    display: flex;
+    /* Uses Flexbox again to lay out the list items horizontally. */
+    gap: 2rem;
+    /* Sets the space between flex items (the <li> elements).
+       '2rem' creates a consistent gap between each navigation link. */
+}
+
+.sticky-nav li a {
+    /* Styles the <a> (anchor) tags inside the <li> (list item) elements within the navigation. */
+    color: var(--nav-text-color);
+    /* Sets the text color of the links to white, ensuring good contrast against the dark nav bar. */
+    text-decoration: none;
+    /* Removes the default underline from hyperlinks. */
+    padding: 0.5rem 1rem;
+    /* Adds padding around the text of each link.
+       '0.5rem' top/bottom, '1rem' left/right. This makes the clickable area larger
+       and improves touch target size on mobile devices. */
+    border-radius: 5px;
+    /* Adds slight rounded corners to the background of the links, making them softer visually. */
+    transition: background-color 0.3s ease, color 0.3s ease;
+    /* Defines a smooth transition effect when the background-color or color property changes.
+       '0.3s' is the duration of the transition.
+       'ease' specifies a slow start, then fast, then slow end, for a natural feel.
+       This creates the hover effect. */
+    font-weight: 500;
+    /* Makes the font weight slightly bolder for better readability in the navigation. */
+}
+
+/* --- Interaction Behavior: Hover State --- */
+.sticky-nav li a:hover {
+    /* This pseudo-class targets the <a> element when the user's mouse pointer is over it. */
+    background-color: var(--nav-link-hover-color);
+    /* Changes the background color of the link to our vibrant blue accent color on hover. */
+    color: var(--nav-bg-color);
+    /* Changes the text color to the dark nav background color on hover,
+       creating a subtle inverse effect for better visual feedback. */
+}
+
+/* --- Main Content Section Styling --- */
+main {
+    /* Styles the <main> element, which contains all our content sections. */
+    max-width: 1000px;
+    /* Sets a maximum width for the main content area. This prevents lines of text
+       from becoming too long on very wide screens, which can hinder readability. */
+    margin: 0 auto;
+    /* Centers the main content horizontally within the body. */
+    padding: 2rem;
+    /* Adds padding around the entire main content area.
+       This creates space between the content and the edges of the browser window. */
+    padding-top: 8rem;
+    /* Crucial for fixed headers! This adds extra padding to the top of the main content
+       to push it down, preventing the first section's content from being hidden
+       behind the sticky navigation bar. The value (8rem) should be greater than
+       the height of your sticky-nav. */
+}
+
+.content-section {
+    /* This class is applied to each <section> element. */
+    padding: 4rem 2rem;
+    /* Adds substantial padding inside each content section.
+       '4rem' top/bottom, '2rem' left/right. This creates ample breathing room
+       around the text and headings within each section. */
+    margin-bottom: 3rem;
+    /* Adds margin below each section, creating vertical space between them. */
+    border-radius: 10px;
+    /* Adds rounded corners to each content section, giving them a softer, modern look. */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    /* Adds a subtle shadow to each section, giving them a slight depth effect.
+       '0 4px 10px' means: 0px horizontal, 4px vertical, 10px blur.
+       'rgba(0, 0, 0, 0.1)' is black with 10% opacity. */
+    min-height: 80vh;
+    /* Sets a minimum height for each section. '80vh' means 80% of the viewport height.
+       This ensures that each section is tall enough to demonstrate scrolling behavior
+       and prevent the entire page from being too short, even with minimal content. */
+    display: flex;
+    /* Uses flexbox to arrange content within the section. */
+    flex-direction: column;
+    /* Stacks flex items (headings, paragraphs) vertically. */
+    justify-content: center;
+    /* Vertically centers the content within the section if it's shorter than min-height. */
+    align-items: flex-start;
+    /* Aligns content to the start (left) of the cross axis. */
+}
+
+/* Alternating background colors for sections for visual distinction */
+.content-section:nth-child(odd) {
+    /* This pseudo-class targets every odd-numbered .content-section. */
+    background-color: var(--primary-bg-color);
+    /* Sets the background to our primary light gray. */
+}
+
+.content-section:nth-child(even) {
+    /* This pseudo-class targets every even-numbered .content-section. */
+    background-color: var(--secondary-bg-color);
+    /* Sets the background to our slightly darker light gray, creating an alternating pattern. */
+}
+
+/* --- Heading Styling --- */
+h2 {
+    /* Styles the <h2> (second-level heading) elements. */
+    color: var(--heading-color);
+    /* Sets the color of the headings to a very dark gray. */
+    font-size: 2.5rem;
+    /* Sets the font size of the headings. '2.5rem' is a relatively large size for prominence. */
+    margin-bottom: 1.5rem;
+    /* Adds space below each heading, separating it from the paragraphs that follow. */
+    text-align: center;
+    /* Centers the text of the headings. */
+    width: 100%;
+    /* Ensures the heading takes up the full width available within its parent. */
+}
+
+/* --- Paragraph Styling --- */
+p {
+    /* Styles the <p> (paragraph) elements. */
+    margin-bottom: 1rem;
+    /* Adds space below each paragraph, separating it from the next paragraph or element. */
+    text-align: justify;
+    /* Aligns the text to both the left and right margins, creating a clean block of text. */
+}
+
+/* --- List Styling (for the techniques list) --- */
+ul {
+    /* Styles unordered lists within the content sections. */
+    list-style: disc; /* Ensures standard bullet points */
+    padding-left: 20px; /* Adds indentation for list items */
+    margin-bottom: 1rem; /* Space below the list */
+}
+
+ul li {
+    /* Styles individual list items within content sections. */
+    margin-bottom: 0.5rem; /* Space between list items */
+}
+
+ul li strong {
+    /* Styles the strong (bold) text within list items. */
+    color: var(--heading-color); /* Makes bold text stand out with a darker color */
+}
+
+/* --- Responsive Adjustments (Media Queries) --- */
+@media (max-width: 768px) {
+    /* This media query applies styles only when the viewport width is 768 pixels or less,
+       targeting tablet and smaller desktop screens. */
+    .sticky-nav ul {
+        /* Adjusts the navigation list for smaller screens. */
+        flex-direction: column;
+        /* Stacks the navigation links vertically instead of horizontally. */
+        gap: 0.5rem;
+        /* Reduces the gap between vertically stacked links. */
+        align-items: center;
+        /* Centers the navigation links horizontally when stacked. */
+    }
+
+    .sticky-nav li a {
+        /* Adjusts padding for navigation links on smaller screens. */
+        padding: 0.5rem 0.8rem;
+        /* Slightly reduces padding to fit more links if needed. */
+        font-size: 0.9rem;
+        /* Slightly reduces font size for navigation links. */
+    }
+
+    main {
+        /* Adjusts main content padding for smaller screens. */
+        padding: 1rem;
+        /* Reduces overall padding around the main content. */
+        padding-top: 10rem;
+        /* Increases top padding to account for potentially taller stacked navigation. */
+    }
+
+    .content-section {
+        /* Adjusts content section padding for smaller screens. */
+        padding: 2rem 1rem;
+        /* Reduces padding inside each content section. */
+        min-height: auto;
+        /* Removes the fixed minimum height, allowing sections to shrink
+           based on their content, which is better for mobile scrolling. */
+    }
+
+    h2 {
+        /* Adjusts heading font size for smaller screens. */
+        font-size: 2rem;
+        /* Reduces heading font size to fit better on smaller screens. */
+    }
+}
+
+@media (max-width: 480px) {
+    /* This media query applies styles only when the viewport width is 480 pixels or less,
+       targeting mobile phone screens. */
+    .sticky-nav li a {
+        /* Further adjusts padding for navigation links on very small screens. */
+        padding: 0.4rem 0.6rem;
+        /* Reduces padding further. */
+        font-size: 0.8rem;
+        /* Further reduces font size. */
+    }
+
+    main {
+        /* Further adjusts main content padding for very small screens. */
+        padding: 0.5rem;
+        /* Reduces overall padding significantly. */
+        padding-top: 12rem;
+        /* Ensures enough space for the potentially very tall stacked navigation. */
+    }
+
+    .content-section {
+        /* Further adjusts content section padding for very small screens. */
+        padding: 1.5rem 0.8rem;
+        /* Reduces padding inside each content section. */
+    }
+
+    h2 {
+        /* Further adjusts heading font size for very small screens. */
+        font-size: 1.8rem;
+        /* Reduces heading font size to fit well on small mobile screens. */
+    }
+}
