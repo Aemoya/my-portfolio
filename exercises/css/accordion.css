@@ -1,0 +1,166 @@
+/* css/accordion.css
+    
+    Neurotically Detailed CSS Comments:
+    This file defines the layout, styling, and transitions for the accordion interface. 
+*/
+
+/* COLOR SCHEME AND TYPOGRAPHY 
+    We define a modern, readable color scheme with a clean background, 
+    a soft primary color for interaction highlights, and a slightly muted 
+    text color for contrast.
+    
+    - Background: #F9F9F9 (Soft off-white)
+    - Primary Accent (Accordion header hover/focus): #4a90e2 (Medium blue)
+    - Border/Separator: #e0e0e0 (Light grey)
+    - Text: #333 (Dark grey)
+    - Header Background: #ffffff (White)
+*/
+
+/* 1. Base Styles & Body Reset
+    We start by applying basic resets and defining the overall look of the page.
+*/
+body {
+    font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #F9F9F9; /* Soft off-white background */
+    color: #333; /* Dark grey text for readability */
+    line-height: 1.6;
+}
+
+/* 2. Accordion Container and Main Heading
+    We style the main container to center the accordion and add some padding/shadow.
+*/
+.accordion-container {
+    max-width: 800px; /* Restrict the width for better readability */
+    margin: 40px auto; /* Center the container horizontally with vertical margin */
+    border: 1px solid #e0e0e0; /* Light grey border around the entire container */
+    border-radius: 8px; /* Rounded corners for a softer look */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); /* Subtle shadow for depth */
+    overflow: hidden; /* Ensures the border radius is respected */
+    background-color: #ffffff; /* White background for the accordion content area */
+}
+
+h1 {
+    font-size: 2.2rem;
+    padding: 25px 30px 15px;
+    margin: 0;
+    color: #2c3e50; /* Darker heading color for prominence */
+    border-bottom: 1px solid #e0e0e0;
+}
+
+/* 3. Accordion Item Styling
+    Defines the visual separator for each section.
+*/
+.accordion-item {
+    border-bottom: 1px solid #e0e0e0; /* Separator line between items */
+}
+
+.accordion-item:last-child {
+    border-bottom: none; /* Remove the bottom border for the last item for a cleaner look */
+}
+
+/* 4. Accordion Header (The Clickable Button)
+    We style the <h3> and the <button> inside it. The button is the interactive element.
+*/
+.accordion-header {
+    margin: 0; /* Remove default margin from h3 */
+}
+
+.accordion-header button {
+    /* Reset button styles for a clean, semantic appearance */
+    background: none;
+    border: none;
+    width: 100%; /* Make the button fill the entire width of the accordion item */
+    text-align: left; /* Align text to the left */
+    font-size: 1.2rem;
+    font-weight: 600;
+    padding: 20px 30px; /* Generous padding for a comfortable clickable area */
+    cursor: pointer; /* Change cursor to pointer to indicate clickability */
+    color: #333; /* Default text color */
+    display: flex; /* Use flexbox to align the content and the icon */
+    justify-content: space-between; /* Push content and icon to opposite ends */
+    align-items: center; /* Vertically center items */
+    transition: background-color 0.2s ease, color 0.2s ease; /* Smooth transition for hover effects */
+}
+
+/* Interactivity Behavior:
+    Hover and Focus States (Accessibility)
+    These styles provide visual feedback when the user interacts with the button, 
+    crucial for usability and accessibility.
+*/
+.accordion-header button:hover,
+.accordion-header button:focus {
+    background-color: #f5f5f5; /* Light grey background on hover/focus */
+    color: #4a90e2; /* Accent color for the text */
+    outline: none; /* Remove default browser focus outline, we add our own below */
+}
+
+/* Accessibility Support:
+    Custom Focus Indicator
+    We add a specific focus indicator for keyboard users (Tab key navigation).
+*/
+.accordion-header button:focus-visible {
+    box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.5); /* Blue outline box shadow */
+}
+
+/* 5. Accordion Content Panel
+    Styling the content area and managing its visibility and transitions.
+*/
+.accordion-content {
+    padding: 0 30px; /* Padding for the content inside the panel */
+    overflow: hidden; /* Crucial for the height transition to work smoothly */
+    
+    /* The Height Transition:
+        We set the height to 0 initially and use a transition effect. 
+        This is a common technique for smooth accordion animations. 
+        JavaScript toggles the height based on the `data-state`.
+    */
+    height: 0; 
+    transition: height 0.3s ease-out, padding 0.3s ease-out; /* Smooth transition for height and padding */
+    
+    /* We hide the content visually when collapsed */
+    visibility: hidden;
+}
+
+.accordion-content p {
+    margin: 0 0 15px 0; /* Spacing for paragraphs within the content */
+}
+
+/* 6. JavaScript State-Driven Styling
+    These styles are applied when JavaScript updates the data-state attribute 
+    to 'expanded'.
+*/
+
+/* Expanded State:
+    When the accordion content has data-state="expanded", we set the height 
+    to auto (or a specific value if preferred, but auto is often necessary 
+    for dynamic content) and make it visible.
+*/
+.accordion-content[data-state="expanded"] {
+    height: auto; /* Allow content to take natural height */
+    padding: 20px 30px; /* Add padding when expanded */
+    visibility: visible; /* Ensure content is visible */
+}
+
+/* 7. Header Icon/Indicator (Optional, but good for UX)
+    We add a pseudo-element (::before) to the button to create a visual indicator 
+    of the section state (open/closed).
+*/
+.accordion-header button::before {
+    content: '+'; /* Default indicator for collapsed state */
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-left: 20px;
+    transition: transform 0.2s ease; /* Smooth rotation transition */
+    color: #4a90e2; /* Blue color for the indicator */
+}
+
+/* Rotation when Expanded:
+    When the button's aria-expanded attribute is true, we rotate the indicator 
+    to visually show it's open.
+*/
+.accordion-header button[aria-expanded="true"]::before {
+    content: '-'; /* Change to a minus sign for expanded state */
+    transform: rotate(0deg); /* No rotation needed for '-' sign, but maintain transition property */
+}

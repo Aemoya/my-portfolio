@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accordion Interface - Art History</title>
+    <link rel="stylesheet" href="css/accordion.css">
+</head>
+<body>
+
+<div class="accordion-container">
+    <h1>Exploring Art Movements</h1>
+
+    <section class="accordion-item">
+        <h3 class="accordion-header">
+            <button aria-expanded="false" aria-controls="content-impressionism" id="btn-impressionism">
+                The Rise of Impressionism (1870s)
+            </button>
+        </h3>
+        
+        <div id="content-impressionism" class="accordion-content" role="region" aria-labelledby="btn-impressionism" data-state="collapsed">
+            <p>Impressionism emerged in France, characterized by small, visible brushstrokes, open composition, and an emphasis on the accurate depiction of light and its changing qualities. Artists like Claude Monet and Pierre-Auguste Renoir aimed to capture the fleeting moment rather than detailed realism. This movement marked a significant departure from traditional academic painting, often favoring modern life subjects and outdoor settings (en plein air).</p>
+            <p>Key Artists: Claude Monet, Edgar Degas, Camille Pissarro, Mary Cassatt.</p>
+        </div>
+    </section>
+
+    <section class="accordion-item">
+        <h3 class="accordion-header">
+            <button aria-expanded="false" aria-controls="content-surrealism" id="btn-surrealism">
+                The Dreamscapes of Surrealism (1920s)
+            </button>
+        </h3>
+        <div id="content-surrealism" class="accordion-content" role="region" aria-labelledby="btn-surrealism" data-state="collapsed">
+            <p>Surrealism developed in the aftermath of World War I, heavily influenced by Freudian psychoanalysis. Led by André Breton, the movement sought to unlock the power of the unconscious mind and explore irrational, dreamlike imagery. Surrealist artists often combined unrelated objects in bizarre ways, challenging conventional notions of reality and logic.</p>
+            <p>Key Artists: Salvador Dalí, René Magritte, Max Ernst, Frida Kahlo.</p>
+        </div>
+    </section>
+
+    <section class="accordion-item">
+        <h3 class="accordion-header">
+            <button aria-expanded="false" aria-controls="content-abstract" id="btn-abstract">
+                Abstract Expressionism and the New York School (1940s)
+            </button>
+        </h3>
+        <div id="content-abstract" class="accordion-content" role="region" aria-labelledby="btn-abstract" data-state="collapsed">
+            <p>Abstract Expressionism was the first major American art movement to gain international prominence, shifting the center of the art world from Paris to New York. It prioritized large-scale canvases, spontaneity, and emotional expression. This movement includes two main tendencies: Action Painting (focused on the physical act of painting) and Color Field Painting (focused on vast areas of solid color).</p>
+            <p>Key Artists: Jackson Pollock, Mark Rothko, Willem de Kooning, Helen Frankenthaler.</p>
+        </div>
+    </section>
+</div>
+
+<script src="scripts/accordion.js"></script>
+
+</body>
+</html>
