@@ -1,0 +1,239 @@
+/* File: css/modal.css
+    
+    This stylesheet manages the visual presentation for the modal.html page, focusing on layout, aesthetics, 
+    and the styling of the modal popup and its overlay.
+*/
+
+/* NAMED COMMENTS:
+    
+    COLOR SCHEME:
+    - Primary Color: #34495e (Dark Slate Blue/Gray) - Used for text and main headings for a sophisticated, readable look.
+    - Accent Color: #2ecc71 (Emerald Green) - Used for buttons and interactive elements for contrast and emphasis.
+    - Background Color: #f8f8f8 (Off-White/Light Gray) - A gentle background for the body, easier on the eyes than pure white.
+    - Modal Overlay Dim: rgba(0, 0, 0, 0.9) (Black with 90% opacity) - Provides a strong visual separation between the modal and the page content.
+    - Border/Subtle Element: #bdc3c7 (Light Silver Gray) - Used for borders and separators.
+*/
+
+
+/* --- Global Styles and Reset --- */
+
+* {
+    /* The universal selector (*) applies styles to all elements. */
+    box-sizing: border-box;
+    /* 'box-sizing: border-box;' is a fundamental CSS reset. 
+        It ensures that padding and borders are included in the element's total width and height, 
+        making layout calculations much more intuitive and predictable.
+    */
+}
+
+body {
+    font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+    /* Specifies a clean, modern font stack for readability. */
+    margin: 0;
+    /* Removes default margin from the body. */
+    padding: 20px;
+    /* Adds some padding around the main content. */
+    background-color: #f8f8f8; /* Background color for the page content (Off-White/Light Gray). */
+    color: #34495e; /* Default text color (Dark Slate Blue/Gray). */
+    line-height: 1.6;
+    /* Improves readability by increasing the space between lines of text. */
+}
+
+/* --- Typography and Header Styling --- */
+
+h1, h2 {
+    color: #34495e; /* Headings use the primary color for emphasis. */
+}
+
+header {
+    text-align: center;
+    /* Centers the header text. */
+    padding-bottom: 20px;
+    border-bottom: 2px solid #bdc3c7; /* A subtle separator using the Light Silver Gray color. */
+    margin-bottom: 30px;
+}
+
+/* --- Gallery and Thumbnail Styling --- */
+
+.gallery-container {
+    max-width: 800px;
+    /* Limits the maximum width of the gallery content for better readability on large screens. */
+    margin: 0 auto;
+    /* Centers the gallery container on the page. */
+    padding: 20px;
+    background-color: #ffffff; /* White background for the main content area. */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow for a "floating" effect. */
+    border-radius: 8px; /* Slightly rounded corners for a modern look. */
+}
+
+.gallery-item {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.thumbnail-trigger {
+    /* Styling for the button that wraps the thumbnail. */
+    display: inline-block;
+    /* Allows the button to respect width/height and positioning like a block, but remain in flow like text. */
+    padding: 0;
+    /* Removes default padding from the button element. */
+    border: none;
+    /* Removes the default button border. */
+    background: none;
+    /* Removes the default button background. */
+    cursor: pointer;
+    /* Changes the cursor to a pointer (hand icon) on hover, indicating it's clickable. */
+    transition: transform 0.3s ease;
+    /* Smooth transition for the hover effect. */
+}
+
+.thumbnail-trigger:hover {
+    transform: scale(1.05);
+    /* Slightly enlarges the thumbnail when hovered over, providing visual feedback. */
+}
+
+.thumbnail-trigger img {
+    /* Styling for the image itself inside the button. */
+    max-width: 300px;
+    /* Sets a maximum size for the thumbnail. */
+    height: auto;
+    /* Maintains the image aspect ratio. */
+    display: block;
+    /* Removes any extra space often found below inline images. */
+    border: 5px solid #bdc3c7; /* A subtle border around the image. */
+    border-radius: 5px; /* Slightly rounded corners for the image. */
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2); /* Shadow to make the thumbnail stand out. */
+}
+
+.image-caption {
+    font-style: italic;
+    color: #7f8c8d; /* A muted gray color for the caption text. */
+    margin-top: 10px;
+}
+
+/* --- Modal Styling --- */
+
+/* NAMED COMMENTS:
+    
+    INTERACTION BEHAVIOR:
+    - Initial State: The modal is hidden by default using `display: none;`.
+    - Modal Open State: When the JavaScript adds the 'active' class, the modal changes to `display: flex;` to become visible and centered.
+    - Overlay Dimming: The `modal-overlay` is used to create a semi-transparent background to focus attention on the modal content.
+    - Centering: CSS Flexbox is used to perfectly center the modal content both horizontally and vertically within the viewport.
+*/
+
+.modal {
+    /* This is the main modal container. */
+    display: none; 
+    /* Crucial: Hides the modal by default. 
+        JavaScript will change this to 'display: flex;' when the modal opens.
+    */
+    position: fixed;
+    /* 'fixed' positioning keeps the modal in the same position relative to the viewport, 
+        even when the user scrolls.
+    */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Ensures the modal covers the entire screen. */
+    z-index: 100;
+    /* Puts the modal high above other elements on the page (like a stack). 
+        A high z-index ensures the modal appears on top.
+    */
+    
+    /* These properties are used for centering when the modal is active (display: flex). */
+    justify-content: center; 
+    /* Centers the modal content horizontally. */
+    align-items: center; 
+    /* Centers the modal content vertically. */
+}
+
+.modal.active {
+    /* When the 'active' class is added by JavaScript, the modal becomes visible and centered. */
+    display: flex;
+}
+
+.modal-overlay {
+    /* This creates the dark, dimmed background behind the modal content. */
+    position: absolute;
+    /* Positions the overlay relative to the `modal` container. */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9); 
+    /* Black with 90% opacity (strong dimming effect). */
+}
+
+.modal-content {
+    /* The container for the image and close button inside the modal. */
+    position: relative;
+    /* Allows us to position the close button relative to this container. */
+    z-index: 101; 
+    /* Ensures the content is above the overlay (z-index 100). */
+    max-width: 90%;
+    /* Prevents the image from getting too wide, especially on smaller screens. */
+    max-height: 90vh;
+    /* Prevents the image from taking up too much vertical space (vh = viewport height). */
+    /* We don't use a background color here because we just want the image to show on the dark overlay. */
+}
+
+.modal-content img {
+    /* Styles for the image inside the modal. */
+    display: block;
+    max-width: 100%;
+    /* Ensures the image fits within the `modal-content` container's max-width. */
+    max-height: 80vh;
+    /* Ensures the image fits within the viewport height. */
+    border: 5px solid #ffffff; /* A white border around the image inside the modal. */
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.7); /* Strong shadow for the modal image. */
+    border-radius: 5px;
+}
+
+.close-button {
+    /* Styling for the close button (the 'X'). */
+    position: absolute;
+    /* Allows positioning relative to the `modal-content` container. */
+    top: -30px;
+    /* Positions the button slightly above the image. */
+    right: -30px;
+    /* Positions the button slightly to the right of the image. */
+    
+    background-color: #2ecc71; /* Emerald Green accent color. */
+    color: #ffffff; /* White text for contrast. */
+    border: 2px solid #ffffff; /* White border. */
+    border-radius: 50%; /* Makes the button perfectly circular. */
+    width: 40px;
+    height: 40px;
+    font-size: 24px;
+    line-height: 1;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s, transform 0.3s;
+    /* Smooth transitions for hover effects. */
+    z-index: 102; /* Ensures the close button is above the image and the overlay. */
+}
+
+.close-button:hover,
+.close-button:focus {
+    background-color: #27ae60; /* A slightly darker green on hover/focus. */
+    transform: scale(1.1);
+    /* Slightly enlarges the button on hover for clear feedback. */
+}
+
+/* Media Query for smaller screens (e.g., mobile devices). 
+    Adjusting the close button positioning if it's too far outside the modal on small screens.
+*/
+@media (max-width: 600px) {
+    .close-button {
+        top: 5px;
+        /* Move the button inside the top of the modal-content on small screens. */
+        right: 5px;
+        /* Move the button inside the right of the modal-content on small screens. */
+        width: 30px;
+        height: 30px;
+        font-size: 20px;
+        background-color: rgba(46, 204, 113, 0.9); /* Slight transparency on mobile to see the background. */
+    }
+}

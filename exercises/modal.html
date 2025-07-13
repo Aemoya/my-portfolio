@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modal Art Gallery</title>
+    <link rel="stylesheet" href="css/modal.css">
+    </head>
+<body>
+
+    <header>
+        <h1>The Art of Impressionism</h1>
+        <p>A brief exploration of light, color, and movement.</p>
+    </header>
+
+    <main class="gallery-container">
+        <h2>Featured Work: "Water Lilies" by Claude Monet</h2>
+        <section class="gallery-item">
+            <button id="openModalButton" class="thumbnail-trigger">
+                <img src="images/gallery1.jpg" alt="A thumbnail of Water Lilies, depicting a tranquil pond scene.">
+                </button>
+            <p class="image-caption">Click the image to view the full details.</p>
+            </section>
+
+    </main>
+
+    <div id="imageModal" class="modal">
+        <div class="modal-overlay"></div>
+
+        <div class="modal-content">
+            
+            <button id="closeModalButton" class="close-button" aria-label="Close Modal">
+                &times;
+                </button>
+
+            <img id="modalImage" src="images/gallery1.jpg" alt="A large view of Water Lilies, a famous painting by Claude Monet.">
+            </div>
+    </div>
+
+    <script src="scripts/modal.js"></script>
+    </body>
+</html>
