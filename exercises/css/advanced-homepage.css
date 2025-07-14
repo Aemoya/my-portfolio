@@ -1,0 +1,198 @@
+/*
+User Prompt: All styling should be in css/advanced-homepage.css, and all interactive functionality (like the mobile menu) must be in scripts/advanced-homepage.js. Make sure to enforce "neurotically detailed comments" explaining the purpose and reasoning behind every HTML tag, CSS rule and Javascript function. Make sure to include the full prompt as a comment block at the top of the main HTML file.
+*/
+
+/*
+    General Body and HTML Styling
+    Ensures the page takes full height and uses smooth scrolling for anchor links.
+*/
+html, body {
+    /* Sets the minimum height of the HTML and body elements to 100% of the viewport height. */
+    min-height: 100%;
+    /* Enables smooth scrolling behavior when navigating to anchor links on the page. */
+    scroll-behavior: smooth;
+}
+
+body {
+    /* Sets the default font family for the entire document to 'Inter', with a fallback to generic sans-serif. */
+    font-family: 'Inter', sans-serif;
+    /* Sets a subtle background color for the body to provide a soft base. */
+    background-color: #f8f8f8;
+    /* Ensures no horizontal overflow, preventing unwanted scrollbars on smaller screens. */
+    overflow-x: hidden;
+}
+
+/*
+    Header Specific Styling
+    Overrides some Tailwind defaults to ensure the header is fixed and visually distinct.
+*/
+header {
+    /* Ensures the header is positioned relative to the viewport and stays at the top. */
+    position: fixed;
+    /* Aligns the header to the top edge of the viewport. */
+    top: 0;
+    /* Makes the header span the full width of the viewport. */
+    width: 100%;
+    /* Sets a high z-index to ensure the header appears above other content when scrolling. */
+    z-index: 100;
+    /* Sets the background color of the header to white. */
+    background-color: #ffffff;
+    /* Adds a subtle shadow to the bottom of the header for visual separation. */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    /* Adds padding to the top and bottom of the header for spacing. */
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+/*
+    Hero Section Styling
+    Defines the full-height background image and overlay for the hero section.
+*/
+.hero-section {
+    /* Sets the height of the hero section to 100% of the viewport height. */
+    height: 100vh;
+    /* Specifies the background image for the hero section. */
+    background-image: url('../images/hero.jpg'); /* Placeholder, user should replace with actual image */
+    /* Scales the background image to cover the entire container. */
+    background-size: cover;
+    /* Centers the background image within the container. */
+    background-position: center;
+    /* Prevents the background image from repeating. */
+    background-repeat: no-repeat;
+    /* Adds a semi-transparent overlay to improve text readability over the background image. */
+    position: relative; /* Needed for pseudo-element positioning */
+    display: flex; /* Ensures content is centered */
+    align-items: center; /* Vertically centers content */
+    justify-content: center; /* Horizontally centers content */
+    text-align: center; /* Centers text within its container */
+    color: white; /* Sets text color to white for contrast */
+}
+
+/* Pseudo-element for the hero section overlay */
+.hero-section::before {
+    /* Creates a pseudo-element that covers the entire hero section. */
+    content: '';
+    /* Positions the pseudo-element absolutely within its parent. */
+    position: absolute;
+    /* Makes the pseudo-element span the full width of its parent. */
+    width: 100%;
+    /* Makes the pseudo-element span the full height of its parent. */
+    height: 100%;
+    /* Sets the background color of the overlay to a semi-transparent black. */
+    background-color: rgba(0, 0, 0, 0.4); /* Dark overlay for text readability */
+    /* Ensures the overlay is below the content but above the background image. */
+    z-index: 1;
+}
+
+/* Targets direct children of .hero-section to ensure they are above the overlay */
+.hero-section > * {
+    /* Sets a higher z-index for content within the hero section to appear above the overlay. */
+    z-index: 2;
+    /* Ensures content is positioned correctly relative to the overlay. */
+    position: relative;
+}
+
+/*
+    Call-to-Action Button Styling
+    Enhances the appearance and hover effects of the CTA button.
+*/
+.cta-button {
+    /* Adds a subtle transition for smooth hover effects. */
+    transition: all 0.3s ease-in-out;
+    /* Adds a slight scale transformation on hover for a subtle interactive effect. */
+    transform: scale(1);
+    /* Adds a subtle shadow to the button. */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.cta-button:hover {
+    /* Increases the scale of the button on hover. */
+    transform: scale(1.05);
+    /* Darkens the background color on hover. */
+    background-color: #2563eb; /* A slightly darker blue */
+    /* Increases the shadow on hover for a more pronounced effect. */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+/*
+    Scroll Reveal Animation Styling
+    Defines the initial hidden state and the active visible state for elements.
+*/
+.scroll-reveal {
+    /* Sets the initial opacity of the element to fully transparent. */
+    opacity: 0;
+    /* Moves the element slightly down from its final position initially. */
+    transform: translateY(20px);
+    /* Applies a smooth transition for opacity and transform properties. */
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    /* Ensures hardware acceleration for smoother animations. */
+    will-change: opacity, transform;
+}
+
+.scroll-reveal.active {
+    /* Sets the opacity to fully opaque when the 'active' class is added. */
+    opacity: 1;
+    /* Resets the vertical translation, moving the element to its original position. */
+    transform: translateY(0);
+}
+
+/*
+    Gallery Item Styling
+    Enhances the appearance of individual work items in the featured work section.
+*/
+.gallery-item {
+    /* Adds a subtle transition for smooth hover effects on the entire item. */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    /* Adds a subtle shadow to the gallery item. */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.gallery-item:hover {
+    /* Slightly scales up the gallery item on hover for an interactive effect. */
+    transform: scale(1.02);
+    /* Increases the shadow on hover for a more pronounced effect. */
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+.gallery-item img {
+    /* Ensures the image covers the entire allocated space without distortion. */
+    object-fit: cover;
+    /* Adds a smooth transition for image transformations on hover. */
+    transition: transform 0.3s ease-in-out;
+}
+
+.gallery-item a:hover img {
+    /* Slightly scales up the image within the gallery item on hover. */
+    transform: scale(1.05);
+}
+
+/*
+    Footer Styling
+    Ensures the social media icons have a nice hover effect.
+*/
+footer a {
+    /* Adds a subtle transition for color and transform changes on hover. */
+    transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+footer a:hover {
+    /* Slightly scales up the social media icon on hover. */
+    transform: scale(1.2);
+}
+
+/*
+    Responsive Adjustments (Optional, as Tailwind handles most responsiveness)
+    These are examples if more granular control is needed beyond Tailwind's breakpoints.
+*/
+@media (max-width: 767px) {
+    /* Adjusts hero section heading size for smaller screens. */
+    .hero-section h1 {
+        font-size: 3rem; /* Smaller font size for mobile */
+    }
+
+    /* Adjusts padding for sections on smaller screens. */
+    section {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+}

@@ -1,0 +1,210 @@
+<!--
+User Prompt: Create a complete HTML5 page named advanced-homepage.html. There must be a <header> that is fixed to the top of the screen as the user scrolls. One desktop, it should display their name (ask for name) as text for the logo on the left and navigation links on the right. On mobile, the navigation links should collapse into a "hamburger" icon that toggles a dropdown menu when clicked. Create a full-height hero section directly below the navigation bar. It must have a background image using the file at images/hero.jpg and contain a centered main heading and a call-to-action button. Create two additional content sections below the hero, including a "About Me" section with brief text intro and a link to the full bio page (ask what the brief text intro should be and for bio page) and include a "Featured Work" section displaying a small, responsive grid of 3-4 images (using files like gallery1.jpg, gallery2.jpg, etc.) that links to their respective work pages. <footer> at the bottom of the page should contain social media links and a copyright notice (ask for social media links to input). Make sure to have a subtle scroll-reveal animations to have content sections fade in as they enter the viewport. All styling should be in css/advanced-homepage.css, and all interactive functionality (like the mobile menu) must be in scripts/advanced-homepage.js. Make sure to enforce "neurotically detailed comments" explaining the purpose and reasoning behind every HTML tag, CSS rule and Javascript function. Make sure to include the full prompt as a comment block at the top of the main HTML file.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Sets the character encoding for the document to UTF-8, supporting a wide range of characters. -->
+    <meta charset="UTF-8">
+    <!-- Configures the viewport for responsive design, ensuring the page scales correctly on all devices. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Sets the title that appears in the browser tab or window. -->
+    <title>Alexandra Moya - Homepage</title>
+
+    <!-- Links to the Tailwind CSS CDN for utility-first styling. This allows rapid prototyping and responsive design. -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Links to Font Awesome for easy inclusion of scalable vector icons, used here for the hamburger menu and social media. -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Links to the custom stylesheet for additional styling not covered by Tailwind or for specific overrides. -->
+    <link rel="stylesheet" href="css/advanced-homepage.css">
+    <!-- Links to Google Fonts to import the 'Inter' font, ensuring consistent typography. -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="font-inter">
+    <!--
+        Header section of the page.
+        It is fixed to the top, providing persistent navigation as the user scrolls.
+        Uses Tailwind classes for background, shadow, and z-index to ensure it stays above other content.
+    -->
+    <header class="fixed top-0 w-full bg-white shadow-md z-50">
+        <!--
+            Navigation container.
+            Uses Tailwind's `container` for max-width, `mx-auto` for horizontal centering,
+            `flex` for layout, `items-center` for vertical alignment, `justify-between` to space items,
+            and `p-4` for padding.
+        -->
+        <nav class="container mx-auto flex items-center justify-between p-4">
+            <!--
+                Logo/Name display.
+                Uses Tailwind classes for font size, weight, and text color.
+                This will display "Alexandra Moya" as the site's branding.
+            -->
+            <div class="text-2xl font-bold text-gray-800 rounded-lg">Alexandra Moya</div>
+            <!--
+                Desktop Navigation links.
+                Hidden on mobile (`hidden`) and displayed as a flex row on medium screens and up (`md:flex`).
+                `space-x-6` adds horizontal spacing between list items.
+            -->
+            <ul class="hidden md:flex space-x-6">
+                <!-- Navigation link to the Hero section. -->
+                <li><a href="#hero" class="text-gray-600 hover:text-blue-600 transition duration-300 ease-in-out">Home</a></li>
+                <!-- Navigation link to the About Me section. -->
+                <li><a href="#about" class="text-gray-600 hover:text-blue-600 transition duration-300 ease-in-out">About</a></li>
+                <!-- Navigation link to the Featured Work section. -->
+                <li><a href="#work" class="text-gray-600 hover:text-blue-600 transition duration-300 ease-in-out">Work</a></li>
+                <!-- Navigation link to the Footer (Contact) section. -->
+                <li><a href="#contact" class="text-gray-600 hover:text-blue-600 transition duration-300 ease-in-out">Contact</a></li>
+            </ul>
+            <!--
+                Mobile Hamburger Icon.
+                Hidden on medium screens and up (`md:hidden`) and visible on smaller screens.
+                The button triggers the mobile menu toggle via JavaScript.
+            -->
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-gray-800 focus:outline-none p-2 rounded-md hover:bg-gray-100 transition duration-300">
+                    <!-- Font Awesome hamburger icon. -->
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </nav>
+        <!--
+            Mobile Dropdown Menu.
+            Initially hidden (`hidden`) and only visible on mobile when toggled by JavaScript.
+            Uses Tailwind for background, shadow, and padding.
+        -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg py-2 rounded-b-lg">
+            <ul class="flex flex-col items-center space-y-2">
+                <!-- Mobile navigation link to the Hero section. -->
+                <li><a href="#hero" class="block py-2 px-4 text-gray-700 hover:bg-gray-100 w-full text-center rounded-md transition duration-300">Home</a></li>
+                <!-- Mobile navigation link to the About Me section. -->
+                <li><a href="#about" class="block py-2 px-4 text-gray-700 hover:bg-gray-100 w-full text-center rounded-md transition duration-300">About</a></li>
+                <!-- Mobile navigation link to the Featured Work section. -->
+                <li><a href="#work" class="block py-2 px-4 text-gray-700 hover:bg-gray-100 w-full text-center rounded-md transition duration-300">Work</a></li>
+                <!-- Mobile navigation link to the Footer (Contact) section. -->
+                <li><a href="#contact" class="block py-2 px-4 text-gray-700 hover:bg-gray-100 w-full text-center rounded-md transition duration-300">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!--
+        Hero Section.
+        This is the main introductory section of the page, designed to be full-height.
+        Uses custom CSS for background image and height, and Tailwind for flex centering and text styling.
+        The `pt-16` is added to push content down, clearing the fixed header.
+    -->
+    <section id="hero" class="hero-section flex items-center justify-center text-center text-white pt-16">
+        <div class="container mx-auto px-4">
+            <!-- Main heading for the hero section. -->
+            <h1 class="text-5xl md:text-6xl font-bold mb-6 drop-shadow-lg rounded-lg">Welcome to My Artistic World</h1>
+            <!-- Call-to-action button. -->
+            <button class="cta-button bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:scale-105">View My Portfolio</button>
+        </div>
+    </section>
+
+    <!--
+        About Me Section.
+        Provides a brief introduction and a link to a more detailed bio page.
+        Uses Tailwind for padding, background color, text alignment, and responsiveness.
+        The `scroll-reveal` class is used by JavaScript for fade-in animation.
+    -->
+    <section id="about" class="py-16 bg-gray-50 scroll-reveal rounded-lg shadow-inner">
+        <div class="container mx-auto px-4 text-center">
+            <!-- Section heading for About Me. -->
+            <h2 class="text-4xl font-bold text-gray-800 mb-8 rounded-lg">About Me</h2>
+            <!-- Brief introductory text about Alexandra Moya. -->
+            <p class="text-lg text-gray-700 max-w-3xl mx-auto mb-6 leading-relaxed rounded-lg">Hello, my name is Alexandra Moya and I am a BFA student practicing in painting and ceramics.</p>
+            <!-- Link to the full bio page. This link now points to the user-provided Wixsite URL. -->
+            <a href="https://alexandramoyasart.wixsite.com/osore-art/about" class="text-blue-600 hover:underline font-semibold transition duration-300 ease-in-out rounded-lg" target="_blank" rel="noopener noreferrer">Read My Full Bio &rarr;</a>
+        </div>
+    </section>
+
+    <!--
+        Featured Work Section.
+        Displays a responsive grid of images linking to individual work pages.
+        Uses Tailwind for padding, text alignment, and grid layout.
+        The `scroll-reveal` class is used by JavaScript for fade-in animation.
+    -->
+    <section id="work" class="py-16 scroll-reveal rounded-lg">
+        <div class="container mx-auto px-4 text-center">
+            <!-- Section heading for Featured Work. -->
+            <h2 class="text-4xl font-bold text-gray-800 mb-12 rounded-lg">Featured Work</h2>
+            <!--
+                Grid container for gallery items.
+                Uses `grid` and `gap-8` for spacing.
+                `grid-cols-1` for single column on small screens, `sm:grid-cols-2` for two columns on small-medium,
+                and `lg:grid-cols-4` for four columns on large screens.
+            -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Gallery Item 1 -->
+                <div class="gallery-item bg-white rounded-lg shadow-md overflow-hidden transform hover:scale-105 transition duration-300 ease-in-out">
+                    <a href="work1.html">
+                        <!-- Placeholder image for Featured Work 1. Replace with actual image: images/gallery1.jpg -->
+                        <img src="https://placehold.co/600x400/E0E0E0/333333?text=Work+1" alt="Featured Work 1" class="w-full h-48 object-cover">
+                        <div class="p-4">
+                            <h3 class="text-xl font-semibold text-gray-800">Abstract Expression</h3>
+                            <p class="text-gray-600 text-sm">Painting, 2023</p>
+                        </div>
+                    </a>
+                </div>
+                <!-- Gallery Item 2 -->
+                <div class="gallery-item bg-white rounded-lg shadow-md overflow-hidden transform hover:scale-105 transition duration-300 ease-in-out">
+                    <a href="work2.html">
+                        <!-- Placeholder image for Featured Work 2. Replace with actual image: images/gallery2.jpg -->
+                        <img src="https://placehold.co/600x400/D0D0D0/333333?text=Work+2" alt="Featured Work 2" class="w-full h-48 object-cover">
+                        <div class="p-4">
+                            <h3 class="text-xl font-semibold text-gray-800">Ceramic Vessel</h3>
+                            <p class="text-gray-600 text-sm">Ceramics, 2024</p>
+                        </div>
+                    </a>
+                </div>
+                <!-- Gallery Item 3 -->
+                <div class="gallery-item bg-white rounded-lg shadow-md overflow-hidden transform hover:scale-105 transition duration-300 ease-in-out">
+                    <a href="work3.html">
+                        <!-- Placeholder image for Featured Work 3. Replace with actual image: images/gallery3.jpg -->
+                        <img src="https://placehold.co/600x400/C0C0C0/333333?text=Work+3" alt="Featured Work 3" class="w-full h-48 object-cover">
+                        <div class="p-4">
+                            <h3 class="text-xl font-semibold text-gray-800">Digital Portrait</h3>
+                            <p class="text-gray-600 text-sm">Digital Art, 2023</p>
+                        </div>
+                    </a>
+                </div>
+                <!-- Gallery Item 4 -->
+                <div class="gallery-item bg-white rounded-lg shadow-md overflow-hidden transform hover:scale-105 transition duration-300 ease-in-out">
+                    <a href="work4.html">
+                        <!-- Placeholder image for Featured Work 4. Replace with actual image: images/gallery4.jpg -->
+                        <img src="https://placehold.co/600x400/B0B0B0/333333?text=Work+4" alt="Featured Work 4" class="w-full h-48 object-cover">
+                        <div class="p-4">
+                            <h3 class="text-xl font-semibold text-gray-800">Mixed Media</h3>
+                            <p class="text-gray-600 text-sm">Installation, 2024</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--
+        Footer Section.
+        Contains social media links and a copyright notice.
+        Uses Tailwind for background color, text color, padding, and text alignment.
+    -->
+    <footer id="contact" class="bg-gray-800 text-white py-8 rounded-t-lg">
+        <div class="container mx-auto px-4 text-center">
+            <!-- Social Media Links container. -->
+            <div class="flex justify-center space-x-6 mb-6">
+                <!-- Instagram social media link. -->
+                <a href="https://www.instagram.com/osoreart/?next=%2F" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition duration-300 transform hover:scale-110">
+                    <!-- Font Awesome Instagram icon. -->
+                    <i class="fab fa-instagram text-3xl"></i>
+                </a>
+                <!-- Add more social media links here if needed following the same structure. -->
+            </div>
+            <!-- Copyright Notice. -->
+            <p class="text-gray-400 text-sm">&copy; 2024 Alexandra Moya. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Links to the custom JavaScript file for interactive functionalities. -->
+    <script src="scripts/advanced-homepage.js"></script>
+</body>
+</html>
