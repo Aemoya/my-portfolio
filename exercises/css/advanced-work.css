@@ -1,0 +1,311 @@
+/*
+Prompt: Create a complete HTML5 page named advanced-work.html. The page must have a consistent <header> and <footer>. The main content must be a two-column layout. The left column should be ~60-70% of the width must contain a functional <model-viewer> element displaying the 3D model from https://modelviewer.dev/shared-assets/models/Astronaut.glb. The right column must contain the artwork's metadata, clearly structured with labels: "Title,""Artist,""Year,""Medium," and a "Description" with a paragraph of placeholder text. Metadata in the right column must use clear and readable typography to distinguish between labels and content. Make sure all styling must be in external CSS file (css/advanced-work.css). include "neurotically detailed comments" explaining the purpose and reasoning behind every HTML tag and CSS rule. Also include a full prompt comment block at the top of the main HTML file.
+*/
+
+/* Universal Box-Sizing Reset */
+*, *::before, *::after {
+    /* The '*' selector targets all elements.
+       '*::before' and '*::after' target the pseudo-elements generated before and after an element's content.
+       This rule applies to all elements and their pseudo-elements. */
+    box-sizing: border-box;
+    /* 'box-sizing: border-box;' changes how the total width and height of an element are calculated.
+       Normally, 'width' and 'height' only apply to the content area. With 'border-box', padding and border are included
+       in the element's total width and height. This makes layout calculations much more intuitive and predictable,
+       especially when dealing with percentages and responsive design. */
+}
+
+/* Body Styling */
+body {
+    /* The 'body' selector targets the entire content area of the HTML document. */
+    font-family: 'Inter', sans-serif;
+    /* 'font-family' specifies the typeface to be used for text within the body.
+       'Inter' is a modern, highly readable sans-serif font.
+       'sans-serif' is a generic family fallback, ensuring that if 'Inter' isn't available, a similar sans-serif font is used. */
+    margin: 0;
+    /* 'margin: 0;' removes the default margin that browsers typically apply to the <body> element.
+       This ensures the content starts exactly at the edges of the viewport, providing full control over spacing. */
+    line-height: 1.6;
+    /* 'line-height' sets the height of each line of text. A value of 1.6 (160% of the font size)
+       improves readability by providing adequate vertical spacing between lines. */
+    color: #333;
+    /* 'color: #333;' sets the default text color for the entire page to a dark gray.
+       This provides good contrast against a light background without being harsh black. */
+    background-color: #f4f4f4;
+    /* 'background-color: #f4f4f4;' sets a very light gray background color for the entire page.
+       This is softer on the eyes than pure white and provides a subtle visual distinction. */
+    display: flex;
+    /* 'display: flex;' makes the body a flex container. This is used here to enable easy vertical centering
+       and distribution of its direct children (header, main, footer) if needed, though primarily for
+       ensuring main content takes available space. */
+    flex-direction: column;
+    /* 'flex-direction: column;' arranges the flex items (header, main, footer) vertically, one below the other. */
+    min-height: 100vh;
+    /* 'min-height: 100vh;' ensures the body takes up at least 100% of the viewport height.
+       'vh' (viewport height) is a relative unit. This is crucial for sticky footers or full-page layouts. */
+}
+
+/* Header Styling */
+header {
+    /* The 'header' selector targets the <header> element of the page. */
+    background-color: #2c3e50;
+    /* 'background-color: #2c3e50;' sets a dark blue-gray background for the header, providing a strong visual identity. */
+    color: #ecf0f1;
+    /* 'color: #ecf0f1;' sets the text color within the header to a light, almost white, color.
+       This ensures high contrast against the dark background. */
+    padding: 1.5rem 2rem;
+    /* 'padding: 1.5rem 2rem;' adds internal spacing around the header's content.
+       '1.5rem' (24px, assuming default 16px font-size) for top/bottom, '2rem' (32px) for left/right.
+       'rem' units are relative to the root font size, making them scalable. */
+    text-align: center;
+    /* 'text-align: center;' horizontally centers all inline content (text, images) within the header. */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    /* 'box-shadow' adds a subtle shadow below the header.
+       '0 2px 5px' defines horizontal offset (0), vertical offset (2px), and blur radius (5px).
+       'rgba(0, 0, 0, 0.2)' sets the shadow color to black with 20% opacity, creating a soft, subtle effect. */
+}
+
+header h1 {
+    /* Targets the <h1> element specifically within the <header>. */
+    margin-bottom: 0.5rem;
+    /* 'margin-bottom: 0.5rem;' adds a small space below the main heading, separating it from the paragraph below. */
+    font-size: 2.5rem;
+    /* 'font-size: 2.5rem;' makes the main heading large and prominent. */
+}
+
+header p {
+    /* Targets the <p> element specifically within the <header>. */
+    font-size: 1.1rem;
+    /* 'font-size: 1.1rem;' makes the header's paragraph slightly larger than default body text for better visibility. */
+    opacity: 0.9;
+    /* 'opacity: 0.9;' makes the paragraph slightly transparent, giving it a softer appearance. */
+}
+
+/* Main Content Layout */
+main {
+    /* The 'main' selector targets the <main> element, which contains the primary content. */
+    flex-grow: 1;
+    /* 'flex-grow: 1;' is used because 'body' is a flex container with 'flex-direction: column'.
+       This property allows the <main> element to grow and occupy all available vertical space between
+       the header and footer, pushing the footer to the bottom of the viewport. */
+    padding: 2rem;
+    /* 'padding: 2rem;' adds internal spacing around the entire main content area. */
+    max-width: 1200px;
+    /* 'max-width: 1200px;' limits the maximum width of the main content area. This prevents the layout
+       from becoming too wide on very large screens, improving readability and aesthetics. */
+    margin: 0 auto;
+    /* 'margin: 0 auto;' horizontally centers the <main> element within its parent (the body)
+       when its width is less than the parent's width (due to max-width). '0' for top/bottom margin, 'auto' for left/right. */
+}
+
+.content-layout {
+    /* Targets the <div> with class 'content-layout', which wraps the two columns. */
+    display: flex;
+    /* 'display: flex;' makes this container a flex container, enabling the Flexbox layout model.
+       This is fundamental for creating the two-column structure. */
+    flex-wrap: wrap;
+    /* 'flex-wrap: wrap;' allows flex items (the columns) to wrap onto the next line if there isn't enough space.
+       This is crucial for responsiveness, as on smaller screens, columns will stack vertically. */
+    gap: 2rem;
+    /* 'gap: 2rem;' (or 'grid-gap' in older specs) adds space between flex items (the columns) both horizontally and vertically.
+       This provides clear separation between the left and right columns. */
+    align-items: flex-start;
+    /* 'align-items: flex-start;' aligns flex items to the start of the cross-axis (top of the container).
+       This ensures that both columns start at the same vertical position. */
+}
+
+.column {
+    /* Targets any element with the class 'column'. This is a general style for both left and right columns. */
+    flex-grow: 1;
+    /* 'flex-grow: 1;' allows columns to grow and fill available space within the 'content-layout' container.
+       This ensures they expand to utilize the full width when stacked or distribute space when side-by-side. */
+    background-color: #fff;
+    /* 'background-color: #fff;' sets a white background for each column, making them visually distinct from the page background. */
+    padding: 1.5rem;
+    /* 'padding: 1.5rem;' adds internal spacing within each column, preventing content from touching the edges. */
+    border-radius: 8px;
+    /* 'border-radius: 8px;' applies rounded corners to the columns, giving them a softer, more modern aesthetic. */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    /* 'box-shadow' adds a more prominent shadow to the columns, making them appear to float slightly above the page.
+       '0 4px 10px' defines horizontal offset (0), vertical offset (4px), and blur radius (10px).
+       'rgba(0, 0, 0, 0.1)' sets the shadow color to black with 10% opacity. */
+}
+
+.left-column {
+    /* Targets the specific left column. */
+    flex-basis: 65%;
+    /* 'flex-basis: 65%;' sets the initial size of the left column to 65% of the flex container's width.
+       This is the 'preferred' size before any growing or shrinking occurs.
+       This achieves the ~60-70% width requirement. */
+    min-width: 300px;
+    /* 'min-width: 300px;' ensures the left column doesn't become too narrow on small screens before wrapping.
+       This prevents content from becoming unreadably cramped. */
+}
+
+.right-column {
+    /* Targets the specific right column. */
+    flex-basis: 30%;
+    /* 'flex-basis: 30%;' sets the initial size of the right column to 30% of the flex container's width.
+       Combined with the left column's 65% and the gap, this fits within 100%. */
+    min-width: 250px;
+    /* 'min-width: 250px;' ensures the right column doesn't become too narrow on small screens before wrapping. */
+}
+
+/* Model Viewer Styling */
+model-viewer {
+    /* Targets the custom <model-viewer> element. */
+    width: 100%;
+    /* 'width: 100%;' makes the model viewer take up the full width of its parent container (the left column). */
+    height: 500px;
+    /* 'height: 500px;' sets a fixed height for the model viewer. This provides ample space for the 3D model. */
+    border-radius: 6px;
+    /* 'border-radius: 6px;' applies slightly rounded corners to the model viewer itself, matching the column styling. */
+    border: 1px solid #ddd;
+    /* 'border: 1px solid #ddd;' adds a subtle light gray border around the model viewer, visually framing it. */
+    --poster-color: #e0e0e0;
+    /* '--poster-color' is a custom CSS variable specific to <model-viewer>. It sets the background color
+       of the poster image (the static image shown before the model loads). This provides a consistent
+       placeholder background. */
+}
+
+/* Metadata Styling */
+.metadata-item {
+    /* Targets each <div> with class 'metadata-item', which wraps a label-content pair. */
+    margin-bottom: 0.8rem;
+    /* 'margin-bottom: 0.8rem;' adds vertical spacing between each metadata item, improving readability. */
+    display: flex;
+    /* 'display: flex;' makes each metadata item a flex container. This allows the label and content
+       to sit side-by-side and align nicely. */
+    align-items: baseline;
+    /* 'align-items: baseline;' aligns the flex items (label and content) based on their text baselines.
+       This ensures that text on different lines (if content wraps) still aligns neatly. */
+}
+
+.metadata-label {
+    /* Targets the <span> with class 'metadata-label'. */
+    font-weight: bold;
+    /* 'font-weight: bold;' makes the label text bold, clearly distinguishing it as a heading or descriptor. */
+    color: #555;
+    /* 'color: #555;' sets the label text color to a slightly darker gray than the main body text,
+       making it stand out more. */
+    margin-right: 0.5rem;
+    /* 'margin-right: 0.5rem;' adds a small space between the label and its corresponding content. */
+    flex-shrink: 0;
+    /* 'flex-shrink: 0;' prevents the label from shrinking if there's not enough space, ensuring it always
+       displays fully. */
+}
+
+.metadata-content {
+    /* Targets the <span> or <p> with class 'metadata-content'. */
+    color: #333;
+    /* 'color: #333;' sets the content text color to the standard dark gray, ensuring good readability. */
+    font-style: italic;
+    /* 'font-style: italic;' makes the content text italic, providing a subtle visual distinction
+       from the bold labels. */
+    flex-grow: 1;
+    /* 'flex-grow: 1;' allows the content to grow and take up the remaining space in the 'metadata-item' flex container. */
+}
+
+.description-item {
+    /* Targets the specific metadata item for the description. */
+    flex-direction: column;
+    /* 'flex-direction: column;' overrides the default row direction for this specific item,
+       making the label appear above the description text. This is better for longer descriptions. */
+    margin-top: 1.5rem;
+    /* 'margin-top: 1.5rem;' adds extra space above the description section to visually separate it
+       from the other metadata items. */
+}
+
+.description-item .metadata-label {
+    /* Targets the label specifically within the description item. */
+    margin-bottom: 0.5rem;
+    /* 'margin-bottom: 0.5rem;' adds space below the description label, separating it from the text. */
+    margin-right: 0;
+    /* 'margin-right: 0;' removes the right margin from the label, as it's now above the content. */
+}
+
+.description-text {
+    /* Targets the <p> tag with class 'description-text'. */
+    font-style: normal;
+    /* 'font-style: normal;' overrides the italic style inherited from '.metadata-content' for the description.
+       Longer blocks of text are generally more readable without italics. */
+    text-align: justify;
+    /* 'text-align: justify;' aligns the text along both the left and right margins,
+       creating a clean, block-like appearance for the paragraph. */
+}
+
+/* Footer Styling */
+footer {
+    /* The 'footer' selector targets the <footer> element. */
+    background-color: #34495e;
+    /* 'background-color: #34495e;' sets a dark blue-gray background for the footer, similar to the header,
+       ensuring visual consistency. */
+    color: #ecf0f1;
+    /* 'color: #ecf0f1;' sets the text color to light, matching the header for consistency. */
+    text-align: center;
+    /* 'text-align: center;' horizontally centers the copyright text within the footer. */
+    padding: 1.5rem 2rem;
+    /* 'padding: 1.5rem 2rem;' adds internal spacing around the footer's content. */
+    margin-top: auto;
+    /* 'margin-top: auto;' is crucial when 'body' is 'display: flex' and 'flex-direction: column'.
+       It pushes the footer to the bottom of the page, acting like a 'sticky footer'. */
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+    /* 'box-shadow' adds a subtle shadow above the footer, mirroring the header's shadow.
+       '0 -2px 5px' defines horizontal offset (0), vertical offset (-2px, meaning above), and blur radius (5px). */
+}
+
+footer p {
+    /* Targets the <p> element specifically within the <footer>. */
+    font-size: 0.9rem;
+    /* 'font-size: 0.9rem;' makes the copyright text slightly smaller, as it's secondary information. */
+    opacity: 0.8;
+    /* 'opacity: 0.8;' makes the copyright text slightly transparent for a softer look. */
+}
+
+/* Responsive Design Adjustments */
+@media (max-width: 768px) {
+    /* This media query applies styles only when the viewport width is 768 pixels or less.
+       This is a common breakpoint for tablets and smaller devices. */
+    .content-layout {
+        flex-direction: column;
+        /* 'flex-direction: column;' overrides the default row direction for the main content layout.
+           This causes the left and right columns to stack vertically on smaller screens, improving readability
+           and usability on mobile devices. */
+        gap: 1.5rem;
+        /* 'gap: 1.5rem;' slightly reduces the gap between stacked columns on smaller screens to optimize space. */
+    }
+
+    .left-column,
+    .right-column {
+        flex-basis: auto;
+        /* 'flex-basis: auto;' allows the columns to determine their size based on their content
+           and available space when stacked, effectively making them take full width. */
+        width: 100%;
+        /* 'width: 100%;' explicitly ensures each column takes up the full width of its parent when stacked. */
+        min-width: unset;
+        /* 'min-width: unset;' removes any previous minimum width constraints, allowing columns to shrink
+           as needed to fit the smaller screen, while still respecting padding. */
+    }
+
+    main {
+        padding: 1rem;
+        /* 'padding: 1rem;' reduces the overall padding around the main content on smaller screens,
+           giving more space to the actual content. */
+    }
+
+    header h1 {
+        font-size: 2rem;
+        /* 'font-size: 2rem;' reduces the font size of the main header on smaller screens to prevent it
+           from taking up too much vertical space. */
+    }
+
+    header p {
+        font-size: 1rem;
+        /* 'font-size: 1rem;' reduces the font size of the header paragraph for better fit on small screens. */
+    }
+
+    model-viewer {
+        height: 400px;
+        /* 'height: 400px;' reduces the height of the model viewer on smaller screens to ensure it doesn't
+           dominate the viewport and allows other content to be visible without excessive scrolling. */
+    }
+}

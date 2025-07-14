@@ -1,0 +1,120 @@
+<!--
+Prompt: Create a complete HTML5 page named advanced-work.html. The page must have a consistent <header> and <footer>. The main content must be a two-column layout. The left column should be ~60-70% of the width must contain a functional <model-viewer> element displaying the 3D model from https://modelviewer.dev/shared-assets/models/Astronaut.glb. The right column must contain the artwork's metadata, clearly structured with labels: "Title,""Artist,""Year,""Medium," and a "Description" with a paragraph of placeholder text. Metadata in the right column must use clear and readable typography to distinguish between labels and content. Make sure all styling must be in external CSS file (css/advanced-work.css). include "neurotically detailed comments" explaining the purpose and reasoning behind every HTML tag and CSS rule. Also include a full prompt comment block at the top of the main HTML file.
+-->
+<!DOCTYPE html>
+<!-- The <!DOCTYPE html> declaration defines this document to be an HTML5 document. It's crucial for browser rendering in standards mode. -->
+<html lang="en">
+<!-- The <html> tag is the root element of an HTML page. The 'lang="en"' attribute specifies the language of the document content, which helps search engines and assistive technologies. -->
+<head>
+    <!-- The <head> tag contains meta-information about the HTML document, such as its title, links to stylesheets, and other metadata. This content is not displayed on the web page itself. -->
+    <meta charset="UTF-8">
+    <!-- The <meta charset="UTF-8"> tag specifies the character encoding for the document. UTF-8 is a universal character set that supports almost all characters and symbols in the world, preventing display issues. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- The <meta name="viewport"> tag is essential for responsive web design.
+         'width=device-width' sets the width of the viewport to the width of the device.
+         'initial-scale=1.0' sets the initial zoom level when the page is first loaded by the browser.
+         This ensures the page scales correctly across different devices (mobile, tablet, desktop). -->
+    <title>Advanced Work - Astronaut 3D Model</title>
+    <!-- The <title> tag defines the title of the document that appears in the browser's title bar or tab. It's important for SEO and user experience. -->
+    <link rel="stylesheet" href="css/advanced-work.css">
+    <!-- The <link> tag is used to link an external resource to the HTML document.
+         'rel="stylesheet"' specifies the relationship between the current document and the linked document (it's a stylesheet).
+         'href="css/advanced-work.css"' specifies the URL of the external CSS file. This is where all the visual styling for the page will be defined. -->
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
+    <!-- The <script> tag is used to embed or reference executable code, typically JavaScript.
+         'type="module"' indicates that the script is an ECMAScript module, which allows for features like import/export statements. This is required by <model-viewer>.
+         'src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"' specifies the URL of the external JavaScript library for <model-viewer>. This library provides the functionality to display 3D models interactively on the web. -->
+</head>
+<body>
+    <!-- The <body> tag contains all the visible content of the HTML document, such as text, images, videos, and interactive elements. -->
+
+    <header>
+        <!-- The <header> tag represents introductory content, typically containing a group of introductory or navigational aids. It's a semantic element that helps structure the page. -->
+        <h1>Our Advanced Work Showcase</h1>
+        <!-- The <h1> tag defines the most important heading on the page. It's used here for the main title of the header. -->
+        <p>Exploring cutting-edge digital art and interactive experiences.</p>
+        <!-- The <p> tag defines a paragraph of text. Used here for a brief subtitle in the header. -->
+    </header>
+
+    <main>
+        <!-- The <main> tag represents the dominant content of the <body> of a document. It should contain content that is unique to the document and excludes content that is repeated across a set of documents (like headers, footers, navigation). It's a semantic element for better structure. -->
+        <section class="content-layout">
+            <!-- The <section> tag is a generic standalone section of a document, which doesn't have a more specific semantic element to represent it. Here, it groups the two main columns.
+                 'class="content-layout"' is a CSS class used to apply specific styling, in this case, to create the two-column layout using Flexbox. -->
+            <div class="column left-column">
+                <!-- A <div> tag is a generic container for flow content. It's used here to create the left column of the layout.
+                     'class="column"' is a general class for column styling.
+                     'class="left-column"' is a specific class for the left column to control its width and content. -->
+                <h2>3D Model: Astronaut</h2>
+                <!-- The <h2> tag defines a secondary heading, used here as a title for the 3D model section. -->
+                <model-viewer src="https://modelviewer.dev/shared-assets/models/Astronaut.glb"
+                              alt="A 3D model of an astronaut floating in space"
+                              ar
+                              ar-modes="webxr scene-viewer quick-look"
+                              environment-image="neutral"
+                              shadow-intensity="1"
+                              camera-controls
+                              touch-action="pan-y"
+                              auto-rotate>
+                    <!-- The <model-viewer> custom element is a web component that allows for easy display and interaction with 3D models on the web.
+                         'src="https://modelviewer.dev/shared-assets/models/Astronaut.glb"' specifies the path to the 3D model file (GLB format). This is the core of displaying the model.
+                         'alt="A 3D model of an astronaut floating in space"' provides alternative text for the model, important for accessibility (screen readers) and when the model cannot be loaded.
+                         'ar' (Augmented Reality) attribute enables AR functionality if the device supports it.
+                         'ar-modes="webxr scene-viewer quick-look"' specifies the preferred AR modes. 'webxr' for immersive experiences, 'scene-viewer' for Android, 'quick-look' for iOS.
+                         'environment-image="neutral"' sets a neutral environment image for lighting the model, providing a more realistic appearance.
+                         'shadow-intensity="1"' controls the intensity of the shadow cast by the model. A value of 1 means full intensity.
+                         'camera-controls' enables default camera controls (orbit, pan, zoom) via mouse or touch gestures.
+                         'touch-action="pan-y"' optimizes touch interactions, allowing vertical panning on the model without interfering with page scrolling.
+                         'auto-rotate' makes the model automatically rotate when loaded, providing an immediate dynamic view. -->
+                </model-viewer>
+            </div>
+
+            <div class="column right-column">
+                <!-- Another <div> tag used to create the right column of the layout.
+                     'class="column"' is a general class for column styling.
+                     'class="right-column"' is a specific class for the right column to control its width and content. -->
+                <h2>Artwork Metadata</h2>
+                <!-- The <h2> tag defines a secondary heading, used here as a title for the metadata section. -->
+                <div class="metadata-item">
+                    <!-- A <div> to group each metadata label and its corresponding content.
+                         'class="metadata-item"' is used for styling individual metadata entries, like adding spacing. -->
+                    <span class="metadata-label">Title:</span>
+                    <!-- The <span> tag is an inline container used to group short phrases or elements.
+                         'class="metadata-label"' is used to apply specific styling to the metadata labels (e.g., bolding, color). -->
+                    <span class="metadata-content">Cosmic Wanderer</span>
+                    <!-- 'class="metadata-content"' is used to apply specific styling to the metadata values (e.g., font style, color) and distinguish them from labels. -->
+                </div>
+                <div class="metadata-item">
+                    <span class="metadata-label">Artist:</span>
+                    <span class="metadata-content">Digital Dreamscapes Collective</span>
+                </div>
+                <div class="metadata-item">
+                    <span class="metadata-label">Year:</span>
+                    <span class="metadata-content">2023</span>
+                </div>
+                <div class="metadata-item">
+                    <span class="metadata-label">Medium:</span>
+                    <span class="metadata-content">3D Digital Sculpture, Interactive WebGL</span>
+                </div>
+                <div class="metadata-item description-item">
+                    <!-- 'class="description-item"' is an additional class for the description to apply specific styling like wider spacing or different text alignment if needed. -->
+                    <span class="metadata-label">Description:</span>
+                    <p class="metadata-content description-text">
+                        <!-- A <p> tag for the description content, as it's a longer block of text.
+                             'class="description-text"' is a specific class for the description paragraph to apply unique styling if necessary, ensuring readability for longer text blocks. -->
+                        This captivating 3D digital sculpture, "Cosmic Wanderer," invites viewers to contemplate the vastness of space and the human spirit of exploration. Rendered with meticulous detail, the astronaut symbolizes humanity's enduring quest for knowledge beyond our terrestrial confines. The interactive WebGL presentation allows for an immersive experience, enabling users to rotate, zoom, and pan around the model, discovering new perspectives and appreciating the intricate design from every angle. It serves as a testament to the boundless possibilities of digital art in the modern era.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <!-- The <footer> tag represents a footer for its nearest sectioning content or sectioning root element. It typically contains information about the author, copyright data, or related documents. It's a semantic element. -->
+        <p>&copy; 2023 Advanced Work Showcase. All rights reserved.</p>
+        <!-- The <p> tag defines a paragraph for the copyright notice.
+             '&copy;' is the HTML entity for the copyright symbol. -->
+    </footer>
+
+</body>
+</html>
