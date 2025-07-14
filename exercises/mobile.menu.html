@@ -1,0 +1,186 @@
+<!--
+This is the complete responsive HTML5 page named mobile-menu.html.
+It includes a mobile navigation menu that is hidden by default and toggled
+by clicking a hamburger icon. When toggled, a dropdown-style menu appears,
+containing four navigation links.
+JavaScript from scripts/mobile-menu.js controls the toggle behavior and
+handles showing/hiding the menu.
+All visual styling and responsive layout are written in an external stylesheet
+located at css/mobile-menu.css.
+
+Neurotically detailed comments are included throughout, explaining every tag,
+class, style rule, and color value as if walking a complete beginner
+through the reasoning behind each choice.
+Named comments describing the color scheme and interaction behavior are also included.
+
+Placeholder content about an art topic (Abstract Expressionism) is used to complete the page.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!--
+    The <meta charset="UTF-8"> tag specifies the character encoding for the document.
+    UTF-8 is a universal character set that supports almost all characters and symbols
+    in the world, ensuring that text is displayed correctly across different browsers and systems.
+    -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--
+    The <meta name="viewport"> tag is crucial for responsive web design.
+    - `width=device-width`: Sets the width of the viewport to the width of the device's screen.
+      This prevents mobile browsers from rendering the page at a desktop width and then scaling it down.
+    - `initial-scale=1.0`: Sets the initial zoom level when the page is first loaded.
+      A value of 1.0 means no zoom, displaying the page at its actual size.
+    Together, these ensure the page adapts correctly to various screen sizes.
+    -->
+    <title>Abstract Expressionism - Mobile Menu Example</title>
+    <!--
+    The <title> tag defines the title of the HTML document, which is displayed in the
+    browser's title bar or tab. It's important for SEO and user experience.
+    -->
+    <link rel="stylesheet" href="css/mobile-menu.css">
+    <!--
+    The <link> tag is used to link an external stylesheet to the HTML document.
+    - `rel="stylesheet"`: Specifies the relationship between the current document and the linked document (it's a stylesheet).
+    - `href="css/mobile-menu.css"`: Specifies the URL of the external stylesheet.
+      This means all the visual rules defined in `mobile-menu.css` will be applied to this HTML page.
+    -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <!--
+    This <link> tag imports the 'Inter' font from Google Fonts.
+    - `family=Inter:wght@400;700`: Requests the Inter font with weights 400 (regular) and 700 (bold).
+    - `display=swap`: Tells the browser to use a fallback font while the Inter font is loading,
+      and then swap to Inter once it's ready, improving perceived performance.
+    -->
+</head>
+<body>
+    <!--
+    The <body> tag contains all the visible content of the HTML document.
+    -->
+    <header class="site-header">
+        <!--
+        The <header> tag represents introductory content, typically a group of navigational aids.
+        - `class="site-header"`: A CSS class to apply specific styling to the main header section.
+        -->
+        <div class="container">
+            <!--
+            A <div> with `class="container"` is used here as a common layout pattern.
+            It provides a maximum width and centers the content within the header,
+            and adds horizontal padding, ensuring content doesn't touch the screen edges.
+            -->
+            <h1 class="site-title">Artistic Horizons</h1>
+            <!--
+            The <h1> tag represents the main heading of the page.
+            - `class="site-title"`: A CSS class to style the site's main title.
+            -->
+            <button class="hamburger-icon" aria-label="Toggle mobile menu" aria-expanded="false">
+                <!--
+                The <button> tag creates a clickable button.
+                - `class="hamburger-icon"`: This class is styled in CSS to look like a hamburger icon (three lines).
+                  It's also targeted by JavaScript to handle clicks.
+                - `aria-label="Toggle mobile menu"`: Provides an accessible name for the button for screen readers.
+                  This is important for users who cannot see the visual icon.
+                - `aria-expanded="false"`: An ARIA (Accessible Rich Internet Applications) attribute that indicates
+                  whether the controlled element (the mobile menu) is currently expanded or collapsed.
+                  It's initially "false" because the menu is hidden. JavaScript will update this.
+                -->
+                <span class="line"></span>
+                <span class="line"></span>
+                <span class="line"></span>
+                <!--
+                These <span> tags are the individual lines that form the hamburger icon.
+                They are styled with `class="line"` in CSS to create the visual appearance
+                and animated when the `is-active` class is applied to the parent button.
+                -->
+            </button>
+
+            <nav class="mobile-nav-menu" id="mobileMenu">
+                <!--
+                The <nav> tag represents a section of navigation links.
+                - `class="mobile-nav-menu"`: This class is styled in CSS to be hidden by default
+                  and to appear as a dropdown on mobile.
+                - `id="mobileMenu"`: An ID attribute, which allows JavaScript to easily select
+                  and manipulate this specific navigation element.
+                -->
+                <ul class="nav-list">
+                    <!--
+                    The <ul> tag represents an unordered list of items.
+                    - `class="nav-list"`: A CSS class to style the list of navigation links.
+                    -->
+                    <li><a href="#about">About</a></li>
+                    <!--
+                    The <li> tag represents a list item.
+                    The <a> tag creates a hyperlink.
+                    - `href="#about"`: A hash link that points to an element with the ID "about" on the same page.
+                      This is common for single-page navigation.
+                    -->
+                    <li><a href="#artists">Artists</a></li>
+                    <li><a href="#works">Works</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <!--
+        The <main> tag represents the dominant content of the <body> of a document.
+        - `class="main-content"`: A CSS class for general styling of the main content area.
+        -->
+        <div class="container">
+            <!-- Another container to center and constrain the main content. -->
+
+            <section id="about" class="content-section">
+                <!--
+                The <section> tag groups related content.
+                - `id="about"`: An ID to allow direct linking (e.g., from the navigation menu).
+                - `class="content-section"`: A CSS class for common styling of content blocks.
+                -->
+                <h2>About Abstract Expressionism</h2>
+                <p>Abstract Expressionism emerged in New York City in the 1940s, becoming the first art movement to gain international prominence from the United States. It was characterized by large-scale, non-representational paintings that emphasized spontaneous, energetic, and often gestural application of paint. Artists sought to express profound emotional and psychological states directly onto the canvas, often without a preconceived plan.</p>
+                <p>This movement was deeply influenced by Surrealism's emphasis on the unconscious mind and the trauma of World War II, leading artists to explore themes of anxiety, freedom, and the human condition. It marked a significant shift from European artistic dominance and paved the way for subsequent modern art movements.</p>
+            </section>
+
+            <section id="artists" class="content-section">
+                <h2>Key Artists</h2>
+                <p>Some of the most influential figures in Abstract Expressionism include:</p>
+                <ul>
+                    <li><strong>Jackson Pollock:</strong> Famous for his "drip paintings," where he poured and dripped paint onto canvases laid on the floor, creating complex, interwoven patterns. His work embodied the spontaneous and physical aspects of the movement.</li>
+                    <li><strong>Mark Rothko:</strong> Known for his "color field" paintings, which featured large, soft-edged rectangles of color that seemed to float on the canvas. His aim was to evoke spiritual and contemplative experiences in the viewer.</li>
+                    <li><strong>Willem de Kooning:</strong> Celebrated for his aggressive, gestural brushwork and often disturbing female figures. His work blended abstraction with figuration, maintaining a raw, visceral energy.</li>
+                    <li><strong>Franz Kline:</strong> Recognized for his bold, black-and-white paintings that resembled monumental calligraphic strokes, conveying immense power and immediacy.</li>
+                </ul>
+            </section>
+
+            <section id="works" class="content-section">
+                <h2>Notable Works</h2>
+                <p>The movement produced numerous iconic works that continue to captivate audiences:</p>
+                <ul>
+                    <li>Jackson Pollock, <em>Number 1A, 1948</em></li>
+                    <li>Mark Rothko, <em>No. 14, 1960</em></li>
+                    <li>Willem de Kooning, <em>Woman, I</em></li>
+                    <li>Franz Kline, <em>Mahoning</em></li>
+                    <li>Barnett Newman, <em>Vir Heroicus Sublimis</em></li>
+                </ul>
+                <p>These works, while diverse in style, share a common thread of emotional intensity and a radical approach to painting that redefined the possibilities of art.</p>
+            </section>
+
+            <section id="contact" class="content-section">
+                <h2>Connect with Us</h2>
+                <p>If you have questions about Abstract Expressionism or wish to share your thoughts, please reach out!</p>
+                <p>Email: info@artistic-horizons.com</p>
+                <p>Phone: +1 (555) 123-4567</p>
+            </section>
+        </div>
+    </main>
+
+    <script src="scripts/mobile-menu.js"></script>
+    <!--
+    The <script> tag is used to embed or reference executable code, typically JavaScript.
+    - `src="scripts/mobile-menu.js"`: Specifies the URL of the external JavaScript file.
+      It's placed just before the closing </body> tag. This is a common best practice
+      because it ensures that the HTML content is fully loaded and parsed before
+      the JavaScript tries to interact with it, preventing errors.
+    -->
+</body>
+</html>

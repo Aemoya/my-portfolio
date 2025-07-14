@@ -1,0 +1,283 @@
+/*
+This stylesheet (css/mobile-menu.css) contains all the visual styling and
+responsive layout rules for the mobile navigation menu and the overall page.
+It's designed to make the page look good and function well on various screen sizes.
+*/
+
+/* --- Color Scheme --- */
+/*
+This section defines the color palette used throughout the design.
+Using a consistent color scheme helps create a cohesive and visually appealing experience.
+- Primary Blue: A vibrant blue for accents and interactive elements.
+- Dark Grey: For primary text and background elements that need to stand out.
+- Light Grey: For subtle backgrounds and borders.
+- White: For text on dark backgrounds and general cleanliness.
+*/
+:root {
+    --primary-blue: #3498db; /* A bright, inviting blue for interactive elements. */
+    --dark-grey: #333;       /* A deep grey for main text and header background. */
+    --light-grey: #f4f4f4;   /* A very light grey for subtle background sections. */
+    --white: #ffffff;        /* Pure white, used for text on dark backgrounds and general clean areas. */
+    --text-color: #555;      /* A slightly softer grey for general body text, ensuring readability. */
+    --border-color: #ddd;    /* A light grey for borders, providing subtle separation. */
+}
+
+/* --- Global Box-Sizing --- */
+/*
+This rule applies to all elements (*) and pseudo-elements (::before, ::after).
+It sets the 'box-sizing' property to 'border-box'.
+- 'border-box': This model includes padding and border in the element's total width and height.
+  This makes layout calculations much more intuitive and predictable, as the specified width/height
+  will be the actual visible size of the box, rather than just the content area.
+  It helps prevent unexpected layout shifts when adding padding or borders.
+*/
+* {
+    box-sizing: border-box;
+}
+
+/* --- Body Styles --- */
+/*
+These styles apply to the entire <body> of the document, setting global defaults.
+*/
+body {
+    font-family: 'Inter', sans-serif; /* Sets the primary font to Inter, with a fallback to any generic sans-serif font. */
+    margin: 0;                     /* Removes default browser margin around the body, ensuring content starts at the edge. */
+    line-height: 1.6;              /* Sets the line height for better readability of text. 1.6 is a common comfortable value. */
+    color: var(--text-color);      /* Sets the default text color using a CSS variable for consistency. */
+    background-color: var(--light-grey); /* Sets a very light grey background for the entire page. */
+}
+
+/* --- Container Utility Class --- */
+/*
+This class is used to constrain the width of content and center it on larger screens.
+It's a common pattern for creating responsive layouts.
+*/
+.container {
+    max-width: 1200px; /* Limits the maximum width of the content inside the container to 1200 pixels. */
+    margin: 0 auto;    /* Centers the container horizontally on the page by setting equal left/right margins to auto. */
+    padding: 0 20px;   /* Adds 20px of padding on the left and right inside the container, preventing content from touching the edges. */
+}
+
+/* --- Header Styles (.site-header) --- */
+/*
+Styles for the main header section of the website.
+*/
+.site-header {
+    background-color: var(--dark-grey); /* Sets a dark grey background for the header. */
+    color: var(--white);               /* Sets the text color inside the header to white for contrast. */
+    padding: 15px 0;                   /* Adds 15px of vertical padding to the header, and 0 horizontal padding (handled by .container). */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow below the header for depth. */
+    position: relative;                /* Needed for positioning the hamburger icon relative to the header. */
+    z-index: 100;                      /* Ensures the header stays on top of other content, especially the mobile menu. */
+}
+
+.site-header .container {
+    display: flex;             /* Uses Flexbox for layout within the header's container. */
+    justify-content: space-between; /* Distributes space between items, pushing title to left and hamburger to right. */
+    align-items: center;       /* Vertically aligns items in the center. */
+}
+
+.site-title {
+    margin: 0;                 /* Removes default margin from the <h1> tag. */
+    font-size: 1.8em;          /* Sets the font size of the site title. 'em' is relative to the parent's font size. */
+    font-weight: 700;          /* Makes the font bold. */
+    color: var(--primary-blue); /* Sets the title color to the primary blue for emphasis. */
+}
+
+/* --- Hamburger Icon Styles (.hamburger-icon) --- */
+/*
+Styles for the button that acts as the mobile menu toggle.
+*/
+.hamburger-icon {
+    display: flex;             /* Uses Flexbox to arrange the lines vertically. */
+    flex-direction: column;    /* Stacks the lines on top of each other. */
+    justify-content: space-around; /* Distributes space evenly between the lines. */
+    width: 30px;               /* Sets the width of the hamburger icon area. */
+    height: 24px;              /* Sets the height of the hamburger icon area. */
+    background: none;          /* Removes default button background. */
+    border: none;              /* Removes default button border. */
+    cursor: pointer;           /* Changes cursor to a pointer when hovering, indicating it's clickable. */
+    padding: 0;                /* Removes default button padding. */
+    position: relative;        /* Needed for positioning the lines within the button. */
+    z-index: 101;              /* Ensures the hamburger icon is above the header and menu. */
+}
+
+.hamburger-icon .line {
+    display: block;            /* Makes each span a block-level element to take full width. */
+    width: 100%;               /* Each line takes the full width of the hamburger-icon button. */
+    height: 3px;               /* Sets the thickness of each line. */
+    background-color: var(--white); /* Sets the color of the lines to white. */
+    border-radius: 2px;        /* Slightly rounds the corners of the lines. */
+    transition: all 0.3s ease; /* Smooth transition for all properties over 0.3 seconds with an ease timing function.
+                                  This is for the animation when the menu is toggled. */
+}
+
+/* --- Interaction Behavior: Hamburger Icon Animation --- */
+/*
+When the 'is-active' class is added to the hamburger-icon (via JavaScript),
+these styles transform the hamburger into a close (X) icon.
+*/
+.hamburger-icon.is-active .line:nth-child(1) {
+    transform: translateY(10px) rotate(45deg); /* Moves the top line down and rotates it to form part of the 'X'. */
+}
+
+.hamburger-icon.is-active .line:nth-child(2) {
+    opacity: 0; /* Makes the middle line completely transparent, effectively hiding it. */
+}
+
+.hamburger-icon.is-active .line:nth-child(3) {
+    transform: translateY(-10px) rotate(-45deg); /* Moves the bottom line up and rotates it to form the other part of the 'X'. */
+}
+
+/* --- Mobile Navigation Menu Styles (.mobile-nav-menu) --- */
+/*
+Styles for the dropdown mobile menu itself.
+*/
+.mobile-nav-menu {
+    background-color: var(--dark-grey); /* Sets the background of the menu to dark grey. */
+    position: absolute;                /* Positions the menu absolutely relative to its closest positioned ancestor (body or header). */
+    top: 60px;                         /* Positions the menu just below the header (assuming header height is around 60px). */
+    left: 0;                           /* Aligns the menu to the left edge of the viewport. */
+    width: 100%;                       /* Makes the menu span the full width of the viewport. */
+    max-height: 0;                     /* Initially sets max-height to 0 to hide the menu (used for slide-down animation). */
+    overflow: hidden;                  /* Hides any content that overflows the max-height. */
+    transition: max-height 0.4s ease-out; /* Smooth transition for max-height change over 0.4 seconds. */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adds a stronger shadow below the menu when it's open. */
+    z-index: 90;                       /* Positions the menu below the header but above other content. */
+}
+
+/* --- Interaction Behavior: Menu Visibility --- */
+/*
+When the 'is-open' class is added to the mobile-nav-menu (via JavaScript),
+these styles reveal the menu.
+*/
+.mobile-nav-menu.is-open {
+    max-height: 200px; /* When open, sets a max-height that is large enough to contain all menu items.
+                          This creates the slide-down effect. Adjust if more links are added. */
+}
+
+.mobile-nav-menu .nav-list {
+    list-style: none; /* Removes default bullet points from the unordered list. */
+    padding: 0;       /* Removes default padding from the list. */
+    margin: 0;        /* Removes default margin from the list. */
+}
+
+.mobile-nav-menu .nav-list li {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Adds a subtle light border between menu items. */
+}
+
+.mobile-nav-menu .nav-list li:last-child {
+    border-bottom: none; /* Removes the border from the last item for a cleaner look. */
+}
+
+.mobile-nav-menu .nav-list a {
+    display: block;        /* Makes the entire link area clickable. */
+    padding: 15px 20px;    /* Adds padding inside each link for better touch target size. */
+    text-decoration: none; /* Removes the default underline from links. */
+    color: var(--white);   /* Sets the link text color to white. */
+    font-size: 1.1em;      /* Increases the font size of menu links. */
+    transition: background-color 0.3s ease; /* Smooth transition for background color on hover/focus. */
+}
+
+.mobile-nav-menu .nav-list a:hover,
+.mobile-nav-menu .nav-list a:focus {
+    background-color: rgba(255, 255, 255, 0.1); /* Changes background to a semi-transparent white on hover/focus. */
+    border-radius: 5px; /* Adds rounded corners on hover/focus. */
+}
+
+/* --- Main Content Styles --- */
+/*
+Basic styling for the main content area.
+*/
+.main-content {
+    padding-top: 20px; /* Adds space above the main content, below the header. */
+    padding-bottom: 40px; /* Adds space below the main content, before the end of the page. */
+}
+
+.content-section {
+    background-color: var(--white); /* Sets a white background for each content section. */
+    padding: 30px;                  /* Adds generous padding inside each content section. */
+    margin-bottom: 20px;            /* Adds space between content sections. */
+    border-radius: 8px;             /* Rounds the corners of the content sections. */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); /* Adds a very subtle shadow for depth. */
+}
+
+.content-section h2 {
+    color: var(--primary-blue); /* Sets the section headings to the primary blue. */
+    font-size: 2em;             /* Sets the font size for section headings. */
+    margin-top: 0;              /* Removes default top margin from headings. */
+    margin-bottom: 15px;        /* Adds space below headings. */
+    border-bottom: 2px solid var(--border-color); /* Adds a subtle border below headings. */
+    padding-bottom: 10px;       /* Adds padding between heading text and its border. */
+}
+
+.content-section p {
+    margin-bottom: 1em; /* Adds space below paragraphs. */
+}
+
+/* --- Responsive Adjustments (Media Queries) --- */
+/*
+Media queries allow applying different styles based on device characteristics,
+such as screen width. This ensures the layout adapts gracefully.
+*/
+
+/* For larger screens (e.g., tablets and desktops) */
+@media (min-width: 768px) {
+    /*
+    This media query applies styles when the viewport width is 768 pixels or wider.
+    This is typically where we hide the mobile-specific elements and show desktop ones.
+    */
+    .hamburger-icon {
+        display: none; /* Hides the hamburger icon on larger screens, as it's not needed. */
+    }
+
+    .mobile-nav-menu {
+        /*
+        On larger screens, we want the navigation to be a standard horizontal menu,
+        not a hidden dropdown.
+        */
+        position: static;      /* Changes positioning from absolute to static, placing it in the normal document flow. */
+        max-height: none;      /* Removes the max-height constraint, allowing all content to be visible. */
+        overflow: visible;     /* Ensures content is visible, no longer hidden by overflow. */
+        background-color: transparent; /* Makes the background transparent. */
+        box-shadow: none;      /* Removes the shadow. */
+        width: auto;           /* Allows the menu to take its natural width. */
+        z-index: auto;         /* Resets z-index. */
+    }
+
+    .mobile-nav-menu .nav-list {
+        display: flex;         /* Uses Flexbox to arrange navigation items horizontally. */
+        justify-content: flex-end; /* Aligns navigation items to the right. */
+        align-items: center;   /* Vertically centers navigation items. */
+    }
+
+    .mobile-nav-menu .nav-list li {
+        border-bottom: none;   /* Removes the bottom border between list items. */
+        margin-left: 25px;     /* Adds space between horizontal navigation items. */
+    }
+
+    .mobile-nav-menu .nav-list a {
+        padding: 0;            /* Removes padding from links, as they are now inline. */
+        font-size: 1em;        /* Resets font size for desktop links. */
+        color: var(--white);   /* Ensures link color is white in the header. */
+        border-radius: 0;      /* Removes rounded corners. */
+    }
+
+    .mobile-nav-menu .nav-list a:hover,
+    .mobile-nav-menu .nav-list a:focus {
+        background-color: transparent; /* Removes background change on hover for desktop. */
+        color: var(--primary-blue); /* Changes text color to primary blue on hover/focus for desktop. */
+        text-decoration: underline; /* Adds an underline on hover/focus for desktop. */
+    }
+
+    .site-header .container {
+        /* On larger screens, ensure the title and nav are properly spaced */
+        justify-content: space-between; /* Keeps title left, nav right */
+    }
+}
+
+/*
+Tailwind CSS is not explicitly used here as per the prompt's request for an external stylesheet
+with neurotically detailed comments explaining every rule and color value.
+The current CSS uses standard properties to achieve responsiveness and styling.
+*/
