@@ -1,0 +1,138 @@
+<!--
+Full Prompt:
+Create a complete HTML5 page named loading.html that displays a centered loading animation or spinner on the screen. Use pure CSS to animate the spinner using @keyframes
+ for either rotation or pulsing. The animation should run continuously
+to indicate loading. Style everything using an external stylesheet
+located at css/loading.css. The page should be minimal but
+visually clear, with the spinner centered both vertically and
+horizontally. Write neurotically detailed comments in all files; explain
+ every tag, class, style rule, and color value as if you're walking a
+complete beginner through the reasoning behind each choice. Be sure to
+include named comments describing your color scheme and interaction
+behavior. Include this full prompt as a comment at the top of the HTML
+file. Use placeholder content about an art topic of your choice to
+complete the page.
+-->
+
+<!DOCTYPE html>
+<!--
+  This is the document type declaration. It tells the browser that this is an HTML5 document.
+  It's crucial for ensuring the browser renders the page in "standards mode."
+-->
+<html lang="en">
+<!--
+  The <html> tag is the root element of an HTML page. All other elements are descendants of this tag.
+  The 'lang="en"' attribute specifies the primary language of the document content as English.
+  This is important for accessibility (screen readers) and search engine optimization.
+-->
+<head>
+  <!--
+    The <head> section contains meta-information about the HTML document.
+    This information is not displayed directly on the web page but is essential for the browser,
+    search engines, and other web services.
+  -->
+  <meta charset="UTF-8">
+  <!--
+    The <meta charset="UTF-8"> tag specifies the character encoding for the document.
+    UTF-8 is a universal character set that includes almost every character and symbol
+    in the world, making it the recommended encoding for most web pages. It prevents
+    issues with displaying special characters.
+  -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!--
+    The <meta name="viewport"> tag is critical for responsive web design.
+    - 'width=device-width': Sets the width of the viewport to the width of the device screen.
+      This means the page will adapt to the screen size of the user's device (phone, tablet, desktop).
+    - 'initial-scale=1.0': Sets the initial zoom level when the page is first loaded.
+      A value of 1.0 means no zoom, ensuring the page renders at its intended size.
+  -->
+  <title>Loading Art Collection</title>
+  <!--
+    The <title> tag defines the title of the HTML document.
+    This title appears in the browser's title bar or tab, in search engine results,
+    and as the default name when bookmarking the page. It should be concise and descriptive.
+  -->
+  <link rel="stylesheet" href="css/loading.css">
+  <!--
+    The <link> tag is used to link an external resource to the HTML document.
+    - 'rel="stylesheet"': Specifies the relationship between the current document and the linked document.
+      Here, it indicates that the linked file is a stylesheet.
+    - 'href="css/loading.css"': Specifies the URL (path) of the external stylesheet.
+      This tells the browser where to find the CSS file that will style this HTML page.
+      In this case, it's located in a 'css' folder relative to the HTML file.
+  -->
+</head>
+<body>
+  <!--
+    The <body> tag contains all the visible content of the HTML document.
+    This includes text, images, videos, links, and any other elements that users see and interact with.
+  -->
+
+  <!--
+    Color Scheme:
+    - Background: A very light gray (#f5f5f5) to provide a soft, neutral canvas.
+    - Spinner Border: A medium blue (#3498db) for visibility and a sense of progress.
+    - Spinner Transparent Part: Transparent, allowing the background to show through, creating the "spinning" effect.
+    - Text: A dark gray (#333) for readability against the light background.
+  -->
+
+  <!--
+    Interaction Behavior:
+    - The primary interaction behavior is that the loading spinner animates continuously.
+      It provides visual feedback to the user that content is being loaded or processed in the background.
+      There are no direct user interactions with the spinner itself, as its purpose is purely indicative.
+  -->
+
+  <div class="loader-wrapper">
+    <!--
+      This <div> acts as a wrapper for the loading spinner.
+      - Class 'loader-wrapper': Used by CSS to style and position the spinner container.
+        It helps in centering the spinner on the screen and can be used to apply
+        a background overlay if needed (though not used for overlay here).
+    -->
+    <div class="spinner"></div>
+    <!--
+      This <div> is the actual element that will be styled as the loading spinner.
+      - Class 'spinner': Used by CSS to define its shape (circle), border, and the animation.
+        It's the visual component that rotates or pulses.
+    -->
+  </div>
+
+  <div class="content">
+    <!--
+      This <div> holds the main content of the page.
+      - Class 'content': Used to style the placeholder content, ensuring it's
+        visible and well-formatted below the loading spinner (conceptually,
+        this content would appear after loading is complete, but for this example,
+        it's shown alongside the spinner).
+    -->
+    <h1>The Renaissance Art Collection</h1>
+    <!--
+      The <h1> tag defines the main heading of the content.
+      It's typically used for the most important title on the page.
+    -->
+    <p>
+      Welcome to a curated selection of masterpieces from the Italian Renaissance,
+      a period of immense artistic and cultural flourishing from the 14th to the 17th century.
+      This collection explores the revolutionary techniques, profound humanism, and
+      timeless beauty that defined artists like Leonardo da Vinci, Michelangelo, and Raphael.
+    </p>
+    <!--
+      The <p> tag defines a paragraph of text. It's used for blocks of content.
+    -->
+    <p>
+      From the intricate brushwork of Botticelli's "The Birth of Venus" to the
+      monumental scale of Michelangelo's Sistine Chapel ceiling, each piece
+      tells a story of innovation, faith, and the pursuit of perfection.
+      Explore the depth of perspective, the mastery of anatomy, and the
+      emotional intensity that continues to captivate audiences worldwide.
+    </p>
+    <p>
+      Our digital gallery is currently loading high-resolution images and
+      detailed historical contexts to provide an immersive experience.
+      Thank you for your patience as we prepare your journey through art history.
+    </p>
+  </div>
+
+</body>
+</html>

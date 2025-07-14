@@ -1,0 +1,233 @@
+/*
+  This is the external stylesheet for loading.html.
+  It contains all the CSS rules to style the page, including the loading spinner.
+*/
+
+/* Universal Box-Sizing Reset */
+* {
+  /*
+    The '*' is a universal selector, meaning these styles apply to every element on the page.
+    - 'box-sizing: border-box;': This is a fundamental CSS reset.
+      It changes how the width and height of an element are calculated.
+      Normally, 'width' and 'height' only apply to the content area.
+      With 'border-box', 'width' and 'height' include padding and border,
+      making layout calculations much more intuitive and predictable.
+      It helps prevent elements from overflowing unexpectedly.
+  */
+  box-sizing: border-box;
+}
+
+/* Body Styling for Full Page Layout and Centering */
+body {
+  /*
+    The 'body' selector targets the main content area of the HTML document.
+  */
+  margin: 0;
+  /*
+    'margin: 0;': Removes the default margin that browsers apply to the <body> element.
+    This ensures the content starts exactly at the edges of the viewport.
+  */
+  font-family: 'Inter', sans-serif;
+  /*
+    'font-family: 'Inter', sans-serif;': Specifies the preferred font for the entire page.
+    'Inter' is a modern, highly readable typeface. 'sans-serif' is a generic fallback,
+    meaning if 'Inter' isn't available, the browser will use any sans-serif font it has.
+  */
+  display: flex;
+  /*
+    'display: flex;': Turns the <body> into a flex container.
+    This is crucial for using Flexbox properties to center its direct children.
+  */
+  flex-direction: column;
+  /*
+    'flex-direction: column;': Arranges the flex items (children of <body>) in a vertical column.
+    This means the loader and content will stack on top of each other.
+  */
+  justify-content: center;
+  /*
+    'justify-content: center;': Aligns flex items along the main axis.
+    Since 'flex-direction' is 'column', the main axis is vertical.
+    This centers the content vertically within the <body>.
+  */
+  align-items: center;
+  /*
+    'align-items: center;': Aligns flex items along the cross axis.
+    Since 'flex-direction' is 'column', the cross axis is horizontal.
+    This centers the content horizontally within the <body>.
+  */
+  min-height: 100vh;
+  /*
+    'min-height: 100vh;': Sets the minimum height of the <body> to 100% of the viewport height.
+    'vh' stands for "viewport height". This ensures the <body> takes up at least the full
+    height of the browser window, allowing for vertical centering even if content is sparse.
+  */
+  background-color: #f5f5f5;
+  /*
+    'background-color: #f5f5f5;': Sets a very light gray background color for the entire page.
+    This provides a clean and subtle backdrop.
+  */
+  color: #333;
+  /*
+    'color: #333;': Sets the default text color to a dark gray.
+    This ensures good contrast and readability against the light background.
+  */
+  overflow: hidden; /* Prevent scrollbars from appearing due to centering */
+}
+
+/* Loader Wrapper for Centering the Spinner */
+.loader-wrapper {
+  /*
+    The '.loader-wrapper' class targets the container holding the actual spinner.
+    It's used to ensure the spinner is visually distinct and correctly positioned.
+  */
+  display: flex;
+  /*
+    'display: flex;': Makes this wrapper a flex container.
+    This allows us to center the '.spinner' element inside it.
+  */
+  justify-content: center;
+  /*
+    'justify-content: center;': Horizontally centers the '.spinner' within the wrapper.
+  */
+  align-items: center;
+  /*
+    'align-items: center;': Vertically centers the '.spinner' within the wrapper.
+  */
+  margin-bottom: 20px; /* Space between spinner and content */
+}
+
+/* Spinner Animation Definition */
+.spinner {
+  /*
+    The '.spinner' class targets the <div> element that will become the animated loading indicator.
+  */
+  width: 50px;
+  /*
+    'width: 50px;': Sets the width of the spinner element to 50 pixels.
+  */
+  height: 50px;
+  /*
+    'height: 50px;': Sets the height of the spinner element to 50 pixels.
+    Together with 'width', this creates a square shape before 'border-radius' is applied.
+  */
+  border: 5px solid rgba(52, 152, 219, 0.2);
+  /*
+    'border: 5px solid rgba(52, 152, 219, 0.2);': Defines a 5-pixel solid border.
+    - '5px': The thickness of the border.
+    - 'solid': The style of the border (a continuous line).
+    - 'rgba(52, 152, 219, 0.2)': The color of the main part of the border.
+      This is an RGBA color: Red (52), Green (152), Blue (219), and Alpha (0.2).
+      The alpha value of 0.2 makes this part of the border semi-transparent,
+      creating a subtle, faded effect for the background part of the spinner.
+      This color (#3498db) is a shade of blue, chosen for its clean and modern look.
+  */
+  border-top-color: #3498db;
+  /*
+    'border-top-color: #3498db;': Overrides the top border color.
+    This sets the top part of the border to a solid, opaque blue (#3498db).
+    This contrast between the opaque top border and the semi-transparent rest of the border
+    is what creates the visual "gap" or "moving part" of the spinner as it rotates.
+  */
+  border-radius: 50%;
+  /*
+    'border-radius: 50%;': Makes the square element a perfect circle.
+    By setting the border-radius to 50% of the width/height, the corners are rounded
+    to the maximum extent, forming a circular shape.
+  */
+  animation: spin 1s linear infinite;
+  /*
+    'animation: spin 1s linear infinite;': Applies the animation to the spinner.
+    - 'spin': Refers to the name of the @keyframes rule defined below.
+    - '1s': The duration of one complete animation cycle (1 second).
+    - 'linear': The timing function, meaning the animation progresses at a constant speed
+      from start to finish, without acceleration or deceleration. This creates a smooth,
+      continuous rotation.
+    - 'infinite': Specifies that the animation should repeat indefinitely (continuously).
+      This is essential for a loading spinner that needs to run until content is loaded.
+  */
+}
+
+/* Keyframes for the Spinning Animation */
+@keyframes spin {
+  /*
+    The '@keyframes' rule defines the animation sequence.
+    - 'spin': This is the name of the animation, referenced by the 'animation' property.
+  */
+  from {
+    /*
+      'from' represents the starting state of the animation (0% of the animation cycle).
+    */
+    transform: rotate(0deg);
+    /*
+      'transform: rotate(0deg);': At the beginning, the spinner is not rotated (0 degrees).
+      'transform' is a CSS property that lets you modify the coordinate space of an element.
+      'rotate()' is a transform function that rotates an element around its center.
+    */
+  }
+  to {
+    /*
+      'to' represents the ending state of the animation (100% of the animation cycle).
+    */
+    transform: rotate(360deg);
+    /*
+      'transform: rotate(360deg);': At the end, the spinner has completed a full 360-degree rotation.
+      Since the animation is 'infinite', it will seamlessly loop back to 0 degrees,
+      creating a continuous spinning effect.
+    */
+  }
+}
+
+/* Content Styling */
+.content {
+  /*
+    The '.content' class styles the placeholder text on the page.
+  */
+  max-width: 800px;
+  /*
+    'max-width: 800px;': Limits the maximum width of the content area to 800 pixels.
+    This prevents text lines from becoming too long on very wide screens,
+    improving readability. On smaller screens, it will shrink to fit.
+  */
+  padding: 20px;
+  /*
+    'padding: 20px;': Adds 20 pixels of space inside the content box,
+    between the content and its border (if it had one). This creates
+    breathing room around the text.
+  */
+  text-align: center;
+  /*
+    'text-align: center;': Centers the text content horizontally within the '.content' div.
+  */
+  line-height: 1.6;
+  /*
+    'line-height: 1.6;': Sets the height of each line of text to 1.6 times the font size.
+    This adds more vertical space between lines, improving readability, especially for paragraphs.
+  */
+}
+
+.content h1 {
+  /*
+    Styles the <h1> heading within the '.content' div.
+  */
+  color: #2c3e50;
+  /*
+    'color: #2c3e50;': Sets the heading color to a dark, deep blue-gray.
+    This provides a strong visual contrast and a professional look.
+  */
+  margin-bottom: 15px;
+  /*
+    'margin-bottom: 15px;': Adds 15 pixels of space below the heading,
+    separating it from the following paragraphs.
+  */
+}
+
+.content p {
+  /*
+    Styles the <p> paragraphs within the '.content' div.
+  */
+  margin-bottom: 10px;
+  /*
+    'margin-bottom: 10px;': Adds 10 pixels of space below each paragraph,
+    creating separation between them.
+  */
+}
