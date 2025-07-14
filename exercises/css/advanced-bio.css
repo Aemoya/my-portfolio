@@ -1,0 +1,125 @@
+/* General Body Styling */
+body {
+    font-family: 'Open Sans', sans-serif; /* Body text font */
+    line-height: 1.6;
+    margin: 0;
+    padding: 20px;
+    background-color: #f4f4f4;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Align content to the top */
+    min-height: 100vh; /* Ensure body takes full viewport height */
+    box-sizing: border-box; /* Include padding in element's total width and height */
+}
+
+/* Container for main content to center and limit width */
+.container {
+    max-width: 1200px;
+    width: 100%;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+}
+
+/* Bio Section - Flexbox for two-column layout */
+.bio-section {
+    display: flex;
+    flex-direction: row; /* Default to row for desktop */
+    gap: 40px; /* Space between columns */
+    align-items: flex-start; /* Align items to the top of the flex container */
+}
+
+/* Image Column Styling */
+.bio-image-column {
+    flex: 1; /* Allows column to grow and shrink */
+    min-width: 0; /* Prevents content from overflowing */
+}
+
+.artist-image {
+    max-width: 100%; /* Ensure image is responsive */
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Remove extra space below image */
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Text Column Styling */
+.bio-text-column {
+    flex: 1; /* Allows column to grow and shrink */
+    min-width: 0; /* Prevents content from overflowing */
+}
+
+.bio-heading {
+    font-family: 'Playfair Display', serif; /* Heading font */
+    font-size: 2.5em;
+    color: #2c3e50;
+    margin-top: 0;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.bio-paragraph {
+    margin-bottom: 15px;
+    text-align: left;
+    color: #555;
+}
+
+/* Call-to-action Button Styling */
+.call-to-action-button {
+    display: inline-block; /* Allows padding and margin */
+    background-color: #3498db; /* Blue background */
+    color: #ffffff; /* White text */
+    padding: 12px 25px;
+    text-decoration: none; /* Remove underline */
+    border-radius: 5px;
+    font-weight: bold;
+    margin-top: 20px;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.call-to-action-button:hover {
+    background-color: #2980b9; /* Darker blue on hover */
+    transform: translateY(-2px); /* Slight lift effect */
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Responsive Design for Smaller Screens (e.g., Mobile) */
+@media (max-width: 768px) {
+    .bio-section {
+        flex-direction: column; /* Stack columns vertically */
+        gap: 30px; /* Adjust gap for vertical stacking */
+    }
+
+    .bio-image-column,
+    .bio-text-column {
+        flex: none; /* Remove flex growing/shrinking */
+        width: 100%; /* Take full width */
+    }
+
+    .bio-heading {
+        font-size: 2em; /* Adjust heading size for smaller screens */
+        text-align: center; /* Center heading on mobile */
+    }
+
+    .bio-paragraph {
+        text-align: justify; /* Justify text for better readability on small screens */
+    }
+
+    .call-to-action-button {
+        width: 100%; /* Make button full width */
+        text-align: center;
+        box-sizing: border-box; /* Include padding in button's width */
+    }
+
+    body {
+        padding: 15px; /* Reduce overall padding on smaller screens */
+    }
+
+    .container {
+        padding: 20px; /* Adjust container padding */
+    }
+}
