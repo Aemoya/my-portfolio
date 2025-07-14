@@ -1,0 +1,181 @@
+<!--
+Prompt:
+Create a complete HTML5 page named scroll-reveal.html with at least five vertically stacked content sections. Each section
+should contain a heading and paragraph of placeholder content about an art topic. Apply a scroll-triggered animation (such as fade-in or
+slide-up) to each section using JavaScript and CSS. Use the Intersection Observer API in an external JavaScript file at scripts/scroll-reveal.js
+to detect when each section enters the viewport. When a section is visible, add a CSS class that triggers a transition. Write all styling
+and animation behavior in an external stylesheet at css/scroll-reveal.css. Ensure animations are subtle, accessible, and trigger progressively as
+the user scrolls—not all at once or just at the end. Write neurotically detailed comments in all files; explain every tag, class, style rule,
+and color value as if you're walking a complete beginner through the reasoning behind each choice. Be sure to include named comments
+describing your color scheme and interaction behavior. Include this full prompt as a comment at the top of the HTML file. Use placeholder
+content about an art topic of your choice to complete the page.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--
+    The <head> section contains meta-information about the HTML document,
+    such as its title, links to stylesheets, and scripts. This information
+    is not displayed on the page itself but is crucial for browsers and search engines.
+    -->
+    <meta charset="UTF-8">
+    <!--
+    The <meta charset="UTF-8"> tag specifies the character encoding for the document.
+    UTF-8 is a universal character set that supports almost all characters and symbols
+    in the world, ensuring that text displays correctly across different languages and systems.
+    -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--
+    The <meta name="viewport"> tag is essential for responsive web design.
+    - "width=device-width" sets the width of the viewport to the width of the device's screen.
+    - "initial-scale=1.0" sets the initial zoom level when the page is first loaded.
+    Together, these ensure the page scales correctly on various devices (desktops, tablets, mobile phones).
+    -->
+    <title>Artistic Scroll Reveal</title>
+    <!--
+    The <title> tag defines the title of the document, which appears in the browser's
+    title bar or tab. It's important for SEO and user experience.
+    -->
+    <link rel="stylesheet" href="css/scroll-reveal.css">
+    <!--
+    The <link> tag is used to link an external stylesheet to the HTML document.
+    - "rel="stylesheet"" specifies the relationship between the current document and the linked document (it's a stylesheet).
+    - "href="css/scroll-reveal.css"" provides the path to the CSS file.
+    This separates styling from content, making the code cleaner and easier to maintain.
+    -->
+</head>
+<body>
+    <!--
+    The <body> section contains all the visible content of the HTML document,
+    such as text, images, links, videos, etc.
+    -->
+
+    <header>
+        <!--
+        The <header> element represents introductory content, typically containing
+        a group of navigational aids or introductory headings.
+        -->
+        <h1>The Canvas Unveiled: A Journey Through Art</h1>
+        <!--
+        The <h1> tag defines the most important heading on the page. There should
+        typically only be one <h1> per page, representing the main topic.
+        -->
+    </header>
+
+    <main>
+        <!--
+        The <main> element represents the dominant content of the <body>.
+        It should contain content that is unique to the document and not
+        repeated across other parts of the site (like headers, footers, sidebars).
+        -->
+
+        <section class="scroll-reveal-section hidden">
+            <!--
+            The <section> element groups related content. Here, each section
+            represents a distinct topic about art.
+            - "scroll-reveal-section": A custom class used by JavaScript to identify
+              elements that should have the scroll-reveal animation applied.
+            - "hidden": An initial class applied to make the section invisible
+              and positioned for animation before JavaScript removes it.
+            -->
+            <h2>The Renaissance: Rebirth of Art</h2>
+            <!--
+            The <h2> tag defines a subheading, less important than <h1> but
+            still significant. It helps structure the content hierarchically.
+            -->
+            <p>
+                The Renaissance, spanning roughly from the 14th to the 17th century,
+                marked a profound period of cultural, artistic, political, and economic
+                "rebirth" in Europe. Originating in Florence, Italy, it saw a renewed
+                interest in classical Greek and Roman art, philosophy, and literature.
+                Artists like Leonardo da Vinci, Michelangelo, and Raphael pushed the
+                boundaries of perspective, anatomy, and human emotion, creating masterpieces
+                that continue to inspire awe. Their works often celebrated humanism,
+                emphasizing the value and agency of human beings.
+            </p>
+            <!--
+            The <p> tag defines a paragraph of text. It's used for blocks of content.
+            -->
+        </section>
+
+        <section class="scroll-reveal-section hidden">
+            <h2>Impressionism: Capturing Light and Moment</h2>
+            <p>
+                Emerging in the late 19th century in France, Impressionism was a radical
+                departure from traditional academic painting. Artists like Claude Monet,
+                Pierre-Auguste Renoir, and Edgar Degas focused on capturing the fleeting
+                effects of light and atmosphere, often painting outdoors (en plein air).
+                Their brushstrokes were typically visible, colors vibrant, and compositions
+                informal, aiming to convey the "impression" of a scene rather than precise
+                details. This movement laid the groundwork for modern art, emphasizing
+                subjective perception over objective reality.
+            </p>
+        </section>
+
+        <section class="scroll-reveal-section hidden">
+            <h2>Surrealism: Dreams and the Unconscious</h2>
+            <p>
+                Surrealism, an artistic and literary movement that began in the 1920s,
+                sought to unleash the creative potential of the unconscious mind.
+                Influenced by Sigmund Freud's psychoanalytic theories, artists like
+                Salvador Dalí, René Magritte, and Frida Kahlo explored dreamscapes,
+                irrational juxtapositions, and symbolic imagery. Their works often
+                challenged conventional notions of reality, inviting viewers into
+                worlds where logic was suspended and the bizarre became beautiful.
+                Surrealism aimed to revolutionize human experience by liberating
+                imagination.
+            </p>
+        </section>
+
+        <section class="scroll-reveal-section hidden">
+            <h2>Abstract Expressionism: Emotion on Canvas</h2>
+            <p>
+                Flourishing in New York City in the 1940s and 1950s, Abstract Expressionism
+                was the first major American art movement to achieve international influence.
+                Artists such as Jackson Pollock, Mark Rothko, and Willem de Kooning
+                emphasized spontaneous, intuitive creation, often through large-scale,
+                non-representational paintings. This movement valued the emotional and
+                expressive power of color and form over narrative or figurative content,
+                reflecting post-war anxieties and a desire for profound self-expression.
+                It was characterized by intense energy and a direct engagement with the canvas.
+            </p>
+        </section>
+
+        <section class="scroll-reveal-section hidden">
+            <h2>Contemporary Art: Diverse Voices and Forms</h2>
+            <p>
+                Contemporary art refers to art made in the present day, generally
+                from the 1960s or 1970s up to the current moment. It is incredibly
+                diverse, encompassing a vast array of styles, mediums, and conceptual
+                approaches. Artists like Yayoi Kusama, Banksy, and Jeff Koons often
+                engage with global issues, technology, identity, and social commentary.
+                Contemporary art frequently blurs the lines between disciplines,
+                incorporating performance, video, installation, and digital media,
+                reflecting the complex and interconnected nature of our modern world.
+            </p>
+        </section>
+
+    </main>
+
+    <footer>
+        <!--
+        The <footer> element represents a footer for its nearest sectioning content
+        or sectioning root element. It typically contains information about the author,
+        copyright data, or related documents.
+        -->
+        <p>&copy; 2025 Art History Insights. All rights reserved.</p>
+    </footer>
+
+    <script src="scripts/scroll-reveal.js" defer></script>
+    <!--
+    The <script> tag is used to embed or link executable code, typically JavaScript.
+    - "src="scripts/scroll-reveal.js"" provides the path to the JavaScript file.
+    - "defer": The "defer" attribute tells the browser to execute the script
+      after the HTML document has been parsed. This is important because the
+      script needs to access the DOM elements, which must be fully loaded first.
+      Placing it just before the closing </body> tag is also a common practice
+      for the same reason, but "defer" offers more flexibility.
+    -->
+</body>
+</html>

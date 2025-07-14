@@ -1,0 +1,353 @@
+/*
+Neurotically detailed comments for css/scroll-reveal.css
+
+This stylesheet defines the visual appearance and animation behavior
+for the scroll-reveal effect on the HTML page. Every rule, class,
+and color choice is explained below.
+*/
+
+/* --- Color Scheme --- */
+/*
+This section defines the color palette used throughout the page.
+Choosing a consistent color scheme helps create a cohesive and
+visually appealing design.
+
+- Primary Background: A soft, light gray for a clean, modern look.
+- Text Color: A dark charcoal gray for good readability against light backgrounds.
+- Accent Color: A muted teal/blue for headings and subtle highlights,
+  providing a touch of sophistication without being too overpowering.
+- Section Background: A slightly darker, but still light, gray to
+  differentiate content sections from the main background.
+- Border Color: A very light gray to provide subtle separation.
+*/
+:root {
+    /*
+    :root targets the highest-level parent in the document tree, which is the <html> element.
+    Using CSS custom properties (variables) here allows us to define colors once
+    and reuse them throughout the stylesheet, making it easier to manage and update
+    the color scheme globally.
+    */
+    --color-primary-bg: #f8f8f8; /* A very light, almost white, background */
+    --color-text: #333333;       /* Dark gray for body text, ensures good contrast */
+    --color-accent: #4a90e2;     /* A pleasant blue for accents, like headings */
+    --color-section-bg: #ffffff; /* Pure white for section backgrounds to stand out slightly */
+    --color-border: #e0e0e0;     /* Light gray for subtle borders */
+    --color-header-bg: #2c3e50;  /* Dark blue-gray for the header background */
+    --color-header-text: #ffffff; /* White for header text, contrasting with dark background */
+}
+
+/* --- Global Styles & Typography --- */
+/*
+These styles apply globally to the body and basic text elements,
+setting up a consistent look and feel for the entire page.
+*/
+body {
+    /*
+    The body selector targets the entire content area of the HTML document.
+    */
+    font-family: 'Inter', sans-serif;
+    /*
+    Specifies the font for all text within the body. 'Inter' is a modern,
+    highly legible typeface. 'sans-serif' is a generic fallback in case
+    'Inter' isn't available, ensuring text is always readable.
+    */
+    margin: 0;
+    /*
+    Removes the default margin browsers apply to the body, allowing for
+    full control over spacing.
+    */
+    padding: 0;
+    /*
+    Removes the default padding browsers apply to the body, similar to margin.
+    */
+    background-color: var(--color-primary-bg);
+    /*
+    Sets the background color of the entire page using our defined CSS variable.
+    */
+    color: var(--color-text);
+    /*
+    Sets the default text color for the entire page using our defined CSS variable.
+    */
+    line-height: 1.6;
+    /*
+    Sets the spacing between lines of text. A value of 1.6 (160% of the font size)
+    improves readability by preventing lines from appearing too cramped.
+    */
+    scroll-behavior: smooth;
+    /*
+    Enables smooth scrolling when navigating to anchor links on the page,
+    providing a more pleasant user experience.
+    */
+}
+
+header {
+    /*
+    Styles for the header section at the top of the page.
+    */
+    background-color: var(--color-header-bg);
+    /* Dark background for the header. */
+    color: var(--color-header-text);
+    /* White text for the header, contrasting with the dark background. */
+    padding: 3rem 1rem;
+    /*
+    Adds padding inside the header: 3rem (48px) top/bottom, 1rem (16px) left/right.
+    This creates space around the header content.
+    */
+    text-align: center;
+    /* Centers the text content within the header. */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /*
+    Adds a subtle shadow below the header, giving it a slight 3D lift
+    and separation from the main content.
+    - 0 4px: horizontal and vertical offset of the shadow.
+    - 8px: blur radius of the shadow.
+    - rgba(0, 0, 0, 0.1): black color with 10% opacity.
+    */
+}
+
+header h1 {
+    /*
+    Styles specifically for the main heading inside the header.
+    */
+    margin: 0;
+    /* Removes default margin from the h1, allowing it to sit flush with header padding. */
+    font-size: 2.8rem;
+    /* Increases the font size for the main heading to make it prominent. */
+    letter-spacing: 0.05em;
+    /* Spreads out the letters slightly for a more refined look. */
+}
+
+main {
+    /*
+    Styles for the main content area of the page.
+    */
+    max-width: 900px;
+    /*
+    Sets a maximum width for the main content. This prevents lines of text
+    from becoming too long on very wide screens, which can hinder readability.
+    */
+    margin: 2rem auto;
+    /*
+    Centers the main content block horizontally on the page.
+    - 2rem: adds 2rem (32px) margin to the top and bottom.
+    - auto: automatically distributes remaining horizontal space equally,
+      centering the element.
+    */
+    padding: 1rem;
+    /*
+    Adds internal spacing (padding) around the content within the main area.
+    */
+}
+
+footer {
+    /*
+    Styles for the footer section at the bottom of the page.
+    */
+    text-align: center;
+    /* Centers the text content within the footer. */
+    padding: 2rem 1rem;
+    /* Adds padding around the footer content. */
+    margin-top: 3rem;
+    /* Adds space above the footer, separating it from the last content section. */
+    border-top: 1px solid var(--color-border);
+    /* Adds a subtle top border for visual separation. */
+    color: var(--color-text);
+    /* Sets the text color for the footer. */
+    font-size: 0.9rem;
+    /* Slightly smaller font size for copyright information. */
+}
+
+/* --- Section Specific Styles --- */
+/*
+These styles apply to each individual content section.
+*/
+section {
+    /*
+    Targets all <section> elements.
+    */
+    background-color: var(--color-section-bg);
+    /* Sets the background color for each section using our CSS variable. */
+    margin-bottom: 2rem;
+    /* Adds space below each section, separating them vertically. */
+    padding: 2.5rem;
+    /* Adds internal spacing within each section, around its content. */
+    border-radius: 12px;
+    /*
+    Applies rounded corners to the sections for a softer, more modern aesthetic.
+    12px is a moderate radius that is noticeable but not overly rounded.
+    */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+    /*
+    Adds a more pronounced shadow to each section, making them appear to "float"
+    slightly above the background and giving them depth.
+    - 0 6px: horizontal and vertical offset of the shadow.
+    - 15px: blur radius.
+    - rgba(0, 0, 0, 0.08): black color with 8% opacity, making it subtle.
+    */
+    border: 1px solid var(--color-border);
+    /* Adds a thin, light gray border for subtle definition. */
+}
+
+section h2 {
+    /*
+    Styles for the subheadings within each section.
+    */
+    color: var(--color-accent);
+    /* Sets the heading color to our accent color for visual emphasis. */
+    font-size: 2rem;
+    /* Increases the font size for section headings. */
+    margin-top: 0;
+    /* Removes default top margin to align with section padding. */
+    margin-bottom: 1rem;
+    /* Adds space below the heading, separating it from the paragraph. */
+    border-bottom: 2px solid var(--color-accent);
+    /* Adds a subtle underline in the accent color for emphasis. */
+    padding-bottom: 0.5rem;
+    /* Adds space between the heading text and its underline. */
+    display: inline-block;
+    /*
+    Makes the border-bottom only extend the width of the text, not the full width
+    of the section, for a cleaner look.
+    */
+}
+
+section p {
+    /*
+    Styles for paragraphs within each section.
+    */
+    font-size: 1.1rem;
+    /* Slightly increases paragraph font size for better readability. */
+    margin-bottom: 0;
+    /* Removes default bottom margin from the last paragraph in a section. */
+}
+
+/* --- Scroll Reveal Animation Behavior --- */
+/*
+This is the core of the scroll-reveal effect. It defines the initial
+(hidden) state of the elements and their final (visible) state.
+
+- Interaction Behavior:
+  Elements with the 'scroll-reveal-section' class start in a 'hidden' state,
+  meaning they are transparent and slightly moved downwards.
+  When the JavaScript (using Intersection Observer) detects that these
+  elements enter the viewport, it removes the 'hidden' class and adds
+  the 'visible' class. The 'transition' property then smoothly animates
+  the change from the 'hidden' state to the 'visible' state.
+  This creates a subtle fade-in and slide-up effect as the user scrolls.
+*/
+
+.scroll-reveal-section {
+    /*
+    This class defines the initial state and the transition properties
+    for all elements that will be animated.
+    */
+    opacity: 0;
+    /*
+    Starts the element completely transparent (invisible). This is the
+    "fade-in" part of the animation.
+    */
+    transform: translateY(50px);
+    /*
+    Moves the element 50 pixels down from its original position. This is
+    the "slide-up" part of the animation. When it becomes visible, it will
+    slide up to its natural position (0px translateY).
+    */
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    /*
+    Defines how the changes in 'opacity' and 'transform' properties will animate.
+    - "opacity 0.8s ease-out": The opacity change will take 0.8 seconds to complete.
+      "ease-out" means the animation will start fast and slow down towards the end,
+      creating a smooth, natural feel.
+    - "transform 0.8s ease-out": The transform (movement) change will also take
+      0.8 seconds with an "ease-out" timing function.
+    Combining these two creates a simultaneous fade-in and slide-up effect.
+    */
+    will-change: opacity, transform;
+    /*
+    This CSS property is a performance hint to the browser. It tells the browser
+    that these properties are likely to change in the future, allowing it to
+    optimize rendering by preparing for the animation in advance.
+    */
+}
+
+.scroll-reveal-section.visible {
+    /*
+    This class is added by JavaScript when the section enters the viewport.
+    It defines the final, visible state of the element.
+    */
+    opacity: 1;
+    /*
+    Makes the element fully opaque (visible). This is the target state for the fade-in.
+    */
+    transform: translateY(0);
+    /*
+    Moves the element back to its original vertical position (0 pixels from its start).
+    This is the target state for the slide-up.
+    */
+}
+
+/* --- Responsive Adjustments --- */
+/*
+These media queries ensure the layout adapts well to different screen sizes,
+especially smaller devices like mobile phones.
+*/
+@media (max-width: 768px) {
+    /*
+    This media query applies styles when the screen width is 768 pixels or less.
+    It's commonly used for tablet-sized screens and smaller.
+    */
+    header h1 {
+        font-size: 2rem;
+        /* Reduces the main heading font size on smaller screens to prevent overflow. */
+    }
+
+    main {
+        margin: 1rem auto;
+        /* Reduces vertical margin for main content on smaller screens. */
+        padding: 0.5rem;
+        /* Reduces padding for main content on smaller screens. */
+    }
+
+    section {
+        padding: 1.5rem;
+        /* Reduces internal padding within sections for smaller screens. */
+        margin-bottom: 1.5rem;
+        /* Reduces bottom margin for sections on smaller screens. */
+    }
+
+    section h2 {
+        font-size: 1.6rem;
+        /* Reduces section heading font size on smaller screens. */
+    }
+
+    section p {
+        font-size: 1rem;
+        /* Reduces paragraph font size slightly for smaller screens. */
+    }
+}
+
+@media (max-width: 480px) {
+    /*
+    This media query applies styles when the screen width is 480 pixels or less.
+    It's commonly used for mobile phone-sized screens.
+    */
+    header {
+        padding: 2rem 0.5rem;
+        /* Further reduces header padding on very small screens. */
+    }
+
+    header h1 {
+        font-size: 1.8rem;
+        /* Further reduces main heading font size on very small screens. */
+    }
+
+    section {
+        padding: 1rem;
+        /* Further reduces section padding on very small screens. */
+    }
+
+    section h2 {
+        font-size: 1.4rem;
+        /* Further reduces section heading font size on very small screens. */
+    }
+}
