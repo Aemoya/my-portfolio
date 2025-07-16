@@ -25,6 +25,7 @@ header {
 header h1 {
     font-size: 3em;
     font-family: 'Courier New', Courier, monospace;
+    text-align: center;
 }
 
 .jp-text {
@@ -97,8 +98,9 @@ footer {
 }
 
 .year-item img {
-    width: 100%;
-    height: auto;
+    width: 600px;
+    height: 350px;
+    object-fit: cover;
     display: block;
     transition: transform 0.3s;
 }
@@ -136,8 +138,9 @@ footer {
 }
 
 .work-item img {
-    width: 100%;
-    height: auto;
+    width: 600px;
+    height: 350px;
+    object-fit: cover;
     display: block;
     transition: transform 0.3s;
 }
