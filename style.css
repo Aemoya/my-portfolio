@@ -82,49 +82,77 @@ footer {
     border-top: 3px solid #000;
 }
 
-.gallery {
+.works-nav {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.works-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.works-nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+.works-nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.works-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
 }
 
-.gallery-item {
+.work-item {
     position: relative;
-    border: 2px solid #000;
-    border-radius: 10px;
     overflow: hidden;
+    border-radius: 10px;
 }
 
-.gallery-item img {
+.work-item img {
     width: 100%;
     height: auto;
     display: block;
+    transition: transform 0.3s;
 }
 
-.gallery-item .overlay {
+.work-item:hover img {
+    transform: scale(1.1);
+}
+
+.work-caption {
     position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(0, 0, 0, 0.6);
     color: #fff;
+    padding: 15px;
     text-align: center;
-    padding: 10px;
     opacity: 0;
     transition: opacity 0.3s;
 }
 
-.gallery-item:hover .overlay {
+.work-item:hover .work-caption {
     opacity: 1;
 }
 
-.overlay h3 {
+.work-caption h3 {
     margin: 0;
-    font-size: 1.2em;
+    font-size: 1.4em;
 }
 
-.overlay p {
+.work-caption p {
     margin: 5px 0 0;
+    font-size: 1em;
 }
 
 #cursor-trail {
