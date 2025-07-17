@@ -176,6 +176,27 @@ footer {
     font-size: 1em;
 }
 
+.cv-content {
+    line-height: 1.6;
+}
+
+.cv-content h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.cv-content h4 {
+    font-size: 1.2em;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 5px;
+}
+
+.cv-content p {
+    margin: 0 0 10px;
+}
+
 #cursor-trail {
     position: fixed;
     top: 0;
