@@ -1,5 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Uncial+Antiqua&family=IM+Fell+English&display=swap');
+
 body {
-    font-family: 'Times New Roman', Times, serif;
+    font-family: 'IM Fell English', serif;
     background-color: #f0e6d2;
     color: #333;
     margin: 0;
@@ -23,8 +25,8 @@ header {
 }
 
 header h1 {
-    font-size: 3em;
-    font-family: 'Courier New', Courier, monospace;
+    font-size: 3.5em;
+    font-family: 'Uncial Antiqua', cursive;
     text-align: center;
 }
 
@@ -70,7 +72,8 @@ section {
 }
 
 h2 {
-    font-family: 'Courier New', Courier, monospace;
+    font-family: 'Uncial Antiqua', cursive;
+    font-size: 2em;
     border-bottom: 2px solid #000;
     padding-bottom: 5px;
     margin-bottom: 15px;
