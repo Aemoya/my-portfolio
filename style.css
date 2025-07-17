@@ -187,6 +187,10 @@ footer {
     line-height: 1.6;
 }
 
+.cv-content h3.artist-name {
+    font-size: 12pt;
+}
+
 .cv-content h3 {
     font-size: 1.5em;
     margin-bottom: 10px;
