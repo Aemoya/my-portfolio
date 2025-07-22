@@ -24,8 +24,25 @@
         <main>
             <section id="contact">
                 <h2>Contact</h2>
-                <p>Contact information.</p>
-            </section>
+                <p>Feel free to reach out to me using the form below!</p>
+                <form action="https://formsubmit.co/aemoya01@gmail.com" method="POST">
+                    <p>
+                        <label for="name">Name:</label>
+                        <input type="text" name="name" id="name" required>
+                    </p>
+                    <p>
+                        <label for="email">Email:</label>
+                        <input type="email" name="email" id="email" required>
+                    </p>
+                    <p>
+                        <label for="message">Message:</label>
+                        <textarea name="message" id="message" rows="5" required></textarea>
+                    </p>
+                    <input type="text" name="_honeypot" style="display:none">
+                    <input type="hidden" name="_next" value="https://yourdomain.com/thankyou.html">
+                    <button type="submit">Send Message</button>
+                </form>
+                </section>
         </main>
         <footer>
             <p>&copy; 2025 Alexandra Moya</p>
