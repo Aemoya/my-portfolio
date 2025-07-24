@@ -2,8 +2,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=UnifrakturCook:wght@700&display=swap');
 
 /* Custom Fonts */
-.font-carol-gothic {
-    font-family: 'Carol Gothic', cursive;
+.font-unifraktur-cook {
+    font-family: 'UnifrakturCook', cursive;
 }
 .font-cardo {
     font-family: 'Cardo', serif;
@@ -35,5 +35,16 @@ model-viewer {
     height: 400px; /* Adjust as needed */
     background-color: #262626;
     border-radius: 0.75rem; /* rounded-xl */
+}
+
+/* Mobile Menu Dropdown Animation */
+#mobile-menu {
+    max-height: 0; /* Initially hidden */
+    overflow: hidden;
+    transition: max-height 0.5s ease-in-out; /* Smooth transition */
+}
+
+#mobile-menu.mobile-menu-open {
+    max-height: 500px; /* Adjust this value if your menu content is taller */
 }
 
