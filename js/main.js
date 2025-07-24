@@ -1,24 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const mobileMenuButton = document.getElementById('mobile-menu-button');
-    const mobileMenu = document.getElementById('mobile-menu');
-    const navLinks = document.querySelectorAll('nav a, #mobile-menu a');
-
-    if (mobileMenuButton) {
-        mobileMenuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('mobile-menu-open');
-        });
-    }
-
-    navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            if (mobileMenu.classList.contains('mobile-menu-open')) {
-                mobileMenu.classList.remove('mobile-menu-open');
-            }
-        });
-    });
-    // ... rest of your script.js code (like contact form)
-});
-document.addEventListener('DOMContentLoaded', () => {
     console.log("DOM Content Loaded. Script is running.");
 
     const mobileMenuButton = document.getElementById('mobile-menu-button');
@@ -26,13 +6,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const navLinks = document.querySelectorAll('nav a, #mobile-menu a');
     const contactForm = document.getElementById('contact-form');
     const formMessage = document.getElementById('form-message');
-    
+
     // Mobile menu toggle
     if (mobileMenuButton) { // Check if button exists before adding listener
         mobileMenuButton.addEventListener('click', () => {
             console.log("Hamburger icon clicked!");
-            mobileMenu.classList.toggle('mobile-menu-open'); // Toggle the new class
-            console.log(`Mobile menu is now open: ${mobileMenu.classList.contains('mobile-menu-open')}`);
+            mobileMenu.classList.toggle('hidden');
+            console.log(`Mobile menu is now hidden: ${mobileMenu.classList.contains('hidden')}`);
         });
     } else {
         console.error("Mobile menu button not found!");
@@ -41,8 +21,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // Close mobile menu when a navigation link is clicked
     navLinks.forEach(link => {
         link.addEventListener('click', () => {
-            if (mobileMenu.classList.contains('mobile-menu-open')) { // Check for the new class
-                mobileMenu.classList.remove('mobile-menu-open'); // Remove the class to close
+            if (!mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.add('hidden');
                 console.log("Mobile menu closed after link click.");
             }
         });
@@ -68,4 +48,3 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log("Contact form not found on this page.");
     }
 });
-
