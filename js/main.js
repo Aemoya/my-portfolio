@@ -1,4 +1,24 @@
 document.addEventListener('DOMContentLoaded', () => {
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const navLinks = document.querySelectorAll('nav a, #mobile-menu a');
+
+    if (mobileMenuButton) {
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('mobile-menu-open');
+        });
+    }
+
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            if (mobileMenu.classList.contains('mobile-menu-open')) {
+                mobileMenu.classList.remove('mobile-menu-open');
+            }
+        });
+    });
+    // ... rest of your script.js code (like contact form)
+});
+document.addEventListener('DOMContentLoaded', () => {
     console.log("DOM Content Loaded. Script is running.");
 
     const mobileMenuButton = document.getElementById('mobile-menu-button');
