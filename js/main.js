@@ -11,8 +11,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (mobileMenuButton) { // Check if button exists before adding listener
         mobileMenuButton.addEventListener('click', () => {
             console.log("Hamburger icon clicked!");
-            mobileMenu.classList.toggle('hidden');
-            console.log(`Mobile menu is now hidden: ${mobileMenu.classList.contains('hidden')}`);
+            mobileMenu.classList.toggle('mobile-menu-open'); // Toggle the new class
+            console.log(`Mobile menu is now open: ${mobileMenu.classList.contains('mobile-menu-open')}`);
         });
     } else {
         console.error("Mobile menu button not found!");
@@ -21,8 +21,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // Close mobile menu when a navigation link is clicked
     navLinks.forEach(link => {
         link.addEventListener('click', () => {
-            if (!mobileMenu.classList.contains('hidden')) {
-                mobileMenu.classList.add('hidden');
+            if (mobileMenu.classList.contains('mobile-menu-open')) { // Check for the new class
+                mobileMenu.classList.remove('mobile-menu-open'); // Remove the class to close
                 console.log("Mobile menu closed after link click.");
             }
         });
