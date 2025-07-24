@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const navLinks = document.querySelectorAll('nav a, #mobile-menu a');
     const contactForm = document.getElementById('contact-form');
     const formMessage = document.getElementById('form-message');
-
+    
     // Mobile menu toggle
     if (mobileMenuButton) { // Check if button exists before adding listener
         mobileMenuButton.addEventListener('click', () => {
