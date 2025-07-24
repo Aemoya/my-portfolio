@@ -48,3 +48,4 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log("Contact form not found on this page.");
     }
 });
+
