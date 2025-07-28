@@ -1,130 +1,226 @@
-/* Custom CSS for fonts and specific styling */
+Styling Fixed Maybe
+
+/* General Body Styling */
 body {
+    background-color: #262626;
+    color: #D9D0C1;
     font-family: 'Cardo', serif;
-    background-color: #262626; /* Background */
-    color: #D9D0C1; /* Text */
+    margin: 0;
+    padding: 0;
 }
+
+/* Headings */
 h1, h2, h3, h4, h5, h6 {
     font-family: 'UnifrakturCook', cursive;
-    color: #D9D0C1; /* Text */
-}
-.text-primary-accent {
-    color: #7A3D2C; /* Primary Accent */
-}
-.bg-primary-accent {
-    background-color: #7A3D2C; /* Primary Accent */
-}
-.text-secondary-accent {
-    color: #B3B34D; /* Secondary Accent */
-}
-.bg-secondary-accent {
-    background-color: #B3B34D; /* Secondary Accent */
-}
-
-/* Hamburger menu styling */
-.hamburger-menu {
-    display: none; /* Hidden by default on desktop */
-    flex-direction: column;
-    justify-content: space-between;
-    width: 30px;
-    height: 20px;
-    cursor: pointer;
-    z-index: 50; /* Ensure it's above other content */
-}
-
-.hamburger-menu span {
-    display: block;
-    width: 100%;
-    height: 3px;
-    background-color: #D9D0C1;
-    border-radius: 2px;
-    transition: all 0.3s ease-in-out;
-}
-
-.hamburger-menu.open span:nth-child(1) {
-    transform: translateY(8px) rotate(45deg);
-}
-
-.hamburger-menu.open span:nth-child(2) {
-    opacity: 0;
-}
-
-.hamburger-menu.open span:nth-child(3) {
-    transform: translateY(-8px) rotate(-45deg);
-}
-
-/* Mobile navigation overlay */
-.mobile-nav-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(38, 38, 38, 0.95); /* Dark background with transparency */
-    z-index: 40;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    transform: translateX(100%); /* Start off-screen */
-    transition: transform 0.3s ease-in-out;
-}
-
-.mobile-nav-overlay.open {
-    transform: translateX(0); /* Slide in */
-}
-
-.mobile-nav-overlay a {
-    color: #D9D0C1;
-    font-size: 1.8rem;
-    margin: 1rem 0;
-    text-decoration: none;
-    transition: color 0.2s;
-}
-
-.mobile-nav-overlay a:hover {
     color: #7A3D2C;
 }
 
-/* Hide desktop nav on mobile, show hamburger */
-@media (max-width: 768px) {
-    .desktop-nav {
-        display: none;
-    }
-    .hamburger-menu {
-        display: flex;
-    }
+/* Links */
+a {
+    color: #B3B34D;
+    text-decoration: none;
 }
 
-/* Show desktop nav on desktop, hide hamburger */
-@media (min-width: 769px) {
-    .desktop-nav {
-        display: flex;
-    }
-    .hamburger-menu {
-        display: none;
-    }
-    .mobile-nav-overlay {
-        display: none; /* Ensure overlay is hidden on desktop */
-    }
+a:hover {
+    text-decoration: underline;
 }
 
-/* Masonry-like layout for series page */
-.masonry-grid {
-    column-count: 1; /* Default to 1 column on small screens */
-    column-gap: 1rem;
+/* Header and Navigation */
+header {
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
-@media (min-width: 640px) {
-    .masonry-grid {
-        column-count: 2; /* 2 columns on medium screens */
-    }
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
 }
-@media (min-width: 1024px) {
-    .masonry-grid {
-        column-count: 3; /* 3 columns on large screens */
-    }
+
+nav ul li {
+    margin-left: 20px;
 }
+
+/* Main Content */
+main {
+    padding: 1rem;
+}
+
+.hero {
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+}
+
+.hero img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.bio-container {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+.bio-image {
+    flex: 1;
+}
+
+.bio-image img {
+    width: 100%;
+    height: auto;
+}
+
+/* Contact Form */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+form label {
+    font-family: 'UnifrakturCook', cursive;
+}
+
+form input,
+form textarea {
+    background-color: #262626;
+    color: #D9D0C1;
+    border: 1px solid #D9D0C1;
+    padding: 0.5rem;
+}
+
+form button {
+    background-color: #7A3D2C;
+    color: #D9D0C1;
+    border: none;
+    padding: 0.75rem;
+    cursor: pointer;
+    font-family: 'UnifrakturCook', cursive;
+    font-size: 1.2rem;
+}
+
+.bio-text {
+    flex: 2;
+}
+
+.work-container {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+}
+
+.work-viewer {
+    flex: 3;
+    height: 500px;
+}
+
+model-viewer {
+    width: 100%;
+    height: 100%;
+}
+
+.work-details {
+    flex: 1;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+}
+
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.1);
+}
+
+.gallery-item-title {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #D9D0C1;
+    padding: 0.5rem;
+    text-align: center;
+    font-family: 'UnifrakturCook', cursive;
+}
+
+.masonry {
+    column-count: 3;
+    column-gap: 1em;
+}
+
 .masonry-item {
-    break-inside: avoid;
-    margin-bottom: 1rem;
+    background-color: #eee;
+    display: inline-block;
+    margin: 0 0 1em;
+    width: 100%;
+}
+
+.masonry-item img {
+    width: 100%;
+    height: auto;
+}
+
+/* Hamburger Menu for Mobile */
+.hamburger {
+    display: none;
+    cursor: pointer;
+}
+
+.hamburger div {
+    width: 25px;
+    height: 3px;
+    background-color: #D9D0C1;
+    margin: 5px 0;
+}
+
+@media (max-width: 768px) {
+    nav {
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background-color: #262626;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out;
+    }
+
+    nav.active {
+        max-height: 500px; /* Adjust as needed */
+    }
+
+    nav ul {
+        flex-direction: column;
+    }
+
+    nav ul li {
+        margin: 10px 0;
+        text-align: center;
+    }
+
+    .hamburger {
+        display: block;
+    }
 }

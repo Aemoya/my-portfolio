@@ -1,4 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
+    const hamburger = document.querySelector('.hamburger');
+    const nav = document.querySelector('nav');
+
+    hamburger.addEventListener('click', () => {
+        nav.classList.toggle('active');
+    });
+});
+document.addEventListener('DOMContentLoaded', () => {
     const hamburgerMenu = document.getElementById('hamburger-menu');
     const mobileNavOverlay = document.getElementById('mobile-nav-overlay');
     const navLinks = document.querySelectorAll('nav a, .nav-link-mobile');
