@@ -1,109 +1,50 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Hamburger menu and overlay selectors (use class for consistency)
-    const hamburgerMenu = document.querySelector('.hamburger-menu');
-    const mobileNavOverlay = document.querySelector('.mobile-nav-overlay');
-    const navLinks = document.querySelectorAll('nav a, .nav-link-mobile');
-    const pageSections = document.querySelectorAll('.page-section');
+    console.log("DOM Content Loaded. Script is running.");
+
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const navLinks = document.querySelectorAll('nav a, #mobile-menu a');
     const contactForm = document.getElementById('contact-form');
     const formMessage = document.getElementById('form-message');
 
-    // Function to show a specific page section
-    function showPage(pageId) {
-        pageSections.forEach(section => {
-            section.classList.add('hidden');
-            section.classList.remove('active');
+    // Mobile menu toggle (Original logic: toggling 'hidden' class)
+    if (mobileMenuButton) { // Check if button exists before adding listener
+        mobileMenuButton.addEventListener('click', () => {
+            console.log("Hamburger icon clicked!");
+            mobileMenu.classList.toggle('hidden'); // Toggles Tailwind's 'hidden' class
+            console.log(`Mobile menu is now hidden: ${mobileMenu.classList.contains('hidden')}`);
         });
-        const targetSection = document.getElementById(pageId);
-        if (targetSection) {
-            targetSection.classList.remove('hidden');
-            targetSection.classList.add('active');
-            document.title = `Alexandra Moya Art - ${targetSection.dataset.title}`;
-        } else {
-            // Show 404 page if target section not found
-            document.getElementById('404').classList.remove('hidden');
-            document.getElementById('404').classList.add('active');
-            document.title = `Alexandra Moya Art - Page Not Found`;
-        }
-    }
-
-    // Handle initial page load based on URL hash
-    const initialHash = window.location.hash.substring(1); // Remove '#'
-    if (initialHash) {
-        showPage(initialHash);
     } else {
-        showPage('home'); // Default to home page
+        console.error("Mobile menu button not found!");
     }
 
-    // Handle navigation clicks
+    // Close mobile menu when a navigation link is clicked
     navLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
-            const targetId = link.getAttribute('href').substring(1); // Get ID without '#'
-            showPage(targetId);
-            // Close mobile menu if open
-            if (mobileNavOverlay.classList.contains('open')) {
-                mobileNavOverlay.classList.remove('open');
-                hamburgerMenu.classList.remove('open');
+        link.addEventListener('click', () => {
+            if (!mobileMenu.classList.contains('hidden')) { // Check if it's NOT hidden
+                mobileMenu.classList.add('hidden'); // Add 'hidden' class to close
+                console.log("Mobile menu closed after link click.");
             }
-            // Update URL hash without reloading
-            window.history.pushState(null, '', link.getAttribute('href'));
         });
     });
 
-    // Handle browser back/forward buttons
-    window.addEventListener('popstate', () => {
-        const hash = window.location.hash.substring(1);
-        if (hash) {
-            showPage(hash);
-        } else {
-            showPage('home');
-        }
-    });
-
-    // Hamburger menu toggle (robust, works for all pages)
-    if (hamburgerMenu && mobileNavOverlay) {
-        hamburgerMenu.addEventListener('click', () => {
-            const isOpen = hamburgerMenu.classList.toggle('open');
-            mobileNavOverlay.classList.toggle('open');
-            hamburgerMenu.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    // Contact Form Submission (Placeholder - client-side only)
+    // This part will only execute if the current page is contact.html
+    if (contactForm) { // Check if form exists before adding listener
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            console.log("Contact form submitted (client-side simulation).");
+            // In a real application, you would send this data to a backend server.
+            // For this prototype, we'll just simulate success.
+            formMessage.classList.remove('hidden', 'text-red-500');
+            formMessage.classList.add('text-[#B3B34D]');
+            formMessage.textContent = 'Thank you for your message! We will get back to you soon.';
+            contactForm.reset(); // Clear the form
+            setTimeout(() => {
+                formMessage.classList.add('hidden');
+            }, 5000); // Hide message after 5 seconds
         });
-        // Close overlay when a link is clicked
-        mobileNavOverlay.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                hamburgerMenu.classList.remove('open');
-                mobileNavOverlay.classList.remove('open');
-                hamburgerMenu.setAttribute('aria-expanded', 'false');
-            });
-        });
+    } else {
+        console.log("Contact form not found on this page.");
     }
-
-    // Contact Form Submission (client-side only for demonstration)
-    contactForm.addEventListener('submit', (e) => {
-        e.preventDefault(); // Prevent actual form submission
-
-        const name = document.getElementById('name').value;
-        const email = document.getElementById('email').value;
-        const subject = document.getElementById('subject').value;
-        const message = document.getElementById('message').value;
-
-        console.log('Contact Form Submission:');
-        console.log('Name:', name);
-        console.log('Email:', email);
-        console.log('Subject:', subject);
-        console.log('Message:', message);
-        console.log('Submission Email:', 'aemoya01@gmail.com');
-
-        // Display a success message (instead of alert)
-        formMessage.textContent = 'Thank you for your message! Alexandra will get back to you soon.';
-        formMessage.classList.remove('hidden');
-        formMessage.classList.add('text-secondary-accent'); // Greenish for success
-
-        // Clear the form
-        contactForm.reset();
-
-        // Hide message after a few seconds
-        setTimeout(() => {
-            formMessage.classList.add('hidden');
-        }, 5000);
-    });
 });
