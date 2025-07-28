@@ -33,7 +33,7 @@
 
     <!-- Header and Navigation -->
     <header class="bg-[#262626] shadow-lg sticky top-0 z-50">
-        <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
+        <nav class="container mx-auto px-4 py-4 flex justify-between items-center relative">
             <!-- Logo/Artist Name -->
             <a href="index.html" class="text-3xl font-unifraktur-cook text-[#D9D0C1] hover:text-[#B3B34D] transition duration-300 rounded-lg p-2">
                 Alexandra Moya
@@ -48,22 +48,22 @@
                 <li><a href="contact.html" class="text-[#D9D0C1] hover:text-[#B3B34D] transition duration-300 text-lg font-semibold rounded-lg p-2">Contact</a></li>
             </ul>
 
-            <!-- Mobile Hamburger Icon (new structure) -->
-            <div class="hamburger-menu md:hidden">
+            <!-- Hamburger Menu Icon (top right, mobile only) -->
+            <div class="hamburger-menu md:hidden absolute right-0 top-1/2 -translate-y-1/2" aria-label="Open navigation menu" aria-controls="mobile-nav-overlay" aria-expanded="false" tabindex="0">
                 <span></span>
                 <span></span>
                 <span></span>
             </div>
-        </nav>
 
-        <!-- Mobile Navigation Overlay (new structure) -->
-        <div class="mobile-nav-overlay">
-            <a href="index.html">Home</a>
-            <a href="bio.html">Bio</a>
-            <a href="cv.html">CV</a>
-            <a href="gallery.html">Gallery</a>
-            <a href="contact.html">Contact</a>
-        </div>
+            <!-- Mobile Navigation Overlay (top right, mobile only) -->
+            <nav id="mobile-nav-overlay" class="mobile-nav-overlay" aria-label="Mobile Navigation">
+                <a href="index.html">Home</a>
+                <a href="bio.html">Bio</a>
+                <a href="cv.html">CV</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+        </nav>
     </header>
 
     <!-- Main Content Area - Homepage Section -->
