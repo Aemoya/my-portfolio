@@ -1,14 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const hamburger = document.querySelector('.hamburger');
-    const nav = document.querySelector('nav');
-
-    hamburger.addEventListener('click', () => {
-        nav.classList.toggle('active');
-    });
-});
-document.addEventListener('DOMContentLoaded', () => {
-    const hamburgerMenu = document.getElementById('hamburger-menu');
-    const mobileNavOverlay = document.getElementById('mobile-nav-overlay');
+    // Hamburger menu and overlay selectors (use class for consistency)
+    const hamburgerMenu = document.querySelector('.hamburger-menu');
+    const mobileNavOverlay = document.querySelector('.mobile-nav-overlay');
     const navLinks = document.querySelectorAll('nav a, .nav-link-mobile');
     const pageSections = document.querySelectorAll('.page-section');
     const contactForm = document.getElementById('contact-form');
@@ -67,11 +60,20 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Hamburger menu toggle
-    hamburgerMenu.addEventListener('click', () => {
-        hamburgerMenu.classList.toggle('open');
-        mobileNavOverlay.classList.toggle('open');
-    });
+    // Hamburger menu toggle (single, unified block)
+    if (hamburgerMenu && mobileNavOverlay) {
+        hamburgerMenu.addEventListener('click', () => {
+            hamburgerMenu.classList.toggle('open');
+            mobileNavOverlay.classList.toggle('open');
+        });
+        // Close overlay when a link is clicked
+        mobileNavOverlay.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburgerMenu.classList.remove('open');
+                mobileNavOverlay.classList.remove('open');
+            });
+        });
+    }
 
     // Contact Form Submission (client-side only for demonstration)
     contactForm.addEventListener('submit', (e) => {
@@ -102,25 +104,4 @@ document.addEventListener('DOMContentLoaded', () => {
             formMessage.classList.add('hidden');
         }, 5000);
     });
-});
-
-// Add this script to enable hamburger menu toggle
-document.addEventListener('DOMContentLoaded', function () {
-    const hamburger = document.querySelector('.hamburger-menu');
-    const overlay = document.querySelector('.mobile-nav-overlay');
-
-    if (hamburger && overlay) {
-        hamburger.addEventListener('click', function () {
-            hamburger.classList.toggle('open');
-            overlay.classList.toggle('open');
-        });
-
-        // Optional: close overlay when a link is clicked
-        overlay.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', function () {
-                hamburger.classList.remove('open');
-                overlay.classList.remove('open');
-            });
-        });
-    }
 });
