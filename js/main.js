@@ -103,3 +103,24 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 5000);
     });
 });
+
+// Add this script to enable hamburger menu toggle
+document.addEventListener('DOMContentLoaded', function () {
+    const hamburger = document.querySelector('.hamburger-menu');
+    const overlay = document.querySelector('.mobile-nav-overlay');
+
+    if (hamburger && overlay) {
+        hamburger.addEventListener('click', function () {
+            hamburger.classList.toggle('open');
+            overlay.classList.toggle('open');
+        });
+
+        // Optional: close overlay when a link is clicked
+        overlay.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', function () {
+                hamburger.classList.remove('open');
+                overlay.classList.remove('open');
+            });
+        });
+    }
+});

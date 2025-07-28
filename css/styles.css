@@ -33,7 +33,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .hamburger-menu span {
-    display: none;
+    display: block;
     width: 100%;
     height: 3px;
     background-color: #D9D0C1;
@@ -104,9 +104,10 @@ h1, h2, h3, h4, h5, h6 {
     .hamburger-menu {
         display: none;
     }
-    .mobile-nav-overlay {
-        display: none; /* Ensure overlay is hidden on desktop */
-    }
+    /* FIX: Remove display: none so overlay can slide in/out via transform */
+    /* .mobile-nav-overlay {
+        display: none;
+    } */
 }
 
 /* Masonry-like layout for series page */
