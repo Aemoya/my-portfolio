@@ -3,135 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Explore the main gallery of Alexandra Moya's art, featuring captivating paintings, ceramic sculptures, and printmaking works organized by series.">
-    <title>Alexandra Moya's Art - Gallery</title>
-
-    <!-- Favicon Placeholder -->
-    <link rel="icon" href="https://placehold.co/32x32/7A3D2C/D9D0C1?text=AM" type="image/png">
-
-    <!-- Social Sharing Image Placeholder -->
-    <meta property="og:image" content="https://placehold.co/1200x630/7A3D2C/D9D0C1?text=Alexandra+Moya+Art">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Alexandra Moya's Art - Gallery">
-    <meta property="og:description" content="Explore the main gallery of Alexandra Moya's art, featuring captivating paintings, ceramic sculptures, and printmaking works organized by series.">
-
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-
-    <!-- External CSS file -->
-    <link rel="stylesheet" href="style.css">
-
-    <!-- Font Awesome for Icons (Hamburger) - Corrected integrity attribute -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" xintegrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0V4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-    <!-- Model Viewer for 3D Models (if used on this page) -->
-    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+    <title>Gallery - Alexandra Moya Art</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cardo&family=UnifrakturCook&display=swap" rel="stylesheet">
 </head>
-<body class="bg-[#262626] text-[#D9D0C1] font-cardo min-h-screen flex flex-col">
-
-    <!-- Header and Navigation -->
-    <header class="bg-[#262626] shadow-lg sticky top-0 z-50">
-        <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <!-- Logo/Artist Name -->
-            <a href="index.html" class="text-3xl font-unifraktur-cook text-[#D9D0C1] hover:text-[#B3B34D] transition duration-300 rounded-lg p-2">
-                Alexandra Moya
-            </a>
-
-            <!-- Desktop Navigation -->
-            <ul class="hidden md:flex space-x-8">
-                <li><a href="index.html" class="text-[#D9D0C1] hover:text-[#B3B34D] transition duration-300 text-lg font-semibold rounded-lg p-2">Home</a></li>
-                <li><a href="bio.html" class="text-[#D9D0C1] hover:text-[#B3B34D] transition duration-300 text-lg font-semibold rounded-lg p-2">Bio</a></li>
-                <li><a href="cv.html" class="text-[#D9D0C1] hover:text-[#B3B34D] transition duration-300 text-lg font-semibold rounded-lg p-2">CV</a></li>
-                <li><a href="gallery.html" class="text-[#D9D0C1] hover:text-[#B3B34D] transition duration-300 text-lg font-semibold rounded-lg p-2">Gallery</a></li>
-                <li><a href="contact.html" class="text-[#D9D0C1] hover:text-[#B3B34D] transition duration-300 text-lg font-semibold rounded-lg p-2">Contact</a></li>
-            </ul>
-
-            <!-- Mobile Hamburger Icon -->
-            <button id="mobile-menu-button" class="md:hidden text-[#D9D0C1] text-2xl focus:outline-none p-2 rounded-lg hover:bg-[#7A3D2C]">
-                <i class="fas fa-bars"></i>
-            </button>
-        </nav>
-
-        <!-- Mobile Menu (Removed 'hidden' class, controlled by CSS max-height) -->
-        <div id="mobile-menu" class="md:hidden bg-[#7A3D2C] py-4 rounded-b-lg">
-            <ul class="flex flex-col items-center space-y-4">
-                <li><a href="index.html" class="text-[#D9D0C1] hover:text-[#B3B34D] transition duration-300 text-lg font-semibold block py-2 px-4 rounded-lg">Home</a></li>
-                <li><a href="bio.html" class="text-[#D9D0C1] hover:text-[#B3B34D] transition duration-300 text-lg font-semibold block py-2 px-4 rounded-lg">Bio</a></li>
-                <li><a href="cv.html" class="text-[#D9D0C1] hover:text-[#B3B34D] transition duration-300 text-lg font-semibold block py-2 px-4 rounded-lg">CV</a></li>
-                <li><a href="gallery.html" class="text-[#D9D0C1] hover:text-[#B3B34D] transition duration-300 text-lg font-semibold block py-2 px-4 rounded-lg">Gallery</a></li>
-                <li><a href="contact.html" class="text-[#D9D0C1] hover:text-[#B3B34D] transition duration-300 text-lg font-semibold block py-2 px-4 rounded-lg">Contact</a></li>
-            </ul>
+<body>
+    <header>
+        <div class="logo">
+            <a href="index.html">Alexandra Moya</a>
         </div>
+        <div class="hamburger">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="bio.html">Bio</a></li>
+                <li><a href="cv.html">CV</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+            </ul>
+        </nav>
     </header>
-
-    <!-- Main Content Area - Main Gallery Section -->
-    <main class="flex-grow container mx-auto px-4 py-8">
-        <section id="gallery" class="mb-16">
-            <h2 class="text-4xl font-unifraktur-cook text-[#B3B34D] mb-8 text-center">Main Gallery</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Gallery Series Item 1 -->
-                <div class="bg-[#7A3D2C] bg-opacity-20 rounded-xl shadow-lg overflow-hidden group">
-                    <a href="series-page-1.html">
-                        <img src="https://placehold.co/600x400/7A3D2C/D9D0C1?text=Series+1" alt="Art Series 1" class="w-full h-48 object-cover rounded-t-xl transform group-hover:scale-105 transition duration-300">
-                        <div class="p-4">
-                            <h3 class="text-2xl font-semibold text-[#D9D0C1] group-hover:text-[#B3B34D] transition duration-300">Series Title One</h3>
-                            <p class="text-sm text-[#D9D0C1] mt-2">A brief description of this captivating series.</p>
-                        </div>
-                    </a>
-                </div>
-                <!-- Gallery Series Item 2 -->
-                <div class="bg-[#7A3D2C] bg-opacity-20 rounded-xl shadow-lg overflow-hidden group">
-                    <a href="series-page-2.html">
-                        <img src="https://placehold.co/600x400/B3B34D/262626?text=Series+2" alt="Art Series 2" class="w-full h-48 object-cover rounded-t-xl transform group-hover:scale-105 transition duration-300">
-                        <div class="p-4">
-                            <h3 class="text-2xl font-semibold text-[#D9D0C1] group-hover:text-[#B3B34D] transition duration-300">Series Title Two</h3>
-                            <p class="text-sm text-[#D9D0C1] mt-2">Exploring new themes and techniques.</p>
-                        </div>
-                    </a>
-                </div>
-                <!-- Gallery Series Item 3 -->
-                <div class="bg-[#7A3D2C] bg-opacity-20 rounded-xl shadow-lg overflow-hidden group">
-                    <a href="series-page-3.html">
-                        <img src="https://placehold.co/600x400/262626/D9D0C1?text=Series+3" alt="Art Series 3" class="w-full h-48 object-cover rounded-t-xl transform group-hover:scale-105 transition duration-300">
-                        <div class="p-4">
-                            <h3 class="text-2xl font-semibold text-[#D9D0C1] group-hover:text-[#B3B34D] transition duration-300">Series Title Three</h3>
-                            <p class="text-sm text-[#D9D0C1] mt-2">A collection of printmaking works.</p>
-                        </div>
-                    </a>
-                </div>
-                <!-- Example of a 3D model placeholder in gallery -->
-                <div class="bg-[#7A3D2C] bg-opacity-20 rounded-xl shadow-lg overflow-hidden group">
-                    <a href="work-page-shroud.html">
-                        <model-viewer src="https://modelviewer.dev/shared-assets/models/Astronaut.glb"
-                                      alt="A 3D model of an astronaut"
-                                      auto-rotate camera-controls
-                                      class="w-full h-48 rounded-t-xl">
-                        </model-viewer>
-                        <div class="p-4">
-                            <h3 class="text-2xl font-semibold text-[#D9D0C1] group-hover:text-[#B3B34D] transition duration-300">Shroud (3D Model Example)</h3>
-                            <p class="text-sm text-[#D9D0C1] mt-2">An example of a 3D sculpture, 'Shroud'.</p>
-                        </div>
-                    </a>
-                </div>
-            </div>
+    <main>
+        <h1>Gallery</h1>
+        <section class="gallery-grid">
+            <a href="series-1.html" class="gallery-item">
+                <img src="images/series-1-thumb.jpg" alt="Series 1">
+                <div class="gallery-item-title">Series 1</div>
+            </a>
+            <a href="series-2.html" class="gallery-item">
+                <img src="images/series-2-thumb.jpg" alt="Series 2">
+                <div class="gallery-item-title">Series 2</div>
+            </a>
+            <a href="series-3.html" class="gallery-item">
+                <img src="images/series-3-thumb.jpg" alt="Series 3">
+                <div class="gallery-item-title">Series 3</div>
+            </a>
         </section>
     </main>
-
-    <!-- Footer -->
-    <footer class="bg-[#262626] border-t border-[#7A3D2C] py-8 mt-auto text-center text-sm text-[#D9D0C1]">
-        <p>&copy; 2025 Alexandra Moya. All rights reserved.</p>
-        <div class="flex justify-center space-x-4 mt-4">
-            <a href="https://www.instagram.com/osoreart/" target="_blank" rel="noopener noreferrer" class="text-[#D9D0C1] hover:text-[#B3B34D] transition duration-300">
-                <i class="fab fa-instagram text-2xl"></i>
-            </a>
-            <!-- Add other social media icons if applicable -->
-        </div>
-    </footer>
-
-    <!-- External JavaScript file -->
-    <script src="script.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>
-
