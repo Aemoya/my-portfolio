@@ -33,7 +33,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .hamburger-menu span {
-    display: block;
+    display: none;
     width: 100%;
     height: 3px;
     background-color: #D9D0C1;
