@@ -60,17 +60,19 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Hamburger menu toggle (single, unified block)
+    // Hamburger menu toggle (robust, works for all pages)
     if (hamburgerMenu && mobileNavOverlay) {
         hamburgerMenu.addEventListener('click', () => {
-            hamburgerMenu.classList.toggle('open');
+            const isOpen = hamburgerMenu.classList.toggle('open');
             mobileNavOverlay.classList.toggle('open');
+            hamburgerMenu.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
         });
         // Close overlay when a link is clicked
         mobileNavOverlay.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
                 hamburgerMenu.classList.remove('open');
                 mobileNavOverlay.classList.remove('open');
+                hamburgerMenu.setAttribute('aria-expanded', 'false');
             });
         });
     }
