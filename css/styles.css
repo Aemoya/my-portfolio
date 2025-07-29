@@ -37,6 +37,6 @@ model-viewer {
     border-radius: 0.75rem; /* rounded-xl */
 }
 
-/* Original mobile menu styling - relies on 'hidden' class from Tailwind */
-/* No specific CSS for #mobile-menu here, as its visibility is controlled by JS toggling Tailwind's 'hidden' class */
+/* Original mobile menu styling - relies on the 'hidden' utility class provided by Tailwind CSS */
+/* No specific CSS for #mobile-menu here, as its visibility is controlled by JavaScript toggling Tailwind's 'hidden' class to show or hide the menu */
 
