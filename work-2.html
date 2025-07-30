@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Explore a world where the unsettling beauty of dark surrealism comes to life through captivating paintings, intricate ceramic sculptures, and evocative printmaking art. Discover unique and thought-provoking pieces that delve into the depths of the subconscious and explore religious and spiritual themes, transforming dreams, nightmares, and profound beliefs into tangible artistic expressions.">
-    <title>Alexandra Moya's Art - Home</title>
+    <meta name="description" content="Details about Work Title 2.1 by Alexandra Moya, a mixed media piece from Series Title Two.">
+    <title>Alexandra Moya's Art - Work Title 2.1</title>
 
     <!-- Favicon Placeholder -->
     <link rel="icon" href="https://placehold.co/32x32/7A3D2C/D9D0C1?text=AM" type="image/png">
@@ -14,8 +14,8 @@
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Alexandra Moya's Art">
-    <meta property="og:description" content="Explore a world where the unsettling beauty of dark surrealism comes to life through captivating paintings, intricate ceramic sculptures, and evocative printmaking art. Discover unique and thought-provoking pieces that delve into the depths of the subconscious and explore religious and spiritual themes, transforming dreams, nightmares, and profound beliefs into tangible artistic expressions.">
+    <meta property="og:title" content="Alexandra Moya's Art - Work Title 2.1">
+    <meta property="og:description" content="Details about Work Title 2.1 by Alexandra Moya, a mixed media piece from Series Title Two.">
 
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -66,25 +66,33 @@
         </div>
     </header>
 
-    <!-- Main Content Area - Homepage Section -->
+    <!-- Main Content Area - Individual Work Page Section (Example for Work Title 2.1) -->
     <main class="flex-grow container mx-auto px-4 py-8">
-        <section id="home" class="mb-16">
-            <div class="relative h-96 md:h-[500px] bg-[#7A3D2C] rounded-xl overflow-hidden shadow-xl">
-                <!-- Hero Image Placeholder -->
-                <img src="https://placehold.co/1200x500/7A3D2C/D9D0C1?text=Hero+Image+Placeholder" alt="Alexandra Moya Art Hero Image" class="w-full h-full object-cover object-center">
-                <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center p-4">
-                    <h1 class="text-4xl md:text-6xl font-unifraktur-cook text-[#D9D0C1] text-center drop-shadow-lg">
-                        Alexandra Moya's Art
-                    </h1>
+        <section id="work-page-2-1" class="mb-16">
+            <h2 class="text-4xl font-unifraktur-cook text-[#B3B34D] mb-8 text-center">Work Title 2.1</h2>
+            <div class="flex flex-col md:flex-row gap-8 bg-[#7A3D2C] bg-opacity-20 p-8 rounded-xl shadow-lg">
+                <!-- Main image on the left -->
+                <div class="w-full md:w-2/3 flex-shrink-0">
+                    <img src="https://placehold.co/800x600/D9D0C1/262626?text=Work+2.1+Large" alt="Work 2.1 Large" class="w-full h-auto rounded-xl shadow-md object-cover">
                 </div>
-            </div>
-            <div class="mt-8 text-center">
-                <p class="text-lg md:text-xl text-[#D9D0C1]">
-                    Explore a world where the unsettling beauty of dark surrealism comes to life through captivating paintings, intricate ceramic sculptures, and evocative printmaking art.
-                </p>
-                <a href="gallery.html" class="mt-6 inline-block bg-[#B3B34D] text-[#262626] font-semibold py-3 px-8 rounded-full shadow-lg hover:bg-[#D9D0C1] transition duration-300 transform hover:scale-105">
-                    View Gallery
-                </a>
+                <!-- Details on the right -->
+                <div class="w-full md:w-1/3 text-lg leading-relaxed">
+                    <h3 class="text-3xl font-semibold text-[#D9D0C1] mb-4">Work Title 2.1</h3>
+                    <p class="mb-2"><strong class="text-[#B3B34D]">Series:</strong> <a href="series-page-2.html" class="hover:underline">Series Title Two</a></p>
+                    <p class="mb-2"><strong class="text-[#B3B34D]">Medium:</strong> Mixed media</p>
+                    <p class="mb-2"><strong class="text-[#B3B34D]">Dimensions:</strong> 30" x 40"</p>
+                    <p class="mb-2"><strong class="text-[#B3B34D]">Year:</strong> 2024</p>
+                    <p class="mt-4">
+                        A detailed description of Work Title 2.1, exploring its themes, techniques, and inspiration within Series Title Two. This piece showcases an experimental approach to dark surrealism.
+                    </p>
+                    <!-- Example of a 3D model on a work page -->
+                    <h4 class="text-2xl font-semibold text-[#D9D0C1] mt-8 mb-4">3D View (Example)</h4>
+                    <model-viewer src="https://modelviewer.dev/shared-assets/models/RobotExpressive.glb"
+                                  alt="A 3D model of a robot"
+                                  auto-rotate camera-controls
+                                  class="w-full h-64 rounded-xl">
+                    </model-viewer>
+                </div>
             </div>
         </section>
     </main>

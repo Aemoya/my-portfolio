@@ -9,13 +9,6 @@
     <!-- Color mode favicons -->
     <link rel="icon" type="image/svg+xml" href="icons/favicon-light.svg" media="(prefers-color-scheme: light)">
     <link rel="icon" type="image/svg+xml" href="icons/favicon-dark.svg" media="(prefers-color-scheme: dark)">
-    <!-- Favicons and icons -->
-    <link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16x16.png">
-    <link rel="manifest" href="icons/site.webmanifest">
-    <link rel="mask-icon" href="icons/favicon.svg" color="#7A3D2C">
-    <link rel="shortcut icon" href="icons/favicon.ico">
 
     <!-- Social Sharing Image Placeholder -->
     <meta property="og:image" content="https://placehold.co/1200x630/7A3D2C/D9D0C1?text=Alexandra+Moya+Art">
@@ -29,7 +22,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
 
     <!-- External CSS file -->
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="style.css">
 
     <!-- Font Awesome for Icons (Hamburger) - Corrected integrity attribute -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" xintegrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0V4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -62,8 +55,8 @@
             </button>
         </nav>
 
-        <!-- Mobile Menu (hidden by default, toggled by JS) -->
-        <div id="mobile-menu" class="md:hidden bg-[#7A3D2C] py-4 rounded-b-lg transition-all duration-300 ease-in-out transform opacity-0 scale-95 pointer-events-none">
+        <!-- Mobile Menu (Removed 'hidden' class, controlled by CSS max-height) -->
+        <div id="mobile-menu" class="md:hidden bg-[#7A3D2C] py-4 rounded-b-lg">
             <ul class="flex flex-col items-center space-y-4">
                 <li><a href="index.html" class="text-[#D9D0C1] hover:text-[#B3B34D] transition duration-300 text-lg font-semibold block py-2 px-4 rounded-lg">Home</a></li>
                 <li><a href="bio.html" class="text-[#D9D0C1] hover:text-[#B3B34D] transition duration-300 text-lg font-semibold block py-2 px-4 rounded-lg">Bio</a></li>
@@ -81,7 +74,7 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Gallery Series Item 1 -->
                 <div class="bg-[#7A3D2C] bg-opacity-20 rounded-xl shadow-lg overflow-hidden group">
-                    <a href="series-1.html">
+                    <a href="series-page-1.html">
                         <img src="https://placehold.co/600x400/7A3D2C/D9D0C1?text=Series+1" alt="Art Series 1" class="w-full h-48 object-cover rounded-t-xl transform group-hover:scale-105 transition duration-300">
                         <div class="p-4">
                             <h3 class="text-2xl font-semibold text-[#D9D0C1] group-hover:text-[#B3B34D] transition duration-300">Series Title One</h3>
@@ -91,7 +84,7 @@
                 </div>
                 <!-- Gallery Series Item 2 -->
                 <div class="bg-[#7A3D2C] bg-opacity-20 rounded-xl shadow-lg overflow-hidden group">
-                    <a href="series-2.html">
+                    <a href="series-page-2.html">
                         <img src="https://placehold.co/600x400/B3B34D/262626?text=Series+2" alt="Art Series 2" class="w-full h-48 object-cover rounded-t-xl transform group-hover:scale-105 transition duration-300">
                         <div class="p-4">
                             <h3 class="text-2xl font-semibold text-[#D9D0C1] group-hover:text-[#B3B34D] transition duration-300">Series Title Two</h3>
@@ -101,11 +94,25 @@
                 </div>
                 <!-- Gallery Series Item 3 -->
                 <div class="bg-[#7A3D2C] bg-opacity-20 rounded-xl shadow-lg overflow-hidden group">
-                    <a href="series-3.html">
+                    <a href="series-page-3.html">
                         <img src="https://placehold.co/600x400/262626/D9D0C1?text=Series+3" alt="Art Series 3" class="w-full h-48 object-cover rounded-t-xl transform group-hover:scale-105 transition duration-300">
                         <div class="p-4">
                             <h3 class="text-2xl font-semibold text-[#D9D0C1] group-hover:text-[#B3B34D] transition duration-300">Series Title Three</h3>
                             <p class="text-sm text-[#D9D0C1] mt-2">A collection of printmaking works.</p>
+                        </div>
+                    </a>
+                </div>
+                <!-- Example of a 3D model placeholder in gallery -->
+                <div class="bg-[#7A3D2C] bg-opacity-20 rounded-xl shadow-lg overflow-hidden group">
+                    <a href="work-page-shroud.html">
+                        <model-viewer src="https://modelviewer.dev/shared-assets/models/Astronaut.glb"
+                                      alt="A 3D model of an astronaut"
+                                      auto-rotate camera-controls
+                                      class="w-full h-48 rounded-t-xl">
+                        </model-viewer>
+                        <div class="p-4">
+                            <h3 class="text-2xl font-semibold text-[#D9D0C1] group-hover:text-[#B3B34D] transition duration-300">Shroud (3D Model Example)</h3>
+                            <p class="text-sm text-[#D9D0C1] mt-2">An example of a 3D sculpture, 'Shroud'.</p>
                         </div>
                     </a>
                 </div>
@@ -124,8 +131,7 @@
         </div>
     </footer>
 
-    <!-- Mobile menu toggle script -->
-    <script src="js/mobile-menu.js"></script>
+    <!-- External JavaScript file -->
     <script src="script.js"></script>
 </body>
 </html>
