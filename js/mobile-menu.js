@@ -1,8 +1,17 @@
 // Tailwind mobile menu toggle
-const menuButton = document.getElementById('mobile-menu-button');
-const mobileMenu = document.getElementById('mobile-menu');
+document.addEventListener('DOMContentLoaded', function () {
+  const menuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
 
-if (menuButton && mobileMenu) {
+  if (!menuButton) {
+    console.warn('Mobile menu button not found.');
+    return;
+  }
+  if (!mobileMenu) {
+    console.warn('Mobile menu element not found.');
+    return;
+  }
+
   // Start hidden and invisible
   mobileMenu.classList.add('opacity-0', 'scale-95', 'pointer-events-none');
   menuButton.addEventListener('click', () => {
@@ -15,4 +24,4 @@ if (menuButton && mobileMenu) {
       mobileMenu.classList.add('opacity-100', 'scale-100');
     }
   });
-}
+});
