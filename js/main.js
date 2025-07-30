@@ -44,16 +44,20 @@ document.addEventListener('DOMContentLoaded', () => {
     // Handle navigation clicks
     navLinks.forEach(link => {
         link.addEventListener('click', (e) => {
-            e.preventDefault();
-            const targetId = link.getAttribute('href').substring(1); // Get ID without '#'
-            showPage(targetId);
-            // Close mobile menu if open
-            if (mobileNavOverlay.classList.contains('open')) {
-                mobileNavOverlay.classList.remove('open');
-                hamburgerMenu.classList.remove('open');
+            // Only prevent default for mobile nav links (with .nav-link-mobile class)
+            if (link.classList.contains('nav-link-mobile')) {
+                e.preventDefault();
+                const targetId = link.getAttribute('href').substring(1); // Get ID without '#'
+                showPage(targetId);
+                // Close mobile menu if open
+                if (mobileNavOverlay.classList.contains('open')) {
+                    mobileNavOverlay.classList.remove('open');
+                    hamburgerMenu.classList.remove('open');
+                }
+                // Update URL hash without reloading
+                window.history.pushState(null, '', link.getAttribute('href'));
             }
-            // Update URL hash without reloading
-            window.history.pushState(null, '', link.getAttribute('href'));
+            // For desktop nav links, allow default navigation (full page load)
         });
     });
 
