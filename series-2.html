@@ -6,8 +6,13 @@
     <meta name="description" content="Explore Series Title Two by Alexandra Moya, a collection of captivating dark surrealism art.">
     <title>Alexandra Moya's Art - Series Title Two</title>
 
-    <!-- Favicon Placeholder -->
-    <link rel="icon" href="https://placehold.co/32x32/7A3D2C/D9D0C1?text=AM" type="image/png">
+    <!-- Favicons and icons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16x16.png">
+    <link rel="manifest" href="icons/site.webmanifest">
+    <link rel="mask-icon" href="icons/favicon.svg" color="#7A3D2C">
+    <link rel="shortcut icon" href="icons/favicon.ico">
 
     <!-- Social Sharing Image Placeholder -->
     <meta property="og:image" content="https://placehold.co/1200x630/7A3D2C/D9D0C1?text=Alexandra+Moya+Art">
@@ -21,7 +26,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
 
     <!-- External CSS file -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/styles.css">
 
     <!-- Font Awesome for Icons (Hamburger) - Corrected integrity attribute -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" xintegrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0V4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -54,8 +59,8 @@
             </button>
         </nav>
 
-        <!-- Mobile Menu (Removed 'hidden' class, controlled by CSS max-height) -->
-        <div id="mobile-menu" class="md:hidden bg-[#7A3D2C] py-4 rounded-b-lg">
+        <!-- Mobile Menu (hidden by default, toggled by JS) -->
+        <div id="mobile-menu" class="md:hidden bg-[#7A3D2C] py-4 rounded-b-lg transition-all duration-300 ease-in-out transform opacity-0 scale-95 pointer-events-none">
             <ul class="flex flex-col items-center space-y-4">
                 <li><a href="index.html" class="text-[#D9D0C1] hover:text-[#B3B34D] transition duration-300 text-lg font-semibold block py-2 px-4 rounded-lg">Home</a></li>
                 <li><a href="bio.html" class="text-[#D9D0C1] hover:text-[#B3B34D] transition duration-300 text-lg font-semibold block py-2 px-4 rounded-lg">Bio</a></li>
@@ -73,21 +78,21 @@
             <div class="columns-1 sm:columns-2 lg:columns-3 gap-8 space-y-8">
                 <!-- Masonry layout for individual works -->
                 <div class="break-inside-avoid bg-[#7A3D2C] bg-opacity-20 p-4 rounded-xl shadow-lg overflow-hidden group">
-                    <a href="work-page-2-1.html">
+                    <a href="work-2-1.html">
                         <img src="https://placehold.co/400x550/D9D0C1/262626?text=Work+2.1" alt="Work 2.1" class="w-full h-auto rounded-lg mb-4 transform group-hover:scale-105 transition duration-300">
                         <h3 class="text-xl font-semibold text-[#D9D0C1] group-hover:text-[#B3B34D] transition duration-300">Work Title 2.1</h3>
                         <p class="text-sm text-[#D9D0C1] mt-1">Mixed media, 2024</p>
                     </a>
                 </div>
                 <div class="break-inside-avoid bg-[#7A3D2C] bg-opacity-20 p-4 rounded-xl shadow-lg overflow-hidden group">
-                    <a href="work-page-2-2.html">
+                    <a href="work-2-2.html">
                         <img src="https://placehold.co/400x350/B3B34D/262626?text=Work+2.2" alt="Work 2.2" class="w-full h-auto rounded-lg mb-4 transform group-hover:scale-105 transition duration-300">
                         <h3 class="text-xl font-semibold text-[#D9D0C1] group-hover:text-[#B3B34D] transition duration-300">Work Title 2.2</h3>
                     <p class="text-sm text-[#D9D0C1] mt-1">Oil on wood panel, 2023</p>
                     </a>
                 </div>
                 <div class="break-inside-avoid bg-[#7A3D2C] bg-opacity-20 p-4 rounded-xl shadow-lg overflow-hidden group">
-                    <a href="work-page-2-3.html">
+                    <a href="work-2-3.html">
                         <img src="https://placehold.co/400x480/262626/D9D0C1?text=Work+2.3" alt="Work 2.3" class="w-full h-auto rounded-lg mb-4 transform group-hover:scale-105 transition duration-300">
                         <h3 class="text-xl font-semibold text-[#D9D0C1] group-hover:text-[#B3B34D] transition duration-300">Work Title 2.3</h3>
                         <p class="text-sm text-[#D9D0C1] mt-1">Ceramic vase, 2024</p>
@@ -109,7 +114,8 @@
         </div>
     </footer>
 
-    <!-- External JavaScript file -->
+    <!-- Mobile menu toggle script -->
+    <script src="js/mobile-menu.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
